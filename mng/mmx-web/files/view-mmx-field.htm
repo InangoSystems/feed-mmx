@@ -1,0 +1,187 @@
+<%
+if param["isKey"] and showKeyParam then
+%>
+<input
+    class="mmx-field"
+    type="text"
+    name="<%=param["param_name"]%>"
+    value=""
+    >
+<%
+elseif (param["rnd_type"] and param["rnd_type"] == "checkbox") then
+%>
+<input 
+    class="mmx-field"
+    type="checkbox"
+    name="<%=param["param_name"]%>"
+    <% if string.lower(fieldValue) == "true" or fieldValue == "1" then %>checked<% end %>
+    <% if (not param["writable"] or forceReadOnly) then %> disabled <% end %>
+    >
+<%
+elseif (param["rnd_type"] and param["rnd_type"] == "button") then
+%>
+<input
+    type="submit"
+    name="<%=param['param_name']%>"
+    <% 
+        local buttonStyle = "mmx-btn cbi-button-apply"
+        if (param["data_properties"] and param["data_properties"]["styles"]) then
+            for i, style in ipairs(param["data_properties"]["styles"] or {}) do
+                buttonStyle = buttonStyle .. " " .. style
+            end
+        end 
+    %>
+    class="<%=buttonStyle %>"    
+    <% if (param["data_properties"] and param["data_properties"]["label"]) then %>
+            value ="<%=param["data_properties"]["label"]%>"
+    <% else %>
+            value ="Start"
+    <% end %>
+    <% if (param["data_properties"] and param["data_properties"]["confirm_is_needed"]) then %>
+        <% if (param["data_properties"]["confirm_msg"]) then %>
+            data-confirmation-message = "<%=param["data_properties"]["confirm_msg"] %>"
+        <% else %>
+            data-confirmation-message = "Confirm operation <%=param['rnd_header'] %>"
+        <% end %>
+    <% end %>
+    <% if (not param["writable"] or forceReadOnly) then %> disabled <% end %>
+    >
+<%
+elseif not forceReadOnly and param["data_properties"] and param["data_properties"]["rules"] and param["data_properties"]["rules"]["indirectParam"] then
+%>
+    <select
+        class="mmx-field"
+        name="<%=param["param_name"]%>"
+        >
+        <% for _, option in ipairs(indirectValues or {}) do
+            -- format of "option" is {path, value}
+            local optValue = option[2]
+            local optDisplay = option[2]
+            if param["isIndirectKey"] then
+                optValue = option[1]
+            end %>
+            <option value="<%=optValue%>" <% if optValue == fieldValue then %>selected<% end %>><%=optDisplay%></option>
+        <% end %>
+    </select>
+<%
+elseif (param["rnd_type"] and param["rnd_type"] == "list" and param["writable"] and not forceReadOnly) then
+%>
+<select
+    class="mmx-field"
+    name="<%=param["param_name"]%>"
+    >
+<% for _, option in ipairs(param["data_properties"]["rules"]["sort_predef_values"] or {}) do
+    local optVal = option[1]
+    local optDisp = option[2] %>
+    <option value="<%=optVal%>" <% if optVal == fieldValue then %>selected<% end %>><%=optDisp%></option>
+<% end %>
+</select>
+<%
+elseif (param["rnd_type"] and param["rnd_type"] == "password") then
+%>
+<%
+    if (not param["writable"] or forceReadOnly) then
+%>
+******
+<%
+        else
+%>
+<input
+        class="mmx-field"
+        type="password"
+        name="<%=param["param_name"]%>"
+        value="<%=tostring(fieldValue)%>"
+        >
+<%
+        end
+%>
+<%
+elseif (param["rnd_type"] and param["rnd_type"] == "binary") then
+%>
+<%
+    if (not param["writable"] or forceReadOnly) then
+        local unhexedFieldValue, hexed = "", tostring(fieldValue)
+        for i = 1,string.len(hexed),2 do
+            local numval = tonumber(string.sub(hexed, i, i+1), 16) or 0
+            local unhexval = "."
+            if numval >= 32 and numval <= 126 then
+                unhexval = string.char(numval)
+            end
+            unhexedFieldValue = unhexedFieldValue..unhexval
+        end
+%>
+<%=unhexedFieldValue%>
+<%
+    else
+%>
+<input
+    class="mmx-field"
+    type="text"
+    name="<%=param["param_name"]%>"
+    value="<%=tostring(fieldValue)%>"
+    >
+<%
+        end
+%>
+
+<%
+elseif (param["rnd_type"] and param["rnd_type"] == "graph" and fieldValue and fieldValue ~= '') then
+%>
+
+<a href="javascript:void(0)" class="mmx-graph-btn">Show graph</a>
+<div
+    data-header="<%=param["data_properties"]["hdr_text"] %>"
+    data-format="<%=param["data_properties"]["rowdata_format"] %>"
+    data-x-name="<%=param["data_properties"]["x_name"] %>"
+    data-x-min="<%=param["data_properties"]["x_min"] %>"
+    data-x-max="<%=param["data_properties"]["x_max"] %>"
+    data-y-name="<%=param["data_properties"]["y_name"] %>"
+    data-y-min="<%=param["data_properties"]["y_min"] %>"
+    data-y-max="<%=param["data_properties"]["y_max"] %>"
+    class="mmx-full-value-popup"><%=fieldValue %>
+</div>
+
+<%
+elseif (not param["writable"] or forceReadOnly) then
+%>
+<%
+    if (param["data_properties"] and param["data_properties"]["data_type"] == "enum" and param["data_properties"]["rules"] and param["data_properties"]["rules"]["predef_values"]) then
+%>
+<%=param["data_properties"]["rules"]["predef_values"][fieldValue]%>
+<%
+    elseif string.len(fieldValue) > 64 then
+%>
+<%=string.sub(tostring(fieldValue), 0, 12)%>... <a href="javascript:void(0);" class="mmx-full-value-link">full</a>
+<div class="mmx-full-value-popup"><%=tostring(fieldValue)%></div>
+<%
+    else
+%>
+<%=tostring(fieldValue)%>
+<%
+    end
+%>
+<%
+else
+%>
+<%
+    if string.len(fieldValue) > 64 then
+%>
+<a href="javascript:void(0);" class="mmx-full-value-edit-link">open edit window</a>
+<div class="mmx-full-value-popup">
+	<textarea class="mmx-field" name="<%=param["param_name"]%>"><%=tostring(fieldValue)%></textarea>
+</div>
+<%
+    else
+%>
+<input
+    class="mmx-field"
+    type="text"
+    name="<%=param["param_name"]%>"
+    value="<%=tostring(fieldValue)%>"
+    >
+<%
+    end
+%>
+<%
+end
+%>

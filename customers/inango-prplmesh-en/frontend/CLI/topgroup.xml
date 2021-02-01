@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns ="http://clish.sourceforge.net/XMLSchema"
+          xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation = "http://clish.sourceforge.net/XMLSchema
+                        http://clish.sourceforge.net/XMLSchema/clish.xsd">
+
+
+<VIEW name="mmx" prompt="mmx&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="root-view">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh"
+             help = "prplMesh"
+             view="mmx-prplmesh">
+    </COMMAND>
+<!--=======================================================-->
+
+</VIEW>
+
+<VIEW name="root-view">
+<!--=======================================================-->
+    <COMMAND name="mmx"
+             help = "Enter the mmx level"
+             view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+</CLISH_MODULE>

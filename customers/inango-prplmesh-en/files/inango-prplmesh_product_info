@@ -1,0 +1,43 @@
+# Device product information 
+
+# All the bellow parameter values are designed for demo version. 
+# Most of the product and manufacturer parameters are set during
+# production process.
+# SW version info parameters are set during SW image building
+
+# NOTE: do not use chars ' ', '<', '>', '(', ')', '[', ']' in param values
+# 
+
+# Manufacturer and product constant information
+# 
+Manufacturer=Inango Systems
+ManufacturerOUI=088888
+ProductClass=EasyMesh Gateway
+ModelName=NETGEAR RAX40
+Description=prplMesh Controller and Agent
+
+# Manufacturer Private Enterprise Number (PEN) according to IANA assignments:
+# http://www.iana.org/assignments/enterprise-numbers
+#
+EnterpriseNumber=51069
+
+# Currently serial number of the device is set during init time
+#
+SerialNumber=000000000000
+
+# MAC address of G.Fast DFE-0 chip is used as the "base" MAC address
+# of the device. Set during production process
+BoardMACAddress=
+
+# MAC address of MGMT port is used as the "base" MAC address for all bridge
+# of the device. Set during production process
+BoardBaseMACAddress=
+
+# HW revision
+#
+HardwareVersion=Rev_1.1.1
+
+# SW version 
+#
+SoftwareVersion=01.01.5500
+SoftwareBuildDate=

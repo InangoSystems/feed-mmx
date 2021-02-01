@@ -1,0 +1,20 @@
+<fieldset class="cbi-section-node mmx-vector-table" id="<%=sectionIndex%>::<%=section["mmgModObjName"]%>">
+	<% for _, param in pairs(section["paramList"]) do %>
+	<div class="cbi-value mmx-vector-row">
+		<label class="cbi-value-title mmx-vector-title">
+			<%=param["rnd_header"]%>
+		</label>
+		<div class="cbi-value-field mmx-vector-value">
+			<% if engine:getIndirectParamPath(param) then
+                local indirectParamPath, indirectParamName = engine:getIndirectParamPath(param)
+                local indirectData = engine:filterIndirectData(param, data["indirectData"], indirectParamPath..indirectParamName)
+                local readOnly = not (param["writable"] or false) %>
+                <%=engine:renderField(section["mmgModObjName"], param, data[param["param_name"]], readOnly, false, indirectData)%>
+            <% else %>
+                <%=engine:renderField(section["mmgModObjName"], param, data[param["param_name"]])%>
+            <% end %>
+		</div>
+                <div class="mmx-vector-desc"><%=param["help"]%></div>
+	</div>
+	<% end %>
+</fieldset>

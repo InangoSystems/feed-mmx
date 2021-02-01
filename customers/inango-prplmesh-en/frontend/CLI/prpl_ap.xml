@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns ="http://clish.sourceforge.net/XMLSchema"
+          xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation = "http://clish.sourceforge.net/XMLSchema
+                        http://clish.sourceforge.net/XMLSchema/clish.xsd">
+
+
+<VIEW name="mmx-prplmesh-accesspoints" prompt="mmx/prplmesh/accesspoints&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh">
+    </COMMAND>
+<!--=======================================================-->
+
+    <COMMAND name="ap" help="Mesh Access Point decribes general configuration"
+        view="mmx-prplmesh-accesspoints-ap">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="security" help="Mesh Access Point Security describes security parameters"
+        view="mmx-prplmesh-accesspoints-security">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="ap show" help="Show information" >
+        <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="security show" help="Show information" >
+        <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-accesspoints-ap" prompt="mmx/prplmesh/accesspoints/ap&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-accesspoints">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="show" help="Show information" >
+        <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-accesspoints-security" prompt="mmx/prplmesh/accesspoints/security&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-accesspoints">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="show" help="Show information" >
+        <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh">
+<!--=======================================================-->
+    <COMMAND name="accesspoints ap" help="Mesh Access Point decribes general configuration"
+        view="mmx-prplmesh-accesspoints-ap">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="accesspoints ap show" help="Show information" >
+        <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="accesspoints security" help="Mesh Access Point Security describes security parameters"
+        view="mmx-prplmesh-accesspoints-security">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="accesspoints security show" help="Show information" >
+        <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx">
+<!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints"
+        help="prplMesh Access Points"
+        view="mmx-prplmesh-accesspoints">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints ap" help="Mesh Access Point decribes general configuration"
+        view="mmx-prplmesh-accesspoints-ap">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints ap show" help="Show information" >
+        <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints security" help="Mesh Access Point Security describes security parameters"
+        view="mmx-prplmesh-accesspoints-security">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints security show" help="Show information" >
+        <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="root-view">
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints"
+        help="prplMesh Access Points"
+        view="mmx-prplmesh-accesspoints">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints ap" help="Mesh Access Point decribes general configuration"
+        view="mmx-prplmesh-accesspoints-ap">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints ap show" help="Show information" >
+        <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints security" help="Mesh Access Point Security describes security parameters"
+        view="mmx-prplmesh-accesspoints-security">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints security show" help="Show information" >
+        <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+</CLISH_MODULE>

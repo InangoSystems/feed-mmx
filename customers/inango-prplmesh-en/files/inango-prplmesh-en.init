@@ -1,0 +1,219 @@
+#!/bin/sh
+
+#-----------------------------------------------------------------
+#
+#
+# Copyright (c) 2014 Inango systems
+# Proprietary and confidential
+#
+#
+#
+# Author: Inango Systems LTD.
+# Creation Date: 2014/07/10
+#
+# The author may be reached at support@inango.com
+#
+# THIS PROGRAM IS PROPRIETARY AND CONFIDENTIAL TO INANGO SYSTEMS LTD.
+# You are only licensed to use this program if you have executed a valid
+# license agreement with Inango Systems Ltd or with one of its
+# representatives. You are not licensed to use this program in any way
+# that is not defined in the above agreement.
+#-----------------------------------------------------------------
+
+# The file is a part of uci-defaults directory.
+# It performes some "only-once" actions during the first reboot
+
+# define global variables
+MMX_DEFAULTS_PATH="/usr/lib/mmx/mmx-defaults"
+MMX_DEFAULTS_CONF_PATH="${MMX_DEFAULTS_PATH}/config/"
+MMX_DEFAULTS_PASSWORD_FILE="${MMX_DEFAULTS_PATH}/inango-prplmesh-en_password"
+MMX_DEFAULTS_PRODUCT_FILE="${MMX_DEFAULTS_PATH}/product_info"
+MMX_DEFAULTS_UPD_PRODUCT_FILE="${MMX_DEFAULTS_PATH}/product_info_upd"
+
+upgr_log_file="/etc/customer_config_upgrade.log"
+
+PREV_PKG=`cat /etc/customer_pkg_name 2> /dev/null`
+THIS_PKG="inango-prplmesh-en"
+
+INGTMP_OVRL=`ls /usr/bin/tmpovrlctl 2> /dev/null`
+# Set the default password and then delete the file containing plain password
+password=`cat ${MMX_DEFAULTS_PASSWORD_FILE} 2>/dev/null`
+if [ -n "$password" ] ; then
+    (echo $password; sleep 1; echo $password) | passwd root >/dev/null 2>&1
+    rm -f ${MMX_DEFAULTS_PASSWORD_FILE}
+fi
+
+# Set luci theme as customerTheme
+uci batch <<-EOF
+        set luci.themes.customerTheme=/luci-static/inango-prplmesh-en
+        set luci.main.mediaurlbase=/luci-static/inango-prplmesh-en
+        commit luci
+EOF
+
+# Update UCI conffiles
+echo Applying product configuration files > $upgr_log_file
+echo "------------------------------------------------------" >>  $upgr_log_file
+upgr_date=`date`
+echo Date: $upgr_date >>  $upgr_log_file
+echo "------------------------------------------------------" >>  $upgr_log_file
+echo The new product name is $THIS_PKG >>  $upgr_log_file
+echo The previous product name is $PREV_PKG >>  $upgr_log_file
+echo "------------------------------------------------------" >>  $upgr_log_file
+
+if [ -z "$INGTMP_OVRL" ] ; then 
+    savedcfgs=$(ls -A /etc/mmx/saved-config 2>/dev/null)
+    if [ -z "$savedcfgs" ] ; then
+        echo "Directory /etc/mmx/saved-config is empty" >>  $upgr_log_file
+    else
+        echo "Directory /etc/mmx/saved-config is not empty" >>  $upgr_log_file
+    fi
+fi
+
+# If this is the very first install of a new pkg:
+#   we must save correspondent original files ( i.e. add extension .orig )
+if [ -z "$PREV_PKG" ] ; then
+    echo "The very first install of the package" >>  $upgr_log_file
+    p=`ls /etc/config`
+    echo "ls /etc/config:  $p" >>  $upgr_log_file
+
+    echo "Copy all config files of the package" >>  $upgr_log_file
+    for f in `ls ${MMX_DEFAULTS_CONF_PATH}/ 2>/dev/null`; do
+    
+        echo "cp /etc/config/$f /etc/config/$f.orig" >>  $upgr_log_file
+        cp /etc/config/$f /etc/config/$f.orig
+        
+        echo "cp ${MMX_DEFAULTS_CONF_PATH}/$f /etc/config/$f-$THIS_PKG" >>  $upgr_log_file
+        cp ${MMX_DEFAULTS_CONF_PATH}/$f /etc/config/$f-$THIS_PKG
+    
+        echo "cp ${MMX_DEFAULTS_CONF_PATH}/$f /etc/config/$f" >>  $upgr_log_file
+        cp ${MMX_DEFAULTS_CONF_PATH}/$f /etc/config/$f
+
+        if [ -n "$savedcfgs" -a -z "$INGTMP_OVRL" ] ; then 
+            echo "cp /etc/config/$f  /etc/mmx/saved-config/." >> $upgr_log_file
+            cp /etc/config/$f  /etc/mmx/saved-config/.
+
+            echo "cp /etc/config/$f.orig  /etc/mmx/saved-config/." >> $upgr_log_file
+            cp /etc/config/$f.orig  /etc/mmx/saved-config/.
+
+            echo "cp /etc/config/$f-$THIS_PKG  /etc/mmx/saved-config/." >> $upgr_log_file
+            cp /etc/config/$f-$THIS_PKG  /etc/mmx/saved-config/.
+        fi
+    done
+    
+    echo "Restore all kept files as a normal config files" >>  $upgr_log_file
+    for f in `ls /etc/config/ 2>/dev/null`; do
+        if [ "$f" != "${f/.keep/}" ]; then
+            echo "cp /etc/config/$f /etc/config/${f%.keep}" >>  $upgr_log_file
+            cp /etc/config/$f /etc/config/${f%.keep}
+        fi
+    done
+    
+    echo "rm /etc/config/*.keep" >>  $upgr_log_file
+    rm /etc/config/*.keep
+    
+fi
+
+# The previously installed package was not the same as our package 
+# (It is impossible case)
+if [  -n "$PREV_PKG"  -a "$PREV_PKG" != "$THIS_PKG" ] ; then
+    echo "The previously installed product was not the same as the new one " >>  $upgr_log_file
+    for f in `ls /etc/config/*-$PREV_PKG 2>/dev/null`; do
+        fname=${f##*/}
+        if [ -e  /etc/config/${fname%-$PREV_PKG}.orig ] ; then
+            echo "Restore the original config file for $fname file" >>  $upgr_log_file
+
+            echo "cp /etc/config/${fname%-$PREV_PKG}.orig  /etc/config/${fname%-$PREV_PKG}" >>  $upgr_log_file
+            cp /etc/config/${fname%-$PREV_PKG}.orig  /etc/config/${fname%-$PREV_PKG}
+            if [ -z "$INGTMP_OVRL" ] ; then 
+                echo "cp /etc/config/$${fname%-$PREV_PKG}.orig  /etc/mmx/saved-config/$${fname%-$PREV_PKG}" >>  $upgr_log_file
+                cp /etc/config/${fname%-$PREV_PKG}.orig  /etc/mmx/saved-config/${fname%-$PREV_PKG}
+            fi 
+            echo "rm $f" >>  $upgr_log_file
+            rm $f
+        fi
+    done
+fi
+
+
+# If the previously installed product is the same (is it possible case?)
+# We keep the existing config files
+if [ "$PREV_PKG" == "$THIS_PKG" ] ; then
+    echo "The previously installed product was the same as the new one " >> $upgr_log_file
+    
+    echo "Remove files that not used any more and restore orig files if exist" >> $upgr_log_file
+    for f in `ls /etc/config/*-$THIS_PKG 2>/dev/null`; do
+        fname=${f##*/}
+        if [ ! -e ${MMX_DEFAULTS_CONF_PATH}/$fname ] ; then
+            if [ -e /etc/config/${fname%-$THIS_PKG}.orig ] ; then
+                echo "cp /etc/config/${fname%-$THIS_PKG}.orig /etc/config/${fname%-$THIS_PKG}" >> $upgr_log_file
+                cp /etc/config/${fname%-$THIS_PKG}.orig /etc/config/${fname%-$THIS_PKG}
+                if [ -z "$INGTMP_OVRL" ] ; then 
+                    echo "cp /etc/config/${fname%-$THIS_PKG} /etc/mmx/saved-config/."
+                    cp /etc/config/${fname%-$THIS_PKG} /etc/mmx/saved-config/.
+                fi
+            fi
+
+            echo "rm $f" >> $upgr_log_file
+            rm $f
+            if [ -z "$INGTMP_OVRL" ] ; then 
+                echo "rm /etc/mmx/saved-config/$fname-$THIS_PKG 2>/dev/null" >> $upgr_log_file
+                rm /etc/mmx/saved-config/$fname-$THIS_PKG 2>/dev/null
+            fi
+        fi
+    done
+
+    echo "Add new config files that coming with the pkg "  >> $upgr_log_file
+    for f in `ls ${MMX_DEFAULTS_CONF_PATH}/ 2>/dev/null`; do
+        if [ ! -e  /etc/config/$f-$THIS_PKG ] ; then
+            echo "A new config file $f is coming with the pkg "  >> $upgr_log_file
+            echo "cp /etc/config/$f /etc/config/$f.orig" >>  $upgr_log_file
+            cp /etc/config/$f /etc/config/$f.orig
+
+            echo "cp ${MMX_DEFAULTS_CONF_PATH}/$f /etc/config/. " >> $upgr_log_file
+            cp ${MMX_DEFAULTS_CONF_PATH}/$f /etc/config/.
+
+            echo "cp ${MMX_DEFAULTS_CONF_PATH}/$f /etc/config/$f-$THIS_PKG" >> $upgr_log_file
+            cp ${MMX_DEFAULTS_CONF_PATH}/$f /etc/config/$f-$THIS_PKG
+
+            if [ -n "$savedcfgs" -a -z "$INGTMP_OVRL" ] ; then 
+                echo "cp /etc/config/$f  /etc/mmx/saved-config/." >> $upgr_log_file
+                cp /etc/config/$f  /etc/mmx/saved-config/.
+
+                echo "cp /etc/config/$f.orig  /etc/mmx/saved-config/." >> $upgr_log_file
+                cp /etc/config/$f.orig  /etc/mmx/saved-config/.
+
+                echo "cp /etc/config/$f-$THIS_PKG  /etc/mmx/saved-config/." >> $upgr_log_file
+                cp /etc/config/$f-$THIS_PKG  /etc/mmx/saved-config/.
+            fi 
+        else
+            echo "Config file $f is already used - keep it" >> $upgr_log_file
+        fi
+    done
+    
+    echo "Restore all kept files as a normal config files" >>  $upgr_log_file
+    for f in `ls /etc/config/ 2>/dev/null`; do
+        if [ "$f" != "${f/.keep/}" -a -e /etc/config/${fname%.keep} ] ; then
+            echo "cp /etc/config/$f /etc/config/${f%.keep}" >>  $upgr_log_file
+            cp /etc/config/$f /etc/config/${f%.keep}
+        fi
+    done
+
+    echo "rm /etc/config/*.keep" >>  $upgr_log_file
+    rm /etc/config/*.keep
+fi
+
+echo "End of config file processing" >> $upgr_log_file
+
+# Board product info processing is moved to separate file
+# because it could be called not only via uci-defaults.
+. "$MMX_DEFAULTS_UPD_PRODUCT_FILE"
+
+# Remove the mmx-defaults left from a previous version
+# in previous version MMX-1.0 mmx-defaults were in "/etc/mmx-defaults"
+# in version MMX-1.03 mmx-defaults has been moved to "/usr/lib/mmx/mmx-defaults"
+if [ -d /etc/mmx-defaults ] ; then
+    rm -rf /etc/mmx-defaults
+fi
+
+# Create service file with name of the installed customer package
+echo inango-prplmesh-en > /etc/customer_pkg_name

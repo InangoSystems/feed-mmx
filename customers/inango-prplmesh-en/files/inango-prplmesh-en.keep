@@ -1,0 +1,28 @@
+#-----------------------------------------------------------------
+#
+#
+# Copyright (c) 2016 Inango systems
+# Proprietary and confidential
+#
+# /lib/upgrade/keep.d/inango_dpu_en
+#
+# Author: Inango Systems LTD.
+# Creation Date: 2016/12/21
+#
+# The author may be reached at support@inango.com
+#
+# THIS PROGRAM IS PROPRIETARY AND CONFIDENTIAL TO INANGO SYSTEMS LTD.
+# You are only licensed to use this program if you have executed a valid
+# license agreement with Inango Systems Ltd or with one of its
+# representatives. You are not licensed to use this program in any way
+# that is not defined in the above agreement.
+#-----------------------------------------------------------------
+
+# The file specifies list of mmx files and directories should be preserved during an upgrade.
+
+/etc/mmx/saved-db/
+/etc/mmx/cand-db/
+/etc/customer_pkg_name
+/etc/netopeer/cfgnetopeer/datastore-server.xml
+/etc/netopeer/cfgnetopeer/datastore.xml
+/etc/mmx/copy_be/

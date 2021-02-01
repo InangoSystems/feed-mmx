@@ -1,0 +1,20 @@
+
+#Configuration of network interfaces for DPU simulated with x86 Virtual machine
+
+config interface loopback
+        option ifname   lo
+        option proto    static
+        option ipaddr   127.0.0.1
+        option netmask  255.0.0.0
+
+config interface dpucomm
+        option ifname   eth0
+        option proto    static
+        option ipaddr   10.0.0.120
+        option netmask  255.255.255.0
+
+config interface mgmt
+        option ifname   eth1
+        option proto    static
+        option ipaddr   192.168.58.2
+        option netmask  255.255.255.0

@@ -1,0 +1,195 @@
+<%#
+
+#-----------------------------------------------------------------
+#
+#
+# Copyright (c) 2014 Inango systems
+# Proprietary and confidential
+#
+#
+#
+# Author: Inango Systems LTD.
+# Creation Date: 2013/08/01
+#
+# The author may be reached at support@inango.com
+#
+# THIS PROGRAM IS PROPRIETARY AND CONFIDENTIAL TO INANGO SYSTEMS LTD.
+# You are only licensed to use this program if you have executed a valid
+# license agreement with Inango Systems Ltd or with one of its
+# representatives. You are not licensed to use this program in any way
+# that is not defined in the above agreement.
+#-----------------------------------------------------------------
+
+
+-%>
+<%
+require("luci.sys")
+local load1, load5, load15 = "", "", ""
+if luci.sys.loadavg then
+	load1, load5, load15 = luci.sys.loadavg()
+end 
+local request  = require("luci.dispatcher").context.path
+local category = request[1]
+local tree     = luci.dispatcher.node()
+local cattree  = category and luci.dispatcher.node(category)
+local node     = luci.dispatcher.context.dispatched
+local hostname = luci.sys.hostname()
+
+local c = tree
+for i,r in ipairs(request) do
+	if c.nodes and c.nodes[r] then
+		c = c.nodes[r]
+		c._menu_selected = true
+	end
+end
+
+require("luci.http").prepare_content("text/html")
+
+-%>
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="stylesheet" type="text/css" href="<%=media%>/cascade.css" />
+        <link rel="stylesheet" type="text/css" href="<%=media%>/fontawesome/fontawesome.css" />
+        <link rel="stylesheet" type="text/css" href="<%=media%>/fontawesome/solid.css" />
+	<link rel="stylesheet" type="text/css" href="<%=resource%>/jquery-ui-1.10.4.custom.css" />
+	<% if node and node.css then %><link rel="stylesheet" type="text/css" href="<%=resource%>/<%=node.css%>" /><% end %>
+	<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+	<meta http-equiv="content-script-type" content="text/javascript" />
+	<script type="text/javascript" src="<%=resource%>/xhr.js"></script>
+	<script src="<%=resource%>/jquery-1.10.1.min.js"></script>
+	<script src="<%=resource%>/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="<%=resource%>/jquery.fix.clone.js"></script>
+	<title><%=striptags( hostname .. ( (node and node.title) and ' - ' .. translate(node.title) or '')) %> - LuCI</title>
+
+	<!--[if lt IE 7]>
+		<script type="text/javascript">
+			function setup_hover() {
+				function ie_hover(e) {
+					e.onmouseover = function() { this.className = "hover" }
+					e.onmouseout  = function() { this.className = null    }
+				}
+
+				var lis  = document.getElementById("mainmenu").getElementsByTagName("LI");
+				var divs = document.getElementById("mainmenu").getElementsByTagName("DIV");
+
+				for( var i = 0; i < lis.length;  i++ ) ie_hover( lis[i]  );
+				for( var i = 0; i < divs.length; i++ ) ie_hover( divs[i] );
+			}
+		</script>
+	<![endif]-->
+</head>
+<body onload="window.setup_hover && setup_hover()">
+
+<%- if luci.sys.user.getuser("root") and not luci.sys.user.getpasswd("root") then -%>
+	<div class="warning">
+		<strong><%:No password set!%></strong><br />
+		<%:There is no password set on this router. Please configure a root password to protect the web interface and enable SSH.%>
+	</div>
+<%- end -%>
+
+<div id="header">
+    <div class="mmx-headwrap-left">
+	<div id="header2">
+		<div id="header-logo">
+			&nbsp;
+		</div>
+	</div>
+<div class="menubar">                                                                                                                                                      
+    <div class="menu-wrapper">                                                                                                                                             
+        <div id="mainmenu" class="mainmenu">                                                                                                                               
+<%-                                                                                                                                                                        
+local function submenu(prefix, node)                                                                                                                                       
+        if not node.nodes or node.hidden then                                                                                                                              
+                return false                                                                                                                                               
+        end                                                                                                                                                                
+        local index = {}                                                                                                                                                   
+        local count = 0                                                                                                                                                    
+        for k, n in pairs(node.nodes) do                                                                                                                                   
+                if n.title and n.target then                                                                                                                               
+                        table.insert(index, {name=k, order=n.order or 100})                                                                                                
+                        count = count + 1                                                                                                                                  
+                end                                                                                                                                                        
+        end                                                                                                                                                                
+                                                                                                                                                                           
+        table.sort(index, function(a, b) if a.order == b.order then return a.name < b.name else return a.order < b.order end end)                                                                                                     
+                                                                                                                                                                           
+        if count > 0 then                                                                                                                                                  
+%>                                                                                                                                                                         
+        <ul style="z-index: 99">                                                                                                                                           
+        <%- for j, v in pairs(index) do                                                                                                                                    
+                if not v.hidden and #v.name > 0 then                                                                                                                       
+                        local nnode = node.nodes[v.name]                                                                                                                   
+                        local href = controller .. prefix .. v.name                                                                                                        
+                        href = (nnode.query) and href .. luci.http.build_querystring(nnode.query) or href                                                                             
+                %>                                                                                                                                                                    
+                <li>                                                                                                                                                                  
+                        <span class="mmx-submenu-item<% if nnode._menu_selected then %> active<%end%>"><a href="<%=pcdata(href)%>"><%=pcdata(striptags(translate(nnode.title)))%></a></span>           
+                        <%- submenu(prefix .. v.name .. "/", nnode) %>                                                                                                                
+                </li>                                                                                                                                                                 
+                <%- end %>                                                                                                                                                            
+        <%- end %>                                                                                                                                                                    
+        </ul>                                                                                                                                                                         
+<%-                                                                                                                                                                                   
+        end                                                                                                                                                                           
+end 
+if cattree and cattree.nodes then                                                                                                                                          
+        local index = {}                                                                                                                                                   
+        for k, node in pairs(cattree.nodes) do                                                                                                                             
+                table.insert(index, {name=k, order=node.order or 100})                                                                                                     
+        end                                                                                                                                                                
+                                                                                                                                                                           
+        table.sort(index, function(a, b) return a.order < b.order end)                                                                                                     
+                                                                                                                                                                           
+        for i, k in ipairs(index) do                                                                                                                                       
+                node = cattree.nodes[k.name]                                                                                                                               
+                if not node.hidden and node.title and node.target and node.title ~= "Services" and node.title ~= "Logout" then                                                                        
+                        local href = controller.."/"..category.."/"..k.name                                                                                                
+                        href = (k.query) and href .. luci.http.build_querystring(k.query) or href %>                                                                       
+                        <div class="mmx-menu-main<% if node._menu_selected then %> preactive<%end%>"><a href="<%=pcdata(href)%>"><%=pcdata(striptags(translate(node.title)))%></a>       
+                                <%submenu("/" .. category .. "/" .. k.name .. "/", node)%>                                                                                 
+                        </div>                                                                                                                                             
+<%              end                                                                                                                                                        
+        end                                                                                                                                                                
+end                                                                                                                                                                        
+%>                                                                                                                                                                         
+        </div>                                                                                                                                                                        
+                                                                                                                                                                                      
+        <br class="clear" />                                                                                                                                                          
+    </div>                                                                                                                                                                            
+</div>
+    </div>
+    <div class="mmx-headwrap-right">
+        <div class="mmx-right-menu">
+            <div class="mmx-addmenu-item"><a href="<%=url("admin/logout")%>">Logout</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="pathbar separator black whitetext bold">
+<%:Path%>: <%
+local c = tree
+local url = controller
+for k,v in pairs(request) do
+	if c.nodes and c.nodes[v] then
+		c = c.nodes[v]
+		url = url .. "/" .. v
+		if c.title then
+			%><a href="<%=url%>"><%=pcdata(striptags(translate(c.title) or v))%></a> <% if k ~= #request then %>&#187; <% end
+		end
+	end
+end
+%>
+</div>
+
+<div id="maincontent">
+<% if category ~= "freifunk" and category ~= "splash" then %>
+	<noscript>
+		<div class="warning">
+			<strong><%:Java Script required!%></strong><br />
+			<%:You must enable Java Script in your browser or LuCI will not work properly.%>
+		</div>
+	</noscript>
+<% end %>

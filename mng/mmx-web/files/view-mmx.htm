@@ -1,0 +1,233 @@
+<!--
+
+view-mmx.htm
+
+Copyright (c) 2013-2021 Inango Systems LTD.
+
+Author: Inango Systems LTD. <support@inango-systems.com>
+Creation Date: Dec 2013
+
+The author may be reached at support@inango-systems.com
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.
+
+Subject to the terms and conditions of this license, each copyright holder
+and contributor hereby grants to those receiving rights under this license
+a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+(except for failure to satisfy the conditions of this license) patent license
+to make, have made, use, offer to sell, sell, import, and otherwise transfer
+this software, where such license applies only to those patent claims, already
+acquired or hereafter acquired, licensable by such copyright holder or contributor
+that are necessarily infringed by:
+
+(a) their Contribution(s) (the licensed copyrights of copyright holders and
+non-copyrightable additions of contributors, in source or binary form) alone;
+or
+
+(b) combination of their Contribution(s) with the work of authorship to which
+such Contribution(s) was added by such copyright holder or contributor, if,
+at the time the Contribution is added, such addition causes such combination
+to be necessarily infringed. The patent license shall not apply to any other
+combinations which include the Contribution.
+
+Except as expressly stated above, no rights or licenses from any copyright
+holder or contributor is granted under this license, whether expressly, by
+implication, estoppel or otherwise.
+
+DISCLAIMER
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+NOTE
+
+This is part of a management middleware software package called MMX that was developed by Inango Systems Ltd.
+
+This version of MMX provides web and command-line management interfaces.
+
+Please contact us at Inango at support@inango-systems.com if you would like to hear more about
+- other management packages, such as SNMP, TR-069 or Netconf
+- how we can extend the data model to support all parts of your system
+- professional sub-contract and customization services
+
+-->
+
+<%+header%>
+<%
+--[[
+    Script tag below needed for proper determining base url and current url.
+    They are used in mmx.js file.
+]]
+%>
+<script type="text/javascript">
+    var mmxBaseUrl = "<%=controller..baseUrl%>";
+    var mmxSelfUrl = "<%=controller..baseUrl.."/"..table.concat(requestArgs, "/")%>";
+</script>
+<script src="<%=resource%>/mmx.js"></script>
+
+<script src="<%=resource%>/chartist.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=resource%>/chartist.min.css" />
+<script src="<%=resource%>/chartist-plugin-axistitle.min.js"></script>
+
+<div class="mmx-breadcrumbs">
+<%
+for i = 1, #parentUrls do
+    if i < #parentUrls then
+        print("<a href='"..controller..parentUrls[i]["path"].."'>"..parentUrls[i]["group"]["rnd_header"].."</a> <span class='breadcrumb-separator'> / </span>")
+    else
+        print("<span class='current-mmx-page'>"..parentUrls[i]["group"]["rnd_header"].."</span>")
+    end
+end
+%>
+</div>
+<% if #parentUrls > 0 then %>
+<div class="mmx-page-title"><%=parentUrls[#parentUrls]["group"]["rnd_header"]%></div>
+<% end %>
+<ul class="mmx-tabmenu">
+    <% 
+    local currentUrl = controller..baseUrl
+    if #requestArgs > 0 then
+        currentUrl = currentUrl.."/"..table.concat(requestArgs, "/")
+    end
+    local childGroupsNames = {}
+    for _, childGroupName in pairs(currentGroup["childgroups"] or {}) do table.insert(childGroupsNames, childGroupName) end
+    table.sort(childGroupsNames)
+    for _, childGroupName in pairs(childGroupsNames) do 
+        local childGroupInfo = engine:getGroupInfo(childGroupName)
+        if engine:isGroupPermit("access", childGroupInfo, userPermission) then
+    %>
+    <li class="mmx-tab">
+        <a href="<%=currentUrl%>/<%=childGroupName%>"><%=childGroupInfo['tab_text']%></a>
+    </li>
+    <%
+        end
+    end
+    %>
+</ul>
+
+<%
+local sections = currentGroup["sections"]
+if sections then
+    for sectIdx, section in pairs(sections) do
+%>
+<div class="cbi-map">
+    <fieldset class="cbi-section mmx-section" style="margin-top: 1em; margin-bottom: 1em; padding: 2em 1em">
+        <legend>
+            <%=section["sectionHeader"]%>
+            <% if section["help"] then %>
+                <span class="fas fa-question-circle mmx-tooltip" title="<%=section["help"]%>" />
+            <% end %>
+        </legend>
+        <% local sectionData = {} %>
+        <% if not engine:checkIsWriteOnly(section) then
+            local indirectParams = engine:getIndirectParams(section)
+            if next(indirectParams) == nil then
+                sectionData = engine:fillSection(section)
+            else
+                sectionData = engine:fillJoinedSection(section, indirectParams)
+            end
+        end %>
+        <%=engine:renderHelper(section, sectIdx, sectionData, currentGroup, userPermission)%>
+    <% if section['lookType'] ~= 'tablegroup' then %>
+    <div class="mmx-section-actions">
+        <% local sectionPermissions = engine:getSectionPermissions(section, userPermission, currentGroup["userWritePerm"]) %>
+        <% if sectionPermissions["update"] then %>
+            <input class="cbi-button cbi-button-refresh mmx-section-update" id="update-<%=section["mmgModObjName"]%>" type="submit" title="Update the management object information" value="Update">
+        <% end %>
+        <% if sectionPermissions["refresh"] then %>
+            <input class="cbi-button cbi-button-refresh mmx-section-refresh" id="refresh-<%=section["mmgModObjName"]%>" type="submit" title="Refresh status data of parameters" value="Refresh">
+        <% end %>
+        <% if sectionPermissions["apply"] then %>
+            <input class="cbi-button cbi-button-apply mmx-section-apply" id="apply-<%=sectIdx%>::<%=section["mmgModObjName"]%>" type="submit" title="Apply all currently changed settings to the device" value="Apply">
+        <% end %>
+        <% if sectionPermissions["save"] then %>
+            <input class="cbi-button cbi-button-save mmx-section-save" id="save-<%=sectIdx%>::<%=section["mmgModObjName"]%>" type="submit" value="Apply&amp;Save">
+        <% end %>
+    </div>
+    <% end %>
+    </fieldset>
+</div>
+<%
+    end
+end
+%>
+<div class="cbi-page-actions">
+    <% if engine:isGroupPermit("update", currentGroup, userPermission) then %>
+        <input class="cbi-button cbi-button-refresh mmx-group-update" id="update-all-sections" type="submit" value="Update">
+    <% end %>
+    <% if engine:isGroupPermit("refresh", currentGroup, userPermission) then %>
+        <input class="cbi-button cbi-button-refresh mmx-group-refresh" id="refresh-all-sections" type="submit" value="Refresh">
+    <% end %>
+    <% if engine:isGroupPermit("apply", currentGroup, userPermission) then %>
+        <input class="cbi-button cbi-button-apply mmx-group-apply" id="apply-all-sections" type="submit" value="Apply">
+    <% end %>
+    <% if engine:isGroupPermit("save", currentGroup, userPermission) then %>
+        <input class="cbi-button cbi-button-save mmx-group-save" id="save-all-sections" type="submit" value="Apply&amp;Save">
+    <% end %>
+</div>
+
+<%
+local errString = ""
+--[[for path, errDesc in pairs(formErrors) do
+    errString = errString..path..":"
+    if errDesc["msg"] ~= nil then
+        errString = errString.." errorcode: '"..errDesc["code"]..", description: '"..errDesc["msg"].."'"
+    else
+        errString = errString.."<ul>"
+        for _, descArray in pairs(errDesc) do
+            errString = errString.."<li>field '"..descArray["param_name"].."' invalid, reason: '"..descArray["reason"].."'</li>"
+        end
+        errString = errString.."</ul>"
+    end
+    errString = errString.."<br>"
+end]]
+for _, errDesc in pairs(formErrors) do
+    if errDesc["msg"] ~= nil then
+        errString = errString.."Operation '"..errDesc["operation"].."' failed:".." errorcode: '"..errDesc["code"].."'"
+    else
+        errString = errString.."Validation failed on field '"..errDesc["param_name"].."', reason: '"..errDesc["reason"].."'"
+    end
+    errString = errString.."<br>"
+end
+if string.len(errString) > 0 then
+%>
+<script type="text/javascript">
+$("<div><%=errString%></div>").dialog({
+    dialogClass: "mmx-edit-window-full",
+    autoOpen: true,
+    modal: true,
+    draggable: false,
+    resizable: false,
+    title: 'Errors',
+    minWidth: 550,
+    buttons: [
+        {
+            text: 'OK',
+            click: function() {
+                $(this).dialog('destroy').remove();
+            }
+        }
+    ]
+});
+</script>
+<%
+end
+%>
+
+<%+footer%>

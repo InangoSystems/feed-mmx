@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns ="http://clish.sourceforge.net/XMLSchema"
+          xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation = "http://clish.sourceforge.net/XMLSchema
+                        http://clish.sourceforge.net/XMLSchema/clish.xsd">
+
+
+<VIEW name="mmx-prplmesh-agents" prompt="mmx/prplmesh/agents&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh">
+    </COMMAND>
+<!--=======================================================-->
+
+    <COMMAND name="device" help="This object describes a device."
+        view="mmx-prplmesh-agents-device">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="multiapcap" help="The Multi-AP capabilities supported by this device"
+        view="mmx-prplmesh-agents-multiapcap">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="device show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}. sectionId=prpl_agents_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="multiapcap show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.MultiAPCapabilities. sectionId=prpl_agents_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents-device" prompt="mmx/prplmesh/agents/device&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-agents">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}. sectionId=prpl_agents_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents-multiapcap" prompt="mmx/prplmesh/agents/multiapcap&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-agents">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.MultiAPCapabilities. sectionId=prpl_agents_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh">
+<!--=======================================================-->
+    <COMMAND name="agents device" help="This object describes a device."
+        view="mmx-prplmesh-agents-device">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents device show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}. sectionId=prpl_agents_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents multiapcap" help="The Multi-AP capabilities supported by this device"
+        view="mmx-prplmesh-agents-multiapcap">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents multiapcap show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.MultiAPCapabilities. sectionId=prpl_agents_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx">
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents"
+        help="prplMesh Agents"
+        view="mmx-prplmesh-agents">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents device" help="This object describes a device."
+        view="mmx-prplmesh-agents-device">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents device show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}. sectionId=prpl_agents_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents multiapcap" help="The Multi-AP capabilities supported by this device"
+        view="mmx-prplmesh-agents-multiapcap">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents multiapcap show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.MultiAPCapabilities. sectionId=prpl_agents_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="root-view">
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents"
+        help="prplMesh Agents"
+        view="mmx-prplmesh-agents">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents device" help="This object describes a device."
+        view="mmx-prplmesh-agents-device">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents device show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}. sectionId=prpl_agents_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents multiapcap" help="The Multi-AP capabilities supported by this device"
+        view="mmx-prplmesh-agents-multiapcap">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents multiapcap show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.MultiAPCapabilities. sectionId=prpl_agents_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+</CLISH_MODULE>

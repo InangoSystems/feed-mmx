@@ -1,0 +1,78 @@
+#!/bin/sh
+
+#-----------------------------------------------------------------
+#
+#
+# Copyright (c) 2014 Inango systems
+# Proprietary and confidential
+#
+#
+#
+# Author: Inango Systems LTD.
+# Creation Date: 2020/09/23
+#
+# The author may be reached at support@inango.com
+#
+# THIS PROGRAM IS PROPRIETARY AND CONFIDENTIAL TO INANGO SYSTEMS LTD.
+# You are only licensed to use this program if you have executed a valid
+# license agreement with Inango Systems Ltd or with one of its
+# representatives. You are not licensed to use this program in any way
+# that is not defined in the above agreement.
+#-----------------------------------------------------------------
+
+if [ -z "$MMX_DEFAULTS_PRODUCT_FILE" ] ; then
+    MMX_DEFAULTS_PATH="/usr/lib/mmx/mmx-defaults"
+    MMX_DEFAULTS_PRODUCT_FILE="${MMX_DEFAULTS_PATH}/product_info"
+fi
+
+if [ -z "$upgr_log_file" ] ; then
+    upgr_log_file="/etc/customer_config_upgrade.log"
+fi
+
+echo "Board product info processing"   >> $upgr_log_file
+rt_prod_file="/etc/mmx/product_info"
+cp ${MMX_DEFAULTS_PRODUCT_FILE}  $rt_prod_file
+echo "cp ${MMX_DEFAULTS_PRODUCT_FILE}  $rt_prod_file" >> $upgr_log_file
+
+# Read board product info from the flash memory and save it in the product file
+# Reading flash memory is platform depended opearation;
+# Currently winpath platform utility is used.
+# TODO: add flash read support for other CPU platforms)
+
+if [ -e /bin/flash-env-util -a -x /bin/flash-env-util ] ; then
+    flash_cmd="flash-env-util env "
+fi
+
+if [ -n "$flash_cmd" ] ; then
+    SN=`$flash_cmd BOARD_SN 2>/dev/null | cut -f 2 -d"="`
+    MNFC=`$flash_cmd BOARD_MANUFACTURER 2>/dev/null | cut -f 2 -d"="`
+    MNFC_OUI=`$flash_cmd BOARD_MFC_OUI 2>/dev/null | cut -f 2 -d"="`
+    MNFC_PEN=`$flash_cmd BOARD_MFC_PEN 2>/dev/null | cut -f 2 -d"="`
+    PRODCLASS=`$flash_cmd BOARD_PROD_CLASS 2>/dev/null | cut -f 2 -d"="`
+    MODEL=`$flash_cmd BOARD_MODEL 2>/dev/null | cut -f 2 -d"="`
+    DESCR=`$flash_cmd BOARD_DESCRIPTION 2>/dev/null | cut -f 2 -d"="`
+    HWREV=`$flash_cmd BOARD_HW_REV 2>/dev/null | cut -f 2 -d"="`
+    BOARDMAC=`$flash_cmd BOARD_MAC_DFE0 2>/dev/null | cut -f 2 -d"="`
+    BOARDMACETHX=`$flash_cmd BOARD_MAC_ETHX 2>/dev/null | cut -f 2 -d"="`
+fi
+
+echo "Serial number read from flash is: $SN" >> $upgr_log_file
+echo "Mnfctr: $MNFC, Mfc OUI: $MNFC_OUI, Mfc PEN: $MNFC_PEN"  >> $upgr_log_file
+echo "Prod class: $PRODCLASS, Model: $MODEL" >> $upgr_log_file
+echo "Board description: $DESCR, Board MAC: $BOARDMAC" >> $upgr_log_file
+   
+[ -n "$SN" ] && sed -i 's/^SerialNumber=.*/SerialNumber='"$SN"'/g' $rt_prod_file
+[ -n "$MNFC" ] && sed -i 's/^Manufacturer=.*/Manufacturer='"$MNFC"'/g' $rt_prod_file
+[ -n "$MNFC_OUI" ] && sed -i 's/^ManufacturerOUI=.*/ManufacturerOUI='"$MNFC_OUI"'/g' $rt_prod_file
+[ -n "$MNFC_PEN" ] && sed -i 's/^EnterpriseNumber=.*/EnterpriseNumber='"$MNFC_PEN"'/g' $rt_prod_file
+[ -n "$PRODCLASS" ] && sed -i 's/^ProductClass=.*/ProductClass='"$PRODCLASS"'/g' $rt_prod_file
+[ -n "$MODEL" ] && sed -i 's/^ModelName=.*/ModelName='"$MODEL"'/g' $rt_prod_file
+[ -n "$DESCR" ] && sed -i 's/^Description=.*/Description='"$DESCR"'/g' $rt_prod_file
+[ -n "$HWREV" ] && sed -i 's/^HardwareVersion=.*/HardwareVersion='"$HWREV"'/g' $rt_prod_file
+[ -n "$BOARDMAC" ] && sed -i 's/^BoardMACAddress=.*/BoardMACAddress='"$BOARDMAC"'/g' $rt_prod_file
+[ -n "$BOARDMACETHX" ] && sed -i 's/^BoardBaseMACAddress=.*/BoardBaseMACAddress='"$BOARDMACETHX"'/g' $rt_prod_file
+
+
+echo "Runtime product file: $rt_prod_file" >> $upgr_log_file
+echo "------------------------------------------------------" >> $upgr_log_file
+
