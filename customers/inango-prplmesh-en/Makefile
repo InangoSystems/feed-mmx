@@ -207,9 +207,9 @@ define Package/inango-prplmesh-en/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)
 	# inango dpu own presentation files
 	$(INSTALL_BIN) ./showfiles/cascade.css $(1)/www/luci-static/$(PKG_NAME)/cascade.css
-	#$(INSTALL_BIN) ./showfiles/logo.svg $(1)/www/luci-static/$(PKG_NAME)/logo.svg
-	#$(INSTALL_BIN) ./showfiles/thumbnail.svg $(1)/www/luci-static/$(PKG_NAME)/thumbnail.svg
-	$(INSTALL_BIN) ./showfiles/logo.png $(1)/www/luci-static/$(PKG_NAME)/logo.png
+
+	$(INSTALL_BIN) ./showfiles/powered-by-inango-logo.png $(1)/www/luci-static/$(PKG_NAME)/
+	$(INSTALL_BIN) ./showfiles/prplMesh-header-logo.png $(1)/www/luci-static/$(PKG_NAME)/
 	$(INSTALL_BIN) ./showfiles/logo.png $(1)/www/luci-static/$(PKG_NAME)/thumbnail.png
 
 	$(INSTALL_BIN) ./showfiles/footer.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/footer.htm

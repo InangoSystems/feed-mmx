@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-	background-color: #ededed;
+	background-color: #ffffff;
 	color: #ffffff;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 100%;
@@ -51,7 +51,11 @@ div#maincontent ul {
 #header {
 	height: 60px;
 	text-align: center;
-	background-color: #010101;
+	background-color: #72166b;
+	background-image: url(prplMesh-header-logo.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center top;
 }
 
 #header2 {
@@ -66,10 +70,6 @@ div#maincontent ul {
 	margin-left: 30px;
 	margin-right: 70px;
 	display: inline-block;
-	background-image: url(logo.png);
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: left top;
 }
 
 .pathbar {
@@ -103,13 +103,13 @@ div#maincontent ul {
 }
 
 .mainmenu li:hover {
-	background-color: #113f5d;
+	background-color: #ac22a1;
 }
 
 .mainmenu div ul {
 	display: none;
 	position: absolute;
-	background: #2c81c7;
+	background: #72166b;
 	border: none;
 	list-style-type: none;
 }
@@ -134,7 +134,7 @@ div#maincontent ul {
 }
 
 .mmx-menu-main:hover > a {
-	color: #2c81c7;
+	color: #8c61aa;
 }
 
 .mmx-submenu-item > a {
@@ -295,6 +295,15 @@ img.cbi-image-button {
 	vertical-align: middle;
 }
 
+input.cbi-input-text {
+	height: 30px;
+	margin-left: 8px;
+	margin-right: 8px;
+	padding-left: 8px;
+	padding-right: 8px;
+	border: none;
+}
+
 input.cbi-input-user {
 	background-color: inherit;
 	padding-left: 2px;
@@ -339,6 +348,7 @@ input.cbi-button-reset {
 	background-color: inherit;
 	padding-left: 17px;
 	padding-right: 1px;
+	visibility: hidden;
 }
 
 input.cbi-input-save,
@@ -352,15 +362,17 @@ input.cbi-button-save {
 input.cbi-input-apply,
 input.cbi-button-apply {
 	background: url('../resources/cbi/apply.gif') no-repeat scroll 1px center;
-	background-color: inherit;
+	color: white;
+	background-color: white;
 	padding-left: 17px;
 	padding-right: 1px;
+	width: 10em;
 }
 
 .cbi-button {
 	color: #fff;
 	background: none !important;
-	background-color: #2c81c7 !important;
+	background-color: #441042 !important;
 	margin: 0px 5px 0px 0px !important;
 	padding: 8px 14px !important;
 	border-radius: 2px;
@@ -400,7 +412,6 @@ textarea {
 
 form > div > input[type=submit],
 form > div > input[type=reset] {
-	float: right;
 	margin-left: 0.5em;
 }
 
@@ -444,7 +455,7 @@ div.cbi-value {
 	clear: left;
 	vertical-align: middle;
 	padding-left: 0.25em;
-	border-bottom: 1px dotted #bbbbbb;
+	border-bottom: none;
 }
 
 div.cbi-value:hover {
@@ -458,6 +469,8 @@ div.cbi-value:last-child {
 .cbi-value-title {
 	float: left;
 	width: 40%;
+	visibility: hidden;
+	backface-visibility: hidden;
 }
 
 div.cbi-value-field {
@@ -476,6 +489,12 @@ div.cbi-section-create {
 
 div.cbi-map-descr {
 	margin-bottom: 1em;
+	visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.cbi-map h2 {
+	visibility: hidden;
 }
 
 div.cbi-optionals {
@@ -489,7 +508,7 @@ div.cbi-section-remove {
 
 .cbi-section-node {
 	clear: both;
-	border: 1px dotted #bbbbbb;
+	border: none
 	padding-bottom: 0;
 }
 
@@ -610,7 +629,7 @@ div.cbi-tab-descr {
 }
 
 .luci {
-	background-color: rgba(0, 0, 0, 0.16);
+	background-color: inherit;
 	height: 42px;
 }
 
@@ -733,7 +752,7 @@ li.mmx-tab {
 
 li.mmx-tab a {
 	display: block;
-	color: #337ab7;
+	color: #72166b;
 	text-decoration: none;
 	padding: 10px 0px;
 	font-size: 14px;
@@ -748,7 +767,7 @@ li.mmx-tab a:hover {
 }
 
 .mmx-breadcrumbs a {
-	color: #337ab7;
+	color: #72166b;
 	text-decoration: none; 
 }
 
@@ -1123,4 +1142,13 @@ th.mmx-matrix-header-nohelp {
 	display: block;
 	width: 150px;
 	margin: 26px auto 30px;
+}
+
+.mmx-footer {
+	background-color: #72166b;
+	text-align: center;
+}
+
+.cbi-page-actions {
+    text-align: center;
 }
