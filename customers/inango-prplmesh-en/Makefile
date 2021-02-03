@@ -167,14 +167,6 @@ ifeq ($(CONFIG_TARGET_x86),y)
 	network_conffile = ./conffiles/network.x86
 	mmxbridge_conffile = ./conffiles/mmxbridge.x86
 	platform_name = x86
-else ifeq ($(CONFIG_TARGET_winpath),y)
-	network_conffile = ./conffiles/network.winpath
-	mmxbridge_conffile = ./conffiles/mmxbridge.winpath
-	platform_name = winpath
-else ifeq ($(CONFIG_TARGET_xilinx),y)
-	network_conffile = ./conffiles/network.xilinx
-	mmxbridge_conffile = ./conffiles/mmxbridge.xilinx
-	platform_name = xilinx
 else
 	network_conffile = $(base_network_conffile)
 	mmxbridge_conffile = $(base_mmxbridge_conffile)
@@ -239,7 +231,9 @@ define Package/inango-prplmesh-en/install
 	# UCI-defaults init script processing
 	$(INSTALL_DIR) $(1)/etc/uci-defaults
 	$(INSTALL_BIN) ./files/$(PKG_NAME).init $(1)/etc/uci-defaults/luci-theme-openwrt-$(PKG_NAME)
-	$(CP) $(password_file) $(1)/$(MMX_DEFAULTS_PASSWORD_FILE)
+	if [ -f "$(password_file)" ]; then \
+	    $(CP) $(password_file) $(1)/$(MMX_DEFAULTS_PASSWORD_FILE); \
+	fi
 
         # Customer specific sysctl configuration
 	$(INSTALL_DIR) $(1)/etc/sysctl.d
@@ -335,9 +329,12 @@ define Package/inango-prplmesh-en/postinst
 #!/bin/sh
 # check if we are on real system
 if [ -z "$${IPKG_INSTROOT}" ]; then
-	# Set default password
-	password=`cat /$(MMX_DEFAULTS_PASSWORD_FILE)`
-	(echo $$password; sleep 1; echo $$password) | passwd root >/dev/null 2>&1
+	if [ -f "/$(MMX_DEFAULTS_PASSWORD_FILE)" ]; then
+	    # Set default password
+	    password=`cat /$(MMX_DEFAULTS_PASSWORD_FILE)`
+	    (echo $$password; sleep 1; echo $$password) | passwd root >/dev/null 2>&1
+	fi
+
 	# Set luci theme as customerTheme
 	uci set luci.themes.customerTheme=/luci-static/$(PKG_NAME)
 	uci set luci.main.mediaurlbase=/luci-static/$(PKG_NAME)
@@ -368,7 +365,7 @@ if [ -z "$${IPKG_INSTROOT}" ]; then
 
 		echo "Copy all config files of the package"
 		for f in `ls /$(MMX_DEFAULTS_CONF_PATH)/ 2>/dev/null`; do
-           echo "Command: cp /etc/config/$$f /etc/config/$$f.orig"
+		   echo "Command: cp /etc/config/$$f /etc/config/$$f.orig"
 		   cp /etc/config/$$f /etc/config/$$f.orig
 
 			echo "Command: cp /$(MMX_DEFAULTS_CONF_PATH)/$$f /etc/config/$$f-$$pkg_name"
@@ -488,7 +485,7 @@ if [ -z "$${IPKG_INSTROOT}" ]; then
 
 	# Remove file used only for first boot
 	rm /etc/uci-defaults/luci-theme-openwrt-$(PKG_NAME)
-	rm /$(MMX_DEFAULTS_PASSWORD_FILE)
+	[ -f "/$(MMX_DEFAULTS_PASSWORD_FILE)" ] && rm /$(MMX_DEFAULTS_PASSWORD_FILE)
 	# Create service file with name of installed customer package
 	echo $(PKG_NAME) > /etc/customer_pkg_name
 	# Remove the mmx-defaults left from a previous version
