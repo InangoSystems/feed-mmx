@@ -75,7 +75,7 @@ PKG_NAME:=mmx-ep
 PKG_VERSION:=2.0.0
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=ssh://git@github.com/InangoSystems/mmx-ep.git
+PKG_SOURCE_URL:=https://github.com/InangoSystems/mmx-ep.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=033b05fef89c1ea63ba3f87efcf90b601ee74560
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.xz

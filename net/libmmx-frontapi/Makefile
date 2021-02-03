@@ -75,7 +75,7 @@ PKG_NAME:=libmmx-frontapi
 PKG_VERSION:=2.0.0
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=ssh://git@github.com/InangoSystems/libmmx-frontapi.git
+PKG_SOURCE_URL:=https://github.com/InangoSystems/libmmx-frontapi.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=41dcad7bd830b53695e96d036d66644ce6304235
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.xz
