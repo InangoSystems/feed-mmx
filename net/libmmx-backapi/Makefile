@@ -74,7 +74,7 @@ PKG_NAME:=libmmx-backapi
 PKG_VERSION:=2.0.0
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=ssh://git@github.com/InangoSystems/libmmx-backapi.git
+PKG_SOURCE_URL:=https://github.com/InangoSystems/libmmx-backapi.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=f155b2cf39219b2d2505d65ed8cc02e1453c8f44
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.xz

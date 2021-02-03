@@ -74,7 +74,7 @@ PKG_NAME:=prplmesh-be
 PKG_VERSION:=2.0.0
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=ssh://git@github.com/InangoSystems/prplmesh-be.git
+PKG_SOURCE_URL:=https://github.com/InangoSystems/prplmesh-be.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=58ae217fd3d13ac3af7308085c2b460234a8eb28
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.xz

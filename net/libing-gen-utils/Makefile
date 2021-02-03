@@ -75,7 +75,7 @@ PKG_NAME:=libing-gen-utils
 PKG_VERSION:=2.0.0
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=ssh://git@github.com/InangoSystems/libing-gen-utils.git
+PKG_SOURCE_URL:=https://github.com/InangoSystems/libing-gen-utils.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=02c3d37974222f770ad85d1e8d210eaa531ffa2b
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.xz

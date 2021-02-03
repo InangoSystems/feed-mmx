@@ -76,7 +76,7 @@ PKG_VERSION:=$(PKG_REV)
 PKG_RELEASE:=5426
 
 
-PKG_SOURCE_URL:=ssh://git@github.com/InangoSystems/luaxml.git
+PKG_SOURCE_URL:=https://github.com/InangoSystems/luaxml.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=76ff8a97e86c6833788dabd588721696402f1a86
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.xz

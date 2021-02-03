@@ -73,7 +73,7 @@ PKG_NAME:=mmx-cli
 PKG_VERSION:=2.0.0
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=ssh://git@github.com/InangoSystems/mmx-cli.git
+PKG_SOURCE_URL:=https://github.com/InangoSystems/mmx-cli.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=96914c66790dae4c45c69336300ae85820c45e5d
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.xz
