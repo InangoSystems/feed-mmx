@@ -200,9 +200,9 @@ define Package/inango-prplmesh-en/install
 	# inango dpu own presentation files
 	$(INSTALL_BIN) ./showfiles/cascade.css $(1)/www/luci-static/$(PKG_NAME)/cascade.css
 
-	$(INSTALL_BIN) ./showfiles/powered-by-inango-logo.png $(1)/www/luci-static/$(PKG_NAME)/
-	$(INSTALL_BIN) ./showfiles/prplMesh-header-logo.png $(1)/www/luci-static/$(PKG_NAME)/
-	$(INSTALL_BIN) ./showfiles/logo.png $(1)/www/luci-static/$(PKG_NAME)/thumbnail.png
+	$(INSTALL_BIN) ./showfiles/inango_logo.svg $(1)/www/luci-static/$(PKG_NAME)/
+	$(INSTALL_BIN) ./showfiles/powered_by_inango.svg $(1)/www/luci-static/$(PKG_NAME)/
+	$(INSTALL_BIN) ./showfiles/prplmesh_logo.svg $(1)/www/luci-static/$(PKG_NAME)/
 
 	$(INSTALL_BIN) ./showfiles/footer.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/footer.htm
 	$(INSTALL_BIN) ./showfiles/header.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/header.htm
@@ -235,7 +235,7 @@ define Package/inango-prplmesh-en/install
 	    $(CP) $(password_file) $(1)/$(MMX_DEFAULTS_PASSWORD_FILE); \
 	fi
 
-        # Customer specific sysctl configuration
+	# Customer specific sysctl configuration
 	$(INSTALL_DIR) $(1)/etc/sysctl.d
 	$(INSTALL_CONF) ./files/$(PKG_NAME).sysctl $(1)/etc/sysctl.d/15-$(PKG_NAME).conf
 
@@ -375,14 +375,14 @@ if [ -z "$${IPKG_INSTROOT}" ]; then
 			cp /$(MMX_DEFAULTS_CONF_PATH)/$$f /etc/config/$$f
 
 			if [ -z "$$INGTMP_OVRL" ] ; then
-	            # Save all config files of the package in the saved-config directory.
-	            echo "Command: cp /etc/config/$$f-$$pkg_name  /etc/mmx/saved-config/."
-	            cp /etc/config/$$f-$$pkg_name  /etc/mmx/saved-config/.
-	            echo "Command: cp /etc/config/$$f /etc/mmx/saved-config/."
-	            cp /etc/config/$$f /etc/mmx/saved-config/.
-	            echo "Command: cp /etc/config/$$f.orig /etc/mmx/saved-config/."
-	            cp /etc/config/$$f.orig /etc/mmx/saved-config/.
-            fi
+		    # Save all config files of the package in the saved-config directory.
+		    echo "Command: cp /etc/config/$$f-$$pkg_name  /etc/mmx/saved-config/."
+		    cp /etc/config/$$f-$$pkg_name  /etc/mmx/saved-config/.
+		    echo "Command: cp /etc/config/$$f /etc/mmx/saved-config/."
+		    cp /etc/config/$$f /etc/mmx/saved-config/.
+		    echo "Command: cp /etc/config/$$f.orig /etc/mmx/saved-config/."
+		    cp /etc/config/$$f.orig /etc/mmx/saved-config/.
+	    fi
 		done
 
 	else
@@ -492,7 +492,7 @@ if [ -z "$${IPKG_INSTROOT}" ]; then
 	# in previous version MMX-1.0 mmx-defaults were in "/etc/mmx-defaults"
 	# in version MMX-1.03 mmx-defaults has been moved to "/usr/lib/mmx/mmx-defaults"
 	if [ -d "/etc/mmx-defaults" ] ; then
-        rm -rf /etc/mmx-defaults
+	rm -rf /etc/mmx-defaults
     fi
 	# Notify user that reboot is needed after modification of conffiles
 
