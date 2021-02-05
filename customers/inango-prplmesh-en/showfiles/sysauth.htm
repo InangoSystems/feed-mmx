@@ -4,7 +4,7 @@
  Licensed to the public under the Apache License 2.0.
 -%>
 
-<%+header%>
+<%+themes/inango-prplmesh-en/header_login%>
 
 <style type="text/css">
 body { background-color: #010101; }
@@ -21,7 +21,7 @@ body { background-color: #010101; }
 
 	<div class="mmx-login">
 		<div class="mmx-login-header">
-                    <div class="mmx-login-logo"></div>
+                    <img class="mmx-login-logo" src="/luci-static/inango-prplmesh-en/prplmesh_logo.svg" />
                     <div style="clear: both;"></div>
                 </div>
                 <div class="mmx-login-form">
@@ -79,9 +79,8 @@ if https_port and fs.access(https_key) then
 
 <div class="auth-footer separator black whitetext bold">
 	<div class="footer-license">
-		<p>UNAUTHORIZED ACCESS TO THIS DEVICE IS PROHIBITED<br> You must have explicit, authorized permission to access or configure this device. Unauthorized attempts and actions to access or use this system may result in civil and/or criminal penalties. All activities performed on this device are logged and monitored.</p>
                 <img src="/luci-static/inango-prplmesh-en/inango_logo.svg"></img>
-                <div>Powered by Inango MMX &copy</div>
+                <p>Powered by Inango MMX &copy</p>
 	</div>
 </div>
 

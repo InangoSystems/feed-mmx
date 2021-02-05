@@ -206,6 +206,7 @@ define Package/inango-prplmesh-en/install
 
 	$(INSTALL_BIN) ./showfiles/footer.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/
 	$(INSTALL_BIN) ./showfiles/header.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/
+	$(INSTALL_BIN) ./showfiles/header_login.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/
 	$(INSTALL_BIN) ./showfiles/sysauth.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/
 
 	$(INSTALL_DIR) $(1)/www/luci-static/$(PKG_NAME)/fontawesome
