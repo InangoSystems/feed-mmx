@@ -1,0 +1,89 @@
+<%#
+ Copyright 2008 Steven Barth <steven@midlink.org>
+ Copyright 2008-2012 Jo-Philipp Wich <jow@openwrt.org>
+ Licensed to the public under the Apache License 2.0.
+-%>
+
+<%+header%>
+
+<style type="text/css">
+body { background-color: #010101; }
+#header { display: none; }
+.menubar { display: none; }
+#maincontent { background-color: transparent; position: relative; width: 100%; }
+.auth-footer { position: relative; bottom: 0; width: 100%; padding: 10px 20px 0px; margin: 0px auto; clear: both; text-align: center; }
+</style>
+
+<form method="post" action="<%=pcdata(luci.http.getenv("REQUEST_URI"))%>">
+	<%- if fuser then %>
+	<div class="errorbox"><%:Invalid username and/or password! Please try again.%></div>
+	<% end -%>
+
+	<div class="mmx-login">
+		<div class="mmx-login-header">
+                    <div class="mmx-login-logo"></div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="mmx-login-form">
+			<div class="mmx-login-field">
+					<input class="cbi-input-user" type="text" name="luci_username" value="<%=duser%>" placeholder="Username" />
+			</div>
+			<div class="mmx-login-field">
+					<input class="cbi-input-password" type="password" name="luci_password" placeholder="Password" />
+			</div>
+                        <div class="mmx-login-button">
+                            <input type="submit" value="<%:Login%>" class="cbi-button cbi-button-apply" />
+                        </div>
+		</div>
+                <div class="mmx-login-forgot">Forgot password?</div>
+	</div>
+</form>
+<script type="text/javascript">//<![CDATA[
+	var input = document.getElementsByName('luci_password')[0];
+	if (input)
+		input.focus();
+//]]></script>
+
+<%
+local uci  = require "luci.model.uci".cursor()
+local fs  = require "nixio.fs"
+local https_key = uci:get("uhttpd", "main", "key")
+local https_port = uci:get("uhttpd", "main", "listen_https")
+if type(https_port) == "table" then
+	https_port = https_port[1]
+end
+
+if https_port and fs.access(https_key) then
+	https_port = https_port:match("(%d+)$")
+%>
+
+<script type="text/javascript">//<![CDATA[
+	if (document.location.protocol != 'https:') {
+		var url = 'https://' + window.location.hostname + ':' + '<%=https_port%>' + window.location.pathname;
+		var img=new Image;
+		img.onload=function(){window.location = url};
+		img.src='https://' + window.location.hostname + ':' + '<%=https_port%>' + '<%=resource%>/cbi/up.gif?' + Math.random();;
+		setTimeout(function(){
+			img.src=''
+		}, 5000);
+	}
+//]]></script>
+
+<% end %>
+
+		<br class="clear" />
+	</div>
+</div></div>
+</div>
+
+
+<div class="auth-footer separator black whitetext bold">
+	<div class="footer-license">
+		<p>UNAUTHORIZED ACCESS TO THIS DEVICE IS PROHIBITED<br> You must have explicit, authorized permission to access or configure this device. Unauthorized attempts and actions to access or use this system may result in civil and/or criminal penalties. All activities performed on this device are logged and monitored.</p>
+                <img src="/luci-static/inango-prplmesh-en/inango_logo.svg"></img>
+                <div>Powered by Inango MMX &copy</div>
+	</div>
+</div>
+
+</body>
+</html>

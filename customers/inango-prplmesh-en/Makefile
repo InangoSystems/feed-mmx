@@ -204,8 +204,9 @@ define Package/inango-prplmesh-en/install
 	$(INSTALL_BIN) ./showfiles/powered_by_inango.svg $(1)/www/luci-static/$(PKG_NAME)/
 	$(INSTALL_BIN) ./showfiles/prplmesh_logo.svg $(1)/www/luci-static/$(PKG_NAME)/
 
-	$(INSTALL_BIN) ./showfiles/footer.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/footer.htm
-	$(INSTALL_BIN) ./showfiles/header.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/header.htm
+	$(INSTALL_BIN) ./showfiles/footer.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/
+	$(INSTALL_BIN) ./showfiles/header.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/
+	$(INSTALL_BIN) ./showfiles/sysauth.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/
 
 	$(INSTALL_DIR) $(1)/www/luci-static/$(PKG_NAME)/fontawesome
 	$(CP) ./showfiles/fontawesome/* $(1)/www/luci-static/$(PKG_NAME)/fontawesome/.
