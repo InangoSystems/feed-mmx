@@ -201,7 +201,7 @@ define Package/inango-prplmesh-en/install
 	$(INSTALL_BIN) ./showfiles/cascade.css $(1)/www/luci-static/$(PKG_NAME)/cascade.css
 
 	$(INSTALL_BIN) ./showfiles/inango_logo.svg $(1)/www/luci-static/$(PKG_NAME)/
-	$(INSTALL_BIN) ./showfiles/powered_by_inango.svg $(1)/www/luci-static/$(PKG_NAME)/
+	$(INSTALL_BIN) ./showfiles/powered-by-inango.svg $(1)/www/luci-static/$(PKG_NAME)/
 	$(INSTALL_BIN) ./showfiles/prplmesh_logo.svg $(1)/www/luci-static/$(PKG_NAME)/
 
 	$(INSTALL_BIN) ./showfiles/footer.htm $(1)/usr/lib/lua/luci/view/themes/$(PKG_NAME)/
