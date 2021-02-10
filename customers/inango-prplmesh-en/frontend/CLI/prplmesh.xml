@@ -20,17 +20,17 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="agents"
-             help = "prplMesh Agents"
+             help = "Agents"
              view="mmx-prplmesh-agents">
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="accesspoints"
-             help = "prplMesh Access Points"
+             help = "Access Points"
              view="mmx-prplmesh-accesspoints">
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="radios"
-             help = "prplMesh Agent Radios"
+             help = "Radios"
              view="mmx-prplmesh-radios">
     </COMMAND>
 <!--=======================================================-->

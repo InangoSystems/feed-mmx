@@ -95,6 +95,9 @@ if [ -f "${MMX_DEFAULTS_PASSWORD_FILE}" ]; then
     fi
 fi
 
+# Replace LuCI login page htm
+cp /usr/lib/lua/luci/view/themes/$THIS_PKG/sysauth.htm /usr/lib/lua/luci/view/sysauth.htm
+
 # Set luci theme as customerTheme
 uci batch <<-EOF
         set luci.themes.customerTheme=/luci-static/inango-prplmesh-en

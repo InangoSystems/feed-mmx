@@ -137,16 +137,16 @@ Please contact us at Inango at support@inango-systems.com if you would like to h
         <% end %>
     </tr>
     <% end %>
-    <% if sectionPermissions['create'] then %>
     <tr class="cbi-section-add-row" id="<%=sectionIndex%>::<%=section["mmgModObjName"]%>">
+    <% if sectionPermissions['create'] then %>
         <td colspan="<%=#section["paramList"]%>">
             &nbsp;
         </td>
         <td class="mmx-action-field">
             <a href="javascript:void(0)" class="mmx-create-row" id="<%=section["mmgModObjName"]%>"><i class="fas fa-plus-circle"></i></a>
         </td>
-    </tr>
     <% end %>
+    </tr>
 </table>
 <div class="mmx-create-tpl" id="<%=section["mmgModObjName"]%>" style="display: none;">
     <table>

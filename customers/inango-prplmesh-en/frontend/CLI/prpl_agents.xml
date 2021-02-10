@@ -35,6 +35,12 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="device update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="multiapcap show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
@@ -62,6 +68,12 @@
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}. sectionId=prpl_agents_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -103,6 +115,12 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="agents device update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="agents multiapcap" help="The Multi-AP capabilities supported by this device"
         view="mmx-prplmesh-agents-multiapcap">
     </COMMAND>
@@ -119,7 +137,7 @@
 <VIEW name="mmx">
 <!--=======================================================-->
     <COMMAND name="prplmesh agents"
-        help="prplMesh Agents"
+        help="Agents"
         view="mmx-prplmesh-agents">
     </COMMAND>
 <!--=======================================================-->
@@ -131,6 +149,12 @@
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}. sectionId=prpl_agents_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents device update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -150,7 +174,7 @@
 <VIEW name="root-view">
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh agents"
-        help="prplMesh Agents"
+        help="Agents"
         view="mmx-prplmesh-agents">
     </COMMAND>
 <!--=======================================================-->
@@ -162,6 +186,12 @@
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}. sectionId=prpl_agents_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents device update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->

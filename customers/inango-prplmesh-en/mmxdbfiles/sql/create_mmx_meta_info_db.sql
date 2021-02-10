@@ -10,7 +10,7 @@ CREATE TABLE MMX_ServiceInfo
     Descr    TEXT,
     PRIMARY KEY(Name)
 );
-INSERT INTO  MMX_ServiceInfo values('BuildDate', "01/26/2021 3:30:26 PM" ,'Date when this db was generated');
+INSERT INTO  MMX_ServiceInfo values('BuildDate', "02/10/2021 11:27:43 AM" ,'Date when this db was generated');
 INSERT INTO  MMX_ServiceInfo values('DBVersion', "03.02",'DB version');
 INSERT INTO  MMX_ServiceInfo values('DBSubVersion', "000",'DB Sub version'); 
 INSERT INTO  MMX_ServiceInfo values ('ResetLastUpdated','0','Flag to reset all last updated time in DB');
@@ -186,7 +186,7 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.", "current",
     "prplmesh_be", NULL, 1, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network; ", 
+    "script", "prplmesh_get.lua Controller.Network; ", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
@@ -280,14 +280,14 @@ INSERT  INTO Device_Controller_Network_InfoTbl VALUES ('CreateOwner',
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.AccessPoint.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{i}.", "current", 0, 0, 4, 31, 31, 10, 3, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{i}.", "current", 1, 1, 4, 31, 31, 10, 3, NULL, 
     "Device_Controller_Network_AccessPoint_InfoTbl", "mmx_main_db", "Device_Controller_Network_AccessPoint_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.NumberOfAccessPoints", NULL, "AccessPointIndex", 
-    NULL, NULL, 
-    NULL, NULL, 
-    NULL, NULL, 
-    NULL, NULL, 
-    NULL, NULL, 
+    "script", "prplmesh_add.lua Controller.Network.AccessPoint.{i}; ; idx = AccessPointIndex", 
+    "script", "prplmesh_del.lua Device.Controller.Network.AccessPoint.$$; AccessPointIndex", 
+    "script", "prplmesh_get.lua Controller.Network.AccessPoint.$$; AccessPointIndex", 
+    "script", "prplmesh_set.lua Controller.Network.AccessPoint.$$; AccessPointIndex", 
+    "script", "prplmesh_getall.lua Controller.Network.AccessPoint.{i}; idx = AccessPointIndex", 
     "Device.Controller.Network.AccessPoint.{i}.Security.", NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_AccessPoint_InfoTbl; 
@@ -328,42 +328,42 @@ INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ('AccessPointI
     'Index of the table');
 
 INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "SSID", 
-    "current", 0, 4, 31, 31, "string", NULL, 
+    "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
 INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "MultiApMode", 
-    "current", 0, 4, 31, 31, "string", NULL, 
+    "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "Fronthaul", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
 INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "Band2_4G", 
-    "current", 0, 4, 31, 31, "boolean", NULL, 
+    "current", 1, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
 INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "Band5GL", 
-    "current", 0, 4, 31, 31, "boolean", NULL, 
+    "current", 1, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
 INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "Band5GH", 
-    "current", 0, 4, 31, 31, "boolean", NULL, 
+    "current", 1, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
 INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "Band6G", 
-    "current", 0, 4, 31, 31, "boolean", NULL, 
+    "current", 1, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
@@ -393,13 +393,13 @@ INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ('CreateOwner'
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.AccessPoint.{i}.Security.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{i}.Security.", "current", 0, 0, 4, 31, 31, 10, 4, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{i}.Security.", "current", 0, 1, 4, 31, 31, 10, 4, NULL, 
     "Device_Controller_Network_AccessPoint_Security_InfoTbl", "mmx_main_db", "Device_Controller_Network_AccessPoint_Security_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    NULL, NULL, 
+    "script", "prplmesh_set.lua Controller.Network.AccessPoint.$$.Security; Device.Controller.Network.AccessPoint.{i}.AccessPointIndex", 
     NULL, NULL, 
     NULL, NULL );
 
@@ -441,28 +441,28 @@ INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ('Acc
     'Index of the table');
 
 INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ( "ModeEnabled", 
-    "current", 0, 4, 31, 31, "string", NULL, 
+    "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "None", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
 INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ( "PreSharedKey", 
-    "current", 0, 4, 31, 31, "string", NULL, 
+    "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
 INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ( "KeyPassphrase", 
-    "current", 0, 4, 31, 31, "string", NULL, 
+    "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
 INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ( "SAEPassphrase", 
-    "current", 0, 4, 31, 31, "string", NULL, 
+    "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
@@ -497,9 +497,9 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.",
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.NumberOfDevices", NULL, "DeviceIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Device.Controller.Network.Device.1; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$; DeviceIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Device.Controller.Network.Device.{i}.; idx = DeviceIndex", 
+    "script", "prplmesh_getall.lua Controller.Network.Device.{i}; idx = DeviceIndex", 
     "Device.Controller.Network.Device.{i}.MultiAPCapabilities.", NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_Device_InfoTbl; 
@@ -589,7 +589,7 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Mu
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.MultiAPCapabilities; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.MultiAPCapabilities; Device.Controller.Network.Device.{i}.DeviceIndex", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );

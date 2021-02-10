@@ -144,7 +144,7 @@ require("luci.http").prepare_content("text/html")
     <div class="mmx-headwrap-left">
 	<div id="header2">
 		<div id="header-logo">
-                    <img src="/luci-static/inango-prplmesh-en/prplmesh_logo.svg"/>
+			&nbsp;
 		</div>
 	</div>
 <div class="menubar">                                                                                                                                                      
@@ -210,33 +210,31 @@ end
         <br class="clear" />                                                                                                                                                          
     </div>                                                                                                                                                                            
 </div>
-    </div> <!-- mmx-headwrap-left -->
+    </div>
     <div class="mmx-headwrap-right">
         <div class="mmx-right-menu">
-            <a href="/cgi-bin/luci/admin/logout">Logout</a>
+            <div class="mmx-addmenu-item"><a href="<%=url("admin/logout")%>">Logout</a></div>
         </div>
-        <div class="mmx-top-logo">
-            <img src="/luci-static/inango-prplmesh-en/powered-by-inango.svg"/>
-        </div>
-    </div> <!-- mmx-headwrap-right -->
-
-    <div class="pathbar separator black whitetext bold">
-    <%:Path%>: <%
-    local c = tree
-    local url = controller
-    for k,v in pairs(request) do
-            if c.nodes and c.nodes[v] then
-                    c = c.nodes[v]
-                    url = url .. "/" .. v
-                    if c.title then
-                            %><a href="<%=url%>"><%=pcdata(striptags(translate(c.title) or v))%></a> <% if k ~= #request then %>&#187; <% end
-                    end
-            end
-    end
-    %>
     </div>
 </div>
-<div id="maincontent">
+
+<div class="pathbar separator black whitetext bold">
+<%:Path%>: <%
+local c = tree
+local url = controller
+for k,v in pairs(request) do
+	if c.nodes and c.nodes[v] then
+		c = c.nodes[v]
+		url = url .. "/" .. v
+		if c.title then
+			%><a href="<%=url%>"><%=pcdata(striptags(translate(c.title) or v))%></a> <% if k ~= #request then %>&#187; <% end
+		end
+	end
+end
+%>
+</div>
+
+<div class="login-content" id="maincontent">
 <% if category ~= "freifunk" and category ~= "splash" then %>
 	<noscript>
 		<div class="warning">

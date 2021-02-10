@@ -43,8 +43,8 @@ mmx_web_info = {
 
 -- ---------- prpl_agents group -------------
     ['prpl_agents'] = {
-        ['rnd_header'] = "prplMesh Agents", 
-        ['tab_text'] = "prplMesh Agents",
+        ['rnd_header'] = "Agents", 
+        ['tab_text'] = "Agents",
         ['userReadPerm']   = "Viewer",
         ['userWritePerm']  = "Config",
         ['childgroups']    = nil,
@@ -53,8 +53,8 @@ mmx_web_info = {
 
 -- ---------- prpl_ap group -------------
     ['prpl_ap'] = {
-        ['rnd_header'] = "prplMesh Access Points", 
-        ['tab_text'] = "prplMesh AP",
+        ['rnd_header'] = "Access Points", 
+        ['tab_text'] = "Access Points",
         ['userReadPerm']   = "Viewer",
         ['userWritePerm']  = "Config",
         ['childgroups']    = nil,
@@ -63,8 +63,8 @@ mmx_web_info = {
 
 -- ---------- prpl_radios group -------------
     ['prpl_radios'] = {
-        ['rnd_header'] = "prplMesh Agent Radios", 
-        ['tab_text'] = "prplMesh Agent Radios",
+        ['rnd_header'] = "Radios", 
+        ['tab_text'] = "Radios",
         ['userReadPerm']   = "Viewer",
         ['userWritePerm']  = "Config",
         ['childgroups']    = nil,

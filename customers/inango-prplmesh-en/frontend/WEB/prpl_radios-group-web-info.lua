@@ -6,7 +6,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.",
  ['sectionId']="prpl_radios_1",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 

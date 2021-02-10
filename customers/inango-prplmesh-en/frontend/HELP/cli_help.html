@@ -16,7 +16,7 @@ div.cmd { font-family: monospace; font-size: 14px; font-weight: bold; padding-to
 <span class="group">prplmesh</span> <span class="help">prplMesh</span>
 <ul>
 <li>
-<span class="group">agents</span> <span class="help">prplMesh Agents</span>
+<span class="group">agents</span> <span class="help">Agents</span>
 <ul>
 <li>
 <span class="group">device</span> <a href="#mmx-prplmesh-agents-device">more</a> <span class="help">This object describes a device.</span></li>
@@ -25,7 +25,7 @@ div.cmd { font-family: monospace; font-size: 14px; font-weight: bold; padding-to
 </ul>
 </li>
 <li>
-<span class="group">accesspoints</span> <span class="help">prplMesh Access Points</span>
+<span class="group">accesspoints</span> <span class="help">Access Points</span>
 <ul>
 <li>
 <span class="group">ap</span> <a href="#mmx-prplmesh-accesspoints-ap">more</a> <span class="help">Mesh Access Point decribes general configuration</span></li>
@@ -34,7 +34,7 @@ div.cmd { font-family: monospace; font-size: 14px; font-weight: bold; padding-to
 </ul>
 </li>
 <li>
-<span class="group">radios</span> <span class="help">prplMesh Agent Radios</span>
+<span class="group">radios</span> <span class="help">Radios</span>
 <ul>
 <li>
 <span class="group">radio</span> <a href="#mmx-prplmesh-radios-radio">more</a> <span class="help">This object describes a single physical radio within a specific AP</span></li>
@@ -95,6 +95,21 @@ Mesh Access Point decribes general configuration
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
 <tr><td>AccessPointIndex</td><td>Instance index</td></tr><tr><td>SSID</td><td>Access Point MAC<tr><td>MultiApMode</td><td>Service Set Identifier<tr><td>Band2_4G</td><td>Enable 2.4G band<tr><td>Band5GL</td><td>Enable 5GL band<tr><td>Band5GH</td><td>Enable 5GH band<tr><td>Band6G</td><td>Enable 6G band</table>
+<div class="cmd">mmx prplmesh accesspoints ap config AccessPointIndex <i>VALUE</i> [SSID <i>VALUE</i>] [MultiApMode <i>VALUE</i>] [Band2_4G <i>VALUE</i>] [Band5GL <i>VALUE</i>] [Band5GH <i>VALUE</i>] [Band6G <i>VALUE</i>]</div>
+<span class="help">Configure parameters of the object</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>AccessPointIndex</td><td>Index parameter: number, range ([n-m]) or wildcard(*)</td></tr><tr><td>SSID</td><td>Access Point MAC<tr><td>MultiApMode</td><td>Service Set Identifier<tr><td>Band2_4G</td><td>Enable 2.4G band<tr><td>Band5GL</td><td>Enable 5GL band<tr><td>Band5GH</td><td>Enable 5GH band<tr><td>Band6G</td><td>Enable 6G band</table>
+<div class="cmd">mmx prplmesh accesspoints ap add  [SSID <i>VALUE</i>] [MultiApMode <i>VALUE</i>] [Band2_4G <i>VALUE</i>] [Band5GL <i>VALUE</i>] [Band5GH <i>VALUE</i>] [Band6G <i>VALUE</i>]</div>
+<span class="help">Add a new instance of the object</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>SSID</td><td>Access Point MAC<tr><td>MultiApMode</td><td>Service Set Identifier<tr><td>Band2_4G</td><td>Enable 2.4G band<tr><td>Band5GL</td><td>Enable 5GL band<tr><td>Band5GH</td><td>Enable 5GH band<tr><td>Band6G</td><td>Enable 6G band</table>
+<div class="cmd">mmx prplmesh accesspoints ap del AccessPointIndex <i>VALUE</i></div>
+<span class="help">Delete an instance of the object</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>AccessPointIndex</td><td>Index parameter: number, range ([n-m]) or wildcard(*)</td></tr></table>
 <div id="mmx-prplmesh-accesspoints-security" class="header">Section <b>mmx prplmesh accesspoints security</b></div>
 Mesh Access Point Security describes security parameters
 <div class="cmd">mmx prplmesh accesspoints security show</div>
@@ -102,6 +117,11 @@ Mesh Access Point Security describes security parameters
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
 <tr><td>AccessPointIndex</td><td>Instance index</td></tr><tr><td>ModeEnabled</td><td>Security mode (WPA2-Personal or WPA3-Personal)<tr><td>PreSharedKey</td><td>PreSharedKey<tr><td>KeyPassphrase</td><td>Passphrase<tr><td>SAEPassphrase</td><td>SAEPassphrase</table>
+<div class="cmd">mmx prplmesh accesspoints security config AccessPointIndex <i>VALUE</i> [ModeEnabled <i>VALUE</i>] [PreSharedKey <i>VALUE</i>] [KeyPassphrase <i>VALUE</i>] [SAEPassphrase <i>VALUE</i>]</div>
+<span class="help">Configure parameters of the object</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>AccessPointIndex</td><td>Index parameter: number, range ([n-m]) or wildcard(*)</td></tr><tr><td>ModeEnabled</td><td>Security mode (WPA2-Personal or WPA3-Personal)<tr><td>PreSharedKey</td><td>PreSharedKey<tr><td>KeyPassphrase</td><td>Passphrase<tr><td>SAEPassphrase</td><td>SAEPassphrase</table>
 <div id="mmx-prplmesh-radios-radio" class="header">Section <b>mmx prplmesh radios radio</b></div>
 This object describes a single physical radio within a specific AP
 <div class="cmd">mmx prplmesh radios radio show</div>

@@ -112,8 +112,8 @@ function index()
         -- Add all MMX entries except first which is "topgroup", because it does not contain any information
         for i = 2, #pathList do
             local order = 50
-            -- Lower order of deviceinfo home page to make it index page
-            if (pathList[i]["path"][2] == "deviceinfo") then
+            -- Lower order of home page to make it index page
+            if (pathList[i]["path"][2] == "prplmesh") then
                 order = 1
             end
             entry(pathList[i]["path"], call("render_mmx_page"), pathList[i]["header"], order)
