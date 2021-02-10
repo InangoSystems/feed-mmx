@@ -128,12 +128,18 @@ if sections then
 %>
 <div class="cbi-map">
     <fieldset class="cbi-section mmx-section" style="margin-top: 1em; margin-bottom: 1em; padding: 2em 1em">
+        <% local sectionPermissions = engine:getSectionPermissions(section, userPermission, currentGroup["userWritePerm"]) %>
         <legend>
             <%=section["sectionHeader"]%>
             <% if section["help"] then %>
                 <span class="fas fa-question-circle mmx-tooltip" title="<%=section["help"]%>" />
             <% end %>
         </legend>
+        <% if section['lookType'] == 'tablegroup' then %>
+            <% if sectionPermissions['create'] then %>
+                <div class="mmx-section-top-actions"><button class="cbi-button cbi-button-add mmx-tablegroup-add" id="create-<%=sectionIndex%>::<%=section["mmgModObjName"]%>" type="submit"><i class="fas fa-plus-circle"></i></button></div>
+            <% end %>
+        <% end %>
         <% local sectionData = {} %>
         <% if not engine:checkIsWriteOnly(section) then
             local indirectParams = engine:getIndirectParams(section)
@@ -144,9 +150,7 @@ if sections then
             end
         end %>
         <%=engine:renderHelper(section, sectIdx, sectionData, currentGroup, userPermission)%>
-    <% if section['lookType'] ~= 'tablegroup' then %>
     <div class="mmx-section-actions">
-        <% local sectionPermissions = engine:getSectionPermissions(section, userPermission, currentGroup["userWritePerm"]) %>
         <% if sectionPermissions["update"] then %>
             <input class="cbi-button cbi-button-refresh mmx-section-update" id="update-<%=section["mmgModObjName"]%>" type="submit" title="Update the management object information" value="Update">
         <% end %>
@@ -160,7 +164,6 @@ if sections then
             <input class="cbi-button cbi-button-save mmx-section-save" id="save-<%=sectIdx%>::<%=section["mmgModObjName"]%>" type="submit" value="Apply&amp;Save">
         <% end %>
     </div>
-    <% end %>
     </fieldset>
 </div>
 <%

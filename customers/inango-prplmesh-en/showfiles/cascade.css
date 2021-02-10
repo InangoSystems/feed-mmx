@@ -369,7 +369,6 @@ input.cbi-button-apply {
 	background-color: white;
 	padding-left: 17px;
 	padding-right: 1px;
-	width: 10em;
 }
 
 .cbi-button {
@@ -381,6 +380,7 @@ input.cbi-button-apply {
 	border-radius: 2px;
 	font-size: 14px;
 	border: none;
+	width: 6em;
 }
 
 .cbi-button:hover, .cbi-button:active {
@@ -793,6 +793,10 @@ li.mmx-tab a:hover {
 	margin: 60px 10px 0px;
 }
 
+.mmx-section-top-actions {
+    padding-top: 2em;
+}
+
 .mmx-section-actions {
 	margin-top: 20px;
 }
@@ -939,6 +943,33 @@ a.mmx-revert-row {
 
 .mmx-tablegroup-edit {
 	padding: 8px 9px !important;
+	background-color: inherit !important;
+}
+
+/* pencil sign on edit button above */
+.fa-pencil-alt {
+        color: #72166b;
+}
+
+/* delete button with trash basket sigh */
+.mmx-tablegroup-delete {
+	padding: 8px 9px !important;
+	background-color: inherit !important;
+}
+
+/* busket sign on delete button above */
+.fa-trash-alt {
+    color: #72166b;
+}
+
+.mmx-tablegroup-add {
+	padding: 8px 9px !important;
+	background-color: inherit !important;
+}
+
+/* plus sign on add button above */
+.fa-plus-circle {
+    color: #441042;
 }
 
 a.mmx-tablegroup-revert {
