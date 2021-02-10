@@ -72,7 +72,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luaxml
 PKG_REV:=101012
-PKG_VERSION:=$(PKG_REV)
+PKG_VERSION:=2.0.1
 PKG_RELEASE:=5426
 
 

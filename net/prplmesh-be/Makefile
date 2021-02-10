@@ -71,7 +71,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=prplmesh-be
-PKG_VERSION:=2.0.0
+PKG_VERSION:=2.0.1
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/InangoSystems/prplmesh-be.git
