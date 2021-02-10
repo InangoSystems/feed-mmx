@@ -71,7 +71,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mmx-web-lib-chartist
-PKG_VERSION:=0.9.8
+PKG_VERSION:=2.0.1
 
 
 include $(INCLUDE_DIR)/package.mk

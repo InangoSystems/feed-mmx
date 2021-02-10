@@ -72,7 +72,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=inango-prplmesh-en
-PKG_VERSION:=2.0.0
+PKG_VERSION:=2.0.1
 PKG_RELEASE:=1
 
 PKG_BUILD_DATE:=$(shell date "+%b %d %Y")

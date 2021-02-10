@@ -70,7 +70,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=mmx-cli
-PKG_VERSION:=2.0.0
+PKG_VERSION:=2.0.1
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/InangoSystems/mmx-cli.git
