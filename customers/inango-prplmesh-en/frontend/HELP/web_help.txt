@@ -1,8 +1,8 @@
 **** WEB Page: "prplMesh" **** (parent page: prplMesh ) ****
      Child Pages (total number 3):
-        prplMesh Agents
-        prplMesh AP
-        prplMesh Agent Radios
+        Agents
+        Access Points
+        Radios
      Sections (total number 1):
        Sect prplmesh_1: Device.Controller.Network.  Num of WEB params: 5
           ID: A unique identifier for this particular device within the Wi-Fi network
@@ -11,7 +11,7 @@
           TimeStamp: The time this group was collected.
           NumberOfAccessPoints: Number of WiFi Access Points
 
-**** WEB Page: "prplMesh Agents" **** (parent page: prplMesh ) ****
+**** WEB Page: "Agents" **** (parent page: prplMesh ) ****
      Child Pages (total number 0):
      Sections (total number 2):
        Sect prpl_agents_1: Device.Controller.Network.Device.{i}.  Num of WEB params: 3
@@ -24,7 +24,7 @@
           USTALinkMatricCurrentlyOff: 
           AgentInitiatedRCPIBasedSteering: 
 
-**** WEB Page: "prplMesh Access Points" **** (parent page: prplMesh ) ****
+**** WEB Page: "Access Points" **** (parent page: prplMesh ) ****
      Child Pages (total number 0):
      Sections (total number 2):
        Sect prpl_ap_1: Device.Controller.Network.AccessPoint.{i}.  Num of WEB params: 6
@@ -41,7 +41,7 @@
           KeyPassphrase: Passphrase
           SAEPassphrase: SAEPassphrase
 
-**** WEB Page: "prplMesh Agent Radios" **** (parent page: prplMesh ) ****
+**** WEB Page: "Radios" **** (parent page: prplMesh ) ****
      Child Pages (total number 0):
      Sections (total number 12):
        Sect prpl_radios_1: Device.Controller.Network.Device.{i}.Radio.{i}.  Num of WEB params: 11

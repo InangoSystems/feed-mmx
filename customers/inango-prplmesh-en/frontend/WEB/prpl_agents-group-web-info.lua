@@ -6,7 +6,7 @@ prpl_agents_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.",
  ['sectionId']="prpl_agents_1",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 

@@ -35,10 +35,111 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="ap update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="ap config" help="Configure parameters of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
+            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
+            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
+            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
+            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
+            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="ap add" help="Add a new instance of the object" >
+          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
+            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
+            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
+            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
+            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
+            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="ap del" help="Delete an instance of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="security show" help="Show information" >
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="security config" help="Configure parameters of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${ModeEnabled} ]; then cliParams=$cliParams"ModeEnabled = '${ModeEnabled}',";fi
+            if [ ${PreSharedKey} ]; then cliParams=$cliParams"PreSharedKey = '${PreSharedKey}',";fi
+            if [ ${KeyPassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${KeyPassphrase}',";fi
+            if [ ${SAEPassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${SAEPassphrase}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
+            fi
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -65,6 +166,81 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="config" help="Configure parameters of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
+            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
+            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
+            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
+            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
+            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="add" help="Add a new instance of the object" >
+          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
+            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
+            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
+            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
+            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
+            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="del" help="Delete an instance of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
 </VIEW>
 
 <VIEW name="mmx-prplmesh-accesspoints-security" prompt="mmx/prplmesh/accesspoints/security&gt; ">
@@ -88,6 +264,32 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="config" help="Configure parameters of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${ModeEnabled} ]; then cliParams=$cliParams"ModeEnabled = '${ModeEnabled}',";fi
+            if [ ${PreSharedKey} ]; then cliParams=$cliParams"PreSharedKey = '${PreSharedKey}',";fi
+            if [ ${KeyPassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${KeyPassphrase}',";fi
+            if [ ${SAEPassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${SAEPassphrase}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
 </VIEW>
 
 <VIEW name="mmx-prplmesh">
@@ -103,6 +305,81 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="accesspoints ap update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="accesspoints ap config" help="Configure parameters of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
+            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
+            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
+            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
+            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
+            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="accesspoints ap add" help="Add a new instance of the object" >
+          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
+            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
+            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
+            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
+            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
+            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="accesspoints ap del" help="Delete an instance of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="accesspoints security" help="Mesh Access Point Security describes security parameters"
         view="mmx-prplmesh-accesspoints-security">
     </COMMAND>
@@ -114,12 +391,38 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="accesspoints security config" help="Configure parameters of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${ModeEnabled} ]; then cliParams=$cliParams"ModeEnabled = '${ModeEnabled}',";fi
+            if [ ${PreSharedKey} ]; then cliParams=$cliParams"PreSharedKey = '${PreSharedKey}',";fi
+            if [ ${KeyPassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${KeyPassphrase}',";fi
+            if [ ${SAEPassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${SAEPassphrase}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
 </VIEW>
 
 <VIEW name="mmx">
 <!--=======================================================-->
     <COMMAND name="prplmesh accesspoints"
-        help="prplMesh Access Points"
+        help="Access Points"
         view="mmx-prplmesh-accesspoints">
     </COMMAND>
 <!--=======================================================-->
@@ -134,6 +437,81 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints ap update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints ap config" help="Configure parameters of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
+            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
+            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
+            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
+            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
+            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints ap add" help="Add a new instance of the object" >
+          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
+            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
+            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
+            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
+            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
+            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints ap del" help="Delete an instance of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="prplmesh accesspoints security" help="Mesh Access Point Security describes security parameters"
         view="mmx-prplmesh-accesspoints-security">
     </COMMAND>
@@ -145,12 +523,38 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints security config" help="Configure parameters of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${ModeEnabled} ]; then cliParams=$cliParams"ModeEnabled = '${ModeEnabled}',";fi
+            if [ ${PreSharedKey} ]; then cliParams=$cliParams"PreSharedKey = '${PreSharedKey}',";fi
+            if [ ${KeyPassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${KeyPassphrase}',";fi
+            if [ ${SAEPassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${SAEPassphrase}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
 </VIEW>
 
 <VIEW name="root-view">
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh accesspoints"
-        help="prplMesh Access Points"
+        help="Access Points"
         view="mmx-prplmesh-accesspoints">
     </COMMAND>
 <!--=======================================================-->
@@ -165,6 +569,81 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints ap update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints ap config" help="Configure parameters of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
+            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
+            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
+            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
+            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
+            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints ap add" help="Add a new instance of the object" >
+          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
+            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
+            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
+            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
+            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
+            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints ap del" help="Delete an instance of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="mmx prplmesh accesspoints security" help="Mesh Access Point Security describes security parameters"
         view="mmx-prplmesh-accesspoints-security">
     </COMMAND>
@@ -173,6 +652,32 @@
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints security config" help="Configure parameters of the object" >
+          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${ModeEnabled} ]; then cliParams=$cliParams"ModeEnabled = '${ModeEnabled}',";fi
+            if [ ${PreSharedKey} ]; then cliParams=$cliParams"PreSharedKey = '${PreSharedKey}',";fi
+            if [ ${KeyPassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${KeyPassphrase}',";fi
+            if [ ${SAEPassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${SAEPassphrase}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
+            fi
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
