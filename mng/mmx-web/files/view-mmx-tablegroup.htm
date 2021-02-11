@@ -82,18 +82,21 @@ for rowIdx, row in ipairs(data) do
     end
 %>
 <div class="mmx-tablegroup-header">
-<span class="mmx-tablegroup-keys">
-    <%=table.concat(keyParams, ", ")%>
-</span>
+<a class="collapse" data-id="<%=sectionIndex%>::<%=row["path"]%>" style="text-decoration: none; padding-bottom: 15px;" href="#hide">
+    <span class="mmx-tablegroup-keys" >
+        <i class="fas fa-angle-up" id="ico-<%=sectionIndex%>::<%=row["path"]%>"></i>
+        <%=table.concat(keyParams, ", ")%>
+    </span>
+</a>
 <% if sectionPermissions['edit'] then %>
-    <div class="mmx-tablegroup-buttons">
-    <input class="cbi-button cbi-button-apply mmx-tablegroup-apply" style="display: none;" id="apply-<%=sectIdx%>::<%=section["mmgModObjName"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>" type="submit" value="Apply">
+    <div class="mmx-tablegroup-buttons" id="but-<%=sectionIndex%>::<%=row["path"]%>">
+    <input class="cbi-button cbi-button-apply mmx-tablegroup-apply" style="display: none;" id="apply-<%=sectionIndex%>::<%=section["mmgModObjName"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>" type="submit" value="Apply">
     <button class="cbi-button cbi-button-apply mmx-tablegroup-edit" id="edit-<%=sectionIndex%>::<%=section["mmgModObjName"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>"><i class="fas fa-pencil-alt"></i></button>
     <a href="javascript:void(0)" class="mmx-tablegroup-revert" style="display: none;" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>"><i class="fas fa-times-circle"></i></a>
     </div>
 <% end %>
 </div>
-<table class="cbi-section-table mmx-tablegroup-table" id="<%=sectionIndex%>::<%=section["mmgModObjName"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>">
+<table class="cbi-section-table mmx-tablegroup-table" id="<%=sectionIndex%>::<%=row["path"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>">
     <% for _, param in pairs(section["paramList"]) do
            if param["isKey"] == nil then %>
     <tr class="cbi-section-table-row">

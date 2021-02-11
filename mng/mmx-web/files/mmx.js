@@ -144,6 +144,22 @@ $(document).ready(function(){
 		tooltipClass: "mmx-tooltip-window",
 		position: {my: "left top+5", at: "left bottom"}
 	});
+
+	$('.collapse').click(function(e) {
+	    var id = e.currentTarget.getAttribute("data-id");
+	    var data = document.getElementById(id);
+	    var buttons = document.getElementById("but-" + id);
+	    var icon = document.getElementById("ico-" + id);
+	    if (data.style.display != "none") {
+			icon.className = "fas fa-angle-down";
+			data.style.display = "none";
+			buttons.style.display = "none";
+	    } else {
+			icon.className = "fas fa-angle-up";
+			data.style.display="block";
+			buttons.style.display="block";
+	    }
+	});
 	/**
 	 * This listener attached for submitting only changed fields to MMX WEB backend.
 	 * Emitting of 'change' event from default HTML inputs (such as <select>, <input>, <textarea>) supported by jquery,
