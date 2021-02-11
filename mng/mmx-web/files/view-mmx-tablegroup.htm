@@ -81,7 +81,7 @@ for rowIdx, row in ipairs(data) do
         end
     end
 %>
-<div class="mmx-tablegroup-header">
+<div class="mmx-tablegroup-header" id="tablegroup-header-<%=sectionIndex%>::<%=row["path"]%>">
 <% if sectionPermissions['collapse'] then %>
     <a class="collapse" data-id="<%=sectionIndex%>::<%=row["path"]%>" style="text-decoration: none; padding-bottom: 15px;" href="#hide">
 <% end %>

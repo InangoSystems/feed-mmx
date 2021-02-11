@@ -1629,6 +1629,8 @@ function MMXWebEngine:isGroupPermit(actionName, groupInfo, permission)
             seekBtn = "Apply"
         elseif actionName == "save" then
             seekBtn = "Save"
+        elseif actionName == "collapse" then
+            seekBtn = "Collapse"
         else
             return false
         end

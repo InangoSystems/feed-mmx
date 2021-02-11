@@ -131,8 +131,10 @@ if sections then
     <fieldset class="cbi-section mmx-section" style="margin-top: 1em; margin-bottom: 1em; padding: 2em 1em" id="table-<%=sectIdx%>::<%=section["mmgModObjName"]%>">
         <% if section['lookType'] ~= 'tablegroup' and sectionPermissions['collapse'] then %>
             <a class="collapse" data-id="<%=sectIdx%>::<%=section["mmgModObjName"]%>" style="text-decoration: none; padding-bottom: 15px;" href="#hide">
+	        <legend style="padding-bottom: 20px;" id="legend-<%=sectIdx%>::<%=section["mmgModObjName"]%>">
+        <% else %>
+            <legend>
         <% end %>
-	    <legend style="padding-bottom: 20px;" id="legend-<%=sectIdx%>::<%=section["mmgModObjName"]%>">
             <% if section['lookType'] ~= 'tablegroup' and sectionPermissions['collapse'] then %>
                 <i class="fas fa-angle-up" id="ico-<%=sectIdx%>::<%=section["mmgModObjName"]%>"></i>
             <% end %>
