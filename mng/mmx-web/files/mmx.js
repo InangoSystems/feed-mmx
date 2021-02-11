@@ -148,16 +148,22 @@ $(document).ready(function(){
 	$('.collapse').click(function(e) {
 	    var id = e.currentTarget.getAttribute("data-id");
 	    var data = document.getElementById(id);
+	    var table = document.getElementById("table-" + id);
+	    var legend = document.getElementById("legend-" + id);
 	    var buttons = document.getElementById("but-" + id);
 	    var icon = document.getElementById("ico-" + id);
 	    if (data.style.display != "none") {
 			icon.className = "fas fa-angle-down";
 			data.style.display = "none";
 			buttons.style.display = "none";
+			table.style.padding = "0 1em";
+			legend.style.paddingBottom = "0";
 	    } else {
 			icon.className = "fas fa-angle-up";
 			data.style.display="block";
 			buttons.style.display="block";
+			table.style.padding = "2em 1em";
+			legend.style.paddingBottom = "20px";
 	    }
 	});
 	/**

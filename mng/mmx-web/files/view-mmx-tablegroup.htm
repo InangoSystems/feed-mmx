@@ -82,12 +82,18 @@ for rowIdx, row in ipairs(data) do
     end
 %>
 <div class="mmx-tablegroup-header">
-<a class="collapse" data-id="<%=sectionIndex%>::<%=row["path"]%>" style="text-decoration: none; padding-bottom: 15px;" href="#hide">
+<% if sectionPermissions['collapse'] then %>
+    <a class="collapse" data-id="<%=sectionIndex%>::<%=row["path"]%>" style="text-decoration: none; padding-bottom: 15px;" href="#hide">
+<% end %>
     <span class="mmx-tablegroup-keys" >
-        <i class="fas fa-angle-up" id="ico-<%=sectionIndex%>::<%=row["path"]%>"></i>
+        <% if sectionPermissions['collapse'] then %>
+            <i class="fas fa-angle-up" id="ico-<%=sectionIndex%>::<%=row["path"]%>"></i>
+        <% end %>
         <%=table.concat(keyParams, ", ")%>
     </span>
-</a>
+<% if sectionPermissions['collapse'] then %>
+    </a>
+<% end %>
 <% if sectionPermissions['edit'] then %>
     <div class="mmx-tablegroup-buttons" id="but-<%=sectionIndex%>::<%=row["path"]%>">
     <input class="cbi-button cbi-button-apply mmx-tablegroup-apply" style="display: none;" id="apply-<%=sectionIndex%>::<%=section["mmgModObjName"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>" type="submit" value="Apply">
