@@ -1,17 +1,4 @@
 -- ***********************************************************
--- Information table for object Device.
--- ***********************************************************
-DROP TABLE IF EXISTS Device_ValuesTbl; 
-CREATE TABLE Device_ValuesTbl
-(
-    [RootDataModelVersion]    TEXT DEFAULT "2.6",
-    [ObjInstSelfRef]    TEXT,
-    [CfgOwner]    INTEGER DEFAULT 0,
-    [CreateOwner]   INTEGER DEFAULT 0
-);
-
-
--- ***********************************************************
 -- Information table for object Device.Controller.Network.
 -- ***********************************************************
 DROP TABLE IF EXISTS Device_Controller_Network_ValuesTbl; 

@@ -1,0 +1,6 @@
+{
+  "customer": "prplFoundation",
+  "product": "prplMesh",
+  "web_name": "prplMesh",
+  "backends": [ "prplmesh_be" ] 
+}
