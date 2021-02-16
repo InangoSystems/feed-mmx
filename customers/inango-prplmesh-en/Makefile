@@ -218,8 +218,10 @@ define Package/inango-prplmesh-en/install
 	$(INSTALL_DIR) $(1)/$(MMX_DEFAULTS_DB_PATH)
 	$(INSTALL_BIN) ./mmxdbfiles/db/mmx_meta_db $(1)/$(MMX_DEFAULTS_DB_PATH)/mmx_meta_db
 	$(INSTALL_BIN) ./mmxdbfiles/db/mmx_main_db $(1)/$(MMX_DEFAULTS_DB_PATH)/mmx_main_db
-	$(INSTALL_DIR) $(1)/$(MMX_DEFAULTS_DB_REFOFMAT_PATH)
-	$(INSTALL_BIN) ./mmxdbfiles/db_reformat/*.lua $(1)/$(MMX_DEFAULTS_DB_REFOFMAT_PATH)/
+	if ls ./mmxdbfiles/db_reformat/*.lua; then \
+	        $(INSTALL_DIR) $(1)/$(MMX_DEFAULTS_DB_REFOFMAT_PATH); \
+	        $(INSTALL_BIN) ./mmxdbfiles/db_reformat/*.lua $(1)/$(MMX_DEFAULTS_DB_REFOFMAT_PATH)/; \
+	fi
 
 	# WEB files processing
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/mmx
