@@ -10,7 +10,7 @@ CREATE TABLE MMX_ServiceInfo
     Descr    TEXT,
     PRIMARY KEY(Name)
 );
-INSERT INTO  MMX_ServiceInfo values('BuildDate', "02/10/2021 11:27:43 AM" ,'Date when this db was generated');
+INSERT INTO  MMX_ServiceInfo values('BuildDate', "02/15/2021 9:18:16 AM" ,'Date when this db was generated');
 INSERT INTO  MMX_ServiceInfo values('DBVersion', "03.02",'DB version');
 INSERT INTO  MMX_ServiceInfo values('DBSubVersion', "000",'DB Sub version'); 
 INSERT INTO  MMX_ServiceInfo values ('ResetLastUpdated','0','Flag to reset all last updated time in DB');
@@ -34,25 +34,7 @@ CREATE TABLE MMX_BackendInfo
 );
 
 
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (1, 'mmx_own_be', 1) ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (2, 'eth_be', 1) ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive, initScript)  VALUES (3, 'wifi_be', 1, 'mmx-wifi-be') ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive, mgmtPort, initScript)  VALUES (4, 'gfast_be', 1, 7889, 'gfastbe_init') ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive, mgmtPort, initScript)  VALUES (5, 'ghn_be', 1, 7888, 'ghnbe_init') ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (6, 'bridge_be', 1) ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive, initScript)  VALUES (7, 'host_ip_be', 1, 'network') ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (8, 'device_info_be', 1) ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive, initScript)  VALUES (9, 'user_be', 1, 'userbe_init') ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (10, 'cwmp_be', 1) ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (11, 'snmp_be', 1) ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive, initScript)  VALUES (12, 'netconf_be', 1, 'mmx-netconf') ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive, initScript)  VALUES (13, 'dhcrelay_be', 1, 'dhcrelaybe_init') ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (14, 'g999_conf_be', 1) ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (15, 'qos_be', 1) ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (16, 'mmx_copy_be', 1) ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (17, 'macfilter_be', 1) ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive, mgmtPort, initScript)  VALUES (18, 'rsc_wifi_be', 1, 7887, 'mmx-rsc-wifi-be') ;
-INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (19, 'prplmesh_be', 1) ;
+INSERT INTO  MMX_BackendInfo  (backendId, backendName, isActive)  VALUES (2, 'prplmesh_be', 1) ;
 -- *************************************************************
 -- MMX all management objects meta information  
 -- ************************************************************
@@ -108,80 +90,9 @@ CREATE TABLE MMX_Objects_Deps_InfoTbl
 
 
 -- **************************************************************
--- Meta-information of object Device.
--- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.", "current", 0, 0, 4, 31, 31, 56, 1, NULL, 
-    "Device_InfoTbl", "mmx_main_db", "Device_ValuesTbl", 
-    "device_info_be", NULL, 1, NULL, NULL, NULL, 
-    NULL, NULL, 
-    NULL, NULL, 
-    "db", NULL, 
-    NULL, NULL, 
-    NULL, NULL, 
-    NULL, NULL );
-
-DROP TABLE IF EXISTS Device_InfoTbl; 
-CREATE TABLE Device_InfoTbl
-( 
-    ParamName            TEXT UNIQUE NOT NULL,  
-    ParamDbStatus        TEXT DEFAULT 'current',  
-    Writable             INT,  --BOOLEAN:  1 - True, 0 - False
-    UserAccessPerm       INT, -- Guest(0), Viewer(1), Config(2), Admin(4)
-    ReadFrontEnds        INT, -- access bitmap: 1-WEB, 2-CLI, 4-NETCONF, 8-TR069, 16-SNMP, 0 or NULL - free access
-    WriteFrontEnds       INT, -- access bitmap: 1-WEB, 2-CLI, 4-NETCONF, 8-TR069, 16-SNMP, 0 or NULL - free access
-    ParamType            TEXT,  
-    IsIndex              INT,  --BOOLEAN: 1 - True (param is object's index), 0 - False 
-    ValueIsList          INT,  --BOOLEAN: 1 - True, 0 - False 
-    ParentObject         TEXT,  
-    MinValue             TEXT,  
-    MaxValue             TEXT,  
-    DefValue             TEXT,  
-    MinLength            INT,  
-    MaxLength            INT,  
-    Hidden               INT,  --BOOLEAN:  1 - True, 0 - False 
-    NotSaveInDb          INT,  --BOOLEAN:  1 - True, 0 - False 
-    ActiveNotify         TEXT,  
-    Units                TEXT,  
-    EnumValues           TEXT,  
-    StyleOfGet           TEXT CHECK (StyleOfGet IN ('script','uci', 'ubus', 'backend', 'db', NULL)),  
-    GetMethod            TEXT,  
-    StyleOfSet           TEXT CHECK (StyleOfGet IN ('script','uci', 'ubus', 'backend', 'db', NULL)),  
-    SetMethod            TEXT,  
-    ParamDescr           TEXT 
-);
-
-INSERT  INTO Device_InfoTbl VALUES ( "RootDataModelVersion", 
-    "current", 0, 4, 31, 31, "string", NULL, 
-    NULL, NULL, NULL, NULL, "2.6", NULL, 32, NULL, NULL, 
-    NULL, NULL, NULL, 
-    NULL, NULL, NULL, NULL, 
-    NULL);
-
-INSERT  INTO Device_InfoTbl VALUES ('ObjInstSelfRef', 
-    'current', 0, 0, 32, 0, 'string', NULL, 
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
-    NULL, NULL, NULL, 
-    'db', NULL, NULL, NULL, 
-    'Internal service parameter');
-
-INSERT  INTO Device_InfoTbl VALUES ('CfgOwner', 
-    'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
-    NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
-    NULL, NULL, NULL, 
-    'db', NULL, NULL, NULL, 
-    'Internal service parameter');
-
-INSERT  INTO Device_InfoTbl VALUES ('CreateOwner', 
-    'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
-    NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
-    NULL, NULL, NULL, 
-    'db', NULL, NULL, NULL, 
-    'Internal service parameter');
-
--- **************************************************************
 -- Meta-information of object Device.Controller.Network.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.", "current", 0, 0, 4, 31, 31, 10, 2, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.", "current", 0, 0, 4, 31, 31, 10, 1, NULL, 
     "Device_Controller_Network_InfoTbl", "mmx_main_db", "Device_Controller_Network_ValuesTbl", 
     "prplmesh_be", NULL, 1, NULL, NULL, NULL, 
     NULL, NULL, 
@@ -280,7 +191,7 @@ INSERT  INTO Device_Controller_Network_InfoTbl VALUES ('CreateOwner',
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.AccessPoint.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{i}.", "current", 1, 1, 4, 31, 31, 10, 3, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{i}.", "current", 1, 1, 4, 31, 31, 10, 2, NULL, 
     "Device_Controller_Network_AccessPoint_InfoTbl", "mmx_main_db", "Device_Controller_Network_AccessPoint_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.NumberOfAccessPoints", NULL, "AccessPointIndex", 
     "script", "prplmesh_add.lua Controller.Network.AccessPoint.{i}; ; idx = AccessPointIndex", 
@@ -393,7 +304,7 @@ INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ('CreateOwner'
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.AccessPoint.{i}.Security.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{i}.Security.", "current", 0, 1, 4, 31, 31, 10, 4, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{i}.Security.", "current", 0, 1, 4, 31, 31, 10, 3, NULL, 
     "Device_Controller_Network_AccessPoint_Security_InfoTbl", "mmx_main_db", "Device_Controller_Network_AccessPoint_Security_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
@@ -492,7 +403,7 @@ INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ('Cre
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.", "current", 0, 0, 4, 31, 31, 10, 5, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.", "current", 0, 0, 4, 31, 31, 10, 4, NULL, 
     "Device_Controller_Network_Device_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.NumberOfDevices", NULL, "DeviceIndex", 
     NULL, NULL, 
@@ -584,7 +495,7 @@ INSERT  INTO Device_Controller_Network_Device_InfoTbl VALUES ('CreateOwner',
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.MultiAPCapabilities.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.MultiAPCapabilities.", "current", 0, 0, 4, 31, 31, 10, 6, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.MultiAPCapabilities.", "current", 0, 0, 4, 31, 31, 10, 5, NULL, 
     "Device_Controller_Network_Device_MultiAPCapabilities_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_MultiAPCapabilities_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
@@ -676,7 +587,7 @@ INSERT  INTO Device_Controller_Network_Device_MultiAPCapabilities_InfoTbl VALUES
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.", "current", 0, 0, 4, 31, 31, 10, 7, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.", "current", 0, 0, 4, 31, 31, 10, 6, NULL, 
     "Device_Controller_Network_Device_Radio_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.NumberOfRadios", NULL, "RadioIndex", 
     NULL, NULL, 
@@ -831,7 +742,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ('CreateOwner
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.", "current", 0, 0, 4, 31, 31, 10, 8, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.", "current", 0, 0, 4, 31, 31, 10, 7, NULL, 
     "Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_CurrentOperatingClasses_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.NumberOfCurrOpClass", NULL, "CurrentOperatingClassesIndex", 
     NULL, NULL, 
@@ -944,7 +855,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_Info
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.", "current", 0, 0, 4, 31, 31, 10, 9, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.", "current", 0, 0, 4, 31, 31, 10, 8, NULL, 
     "Device_Controller_Network_Device_Radio_Capabilities_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
@@ -1029,7 +940,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_InfoTbl VALUES 
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.", "current", 0, 0, 4, 31, 31, 10, 10, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.", "current", 0, 0, 4, 31, 31, 10, 9, NULL, 
     "Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.NumberOfOperatingClasses", NULL, "OperatingClassIndex", 
     NULL, NULL, 
@@ -1128,7 +1039,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.NonOperable.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.NonOperable.", "current", 0, 0, 4, 31, 31, 10, 11, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.NonOperable.", "current", 0, 0, 4, 31, 31, 10, 10, NULL, 
     "Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
@@ -1220,7 +1131,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.", "current", 0, 0, 4, 31, 31, 10, 12, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.", "current", 0, 0, 4, 31, 31, 10, 11, NULL, 
     "Device_Controller_Network_Device_Radio_BSS_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_BSS_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.NumberOfBSS", NULL, "BSSIndex", 
     NULL, NULL, 
@@ -1417,7 +1328,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ('CreateO
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.", "current", 0, 0, 4, 31, 31, 10, 13, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.", "current", 0, 0, 4, 31, 31, 10, 12, NULL, 
     "Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_BSS_STA_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.NumberOfSTA", NULL, "STAIndex", 
     NULL, NULL, 
@@ -1656,7 +1567,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('Cre
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA.", "current", 0, 0, 4, 31, 31, 10, 14, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA.", "current", 0, 0, 4, 31, 31, 10, 13, NULL, 
     "Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_BackhaulSTA_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
@@ -1741,7 +1652,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES (
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.", "current", 0, 0, 4, 31, 31, 10, 15, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.", "current", 0, 0, 4, 31, 31, 10, 14, NULL, 
     "Device_Controller_Network_Device_Radio_ScanResult_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
@@ -1826,7 +1737,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_InfoTbl VALUES ('
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.", "current", 0, 0, 4, 31, 31, 10, 16, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.", "current", 0, 0, 4, 31, 31, 10, 15, NULL, 
     "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.NumberOfOpClassScan", NULL, "OpClassScanIndex", 
     NULL, NULL, 
@@ -1925,7 +1836,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoT
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.", "current", 0, 0, 4, 31, 31, 10, 17, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.", "current", 0, 0, 4, 31, 31, 10, 16, NULL, 
     "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.NumberOfChannelScans", NULL, "ChannelScanIndex", 
     NULL, NULL, 
@@ -2052,7 +1963,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_Chann
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.", "current", 0, 0, 4, 31, 31, 10, 18, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.", "current", 0, 0, 4, 31, 31, 10, 17, NULL, 
     "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NumberOfNeighborBSS", NULL, "NeighborBSSIndex", 
     NULL, NULL, 
