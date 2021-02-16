@@ -10,7 +10,7 @@ CREATE TABLE MMX_ServiceInfo
     Descr    TEXT,
     PRIMARY KEY(Name)
 );
-INSERT INTO  MMX_ServiceInfo values('BuildDate', "02/15/2021 9:18:16 AM" ,'Date when this db was generated');
+INSERT INTO  MMX_ServiceInfo values('BuildDate', "02/16/2021 4:16:52 PM" ,'Date when this db was generated');
 INSERT INTO  MMX_ServiceInfo values('DBVersion', "03.02",'DB version');
 INSERT INTO  MMX_ServiceInfo values('DBSubVersion', "000",'DB Sub version'); 
 INSERT INTO  MMX_ServiceInfo values ('ResetLastUpdated','0','Flag to reset all last updated time in DB');
@@ -309,7 +309,7 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    NULL, NULL, 
+    "script", "prplmesh_get.lua Controller.Network.AccessPoint.$$.Security; Device.Controller.Network.AccessPoint.{i}.AccessPointIndex", 
     "script", "prplmesh_set.lua Controller.Network.AccessPoint.$$.Security; Device.Controller.Network.AccessPoint.{i}.AccessPointIndex", 
     NULL, NULL, 
     NULL, NULL );
@@ -592,9 +592,9 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.NumberOfRadios", NULL, "RadioIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$; Device.Controller.Network.Device.{i}.DeviceIndex, RadioIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Device.Controller.Network.Device.{i}.Radio.{i}.; idx = RadioIndex", 
+    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = RadioIndex", 
     "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.", NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_InfoTbl; 
@@ -747,9 +747,9 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.NumberOfCurrOpClass", NULL, "CurrentOperatingClassesIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1.CurrentOperatingClasses.1; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.CurrentOperatingClasses.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, CurrentOperatingClassesIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Device.Controller.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.; idx = CurrentOperatingClassesIndex", 
+    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = CurrentOperatingClassesIndex", 
     NULL, NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl; 
@@ -860,7 +860,7 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1.Capabilities; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
@@ -945,9 +945,9 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.NumberOfOperatingClasses", NULL, "OperatingClassIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1.Capabilities.OperatingClass.1; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.OperatingClass.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, OperatingClassIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.; idx = OperatingClassIndex", 
+    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = OperatingClassIndex", 
     "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.NonOperable.", NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl; 
@@ -1044,7 +1044,7 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1.Capabilities.OperatingClass.1.NonOperable; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.OperatingClass.$$.NonOperable; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.OperatingClassIndex", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
@@ -1136,9 +1136,9 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.NumberOfBSS", NULL, "BSSIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1.BSS.1; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.BSS.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, BSSIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.; idx = BSSIndex", 
+    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.BSS.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = BSSIndex", 
     NULL, NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_BSS_InfoTbl; 
@@ -1333,9 +1333,9 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.NumberOfSTA", NULL, "STAIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1.BSS.1.STA.1; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.BSS.$$.STA.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.BSSIndex, STAIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.; idx = STAIndex", 
+    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.BSSIndex, idx4 = STAIndex", 
     NULL, NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl; 
@@ -1572,7 +1572,7 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1.BackhaulSTA; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.BackhaulSTA; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
@@ -1657,7 +1657,7 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1.ScanResult; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.ScanResult; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
@@ -1742,9 +1742,9 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.NumberOfOpClassScan", NULL, "OpClassScanIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1.ScanResult.OpClassScan.1; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.ScanResult.OpClassScan.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, OpClassScanIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.; idx = OpClassScanIndex", 
+    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = OpClassScanIndex", 
     NULL, NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl; 
@@ -1841,9 +1841,9 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.NumberOfChannelScans", NULL, "ChannelScanIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1.ScanResult.OpClassScan.1.ChannelScan.1; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.ScanResult.OpClassScan.$$.ChannelScan.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, ChannelScanIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.; idx = ChannelScanIndex", 
+    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, idx4 = ChannelScanIndex", 
     NULL, NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl; 
@@ -1968,9 +1968,9 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NumberOfNeighborBSS", NULL, "NeighborBSSIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua -name Controller.Network.Device.1.Radio.1.ScanResult.OpClassScan.1.ChannelScan.1.NeighborBSS.1; ", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.ScanResult.OpClassScan.$$.ChannelScan.$$.NeighborBSS.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.ChannelScanIndex, NeighborBSSIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.; idx = NeighborBSSIndex", 
+    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, idx4 = Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.ChannelScanIndex, idx5 = NeighborBSSIndex", 
     NULL, NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl; 
