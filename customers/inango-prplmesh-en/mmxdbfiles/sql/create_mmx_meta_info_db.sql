@@ -10,7 +10,7 @@ CREATE TABLE MMX_ServiceInfo
     Descr    TEXT,
     PRIMARY KEY(Name)
 );
-INSERT INTO  MMX_ServiceInfo values('BuildDate', "02/16/2021 4:16:52 PM" ,'Date when this db was generated');
+INSERT INTO  MMX_ServiceInfo values('BuildDate', "02/18/2021 5:52:34 AM" ,'Date when this db was generated');
 INSERT INTO  MMX_ServiceInfo values('DBVersion', "03.02",'DB version');
 INSERT INTO  MMX_ServiceInfo values('DBSubVersion', "000",'DB Sub version'); 
 INSERT INTO  MMX_ServiceInfo values ('ResetLastUpdated','0','Flag to reset all last updated time in DB');
@@ -194,8 +194,8 @@ INSERT  INTO Device_Controller_Network_InfoTbl VALUES ('CreateOwner',
 INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{i}.", "current", 1, 1, 4, 31, 31, 10, 2, NULL, 
     "Device_Controller_Network_AccessPoint_InfoTbl", "mmx_main_db", "Device_Controller_Network_AccessPoint_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.NumberOfAccessPoints", NULL, "AccessPointIndex", 
-    "script", "prplmesh_add.lua Controller.Network.AccessPoint.{i}; ; idx = AccessPointIndex", 
-    "script", "prplmesh_del.lua Device.Controller.Network.AccessPoint.$$; AccessPointIndex", 
+    "script", "prplmesh_add.lua Controller.Network.AccessPoint; ; idx = AccessPointIndex", 
+    "script", "prplmesh_del.lua Controller.Network.AccessPoint.$$; AccessPointIndex", 
     "script", "prplmesh_get.lua Controller.Network.AccessPoint.$$; AccessPointIndex", 
     "script", "prplmesh_set.lua Controller.Network.AccessPoint.$$; AccessPointIndex", 
     "script", "prplmesh_getall.lua Controller.Network.AccessPoint.{i}; idx = AccessPointIndex", 
