@@ -35,8 +35,11 @@ div#maincontent ul {
 }
 
 .warning {
-	color: red !important;
-	font-weight: bold;
+	color: #441042;
+	background-color: #cebfd8;
+	padding: 0.5em;
+	padding-left: 15px;
+	font-size: 12px;
 }
 
 .clear {
