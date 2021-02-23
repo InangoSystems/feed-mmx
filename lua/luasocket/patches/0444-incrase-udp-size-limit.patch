@@ -1,0 +1,116 @@
+diff -ruNp a/src/udp.c b/src/udp.c
+--- a/src/udp.c	2013-09-09 20:55:20.000000000 +0300
++++ b/src/udp.c	2020-10-02 12:28:33.515345000 +0300
+@@ -199,22 +199,22 @@ static int meth_sendto(lua_State *L) {
+ \*-------------------------------------------------------------------------*/
+ static int meth_receive(lua_State *L) {
+     p_udp udp = (p_udp) auxiliar_checkgroup(L, "udp{any}", 1);
+-    char buffer[UDP_DATAGRAMSIZE];
+-    size_t got, count = (size_t) luaL_optnumber(L, 2, sizeof(buffer));
++    char buf[UDP_DATAGRAMSIZE];
++    size_t len = MAX(udp->len, UDP_DATAGRAMSIZE);
++    char *dgram = len > sizeof(buf)? udp->buf: buf;
++    size_t got, wanted = (size_t) luaL_optnumber(L, 2, len);
+     int err;
+     p_timeout tm = &udp->tm;
+-    count = MIN(count, sizeof(buffer));
+     timeout_markstart(tm);
+-    err = socket_recv(&udp->sock, buffer, count, &got, tm);
++    wanted = MIN(wanted, len);
++    err = socket_recv(&udp->sock, dgram, wanted, &got, tm);
+     /* Unlike TCP, recv() of zero is not closed, but a zero-length packet. */
+-    if (err == IO_CLOSED)
+-        err = IO_DONE;
+-    if (err != IO_DONE) {
++    if (err != IO_DONE && err != IO_CLOSED ) {
+         lua_pushnil(L);
+         lua_pushstring(L, udp_strerror(err));
+         return 2;
+     }
+-    lua_pushlstring(L, buffer, got);
++    lua_pushlstring(L, dgram, got);
+     return 1;
+ }
+ 
+@@ -224,22 +224,22 @@ static int meth_receive(lua_State *L) {
+ static int meth_receivefrom(lua_State *L)
+ {
+     p_udp udp = (p_udp) auxiliar_checkclass(L, "udp{unconnected}", 1);
+-    char buffer[UDP_DATAGRAMSIZE];
+-    size_t got, count = (size_t) luaL_optnumber(L, 2, sizeof(buffer));
+-    int err;
+-    p_timeout tm = &udp->tm;
++    char buf[UDP_DATAGRAMSIZE];
++    size_t len = MAX(udp->len, UDP_DATAGRAMSIZE);
++    char *dgram = len > sizeof(buf)? udp->buf: buf;
++    size_t got, wanted = (size_t) luaL_optnumber(L, 2, len);
+     struct sockaddr_storage addr;
+     socklen_t addr_len = sizeof(addr);
+     char addrstr[INET6_ADDRSTRLEN];
+     char portstr[6];
++    int err;
++    p_timeout tm = &udp->tm;
+     timeout_markstart(tm);
+-    count = MIN(count, sizeof(buffer));
+-    err = socket_recvfrom(&udp->sock, buffer, count, &got, (SA *) &addr, 
++    wanted = MIN(wanted, len);
++    err = socket_recvfrom(&udp->sock, dgram, wanted, &got, (SA *) &addr,
+             &addr_len, tm);
+     /* Unlike TCP, recv() of zero is not closed, but a zero-length packet. */
+-    if (err == IO_CLOSED)
+-        err = IO_DONE;
+-    if (err != IO_DONE) {
++    if (err != IO_DONE && err != IO_CLOSED) {
+         lua_pushnil(L);
+         lua_pushstring(L, udp_strerror(err));
+         return 2;
+@@ -251,7 +251,7 @@ static int meth_receivefrom(lua_State *L
+         lua_pushstring(L, gai_strerror(err));
+         return 2;
+     }
+-    lua_pushlstring(L, buffer, got);
++    lua_pushlstring(L, dgram, got);
+     lua_pushstring(L, addrstr);
+     lua_pushinteger(L, (int) strtol(portstr, (char **) NULL, 10));
+     return 3;
+@@ -409,10 +409,12 @@ static int meth_setsockname(lua_State *L
+ static int udp_create(lua_State *L, int family) {
+     t_socket sock;
+     const char *err = inet_trycreate(&sock, family, SOCK_DGRAM);
++    size_t len = (size_t) luaL_optinteger(L, 1, 0);
++    if (len <= UDP_DATAGRAMSIZE) len = 0;
+     /* try to allocate a system socket */
+     if (!err) {
+         /* allocate udp object */
+-        p_udp udp = (p_udp) lua_newuserdata(L, sizeof(t_udp));
++        p_udp udp = (p_udp) lua_newuserdata(L, sizeof(t_udp) + len - 1);
+         auxiliar_setclass(L, "udp{unconnected}", -1);
+         /* initialize remaining structure fields */
+         socket_setnonblocking(&sock);
+@@ -422,6 +424,7 @@ static int udp_create(lua_State *L, int
+                 (void *)&yes, sizeof(yes));
+         }
+         udp->sock = sock;
++        udp->len = len;
+         timeout_init(&udp->tm, -1, -1);
+         udp->family = family;
+         return 1;
+diff -ruNp a/src/udp.h b/src/udp.h
+--- a/src/udp.h	2020-10-02 10:51:37.919077000 +0300
++++ b/src/udp.h	2020-10-02 12:39:00.064475286 +0300
+@@ -17,13 +17,14 @@
+ #include "timeout.h"
+ #include "socket.h"
+ 
+-/* can't be larger than wsocket.c MAXCHUNK!!! */
+ #define UDP_DATAGRAMSIZE 8192
+ 
+ typedef struct t_udp_ {
+     t_socket sock;
+     t_timeout tm;
+     int family;
++    size_t len; /* length of datagram buffer below */
++    char buf[1]; /* allocate larger structure to hold actual buffer */
+ } t_udp;
+ typedef t_udp *p_udp;
+ 
