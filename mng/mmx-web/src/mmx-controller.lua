@@ -82,7 +82,7 @@ module("luci.controller.mmx", package.seeall)
 function index()
     require("luci.mmx.mmx_web_routines")
     -- If mmx-user-be package is disabled then we LuCi will auth all system users with "Admin" rights
-    local st, userbe = pcall(require, "mmx.userbe_utils")
+    local st, _ = pcall(require, "mmx.userbe_utils")
     local getPermissionByUsername = st and userbe.utils.getPermissionByUsername or function() return "Admin" end
 
     local has_sauth, sauth = pcall(require, "luci.sauth")
@@ -129,7 +129,7 @@ function render_mmx_page()
     require("luci.dispatcher")
     require("luci.mmx.mmx_web_routines")
     -- If mmx-user-be package is disabled then we LuCi will auth all system users with "Admin" rights
-    local st, userbe = pcall(require, "mmx.userbe_utils")
+    local st, _ = pcall(require, "mmx.userbe_utils")
     local getPermissionByUsername = st and userbe.utils.getPermissionByUsername or function() return "Admin" end
 
     engine = MMXWebEngine.create()
