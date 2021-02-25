@@ -144,6 +144,45 @@ $(document).ready(function(){
 		tooltipClass: "mmx-tooltip-window",
 		position: {my: "left top+5", at: "left bottom"}
 	});
+
+	$('.collapse').click(function(e) {
+	    var id = e.currentTarget.getAttribute("data-id");
+	    var data = document.getElementById(id);
+	    var table = document.getElementById("table-" + id);
+	    var tableGroup = document.getElementById("tablegroup-header-" + id);
+	    var legend = document.getElementById("legend-" + id);
+	    var buttons = document.getElementById("but-" + id);
+	    var icon = document.getElementById("ico-" + id);
+	    if (data.style.display != "none") {
+			icon.className = "fas fa-angle-down";
+			data.style.display = "none";
+			buttons.style.display = "none";
+			if (table) {
+				table.style.padding = "0 1em";
+				table.className = "cbi-section mmx-section-no-margin";
+			}
+			if (legend) {
+				legend.style.paddingBottom = "0";
+			}
+			if (tableGroup) {
+				tableGroup.className = "mmx-tablegroup-header-no-margin";
+			}
+	    } else {
+			icon.className = "fas fa-angle-up";
+			data.style.display="block";
+			buttons.style.display="block";
+			if (table) {
+				table.style.padding = "2em 1em";
+				table.className = "cbi-section mmx-section";
+			}
+			if (legend) {
+				legend.style.paddingBottom = "20px";
+			}
+			if (tableGroup) {
+				tableGroup.className = "mmx-tablegroup-header";
+			}
+	    }
+	});
 	/**
 	 * This listener attached for submitting only changed fields to MMX WEB backend.
 	 * Emitting of 'change' event from default HTML inputs (such as <select>, <input>, <textarea>) supported by jquery,

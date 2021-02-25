@@ -1600,6 +1600,8 @@ function MMXWebEngine:getSectionPermissions(sectionInfo, userPermission, groupPe
             permissions["apply"] = true
         elseif buttonName == "Save" and accessGranted then
             permissions["save"] = true
+        elseif buttonName == "Collapse" then
+            permissions["collapse"] = true
         end
     end
 
@@ -1627,6 +1629,8 @@ function MMXWebEngine:isGroupPermit(actionName, groupInfo, permission)
             seekBtn = "Apply"
         elseif actionName == "save" then
             seekBtn = "Save"
+        elseif actionName == "collapse" then
+            seekBtn = "Collapse"
         else
             return false
         end
