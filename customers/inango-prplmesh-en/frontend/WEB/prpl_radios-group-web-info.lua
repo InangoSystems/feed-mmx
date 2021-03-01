@@ -100,7 +100,7 @@ prpl_radios_sections_info = {
     },
     {
     ['param_name']="NumberOfBSS", ['rnd_header']="NumberOfBSS",
-    ['help']="The number of current operating classes.",
+    ['help']="The number of BSS.",
     ['units']=nil,
     ['writable']=false,
     ['rnd_type']="text",
@@ -110,7 +110,7 @@ prpl_radios_sections_info = {
     },
     {
     ['param_name']="NumberOfUnassocSTA", ['rnd_header']="NumberOfUnassocSTA",
-    ['help']="The number of current operating classes.",
+    ['help']="The number of unassociated STA.",
     ['units']=nil,
     ['writable']=false,
     ['rnd_type']="text",
@@ -120,7 +120,7 @@ prpl_radios_sections_info = {
     },
     {
     ['param_name']="NumberOfOpClassScan", ['rnd_header']="NumberOfOpClassScan",
-    ['help']="The number of current operating classes.",
+    ['help']="The number of current operating classes scan.",
     ['units']=nil,
     ['writable']=false,
     ['rnd_type']="text",
@@ -135,7 +135,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.",
  ['sectionId']="prpl_radios_2",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
@@ -202,7 +202,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.",
  ['sectionId']="prpl_radios_3",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
@@ -233,7 +233,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.",
  ['sectionId']="prpl_radios_4",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
@@ -280,7 +280,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.NonOperable.",
  ['sectionId']="prpl_radios_5",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
@@ -317,7 +317,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.",
  ['sectionId']="prpl_radios_6",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
@@ -502,7 +502,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.",
  ['sectionId']="prpl_radios_7",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
@@ -745,7 +745,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA.",
  ['sectionId']="prpl_radios_8",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
@@ -776,7 +776,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.",
  ['sectionId']="prpl_radios_9",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
@@ -791,13 +791,23 @@ prpl_radios_sections_info = {
     ['writable'] = false, 
     },
     {
-    ['param_name']="NumberOfOpClassScan", ['rnd_header']="NumberOfOpClassScan",
+    ['param_name']="NumberOfOpClassScans", ['rnd_header']="NumberOfOpClassScans",
     ['help']="",
     ['units']=nil,
     ['writable']=false,
     ['rnd_type']="text",
     ['data_properties']={
         ['data_type']="integer",
+    }
+    },
+    {
+    ['param_name']="TimeStamp", ['rnd_header']="TimeStamp",
+    ['help']="The timestamp of the last scan of the channel.",
+    ['units']=nil,
+    ['writable']=false,
+    ['rnd_type']="text",
+    ['data_properties']={
+        ['data_type']="string",
     }
     },
 }-- End of param list of section "Radio ScanResults"
@@ -807,7 +817,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.",
  ['sectionId']="prpl_radios_10",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
@@ -854,7 +864,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.",
  ['sectionId']="prpl_radios_11",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
@@ -937,7 +947,7 @@ prpl_radios_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.",
  ['sectionId']="prpl_radios_12",
  ['lookType']="tablegroup",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
@@ -976,7 +986,7 @@ prpl_radios_sections_info = {
     ['writable']=false,
     ['rnd_type']="text",
     ['data_properties']={
-        ['data_type']="integer",
+        ['data_type']="string",
     }
     },
     {

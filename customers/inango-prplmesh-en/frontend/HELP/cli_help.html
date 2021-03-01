@@ -21,6 +21,12 @@ div.cmd { font-family: monospace; font-size: 14px; font-weight: bold; padding-to
 <li>
 <span class="group">device</span> <a href="#mmx-prplmesh-agents-device">more</a> <span class="help">This object describes a device.</span></li>
 <li>
+<span class="group">interface</span> <a href="#mmx-prplmesh-agents-interface">more</a> <span class="help">The list of interfaces which exist on this device. Represents Interface Statistic and Neighbors.</span></li>
+<li>
+<span class="group">stats</span> <a href="#mmx-prplmesh-agents-stats">more</a> <span class="help">The Interface Statistic shows counters for sent/received bytes, packets, errors etc.</span></li>
+<li>
+<span class="group">neighbor</span> <a href="#mmx-prplmesh-agents-neighbor">more</a> <span class="help">This feature allow us to see which devices are connected to which interface of another device.</span></li>
+<li>
 <span class="group">multiapcap</span> <a href="#mmx-prplmesh-agents-multiapcap">more</a> <span class="help">The Multi-AP capabilities supported by this device</span></li>
 </ul>
 </li>
@@ -80,14 +86,36 @@ This object describes a device.
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>ID</td><td>A unique identifier for this particular device within the Wi-Fi network<tr><td>CollectionInterval</td><td>The interval between the collection of consecutive measurements of the most frequently updated Data Element from this device (milliseconds).<tr><td>NumberOfRadios</td><td>The number of radios in this AP.</table>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>ID</td><td>A unique identifier for this particular device within the Wi-Fi network<tr><td>CollectionInterval</td><td>The interval between the collection of consecutive measurements of the most frequently updated Data Element from this device (milliseconds).<tr><td>NumberOfRadios</td><td>The number of radios in this AP.<tr><td>NumberOfInterfaces</td><td>The number of interfaces on this device.</table>
+<div id="mmx-prplmesh-agents-interface" class="header">Section <b>mmx prplmesh agents interface</b></div>
+The list of interfaces which exist on this device. Represents Interface Statistic and Neighbors.
+<div class="cmd">mmx prplmesh agents interface show</div>
+<span class="help">Show information</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>InterfaceIndex</td><td>Instance index</td></tr><tr><td>NumberOfNeighbors</td><td>The number of interfaces on this device.<tr><td>Status</td><td>Interface status.<tr><td>MACAddress</td><td>Interface MAC address.<tr><td>Name</td><td>Intrerface name.<tr><td>MediaType</td><td>Interface Media Type.</table>
+<div id="mmx-prplmesh-agents-stats" class="header">Section <b>mmx prplmesh agents stats</b></div>
+The Interface Statistic shows counters for sent/received bytes, packets, errors etc.
+<div class="cmd">mmx prplmesh agents stats show</div>
+<span class="help">Show information</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>InterfaceIndex</td><td>Instance index</td></tr><tr><td>BytesSent</td><td>Amount of sent bytes in the current interface.<tr><td>BytesReceived</td><td>Amount of received bytes in the current interface.<tr><td>PacketsSent</td><td>Amount of sent packets in the current interface.<tr><td>PacketsReceived</td><td>Amount of received packets in the current interface.<tr><td>ErrorsSent</td><td>Amount of sent errors in the current interface.<tr><td>ErrorsReceived</td><td>Amount of received errors in the current interface.<tr><td>UnicastPacketsSent</td><td>Amount of unicast packets sent in the current interface.<tr><td>UnicastPacketsReceived</td><td>Amount of unicast packets received in the current interface.<tr><td>DiscardPacketsSent</td><td>Amount of discard packets sent in the current interface.<tr><td>DiscardPacketsReceived</td><td>Amount of discard packets received in the current interface.<tr><td>MulticastPacketsSent</td><td>Amount of multicast packets sent  bytes in the current interface.<tr><td>MulticastPacketsReceived</td><td>Amount of multicast packets received in the current interface.<tr><td>BroadcastPacketsSent</td><td>Amount of broadcast packets sent in the current interface.<tr><td>BroadcastPacketsReceived</td><td>Amount of broadcast packets received in the current interface.</table>
+<div id="mmx-prplmesh-agents-neighbor" class="header">Section <b>mmx prplmesh agents neighbor</b></div>
+This feature allow us to see which devices are connected to which interface of another device.
+<div class="cmd">mmx prplmesh agents neighbor show</div>
+<span class="help">Show information</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>InterfaceIndex</td><td>Instance index</td></tr><tr><td>NeighborIndex</td><td>Instance index</td></tr><tr><td>ID</td><td>Neighbor device AL-MAC address.<tr><td>IsIEEE1905</td><td>Flag is used to differentiate neighbors as 1905 device, or not .<tr><td>NumberOfNeighbors</td><td>The number of neighbors which connected to interface on other device.</table>
 <div id="mmx-prplmesh-agents-multiapcap" class="header">Section <b>mmx prplmesh agents multiapcap</b></div>
 The Multi-AP capabilities supported by this device
 <div class="cmd">mmx prplmesh agents multiapcap show</div>
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>USTALinkMatricCurrentlyOn</td><td><tr><td>USTALinkMatricCurrentlyOff</td><td><tr><td>AgentInitiatedRCPIBasedSteering</td><td></table>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>USTALinkMatricCurrentlyOn</td><td>Support Unassociated STA Link Metrics reporting
+on the channels its BSSs are currently operating on.<tr><td>USTALinkMatricCurrentlyOff</td><td>Support Unassociated STA  Link Metrics reporting on channels its BSSs are not currently operating on.<tr><td>AgentInitiatedRCPIBasedSteering</td><td>Support Agent initiated RCPI based Steering</table>
 <div id="mmx-prplmesh-accesspoints-ap" class="header">Section <b>mmx prplmesh accesspoints ap</b></div>
 Mesh Access Point decribes general configuration
 <div class="cmd">mmx prplmesh accesspoints ap show</div>
@@ -128,7 +156,7 @@ This object describes a single physical radio within a specific AP
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>ID</td><td>Unique ID for this radio<tr><td>Enabled</td><td>Indicates whether this radio is enabled.<tr><td>Noise</td><td>An indicator of the average radio noise plus interference power measured for the primary operating channel.<tr><td>Utilization</td><td>The current total channel utilization on the current primary channel of the radio<tr><td>Transmit</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on individually or group addressed transmissions by the AP. When more than one channel is in use by BSS operating on the radio, then the Transmit value is calculated only for the primary channel.<tr><td>ReceiveSelf</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving individually or group addressed transmissions from any STA associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveSelf value is calculated only for the primary channel.<tr><td>ReceiveOther</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving valid IEEE 802.11 PPDUs that are not associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveOther value is calculated only for the primary channel.<tr><td>NumberOfCurrOpClass</td><td>The number of current operating classes.<tr><td>NumberOfBSS</td><td>The number of current operating classes.<tr><td>NumberOfUnassocSTA</td><td>The number of current operating classes.<tr><td>NumberOfOpClassScan</td><td>The number of current operating classes.</table>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>ID</td><td>Unique ID for this radio<tr><td>Enabled</td><td>Indicates whether this radio is enabled.<tr><td>Noise</td><td>An indicator of the average radio noise plus interference power measured for the primary operating channel.<tr><td>Utilization</td><td>The current total channel utilization on the current primary channel of the radio<tr><td>Transmit</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on individually or group addressed transmissions by the AP. When more than one channel is in use by BSS operating on the radio, then the Transmit value is calculated only for the primary channel.<tr><td>ReceiveSelf</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving individually or group addressed transmissions from any STA associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveSelf value is calculated only for the primary channel.<tr><td>ReceiveOther</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving valid IEEE 802.11 PPDUs that are not associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveOther value is calculated only for the primary channel.<tr><td>NumberOfCurrOpClass</td><td>The number of current operating classes.<tr><td>NumberOfBSS</td><td>The number of BSS.<tr><td>NumberOfUnassocSTA</td><td>The number of unassociated STA.<tr><td>NumberOfOpClassScan</td><td>The number of current operating classes scan.</table>
 <div id="mmx-prplmesh-radios-opclasses" class="header">Section <b>mmx prplmesh radios opclasses</b></div>
 This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel.
 <div class="cmd">mmx prplmesh radios opclasses show</div>
@@ -184,7 +212,7 @@ The results of the latest scan for neighboring BSS by the radio.
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>NumberOfOpClassScan</td><td></table>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>NumberOfOpClassScans</td><td><tr><td>TimeStamp</td><td>The timestamp of the last scan of the channel.</table>
 <div id="mmx-prplmesh-radios-scanresopclassscan" class="header">Section <b>mmx prplmesh radios scanresopclassscan</b></div>
 Radio Scab Result
 <div class="cmd">mmx prplmesh radios scanresopclassscan show</div>

@@ -79,7 +79,7 @@ prpl_ap_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.AccessPoint.{i}.Security.",
  ['sectionId']="prpl_ap_2",
  ['lookType']="matrix",
- ['sectionButtons']={{"Edit"},{"Apply"}},
+ ['sectionButtons']={{"Refresh"},{"Update"},{"Edit"},{"Apply"}},
  ['paramList']={
     {
     ['param_name']="AccessPointIndex", ['rnd_header']="Access Point Index", 

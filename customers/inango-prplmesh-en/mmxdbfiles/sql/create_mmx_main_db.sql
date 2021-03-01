@@ -63,10 +63,79 @@ CREATE TABLE Device_Controller_Network_Device_ValuesTbl
     [ID]    TEXT DEFAULT "00:00:00:00:00:00",
     [CollectionInterval]    INTEGER DEFAULT 0,
     [NumberOfRadios]    INTEGER DEFAULT 0,
+    [NumberOfInterfaces]    INTEGER DEFAULT 0,
     [ObjInstSelfRef]    TEXT,
     [CfgOwner]    INTEGER DEFAULT 0,
     [CreateOwner]   INTEGER DEFAULT 0,
     CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex])
+);
+
+
+-- ***********************************************************
+-- Information table for object Device.Controller.Network.Device.{i}.Interface.{i}.
+-- ***********************************************************
+DROP TABLE IF EXISTS Device_Controller_Network_Device_Interface_ValuesTbl; 
+CREATE TABLE Device_Controller_Network_Device_Interface_ValuesTbl
+(
+    [DeviceIndex]     INTEGER,
+    [InterfaceIndex]     INTEGER,
+    [NumberOfNeighbors]    INTEGER DEFAULT 0,
+    [Status]    TEXT DEFAULT "Down",
+    [MACAddress]    TEXT DEFAULT "00:00:00:00:00:00",
+    [Name]    TEXT DEFAULT "NoName",
+    [MediaType]    INTEGER DEFAULT 0,
+    [ObjInstSelfRef]    TEXT,
+    [CfgOwner]    INTEGER DEFAULT 0,
+    [CreateOwner]   INTEGER DEFAULT 0,
+    CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex],[InterfaceIndex])
+);
+
+
+-- ***********************************************************
+-- Information table for object Device.Controller.Network.Device.{i}.Interface.{i}.Stats.
+-- ***********************************************************
+DROP TABLE IF EXISTS Device_Controller_Network_Device_Interface_Stats_ValuesTbl; 
+CREATE TABLE Device_Controller_Network_Device_Interface_Stats_ValuesTbl
+(
+    [DeviceIndex]     INTEGER,
+    [InterfaceIndex]     INTEGER,
+    [BytesSent]    INTEGER DEFAULT 0,
+    [BytesReceived]    INTEGER DEFAULT 0,
+    [PacketsSent]    INTEGER DEFAULT 0,
+    [PacketsReceived]    INTEGER DEFAULT 0,
+    [ErrorsSent]    INTEGER DEFAULT 0,
+    [ErrorsReceived]    INTEGER DEFAULT 0,
+    [UnicastPacketsSent]    INTEGER DEFAULT 0,
+    [UnicastPacketsReceived]    INTEGER DEFAULT 0,
+    [DiscardPacketsSent]    INTEGER DEFAULT 0,
+    [DiscardPacketsReceived]    INTEGER DEFAULT 0,
+    [MulticastPacketsSent]    INTEGER DEFAULT 0,
+    [MulticastPacketsReceived]    INTEGER DEFAULT 0,
+    [BroadcastPacketsSent]    INTEGER DEFAULT 0,
+    [BroadcastPacketsReceived]    INTEGER DEFAULT 0,
+    [ObjInstSelfRef]    TEXT,
+    [CfgOwner]    INTEGER DEFAULT 0,
+    [CreateOwner]   INTEGER DEFAULT 0,
+    CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex],[InterfaceIndex])
+);
+
+
+-- ***********************************************************
+-- Information table for object Device.Controller.Network.Device.{i}.Interface.{i}.Neighbor.{i}.
+-- ***********************************************************
+DROP TABLE IF EXISTS Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl; 
+CREATE TABLE Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl
+(
+    [DeviceIndex]     INTEGER,
+    [InterfaceIndex]     INTEGER,
+    [NeighborIndex]     INTEGER,
+    [ID]    TEXT DEFAULT "00:00:00:00:00:00",
+    [IsIEEE1905]    INTEGER DEFAULT 0,
+    [NumberOfNeighbors]    INTEGER DEFAULT 0,
+    [ObjInstSelfRef]    TEXT,
+    [CfgOwner]    INTEGER DEFAULT 0,
+    [CreateOwner]   INTEGER DEFAULT 0,
+    CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex],[InterfaceIndex],[NeighborIndex])
 );
 
 
@@ -278,7 +347,8 @@ CREATE TABLE Device_Controller_Network_Device_Radio_ScanResult_ValuesTbl
 (
     [DeviceIndex]     INTEGER,
     [RadioIndex]     INTEGER,
-    [NumberOfOpClassScan]    INTEGER DEFAULT 0,
+    [NumberOfOpClassScans]    INTEGER DEFAULT 0,
+    [TimeStamp]    TEXT DEFAULT "0",
     [ObjInstSelfRef]    TEXT,
     [CfgOwner]    INTEGER DEFAULT 0,
     [CreateOwner]   INTEGER DEFAULT 0,
@@ -337,7 +407,7 @@ CREATE TABLE Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_Chann
     [OpClassScanIndex]     INTEGER,
     [ChannelScanIndex]     INTEGER,
     [NeighborBSSIndex]     INTEGER,
-    [BSSID]    INTEGER DEFAULT 0,
+    [BSSID]    TEXT DEFAULT "0",
     [SSID]    TEXT DEFAULT "0",
     [SignalStrength]    INTEGER DEFAULT 0,
     [ChannelBandwidth]    INTEGER DEFAULT 0,
@@ -383,6 +453,24 @@ CREATE TRIGGER [tr_Device_Controller_Network_Device_ValuesTbl_delete] AFTER DELE
 BEGIN 
    DELETE FROM [Device_Controller_Network_Device_MultiAPCapabilities_ValuesTbl] 
        WHERE  [DeviceIndex] = OLD.[DeviceIndex] ;
+END;
+
+
+-- *********************************************************** 
+-- Triggers for table Device_Controller_Network_Device_Interface_ValuesTbl
+-- *********************************************************** 
+DROP TRIGGER IF EXISTS [tr_Device_Controller_Network_Device_Interface_ValuesTbl_insert];
+CREATE TRIGGER [tr_Device_Controller_Network_Device_Interface_ValuesTbl_insert] AFTER INSERT ON [Device_Controller_Network_Device_Interface_ValuesTbl]
+BEGIN 
+   INSERT INTO [Device_Controller_Network_Device_Interface_Stats_ValuesTbl] ([DeviceIndex], [InterfaceIndex]) 
+       VALUES (NEW.[DeviceIndex], NEW.[InterfaceIndex]) ;
+END;
+
+DROP TRIGGER IF EXISTS [tr_Device_Controller_Network_Device_Interface_ValuesTbl_delete];
+CREATE TRIGGER [tr_Device_Controller_Network_Device_Interface_ValuesTbl_delete] AFTER DELETE ON [Device_Controller_Network_Device_Interface_ValuesTbl]
+BEGIN 
+   DELETE FROM [Device_Controller_Network_Device_Interface_Stats_ValuesTbl] 
+       WHERE  [DeviceIndex] = OLD.[DeviceIndex]  AND  [InterfaceIndex] = OLD.[InterfaceIndex] ;
 END;
 
 
@@ -459,6 +547,46 @@ BEGIN
     UPDATE Device_Controller_Network_ValuesTbl
     SET NumberOfDevices = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_ValuesTbl WHERE 1 )
      WHERE 1;
+END;
+
+
+-- *********************************************************** 
+-- "Counter" triggers for table Device_Controller_Network_Device_Interface_ValuesTbl
+-- *********************************************************** 
+DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Interface_ValuesTbl_insert];
+CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Interface_ValuesTbl_insert] AFTER INSERT ON [Device_Controller_Network_Device_Interface_ValuesTbl]
+BEGIN 
+    UPDATE Device_Controller_Network_Device_ValuesTbl
+    SET NumberOfInterfaces = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Interface_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] )
+     WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex];
+END;
+
+DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Interface_ValuesTbl_delete];
+CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Interface_ValuesTbl_delete] AFTER DELETE ON [Device_Controller_Network_Device_Interface_ValuesTbl]
+BEGIN 
+    UPDATE Device_Controller_Network_Device_ValuesTbl
+    SET NumberOfInterfaces = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Interface_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] )
+     WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex];
+END;
+
+
+-- *********************************************************** 
+-- "Counter" triggers for table Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl
+-- *********************************************************** 
+DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl_insert];
+CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl_insert] AFTER INSERT ON [Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl]
+BEGIN 
+    UPDATE Device_Controller_Network_Device_Interface_ValuesTbl
+    SET NumberOfNeighbors = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [InterfaceIndex] = NEW.[InterfaceIndex] )
+     WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [InterfaceIndex] = NEW.[InterfaceIndex];
+END;
+
+DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl_delete];
+CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl_delete] AFTER DELETE ON [Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl]
+BEGIN 
+    UPDATE Device_Controller_Network_Device_Interface_ValuesTbl
+    SET NumberOfNeighbors = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [InterfaceIndex] = OLD.[InterfaceIndex] )
+     WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [InterfaceIndex] = OLD.[InterfaceIndex];
 END;
 
 
@@ -569,7 +697,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Radio_ScanResult
 CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl_insert] AFTER INSERT ON [Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl]
 BEGIN 
     UPDATE Device_Controller_Network_Device_Radio_ScanResult_ValuesTbl
-    SET NumberOfOpClassScan = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] )
+    SET NumberOfOpClassScans = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] )
      WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex];
 END;
 
@@ -577,7 +705,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Radio_ScanResult
 CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl_delete] AFTER DELETE ON [Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl]
 BEGIN 
     UPDATE Device_Controller_Network_Device_Radio_ScanResult_ValuesTbl
-    SET NumberOfOpClassScan = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] )
+    SET NumberOfOpClassScans = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] )
      WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex];
 END;
 

@@ -13,16 +13,46 @@
 
 **** WEB Page: "Agents" **** (parent page: prplMesh ) ****
      Child Pages (total number 0):
-     Sections (total number 2):
-       Sect prpl_agents_1: Device.Controller.Network.Device.{i}.  Num of WEB params: 3
+     Sections (total number 5):
+       Sect prpl_agents_1: Device.Controller.Network.Device.{i}.  Num of WEB params: 4
           ID: A unique identifier for this particular device within the Wi-Fi network
           CollectionInterval: The interval between the collection of consecutive measurements of the most frequently updated Data Element from this device (milliseconds).
           NumberOfRadios: The number of radios in this AP.
+          NumberOfInterfaces: The number of interfaces on this device.
 
-       Sect prpl_agents_2: Device.Controller.Network.Device.{i}.MultiAPCapabilities.  Num of WEB params: 3
-          USTALinkMatricCurrentlyOn: 
-          USTALinkMatricCurrentlyOff: 
-          AgentInitiatedRCPIBasedSteering: 
+       Sect prpl_agents_2: Device.Controller.Network.Device.{i}.Interface.{i}.  Num of WEB params: 5
+          NumberOfNeighbors: The number of interfaces on this device.
+          Status: Interface status.
+          MACAddress: Interface MAC address.
+          Name: Intrerface name.
+          MediaType: Interface Media Type.
+
+       Sect prpl_agents_3: Device.Controller.Network.Device.{i}.Interface.{i}.Stats.  Num of WEB params: 14
+          BytesSent: Amount of sent bytes in the current interface.
+          BytesReceived: Amount of received bytes in the current interface.
+          PacketsSent: Amount of sent packets in the current interface.
+          PacketsReceived: Amount of received packets in the current interface.
+          ErrorsSent: Amount of sent errors in the current interface.
+          ErrorsReceived: Amount of received errors in the current interface.
+          UnicastPacketsSent: Amount of unicast packets sent in the current interface.
+          UnicastPacketsReceived: Amount of unicast packets received in the current interface.
+          DiscardPacketsSent: Amount of discard packets sent in the current interface.
+          DiscardPacketsReceived: Amount of discard packets received in the current interface.
+          MulticastPacketsSent: Amount of multicast packets sent  bytes in the current interface.
+          MulticastPacketsReceived: Amount of multicast packets received in the current interface.
+          BroadcastPacketsSent: Amount of broadcast packets sent in the current interface.
+          BroadcastPacketsReceived: Amount of broadcast packets received in the current interface.
+
+       Sect prpl_agents_4: Device.Controller.Network.Device.{i}.Interface.{i}.Neighbor.{i}.  Num of WEB params: 3
+          ID: Neighbor device AL-MAC address.
+          IsIEEE1905: Flag is used to differentiate neighbors as 1905 device, or not .
+          NumberOfNeighbors: The number of neighbors which connected to interface on other device.
+
+       Sect prpl_agents_5: Device.Controller.Network.Device.{i}.MultiAPCapabilities.  Num of WEB params: 3
+          USTALinkMatricCurrentlyOn: Support Unassociated STA Link Metrics reporting
+on the channels its BSSs are currently operating on.
+          USTALinkMatricCurrentlyOff: Support Unassociated STA  Link Metrics reporting on channels its BSSs are not currently operating on.
+          AgentInitiatedRCPIBasedSteering: Support Agent initiated RCPI based Steering
 
 **** WEB Page: "Access Points" **** (parent page: prplMesh ) ****
      Child Pages (total number 0):
@@ -53,9 +83,9 @@
           ReceiveSelf: The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving individually or group addressed transmissions from any STA associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveSelf value is calculated only for the primary channel.
           ReceiveOther: The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving valid IEEE 802.11 PPDUs that are not associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveOther value is calculated only for the primary channel.
           NumberOfCurrOpClass: The number of current operating classes.
-          NumberOfBSS: The number of current operating classes.
-          NumberOfUnassocSTA: The number of current operating classes.
-          NumberOfOpClassScan: The number of current operating classes.
+          NumberOfBSS: The number of BSS.
+          NumberOfUnassocSTA: The number of unassociated STA.
+          NumberOfOpClassScan: The number of current operating classes scan.
 
        Sect prpl_radios_2: Device.Controller.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.  Num of WEB params: 4
           TimeStamp: The time this group was collected.
@@ -117,8 +147,9 @@
        Sect prpl_radios_8: Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA.  Num of WEB params: 1
           MACAddress: The MAC address of the logical STA sharing the radio for Wi-Fi backhaul.
 
-       Sect prpl_radios_9: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.  Num of WEB params: 1
-          NumberOfOpClassScan: 
+       Sect prpl_radios_9: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.  Num of WEB params: 2
+          NumberOfOpClassScans: 
+          TimeStamp: The timestamp of the last scan of the channel.
 
        Sect prpl_radios_10: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.  Num of WEB params: 2
           NumberOfChannelScans: 

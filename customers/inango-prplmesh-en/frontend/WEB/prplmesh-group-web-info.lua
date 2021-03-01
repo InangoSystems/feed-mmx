@@ -6,7 +6,7 @@ prplmesh_sections_info = {
  ['mmgModObjName']="Device.Controller.Network.",
  ['sectionId']="prplmesh_1",
  ['lookType']="vector",
- ['sectionButtons']={{}},
+ ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
     ['param_name']="ID", ['rnd_header']="ID",

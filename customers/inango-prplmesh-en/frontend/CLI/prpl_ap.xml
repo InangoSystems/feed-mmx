@@ -117,6 +117,12 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="security update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="security config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
@@ -264,6 +270,12 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
@@ -388,6 +400,12 @@
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="accesspoints security update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -523,6 +541,12 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints security update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="prplmesh accesspoints security config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
@@ -652,6 +676,12 @@
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints security update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
