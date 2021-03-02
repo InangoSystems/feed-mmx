@@ -218,11 +218,6 @@ if [ -z "$${IPKG_INSTROOT}" ]; then
 	if [ -e /usr/lib/lua/luci/model/network.lua -a -e /usr/lib/lua/mmx/mmx-model-network.lua ]; then
 		cp /usr/lib/lua/mmx/mmx-model-network.lua /usr/lib/lua/luci/model/network.lua
 	fi
-
-	# apply patch to use action type "call" in Luci
-	if [ -e /usr/lib/lua/luci/dispatcher.lua -a -e /usr/lib/lua/mmx/dispatcher.lua ]; then
-		cp /usr/lib/lua/mmx/dispatcher.lua /usr/lib/lua/luci/dispatcher.lua
-	fi
 fi
 exit 0
 endef
