@@ -156,7 +156,6 @@ if sections then
             end
         end %>
         <%=engine:renderHelper(section, sectIdx, sectionData, currentGroup, userPermission)%>
-    <% if section['lookType'] ~= 'tablegroup' then %>
     <div class="mmx-section-actions" id="but-<%=sectIdx%>::<%=section["mmgModObjName"]%>">
         <% if sectionPermissions["update"] then %>
             <input class="cbi-button cbi-button-refresh mmx-section-update" id="update-<%=section["mmgModObjName"]%>" type="submit" title="Update the management object information" value="Update">
@@ -164,14 +163,15 @@ if sections then
         <% if sectionPermissions["refresh"] then %>
             <input class="cbi-button cbi-button-refresh mmx-section-refresh" id="refresh-<%=section["mmgModObjName"]%>" type="submit" title="Refresh status data of parameters" value="Refresh">
         <% end %>
-        <% if sectionPermissions["apply"] then %>
-            <input class="cbi-button cbi-button-apply mmx-section-apply" id="apply-<%=sectIdx%>::<%=section["mmgModObjName"]%>" type="submit" title="Apply all currently changed settings to the device" value="Apply">
-        <% end %>
-        <% if sectionPermissions["save"] then %>
-            <input class="cbi-button cbi-button-save mmx-section-save" id="save-<%=sectIdx%>::<%=section["mmgModObjName"]%>" type="submit" value="Apply&amp;Save">
+        <% if section['lookType'] ~= 'tablegroup' then %>
+            <% if sectionPermissions["apply"] then %>
+                <input class="cbi-button cbi-button-apply mmx-section-apply" id="apply-<%=sectIdx%>::<%=section["mmgModObjName"]%>" type="submit" title="Apply all currently changed settings to the device" value="Apply">
+            <% end %>
+            <% if sectionPermissions["save"] then %>
+                <input class="cbi-button cbi-button-save mmx-section-save" id="save-<%=sectIdx%>::<%=section["mmgModObjName"]%>" type="submit" value="Apply&amp;Save">
+            <% end %>
         <% end %>
     </div>
-    <% end %>
     </fieldset>
 </div>
 <%
