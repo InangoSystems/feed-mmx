@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns ="http://clish.sourceforge.net/XMLSchema"
+          xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation = "http://clish.sourceforge.net/XMLSchema
+                        http://clish.sourceforge.net/XMLSchema/clish.xsd">
+
+
+<VIEW name="mmx-prplmesh-agents-interfaces" prompt="mmx/prplmesh/agents/interfaces&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-agents">
+    </COMMAND>
+<!--=======================================================-->
+
+    <COMMAND name="interface" help="The list of interfaces which exist on this device. Represents Interface Statistic and Neighbors."
+        view="mmx-prplmesh-agents-interfaces-interface">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="stats" help="The Interface Statistic shows counters for sent/received bytes, packets, errors etc."
+        view="mmx-prplmesh-agents-interfaces-stats">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="neighbor" help="This feature allow us to see which devices are connected to which interface of another device."
+        view="mmx-prplmesh-agents-interfaces-neighbor">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="interface show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="interface update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="stats show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="stats update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="neighbor show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="neighbor update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents-interfaces-interface" prompt="mmx/prplmesh/agents/interfaces/interface&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-agents-interfaces">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents-interfaces-stats" prompt="mmx/prplmesh/agents/interfaces/stats&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-agents-interfaces">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents-interfaces-neighbor" prompt="mmx/prplmesh/agents/interfaces/neighbor&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-agents-interfaces">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents">
+<!--=======================================================-->
+    <COMMAND name="interfaces interface" help="The list of interfaces which exist on this device. Represents Interface Statistic and Neighbors."
+        view="mmx-prplmesh-agents-interfaces-interface">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="interfaces interface show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="interfaces interface update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="interfaces stats" help="The Interface Statistic shows counters for sent/received bytes, packets, errors etc."
+        view="mmx-prplmesh-agents-interfaces-stats">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="interfaces stats show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="interfaces stats update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="interfaces neighbor" help="This feature allow us to see which devices are connected to which interface of another device."
+        view="mmx-prplmesh-agents-interfaces-neighbor">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="interfaces neighbor show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="interfaces neighbor update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh">
+<!--=======================================================-->
+    <COMMAND name="agents interfaces"
+        help="Interfaces"
+        view="mmx-prplmesh-agents-interfaces">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents interfaces interface" help="The list of interfaces which exist on this device. Represents Interface Statistic and Neighbors."
+        view="mmx-prplmesh-agents-interfaces-interface">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents interfaces interface show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents interfaces interface update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents interfaces stats" help="The Interface Statistic shows counters for sent/received bytes, packets, errors etc."
+        view="mmx-prplmesh-agents-interfaces-stats">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents interfaces stats show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents interfaces stats update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents interfaces neighbor" help="This feature allow us to see which devices are connected to which interface of another device."
+        view="mmx-prplmesh-agents-interfaces-neighbor">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents interfaces neighbor show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents interfaces neighbor update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx">
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents interfaces"
+        help="Interfaces"
+        view="mmx-prplmesh-agents-interfaces">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents interfaces interface" help="The list of interfaces which exist on this device. Represents Interface Statistic and Neighbors."
+        view="mmx-prplmesh-agents-interfaces-interface">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents interfaces interface show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents interfaces interface update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents interfaces stats" help="The Interface Statistic shows counters for sent/received bytes, packets, errors etc."
+        view="mmx-prplmesh-agents-interfaces-stats">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents interfaces stats show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents interfaces stats update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents interfaces neighbor" help="This feature allow us to see which devices are connected to which interface of another device."
+        view="mmx-prplmesh-agents-interfaces-neighbor">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents interfaces neighbor show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents interfaces neighbor update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="root-view">
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents interfaces"
+        help="Interfaces"
+        view="mmx-prplmesh-agents-interfaces">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents interfaces interface" help="The list of interfaces which exist on this device. Represents Interface Statistic and Neighbors."
+        view="mmx-prplmesh-agents-interfaces-interface">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents interfaces interface show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents interfaces interface update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents interfaces stats" help="The Interface Statistic shows counters for sent/received bytes, packets, errors etc."
+        view="mmx-prplmesh-agents-interfaces-stats">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents interfaces stats show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents interfaces stats update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents interfaces neighbor" help="This feature allow us to see which devices are connected to which interface of another device."
+        view="mmx-prplmesh-agents-interfaces-neighbor">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents interfaces neighbor show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents interfaces neighbor update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+</CLISH_MODULE>

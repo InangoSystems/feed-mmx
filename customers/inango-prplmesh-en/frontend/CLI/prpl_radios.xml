@@ -5,7 +5,7 @@
                         http://clish.sourceforge.net/XMLSchema/clish.xsd">
 
 
-<VIEW name="mmx-prplmesh-radios" prompt="mmx/prplmesh/radios&gt; ">
+<VIEW name="mmx-prplmesh-agents-radios" prompt="mmx/prplmesh/agents/radios&gt; ">
 <!--=======================================================-->
     <COMMAND name="quit"  help="Quit this CLI session">
        <ACTION builtin="clish_close"/>
@@ -16,56 +16,37 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh">
+             view="mmx-prplmesh-agents">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="bss"
+             help = "BSS"
+             view="mmx-prplmesh-agents-radios-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="curr_op_class"
+             help = "Current Operating Classes"
+             view="mmx-prplmesh-agents-radios-curr_op_class">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="capabilities"
+             help = "Capabilities"
+             view="mmx-prplmesh-agents-radios-capabilities">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="backhaul_sta"
+             help = "Backhaul STA"
+             view="mmx-prplmesh-agents-radios-backhaul_sta">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="scan_result"
+             help = "Scan Result"
+             view="mmx-prplmesh-agents-radios-scan_result">
     </COMMAND>
 <!--=======================================================-->
 
     <COMMAND name="radio" help="This object describes a single physical radio within a specific AP"
-        view="mmx-prplmesh-radios-radio">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="opclasses" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
-        view="mmx-prplmesh-radios-opclasses">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="cap" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
-        view="mmx-prplmesh-radios-cap">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="capopclasses" help="Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio."
-        view="mmx-prplmesh-radios-capopclasses">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="notoper" help="List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.)."
-        view="mmx-prplmesh-radios-notoper">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="bss" help="This object describes a single logical BSS operating on this radio"
-        view="mmx-prplmesh-radios-bss">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="sta" help="This object describes a single STA."
-        view="mmx-prplmesh-radios-sta">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="bhsta" help="This object describes a Wi-Fi backhaul link used in a Multi-AP Agent."
-        view="mmx-prplmesh-radios-bhsta">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="scanres" help="The results of the latest scan for neighboring BSS by the radio."
-        view="mmx-prplmesh-radios-scanres">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="scanresopclassscan" help="Radio Scab Result"
-        view="mmx-prplmesh-radios-scanresopclassscan">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="chanscan" help="Radio Scab Result"
-        view="mmx-prplmesh-radios-chanscan">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="neighbss" help="This object describes a neighbor BSS detected by channel scan."
-        view="mmx-prplmesh-radios-neighbss">
+        view="mmx-prplmesh-agents-radios-radio">
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="radio show" help="Show information" >
@@ -81,152 +62,9 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="opclasses show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_radios_2 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="opclasses update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="cap show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities. sectionId=prpl_radios_3 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="cap update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="capopclasses show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_radios_4 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="capopclasses update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="notoper show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_radios_5 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="notoper update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="bss show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_radios_6 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="bss update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="sta show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*.STA.*. sectionId=prpl_radios_7 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="sta update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*.STA.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="bhsta show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BackhaulSTA. sectionId=prpl_radios_8 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="bhsta update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BackhaulSTA. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="scanres show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult. sectionId=prpl_radios_9 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="scanres update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="scanresopclassscan show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_radios_10 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="scanresopclassscan update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="chanscan show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*. sectionId=prpl_radios_11 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="chanscan update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="neighbss show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_radios_12 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="neighbss update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
 </VIEW>
 
-<VIEW name="mmx-prplmesh-radios-radio" prompt="mmx/prplmesh/radios/radio&gt; ">
+<VIEW name="mmx-prplmesh-agents-radios-radio" prompt="mmx/prplmesh/agents/radios/radio&gt; ">
 <!--=======================================================-->
     <COMMAND name="quit"  help="Quit this CLI session">
        <ACTION builtin="clish_close"/>
@@ -237,7 +75,7 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
+             view="mmx-prplmesh-agents-radios">
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="show" help="Show information" >
@@ -255,329 +93,10 @@
 <!--=======================================================-->
 </VIEW>
 
-<VIEW name="mmx-prplmesh-radios-opclasses" prompt="mmx/prplmesh/radios/opclasses&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_radios_2 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh-radios-cap" prompt="mmx/prplmesh/radios/cap&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities. sectionId=prpl_radios_3 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh-radios-capopclasses" prompt="mmx/prplmesh/radios/capopclasses&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_radios_4 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh-radios-notoper" prompt="mmx/prplmesh/radios/notoper&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_radios_5 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh-radios-bss" prompt="mmx/prplmesh/radios/bss&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_radios_6 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh-radios-sta" prompt="mmx/prplmesh/radios/sta&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*.STA.*. sectionId=prpl_radios_7 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*.STA.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh-radios-bhsta" prompt="mmx/prplmesh/radios/bhsta&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BackhaulSTA. sectionId=prpl_radios_8 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BackhaulSTA. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh-radios-scanres" prompt="mmx/prplmesh/radios/scanres&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult. sectionId=prpl_radios_9 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh-radios-scanresopclassscan" prompt="mmx/prplmesh/radios/scanresopclassscan&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_radios_10 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh-radios-chanscan" prompt="mmx/prplmesh/radios/chanscan&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*. sectionId=prpl_radios_11 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh-radios-neighbss" prompt="mmx/prplmesh/radios/neighbss&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_radios_12 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh">
+<VIEW name="mmx-prplmesh-agents">
 <!--=======================================================-->
     <COMMAND name="radios radio" help="This object describes a single physical radio within a specific AP"
-        view="mmx-prplmesh-radios-radio">
+        view="mmx-prplmesh-agents-radios-radio">
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="radios radio show" help="Show information" >
@@ -593,190 +112,29 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios opclasses" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
-        view="mmx-prplmesh-radios-opclasses">
+</VIEW>
+
+<VIEW name="mmx-prplmesh">
+<!--=======================================================-->
+    <COMMAND name="agents radios"
+        help="Radios"
+        view="mmx-prplmesh-agents-radios">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios opclasses show" help="Show information" >
+    <COMMAND name="agents radios radio" help="This object describes a single physical radio within a specific AP"
+        view="mmx-prplmesh-agents-radios-radio">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents radios radio show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_radios_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*. sectionId=prpl_radios_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios opclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="agents radios radio update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios cap" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
-        view="mmx-prplmesh-radios-cap">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios cap show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities. sectionId=prpl_radios_3 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios cap update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios capopclasses" help="Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio."
-        view="mmx-prplmesh-radios-capopclasses">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios capopclasses show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_radios_4 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios capopclasses update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios notoper" help="List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.)."
-        view="mmx-prplmesh-radios-notoper">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios notoper show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_radios_5 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios notoper update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios bss" help="This object describes a single logical BSS operating on this radio"
-        view="mmx-prplmesh-radios-bss">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios bss show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_radios_6 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios bss update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios sta" help="This object describes a single STA."
-        view="mmx-prplmesh-radios-sta">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios sta show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*.STA.*. sectionId=prpl_radios_7 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios sta update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*.STA.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios bhsta" help="This object describes a Wi-Fi backhaul link used in a Multi-AP Agent."
-        view="mmx-prplmesh-radios-bhsta">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios bhsta show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BackhaulSTA. sectionId=prpl_radios_8 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios bhsta update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BackhaulSTA. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios scanres" help="The results of the latest scan for neighboring BSS by the radio."
-        view="mmx-prplmesh-radios-scanres">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios scanres show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult. sectionId=prpl_radios_9 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios scanres update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios scanresopclassscan" help="Radio Scab Result"
-        view="mmx-prplmesh-radios-scanresopclassscan">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios scanresopclassscan show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_radios_10 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios scanresopclassscan update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios chanscan" help="Radio Scab Result"
-        view="mmx-prplmesh-radios-chanscan">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios chanscan show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*. sectionId=prpl_radios_11 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios chanscan update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios neighbss" help="This object describes a neighbor BSS detected by channel scan."
-        view="mmx-prplmesh-radios-neighbss">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios neighbss show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_radios_12 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="radios neighbss update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -784,212 +142,25 @@
 
 <VIEW name="mmx">
 <!--=======================================================-->
-    <COMMAND name="prplmesh radios"
+    <COMMAND name="prplmesh agents radios"
         help="Radios"
-        view="mmx-prplmesh-radios">
+        view="mmx-prplmesh-agents-radios">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh radios radio" help="This object describes a single physical radio within a specific AP"
-        view="mmx-prplmesh-radios-radio">
+    <COMMAND name="prplmesh agents radios radio" help="This object describes a single physical radio within a specific AP"
+        view="mmx-prplmesh-agents-radios-radio">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh radios radio show" help="Show information" >
+    <COMMAND name="prplmesh agents radios radio show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*. sectionId=prpl_radios_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh radios radio update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="prplmesh agents radios radio update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios opclasses" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
-        view="mmx-prplmesh-radios-opclasses">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios opclasses show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_radios_2 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios opclasses update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios cap" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
-        view="mmx-prplmesh-radios-cap">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios cap show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities. sectionId=prpl_radios_3 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios cap update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios capopclasses" help="Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio."
-        view="mmx-prplmesh-radios-capopclasses">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios capopclasses show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_radios_4 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios capopclasses update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios notoper" help="List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.)."
-        view="mmx-prplmesh-radios-notoper">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios notoper show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_radios_5 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios notoper update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios bss" help="This object describes a single logical BSS operating on this radio"
-        view="mmx-prplmesh-radios-bss">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios bss show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_radios_6 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios bss update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios sta" help="This object describes a single STA."
-        view="mmx-prplmesh-radios-sta">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios sta show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*.STA.*. sectionId=prpl_radios_7 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios sta update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*.STA.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios bhsta" help="This object describes a Wi-Fi backhaul link used in a Multi-AP Agent."
-        view="mmx-prplmesh-radios-bhsta">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios bhsta show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BackhaulSTA. sectionId=prpl_radios_8 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios bhsta update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BackhaulSTA. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios scanres" help="The results of the latest scan for neighboring BSS by the radio."
-        view="mmx-prplmesh-radios-scanres">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios scanres show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult. sectionId=prpl_radios_9 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios scanres update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios scanresopclassscan" help="Radio Scab Result"
-        view="mmx-prplmesh-radios-scanresopclassscan">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios scanresopclassscan show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_radios_10 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios scanresopclassscan update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios chanscan" help="Radio Scab Result"
-        view="mmx-prplmesh-radios-chanscan">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios chanscan show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*. sectionId=prpl_radios_11 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios chanscan update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios neighbss" help="This object describes a neighbor BSS detected by channel scan."
-        view="mmx-prplmesh-radios-neighbss">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios neighbss show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_radios_12 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh radios neighbss update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -997,212 +168,25 @@
 
 <VIEW name="root-view">
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios"
+    <COMMAND name="mmx prplmesh agents radios"
         help="Radios"
-        view="mmx-prplmesh-radios">
+        view="mmx-prplmesh-agents-radios">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios radio" help="This object describes a single physical radio within a specific AP"
-        view="mmx-prplmesh-radios-radio">
+    <COMMAND name="mmx prplmesh agents radios radio" help="This object describes a single physical radio within a specific AP"
+        view="mmx-prplmesh-agents-radios-radio">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios radio show" help="Show information" >
+    <COMMAND name="mmx prplmesh agents radios radio show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*. sectionId=prpl_radios_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios radio update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="mmx prplmesh agents radios radio update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios opclasses" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
-        view="mmx-prplmesh-radios-opclasses">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios opclasses show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_radios_2 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios opclasses update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios cap" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
-        view="mmx-prplmesh-radios-cap">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios cap show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities. sectionId=prpl_radios_3 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios cap update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios capopclasses" help="Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio."
-        view="mmx-prplmesh-radios-capopclasses">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios capopclasses show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_radios_4 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios capopclasses update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios notoper" help="List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.)."
-        view="mmx-prplmesh-radios-notoper">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios notoper show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_radios_5 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios notoper update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios bss" help="This object describes a single logical BSS operating on this radio"
-        view="mmx-prplmesh-radios-bss">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios bss show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_radios_6 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios bss update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios sta" help="This object describes a single STA."
-        view="mmx-prplmesh-radios-sta">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios sta show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*.STA.*. sectionId=prpl_radios_7 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios sta update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*.STA.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios bhsta" help="This object describes a Wi-Fi backhaul link used in a Multi-AP Agent."
-        view="mmx-prplmesh-radios-bhsta">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios bhsta show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BackhaulSTA. sectionId=prpl_radios_8 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios bhsta update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BackhaulSTA. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios scanres" help="The results of the latest scan for neighboring BSS by the radio."
-        view="mmx-prplmesh-radios-scanres">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios scanres show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult. sectionId=prpl_radios_9 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios scanres update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios scanresopclassscan" help="Radio Scab Result"
-        view="mmx-prplmesh-radios-scanresopclassscan">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios scanresopclassscan show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_radios_10 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios scanresopclassscan update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios chanscan" help="Radio Scab Result"
-        view="mmx-prplmesh-radios-chanscan">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios chanscan show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*. sectionId=prpl_radios_11 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios chanscan update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios neighbss" help="This object describes a neighbor BSS detected by channel scan."
-        view="mmx-prplmesh-radios-neighbss">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios neighbss show" help="Show information" >
-        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_radios_12 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh radios neighbss update" help="Update management objects information of the appropriated component" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->

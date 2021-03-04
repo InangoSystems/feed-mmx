@@ -29,11 +29,6 @@
              view="mmx-prplmesh-accesspoints">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios"
-             help = "Radios"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
 
     <COMMAND name="network" help="EasyMesh Network"
         view="mmx-prplmesh-network">

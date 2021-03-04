@@ -22,8 +22,8 @@ DROP TABLE IF EXISTS Device_Controller_Network_AccessPoint_ValuesTbl;
 CREATE TABLE Device_Controller_Network_AccessPoint_ValuesTbl
 (
     [AccessPointIndex]     INTEGER,
-    [SSID]    TEXT DEFAULT "0",
-    [MultiApMode]    TEXT DEFAULT "Fronthaul",
+    [SSID]    TEXT DEFAULT "prplMesh",
+    [MultiApMode]    TEXT DEFAULT "Fronthaul" CHECK (MultiApMode IN ("Fronthaul", "Backhaul", "Fronthaul+Backhaul")),
     [Band2_4G]    INTEGER DEFAULT 0,
     [Band5GL]    INTEGER DEFAULT 0,
     [Band5GH]    INTEGER DEFAULT 0,
@@ -42,7 +42,7 @@ DROP TABLE IF EXISTS Device_Controller_Network_AccessPoint_Security_ValuesTbl;
 CREATE TABLE Device_Controller_Network_AccessPoint_Security_ValuesTbl
 (
     [AccessPointIndex]     INTEGER,
-    [ModeEnabled]    TEXT DEFAULT "None",
+    [ModeEnabled]    TEXT DEFAULT "None" CHECK (ModeEnabled IN ("WPA2-Personal", "WPA3-Personal", "None")),
     [PreSharedKey]    TEXT,
     [KeyPassphrase]    TEXT,
     [SAEPassphrase]    TEXT,
@@ -136,23 +136,6 @@ CREATE TABLE Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl
     [CfgOwner]    INTEGER DEFAULT 0,
     [CreateOwner]   INTEGER DEFAULT 0,
     CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex],[InterfaceIndex],[NeighborIndex])
-);
-
-
--- ***********************************************************
--- Information table for object Device.Controller.Network.Device.{i}.MultiAPCapabilities.
--- ***********************************************************
-DROP TABLE IF EXISTS Device_Controller_Network_Device_MultiAPCapabilities_ValuesTbl; 
-CREATE TABLE Device_Controller_Network_Device_MultiAPCapabilities_ValuesTbl
-(
-    [DeviceIndex]     INTEGER,
-    [USTALinkMatricCurrentlyOn]    INTEGER DEFAULT 0,
-    [USTALinkMatricCurrentlyOff]    INTEGER DEFAULT 0,
-    [AgentInitiatedRCPIBasedSteering]    INTEGER DEFAULT 0,
-    [ObjInstSelfRef]    TEXT,
-    [CfgOwner]    INTEGER DEFAULT 0,
-    [CreateOwner]   INTEGER DEFAULT 0,
-    CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex])
 );
 
 
@@ -435,24 +418,6 @@ CREATE TRIGGER [tr_Device_Controller_Network_AccessPoint_ValuesTbl_delete] AFTER
 BEGIN 
    DELETE FROM [Device_Controller_Network_AccessPoint_Security_ValuesTbl] 
        WHERE  [AccessPointIndex] = OLD.[AccessPointIndex] ;
-END;
-
-
--- *********************************************************** 
--- Triggers for table Device_Controller_Network_Device_ValuesTbl
--- *********************************************************** 
-DROP TRIGGER IF EXISTS [tr_Device_Controller_Network_Device_ValuesTbl_insert];
-CREATE TRIGGER [tr_Device_Controller_Network_Device_ValuesTbl_insert] AFTER INSERT ON [Device_Controller_Network_Device_ValuesTbl]
-BEGIN 
-   INSERT INTO [Device_Controller_Network_Device_MultiAPCapabilities_ValuesTbl] ([DeviceIndex]) 
-       VALUES (NEW.[DeviceIndex]) ;
-END;
-
-DROP TRIGGER IF EXISTS [tr_Device_Controller_Network_Device_ValuesTbl_delete];
-CREATE TRIGGER [tr_Device_Controller_Network_Device_ValuesTbl_delete] AFTER DELETE ON [Device_Controller_Network_Device_ValuesTbl]
-BEGIN 
-   DELETE FROM [Device_Controller_Network_Device_MultiAPCapabilities_ValuesTbl] 
-       WHERE  [DeviceIndex] = OLD.[DeviceIndex] ;
 END;
 
 

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns ="http://clish.sourceforge.net/XMLSchema"
+          xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation = "http://clish.sourceforge.net/XMLSchema
+                        http://clish.sourceforge.net/XMLSchema/clish.xsd">
+
+
+<VIEW name="mmx-prplmesh-agents-radios-bss" prompt="mmx/prplmesh/agents/radios/bss&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-agents-radios">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="sta"
+             help = "STA"
+             view="mmx-prplmesh-agents-radios-bss-sta">
+    </COMMAND>
+<!--=======================================================-->
+
+    <COMMAND name="bss" help="This object describes a single logical BSS operating on this radio"
+        view="mmx-prplmesh-agents-radios-bss-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="bss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_bss_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="bss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents-radios-bss-bss" prompt="mmx/prplmesh/agents/radios/bss/bss&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-agents-radios-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_bss_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents-radios">
+<!--=======================================================-->
+    <COMMAND name="bss bss" help="This object describes a single logical BSS operating on this radio"
+        view="mmx-prplmesh-agents-radios-bss-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="bss bss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_bss_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="bss bss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents">
+<!--=======================================================-->
+    <COMMAND name="radios bss"
+        help="BSS"
+        view="mmx-prplmesh-agents-radios-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="radios bss bss" help="This object describes a single logical BSS operating on this radio"
+        view="mmx-prplmesh-agents-radios-bss-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="radios bss bss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_bss_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="radios bss bss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh">
+<!--=======================================================-->
+    <COMMAND name="agents radios bss"
+        help="BSS"
+        view="mmx-prplmesh-agents-radios-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents radios bss bss" help="This object describes a single logical BSS operating on this radio"
+        view="mmx-prplmesh-agents-radios-bss-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents radios bss bss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_bss_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents radios bss bss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx">
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents radios bss"
+        help="BSS"
+        view="mmx-prplmesh-agents-radios-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents radios bss bss" help="This object describes a single logical BSS operating on this radio"
+        view="mmx-prplmesh-agents-radios-bss-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents radios bss bss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_bss_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents radios bss bss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="root-view">
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents radios bss"
+        help="BSS"
+        view="mmx-prplmesh-agents-radios-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents radios bss bss" help="This object describes a single logical BSS operating on this radio"
+        view="mmx-prplmesh-agents-radios-bss-bss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents radios bss bss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.BSS.*. sectionId=prpl_bss_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents radios bss bss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.BSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+</CLISH_MODULE>
