@@ -5,7 +5,7 @@ prpl_agents_sections_info = {
 {['sectionHeader']="EasyMesh Agents",
  ['mmgModObjName']="Device.Controller.Network.Device.{i}.",
  ['sectionId']="prpl_agents_1",
- ['lookType']="tablegroup",
+ ['lookType']="matrix",
  ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
     {
@@ -44,47 +44,18 @@ prpl_agents_sections_info = {
         ['data_type']="integer",
     }
     },
+    {
+    ['param_name']="NumberOfInterfaces", ['rnd_header']="NumberOfInterfaces",
+    ['help']="The number of interfaces on this device.",
+    ['units']=nil,
+    ['writable']=false,
+    ['rnd_type']="text",
+    ['data_properties']={
+        ['data_type']="integer",
+    }
+    },
 }-- End of param list of section "EasyMesh Agents"
 }, -- End of of section "EasyMesh Agents"
-
-{['sectionHeader']="MultiAP Capabilities",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.MultiAPCapabilities.",
- ['sectionId']="prpl_agents_2",
- ['lookType']="tablegroup",
- ['sectionButtons']={{}},
- ['paramList']={
-    {
-    ['param_name']="DeviceIndex", ['rnd_header']="Device Index", 
-    ['isKey'] = true, 
-    ['units'] = nil, 
-    ['writable'] = false, 
-    },
-    {
-    ['param_name']="USTALinkMatricCurrentlyOn", ['rnd_header']="USTALinkMatricCurrentlyOn",
-    ['help']="",
-    ['units']=nil,
-    ['writable']=false,
-    ['rnd_type']="checkbox",
-    ['data_properties']=nil
-    },
-    {
-    ['param_name']="USTALinkMatricCurrentlyOff", ['rnd_header']="USTALinkMatricCurrentlyOff",
-    ['help']="",
-    ['units']=nil,
-    ['writable']=false,
-    ['rnd_type']="checkbox",
-    ['data_properties']=nil
-    },
-    {
-    ['param_name']="AgentInitiatedRCPIBasedSteering", ['rnd_header']="AgentInitiatedRCPIBasedSteering",
-    ['help']="",
-    ['units']=nil,
-    ['writable']=false,
-    ['rnd_type']="checkbox",
-    ['data_properties']=nil
-    },
-}-- End of param list of section "MultiAP Capabilities"
-}, -- End of of section "MultiAP Capabilities"
 
 
 } -- End of section list

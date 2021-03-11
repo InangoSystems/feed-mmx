@@ -125,7 +125,7 @@ div#maincontent ul {
 
 .mainmenu ul li > ul {
 	left: 100%;
-	margin-top: -1.8em;
+	margin-top: -40px;
 	border-width: 1px;
 }
 
@@ -227,8 +227,6 @@ fieldset.cbi-section.mmx-section {
 .cbi-section legend {
 	font-size: 18px;
 	color: #555555;
-	float: left;
-	padding-bottom: 2em;
 }
 
 .cbi-section h2 {
@@ -779,7 +777,7 @@ li.mmx-tab a:hover {
 
 .mmx-breadcrumbs a {
 	color: #72166b;
-	text-decoration: none; 
+	text-decoration: none;
 }
 
 .breadcrumb-separator {
@@ -925,9 +923,8 @@ a.mmx-revert-row {
 
 .mmx-tablegroup-header {
 	display: inline-block;
-	margin-top: 40px;
+	margin-top: 10px;
 	width: 100%;
-	margin-bottom: 5px;
 }
 
 .mmx-tablegroup-header:first-of-type {

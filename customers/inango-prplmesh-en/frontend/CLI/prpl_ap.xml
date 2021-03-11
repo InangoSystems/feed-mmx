@@ -42,16 +42,16 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="ap config" help="Configure parameters of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -76,13 +76,13 @@
     <COMMAND name="ap add" help="Add a new instance of the object" >
           <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -104,7 +104,7 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="ap del" help="Delete an instance of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
         </ACTION>
@@ -117,8 +117,14 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="security update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="security config" help="Configure parameters of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
@@ -173,16 +179,16 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="config" help="Configure parameters of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -207,13 +213,13 @@
     <COMMAND name="add" help="Add a new instance of the object" >
           <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -235,7 +241,7 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="del" help="Delete an instance of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
         </ACTION>
@@ -264,8 +270,14 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="config" help="Configure parameters of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
@@ -312,16 +324,16 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="accesspoints ap config" help="Configure parameters of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -346,13 +358,13 @@
     <COMMAND name="accesspoints ap add" help="Add a new instance of the object" >
           <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -374,7 +386,7 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="accesspoints ap del" help="Delete an instance of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
         </ACTION>
@@ -391,8 +403,14 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="accesspoints security update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="accesspoints security config" help="Configure parameters of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
@@ -444,16 +462,16 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="prplmesh accesspoints ap config" help="Configure parameters of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -478,13 +496,13 @@
     <COMMAND name="prplmesh accesspoints ap add" help="Add a new instance of the object" >
           <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -506,7 +524,7 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="prplmesh accesspoints ap del" help="Delete an instance of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
         </ACTION>
@@ -523,8 +541,14 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="prplmesh accesspoints security update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="prplmesh accesspoints security config" help="Configure parameters of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
@@ -576,16 +600,16 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh accesspoints ap config" help="Configure parameters of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -610,13 +634,13 @@
     <COMMAND name="mmx prplmesh accesspoints ap add" help="Add a new instance of the object" >
           <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Service Set Identifier" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5GL band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5GH band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -638,7 +662,7 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh accesspoints ap del" help="Delete an instance of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
         </ACTION>
@@ -655,8 +679,14 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="mmx prplmesh accesspoints security update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
     <COMMAND name="mmx prplmesh accesspoints security config" help="Configure parameters of the object" >
-          <PARAM name="AccessPointIndex" help="Index parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
+          <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
           <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>

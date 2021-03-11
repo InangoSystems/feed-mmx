@@ -29,11 +29,6 @@
              view="mmx-prplmesh-accesspoints">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios"
-             help = "Radios"
-             view="mmx-prplmesh-radios">
-    </COMMAND>
-<!--=======================================================-->
 
     <COMMAND name="network" help="EasyMesh Network"
         view="mmx-prplmesh-network">
@@ -42,6 +37,12 @@
     <COMMAND name="network show" help="Show information" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. sectionId=prplmesh_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="network update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -67,6 +68,12 @@
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
 </VIEW>
 
 <VIEW name="mmx">
@@ -78,6 +85,12 @@
     <COMMAND name="prplmesh network show" help="Show information" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. sectionId=prplmesh_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh network update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -97,6 +110,12 @@
     <COMMAND name="mmx prplmesh network show" help="Show information" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. sectionId=prplmesh_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh network update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->

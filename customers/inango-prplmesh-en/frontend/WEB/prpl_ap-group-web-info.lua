@@ -2,7 +2,7 @@
 
 --  Section list of group prpl_ap
 prpl_ap_sections_info = { 
-{['sectionHeader']="EasyMesh Access Point",
+{['sectionHeader']="Access Point",
  ['mmgModObjName']="Device.Controller.Network.AccessPoint.{i}.",
  ['sectionId']="prpl_ap_1",
  ['lookType']="matrix",
@@ -23,19 +23,24 @@ prpl_ap_sections_info = {
     ['data_properties']={
         ['data_type']="string",
         ['rules']={
-            ['defValue']="0",
+            ['defValue']="prplMesh",
         },
     }
     },
     {
     ['param_name']="MultiApMode", ['rnd_header']="MultiApMode",
-    ['help']="Service Set Identifier",
+    ['help']="Mutli-AP mode for Access Point",
     ['units']=nil,
     ['writable']=true,
-    ['rnd_type']="text",
+    ['rnd_type']="list",
     ['data_properties']={
-        ['data_type']="string",
+        ['data_type']="enum",
         ['rules']={
+            ['predef_values']={
+                ['Fronthaul']="Fronthaul",
+                ['Backhaul']="Backhaul",
+                ['Fronthaul+Backhaul']="Fronthaul+Backhaul",
+            },
             ['defValue']="Fronthaul",
         },
     }
@@ -50,7 +55,7 @@ prpl_ap_sections_info = {
     },
     {
     ['param_name']="Band5GL", ['rnd_header']="Band5GL",
-    ['help']="Enable 5GL band",
+    ['help']="Enable 5G Lower band",
     ['units']=nil,
     ['writable']=true,
     ['rnd_type']="checkbox",
@@ -58,7 +63,7 @@ prpl_ap_sections_info = {
     },
     {
     ['param_name']="Band5GH", ['rnd_header']="Band5GH",
-    ['help']="Enable 5GH band",
+    ['help']="Enable 5G higher band",
     ['units']=nil,
     ['writable']=true,
     ['rnd_type']="checkbox",
@@ -72,14 +77,14 @@ prpl_ap_sections_info = {
     ['rnd_type']="checkbox",
     ['data_properties']=nil
     },
-}-- End of param list of section "EasyMesh Access Point"
-}, -- End of of section "EasyMesh Access Point"
+}-- End of param list of section "Access Point"
+}, -- End of of section "Access Point"
 
-{['sectionHeader']="EasyMesh Access Point Security",
+{['sectionHeader']="Access Point Security",
  ['mmgModObjName']="Device.Controller.Network.AccessPoint.{i}.Security.",
  ['sectionId']="prpl_ap_2",
  ['lookType']="matrix",
- ['sectionButtons']={{"Edit"},{"Apply"}},
+ ['sectionButtons']={{"Refresh"},{"Update"},{"Edit"},{"Apply"}},
  ['paramList']={
     {
     ['param_name']="AccessPointIndex", ['rnd_header']="Access Point Index", 
@@ -92,10 +97,15 @@ prpl_ap_sections_info = {
     ['help']="Security mode (WPA2-Personal or WPA3-Personal)",
     ['units']=nil,
     ['writable']=true,
-    ['rnd_type']="text",
+    ['rnd_type']="list",
     ['data_properties']={
-        ['data_type']="string",
+        ['data_type']="enum",
         ['rules']={
+            ['predef_values']={
+                ['WPA2-Personal']="WPA2-Personal",
+                ['WPA3-Personal']="WPA3-Personal",
+                ['None']="None",
+            },
             ['defValue']="None",
         },
     }
@@ -130,8 +140,8 @@ prpl_ap_sections_info = {
         ['data_type']="string",
     }
     },
-}-- End of param list of section "EasyMesh Access Point Security"
-}, -- End of of section "EasyMesh Access Point Security"
+}-- End of param list of section "Access Point Security"
+}, -- End of of section "Access Point Security"
 
 
 } -- End of section list
