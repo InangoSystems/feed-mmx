@@ -77,7 +77,9 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/InangoSystems/mmx-ep.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=19197621dc50abb1d52bf03f26f41b850952f800
+# Use commit from hotfix/fix-last-indexes for PKG_SOURCE_VERSION
+# Should be fixed after https://github.com/InangoSystems/mmx-ep/issues/3
+PKG_SOURCE_VERSION:=e5ad829458879fe9b0622af6e574f8092dd3e028
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.xz
 
 PKG_BUILD_PARALLEL:=1
