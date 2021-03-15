@@ -1,0 +1,13 @@
+diff --git a/src/Makefile b/src/Makefile
+index a7128ee..71d3741 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -103,7 +103,7 @@ override CONFIG_EP_MAX_INDECES_PER_OBJECT ?= 4
+ override CONFIG_EP_SUBST_VALUES_NUMBER ?= 5
+ 
+ # "Max method string lenght"
+-override CONFIG_EP_MAX_METHOD_STR_LEN ?= 256
++override CONFIG_EP_MAX_METHOD_STR_LEN ?= 512
+ 
+ # "Max leaf name lenght"
+ override CONFIG_EP_MAX_LEAF_NAME_LEN ?= 64
