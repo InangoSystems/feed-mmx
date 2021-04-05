@@ -130,7 +130,7 @@ config EP_MAX_METHOD_STR_LEN
         depends on PACKAGE_mmx-ep
         int
         prompt "Max method string lenght"
-        default 256
+        default 512
         help
                 Max method string lenght
 
