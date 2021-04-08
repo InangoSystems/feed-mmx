@@ -156,8 +156,6 @@ CREATE TABLE Device_Controller_Network_Device_Radio_ValuesTbl
     [ReceiveOther]    INTEGER DEFAULT 0,
     [NumberOfCurrOpClass]    INTEGER DEFAULT 0,
     [NumberOfBSS]    INTEGER DEFAULT 0,
-    [NumberOfUnassocSTA]    INTEGER DEFAULT 0,
-    [NumberOfOpClassScan]    INTEGER DEFAULT 0,
     [ObjInstSelfRef]    TEXT,
     [CfgOwner]    INTEGER DEFAULT 0,
     [CreateOwner]   INTEGER DEFAULT 0,
@@ -202,37 +200,84 @@ CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl
 
 
 -- ***********************************************************
--- Information table for object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.
+-- Information table for object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.
 -- ***********************************************************
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl
+DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_ValuesTbl; 
+CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_ValuesTbl
 (
     [DeviceIndex]     INTEGER,
     [RadioIndex]     INTEGER,
-    [OperatingClassIndex]     INTEGER,
-    [Class]    INTEGER DEFAULT 0,
-    [MaxTxPower]    INTEGER DEFAULT 0,
+    [tx_spatial_streams]    INTEGER DEFAULT 0,
+    [rx_spatial_streams]    INTEGER DEFAULT 0,
+    [HT_40_Mhz]    INTEGER DEFAULT 0,
+    [GI_20_MHz]    INTEGER DEFAULT 0,
+    [GI_40_MHz]    INTEGER DEFAULT 0,
     [ObjInstSelfRef]    TEXT,
     [CfgOwner]    INTEGER DEFAULT 0,
     [CreateOwner]   INTEGER DEFAULT 0,
-    CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex],[RadioIndex],[OperatingClassIndex])
+    CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex],[RadioIndex])
 );
 
 
 -- ***********************************************************
--- Information table for object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.NonOperable.
+-- Information table for object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.
 -- ***********************************************************
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_ValuesTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_ValuesTbl
+DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_ValuesTbl; 
+CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_ValuesTbl
 (
     [DeviceIndex]     INTEGER,
     [RadioIndex]     INTEGER,
-    [OperatingClassIndex]     INTEGER,
+    [VHT_Tx_MCS]    INTEGER DEFAULT 0,
+    [VHT_Rx_MCS]    INTEGER DEFAULT 0,
+    [tx_spatial_streams]    INTEGER DEFAULT 0,
+    [rx_spatial_streams]    INTEGER DEFAULT 0,
+    [GI_80_MHz]    INTEGER DEFAULT 0,
+    [GI_160_MHz]    INTEGER DEFAULT 0,
+    [VHT_80_80_MHz]    INTEGER DEFAULT 0,
+    [VHT_160_MHz]    INTEGER DEFAULT 0,
+    [SU_beamformer]    INTEGER DEFAULT 0,
+    [MU_beamformer]    INTEGER DEFAULT 0,
+    [ObjInstSelfRef]    TEXT,
+    [CfgOwner]    INTEGER DEFAULT 0,
+    [CreateOwner]   INTEGER DEFAULT 0,
+    CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex],[RadioIndex])
+);
+
+
+-- ***********************************************************
+-- Information table for object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.
+-- ***********************************************************
+DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl; 
+CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl
+(
+    [DeviceIndex]     INTEGER,
+    [RadioIndex]     INTEGER,
+    [OperatingClassesIndex]     INTEGER,
+    [Class]    INTEGER DEFAULT 0,
+    [MaxTxPower]    INTEGER DEFAULT 0,
+    [NumberOfNonOperChan]    INTEGER DEFAULT 0,
+    [ObjInstSelfRef]    TEXT,
+    [CfgOwner]    INTEGER DEFAULT 0,
+    [CreateOwner]   INTEGER DEFAULT 0,
+    CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex],[RadioIndex],[OperatingClassesIndex])
+);
+
+
+-- ***********************************************************
+-- Information table for object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.
+-- ***********************************************************
+DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl; 
+CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl
+(
+    [DeviceIndex]     INTEGER,
+    [RadioIndex]     INTEGER,
+    [OperatingClassesIndex]     INTEGER,
+    [NonOperableIndex]     INTEGER,
     [NonOpChannelNumber]    INTEGER DEFAULT 0,
     [ObjInstSelfRef]    TEXT,
     [CfgOwner]    INTEGER DEFAULT 0,
     [CreateOwner]   INTEGER DEFAULT 0,
-    CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex],[RadioIndex],[OperatingClassIndex])
+    CONSTRAINT [constr_index_columns] UNIQUE ([DeviceIndex],[RadioIndex],[OperatingClassesIndex],[NonOperableIndex])
 );
 
 
@@ -371,7 +416,7 @@ CREATE TABLE Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_Chann
     [TimeStamp]    TEXT DEFAULT "0",
     [Utilization]    INTEGER DEFAULT 0,
     [Noise]    INTEGER DEFAULT 0,
-    [NumberOfNeighborBSS]    INTEGER DEFAULT 0,
+    [NumberOfNeighbors]    INTEGER DEFAULT 0,
     [ObjInstSelfRef]    TEXT,
     [CfgOwner]    INTEGER DEFAULT 0,
     [CreateOwner]   INTEGER DEFAULT 0,
@@ -447,6 +492,8 @@ CREATE TRIGGER [tr_Device_Controller_Network_Device_Radio_ValuesTbl_insert] AFTE
 BEGIN 
    INSERT INTO [Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl] ([DeviceIndex], [RadioIndex]) 
        VALUES (NEW.[DeviceIndex], NEW.[RadioIndex]) ;
+   INSERT INTO [Device_Controller_Network_Device_Radio_ScanResult_ValuesTbl] ([DeviceIndex], [RadioIndex]) 
+       VALUES (NEW.[DeviceIndex], NEW.[RadioIndex]) ;
 END;
 
 DROP TRIGGER IF EXISTS [tr_Device_Controller_Network_Device_Radio_ValuesTbl_delete];
@@ -454,24 +501,30 @@ CREATE TRIGGER [tr_Device_Controller_Network_Device_Radio_ValuesTbl_delete] AFTE
 BEGIN 
    DELETE FROM [Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl] 
        WHERE  [DeviceIndex] = OLD.[DeviceIndex]  AND  [RadioIndex] = OLD.[RadioIndex] ;
+   DELETE FROM [Device_Controller_Network_Device_Radio_ScanResult_ValuesTbl] 
+       WHERE  [DeviceIndex] = OLD.[DeviceIndex]  AND  [RadioIndex] = OLD.[RadioIndex] ;
 END;
 
 
 -- *********************************************************** 
--- Triggers for table Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl
+-- Triggers for table Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl
 -- *********************************************************** 
-DROP TRIGGER IF EXISTS [tr_Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl_insert];
-CREATE TRIGGER [tr_Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl_insert] AFTER INSERT ON [Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl]
+DROP TRIGGER IF EXISTS [tr_Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl_insert];
+CREATE TRIGGER [tr_Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl_insert] AFTER INSERT ON [Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl]
 BEGIN 
-   INSERT INTO [Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_ValuesTbl] ([DeviceIndex], [RadioIndex], [OperatingClassIndex]) 
-       VALUES (NEW.[DeviceIndex], NEW.[RadioIndex], NEW.[OperatingClassIndex]) ;
+   INSERT INTO [Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_ValuesTbl] ([DeviceIndex], [RadioIndex]) 
+       VALUES (NEW.[DeviceIndex], NEW.[RadioIndex]) ;
+   INSERT INTO [Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_ValuesTbl] ([DeviceIndex], [RadioIndex]) 
+       VALUES (NEW.[DeviceIndex], NEW.[RadioIndex]) ;
 END;
 
-DROP TRIGGER IF EXISTS [tr_Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl_delete];
-CREATE TRIGGER [tr_Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl_delete] AFTER DELETE ON [Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl]
+DROP TRIGGER IF EXISTS [tr_Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl_delete];
+CREATE TRIGGER [tr_Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl_delete] AFTER DELETE ON [Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl]
 BEGIN 
-   DELETE FROM [Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_ValuesTbl] 
-       WHERE  [DeviceIndex] = OLD.[DeviceIndex]  AND  [RadioIndex] = OLD.[RadioIndex]  AND  [OperatingClassIndex] = OLD.[OperatingClassIndex] ;
+   DELETE FROM [Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_ValuesTbl] 
+       WHERE  [DeviceIndex] = OLD.[DeviceIndex]  AND  [RadioIndex] = OLD.[RadioIndex] ;
+   DELETE FROM [Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_ValuesTbl] 
+       WHERE  [DeviceIndex] = OLD.[DeviceIndex]  AND  [RadioIndex] = OLD.[RadioIndex] ;
 END;
 
 
@@ -596,22 +649,42 @@ END;
 
 
 -- *********************************************************** 
--- "Counter" triggers for table Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl
+-- "Counter" triggers for table Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl
 -- *********************************************************** 
-DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl_insert];
-CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl_insert] AFTER INSERT ON [Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl]
+DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl_insert];
+CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl_insert] AFTER INSERT ON [Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl]
 BEGIN 
     UPDATE Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl
-    SET NumberOfOperatingClasses = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] )
+    SET NumberOfOperatingClasses = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] )
      WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex];
 END;
 
-DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl_delete];
-CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl_delete] AFTER DELETE ON [Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl]
+DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl_delete];
+CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl_delete] AFTER DELETE ON [Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl]
 BEGIN 
     UPDATE Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl
-    SET NumberOfOperatingClasses = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] )
+    SET NumberOfOperatingClasses = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] )
      WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex];
+END;
+
+
+-- *********************************************************** 
+-- "Counter" triggers for table Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl
+-- *********************************************************** 
+DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl_insert];
+CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl_insert] AFTER INSERT ON [Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl]
+BEGIN 
+    UPDATE Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl
+    SET NumberOfNonOperChan = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] AND [OperatingClassesIndex] = NEW.[OperatingClassesIndex] )
+     WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] AND [OperatingClassesIndex] = NEW.[OperatingClassesIndex];
+END;
+
+DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl_delete];
+CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl_delete] AFTER DELETE ON [Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl]
+BEGIN 
+    UPDATE Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl
+    SET NumberOfNonOperChan = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] AND [OperatingClassesIndex] = OLD.[OperatingClassesIndex] )
+     WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] AND [OperatingClassesIndex] = OLD.[OperatingClassesIndex];
 END;
 
 
@@ -702,7 +775,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Radio_ScanResult
 CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl_insert] AFTER INSERT ON [Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl]
 BEGIN 
     UPDATE Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_ValuesTbl
-    SET NumberOfNeighborBSS = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] AND [OpClassScanIndex] = NEW.[OpClassScanIndex] AND [ChannelScanIndex] = NEW.[ChannelScanIndex] )
+    SET NumberOfNeighbors = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] AND [OpClassScanIndex] = NEW.[OpClassScanIndex] AND [ChannelScanIndex] = NEW.[ChannelScanIndex] )
      WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] AND [OpClassScanIndex] = NEW.[OpClassScanIndex] AND [ChannelScanIndex] = NEW.[ChannelScanIndex];
 END;
 
@@ -710,7 +783,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_Controller_Network_Device_Radio_ScanResult
 CREATE TRIGGER [tr_cnt_Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl_delete] AFTER DELETE ON [Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl]
 BEGIN 
     UPDATE Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_ValuesTbl
-    SET NumberOfNeighborBSS = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] AND [OpClassScanIndex] = OLD.[OpClassScanIndex] AND [ChannelScanIndex] = OLD.[ChannelScanIndex] )
+    SET NumberOfNeighbors = ( SELECT COUNT(RowId) FROM Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] AND [OpClassScanIndex] = OLD.[OpClassScanIndex] AND [ChannelScanIndex] = OLD.[ChannelScanIndex] )
      WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] AND [OpClassScanIndex] = OLD.[OpClassScanIndex] AND [ChannelScanIndex] = OLD.[ChannelScanIndex];
 END;
 

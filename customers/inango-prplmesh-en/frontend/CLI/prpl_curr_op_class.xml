@@ -20,18 +20,18 @@
     </COMMAND>
 <!--=======================================================-->
 
-    <COMMAND name="opclasses" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
-        view="mmx-prplmesh-agents-radios-curr_op_class-opclasses">
+    <COMMAND name="curr_op_class" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
+        view="mmx-prplmesh-agents-radios-curr_op_class-curr_op_class">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="opclasses show" help="Show information" >
+    <COMMAND name="curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="opclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
@@ -39,7 +39,7 @@
 <!--=======================================================-->
 </VIEW>
 
-<VIEW name="mmx-prplmesh-agents-radios-curr_op_class-opclasses" prompt="mmx/prplmesh/agents/radios/curr_op_class/opclasses&gt; ">
+<VIEW name="mmx-prplmesh-agents-radios-curr_op_class-curr_op_class" prompt="mmx/prplmesh/agents/radios/curr_op_class/curr_op_class&gt; ">
 <!--=======================================================-->
     <COMMAND name="quit"  help="Quit this CLI session">
        <ACTION builtin="clish_close"/>
@@ -70,18 +70,18 @@
 
 <VIEW name="mmx-prplmesh-agents-radios">
 <!--=======================================================-->
-    <COMMAND name="curr_op_class opclasses" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
-        view="mmx-prplmesh-agents-radios-curr_op_class-opclasses">
+    <COMMAND name="curr_op_class curr_op_class" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
+        view="mmx-prplmesh-agents-radios-curr_op_class-curr_op_class">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="curr_op_class opclasses show" help="Show information" >
+    <COMMAND name="curr_op_class curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="curr_op_class opclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="curr_op_class curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
@@ -96,18 +96,18 @@
         view="mmx-prplmesh-agents-radios-curr_op_class">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios curr_op_class opclasses" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
-        view="mmx-prplmesh-agents-radios-curr_op_class-opclasses">
+    <COMMAND name="radios curr_op_class curr_op_class" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
+        view="mmx-prplmesh-agents-radios-curr_op_class-curr_op_class">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios curr_op_class opclasses show" help="Show information" >
+    <COMMAND name="radios curr_op_class curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios curr_op_class opclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="radios curr_op_class curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
@@ -122,18 +122,18 @@
         view="mmx-prplmesh-agents-radios-curr_op_class">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios curr_op_class opclasses" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
-        view="mmx-prplmesh-agents-radios-curr_op_class-opclasses">
+    <COMMAND name="agents radios curr_op_class curr_op_class" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
+        view="mmx-prplmesh-agents-radios-curr_op_class-curr_op_class">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios curr_op_class opclasses show" help="Show information" >
+    <COMMAND name="agents radios curr_op_class curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios curr_op_class opclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="agents radios curr_op_class curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
@@ -148,18 +148,18 @@
         view="mmx-prplmesh-agents-radios-curr_op_class">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios curr_op_class opclasses" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
-        view="mmx-prplmesh-agents-radios-curr_op_class-opclasses">
+    <COMMAND name="prplmesh agents radios curr_op_class curr_op_class" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
+        view="mmx-prplmesh-agents-radios-curr_op_class-curr_op_class">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios curr_op_class opclasses show" help="Show information" >
+    <COMMAND name="prplmesh agents radios curr_op_class curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios curr_op_class opclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="prplmesh agents radios curr_op_class curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
@@ -174,18 +174,18 @@
         view="mmx-prplmesh-agents-radios-curr_op_class">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios curr_op_class opclasses" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
-        view="mmx-prplmesh-agents-radios-curr_op_class-opclasses">
+    <COMMAND name="mmx prplmesh agents radios curr_op_class curr_op_class" help="This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel."
+        view="mmx-prplmesh-agents-radios-curr_op_class-curr_op_class">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios curr_op_class opclasses show" help="Show information" >
+    <COMMAND name="mmx prplmesh agents radios curr_op_class curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios curr_op_class opclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="mmx prplmesh agents radios curr_op_class curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>

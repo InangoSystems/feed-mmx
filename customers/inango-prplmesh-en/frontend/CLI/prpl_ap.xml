@@ -51,7 +51,7 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G Higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -82,7 +82,7 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G Higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -129,9 +129,9 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="KeyPassphrase" help="The passphrase for connecting to the Access Point" ptype="STRING" prefix="KeyPassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="SAEPassphrase" help="The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2." ptype="STRING" prefix="SAEPassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
@@ -188,7 +188,7 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G Higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -219,7 +219,7 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G Higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -282,9 +282,9 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="KeyPassphrase" help="The passphrase for connecting to the Access Point" ptype="STRING" prefix="KeyPassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="SAEPassphrase" help="The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2." ptype="STRING" prefix="SAEPassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
@@ -333,7 +333,7 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G Higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -364,7 +364,7 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G Higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -415,9 +415,9 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="KeyPassphrase" help="The passphrase for connecting to the Access Point" ptype="STRING" prefix="KeyPassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="SAEPassphrase" help="The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2." ptype="STRING" prefix="SAEPassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
@@ -471,7 +471,7 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G Higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -502,7 +502,7 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G Higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -553,9 +553,9 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="KeyPassphrase" help="The passphrase for connecting to the Access Point" ptype="STRING" prefix="KeyPassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="SAEPassphrase" help="The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2." ptype="STRING" prefix="SAEPassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
@@ -609,7 +609,7 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G Higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -640,7 +640,7 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="Band5GH" help="Enable 5G Higher band" ptype="STRING" prefix="Band5GH"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
@@ -691,9 +691,9 @@
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
           <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="KeyPassphrase" help="The passphrase for connecting to the Access Point" ptype="STRING" prefix="KeyPassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="SAEPassphrase" help="The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2." ptype="STRING" prefix="SAEPassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
