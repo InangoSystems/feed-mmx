@@ -2,5 +2,5 @@
   "customer": "prplFoundation",
   "product": "prplMesh",
   "web_name": "prplMesh",
-  "backends": [ "prplmesh_be" ] 
+  "backends": [ "prplmesh_be","device_info_be","mmx_own_be" ] 
 }
