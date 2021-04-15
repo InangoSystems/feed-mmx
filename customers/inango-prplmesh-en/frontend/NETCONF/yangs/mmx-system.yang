@@ -1,0 +1,19 @@
+module mmx-system {
+  namespace "http://inango.com";
+  prefix "mmx";
+  organization "Inango";
+  contact "contact@inango.com";
+  description
+    "This module contains a collection of YANG definitions for the
+            configuration and identification of MMX system";
+  revision 2014-08-06 {
+    description "Initial revision.";
+  }
+  /* Configuration data nodes */
+  container system {
+  }
+  /* Operational state data nodes */
+  container system-state {
+    config false;
+  }
+}

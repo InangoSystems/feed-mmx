@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns ="http://clish.sourceforge.net/XMLSchema"
+          xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation = "http://clish.sourceforge.net/XMLSchema
+                        http://clish.sourceforge.net/XMLSchema/clish.xsd">
+
+
+<VIEW name="mmx-prplmesh-board_settings" prompt="mmx/prplmesh/board_settings&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh">
+    </COMMAND>
+<!--=======================================================-->
+
+    <COMMAND name="mmx_settings" help="MMX Settings"
+        view="mmx-prplmesh-board_settings-mmx_settings">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx_settings show" help="Show information" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.X_Inango_MMXSettings. sectionId=restarts_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx_settings config" help="Configure parameters of the object" >
+          <PARAM name="saveconfig" help="Set true to save the current configuration of the device" ptype="STRING" prefix="saveconfig"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="restoreconfig" help="Set true to restore the saved configuration" ptype="STRING" prefix="restoreconfig"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="refreshdata" help="Set true to refresh all run-time data of the device." ptype="STRING" prefix="refreshdata"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="reboot" help="Set true to start system reboot." ptype="STRING" prefix="reboot"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="factoryreset" help="Set true to start factory reset" ptype="STRING" prefix="factoryreset"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="shutdown" help="Set true to shutdown the device" ptype="STRING" prefix="shutdown"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${saveconfig} ]; then cliParams=$cliParams"SaveConfig = '${saveconfig}',";fi
+            if [ ${restoreconfig} ]; then cliParams=$cliParams"RestoreConfig = '${restoreconfig}',";fi
+            if [ ${refreshdata} ]; then cliParams=$cliParams"RefreshData = '${refreshdata}',";fi
+            if [ ${reboot} ]; then cliParams=$cliParams"Reboot = '${reboot}',";fi
+            if [ ${factoryreset} ]; then cliParams=$cliParams"FactoryReset = '${factoryreset}',";fi
+            if [ ${shutdown} ]; then cliParams=$cliParams"Shutdown = '${shutdown}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.X_Inango_MMXSettings. sectionId=restarts_1 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-board_settings-mmx_settings" prompt="mmx/prplmesh/board_settings/mmx_settings&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-board_settings">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="show" help="Show information" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.X_Inango_MMXSettings. sectionId=restarts_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="config" help="Configure parameters of the object" >
+          <PARAM name="saveconfig" help="Set true to save the current configuration of the device" ptype="STRING" prefix="saveconfig"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="restoreconfig" help="Set true to restore the saved configuration" ptype="STRING" prefix="restoreconfig"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="refreshdata" help="Set true to refresh all run-time data of the device." ptype="STRING" prefix="refreshdata"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="reboot" help="Set true to start system reboot." ptype="STRING" prefix="reboot"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="factoryreset" help="Set true to start factory reset" ptype="STRING" prefix="factoryreset"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="shutdown" help="Set true to shutdown the device" ptype="STRING" prefix="shutdown"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${saveconfig} ]; then cliParams=$cliParams"SaveConfig = '${saveconfig}',";fi
+            if [ ${restoreconfig} ]; then cliParams=$cliParams"RestoreConfig = '${restoreconfig}',";fi
+            if [ ${refreshdata} ]; then cliParams=$cliParams"RefreshData = '${refreshdata}',";fi
+            if [ ${reboot} ]; then cliParams=$cliParams"Reboot = '${reboot}',";fi
+            if [ ${factoryreset} ]; then cliParams=$cliParams"FactoryReset = '${factoryreset}',";fi
+            if [ ${shutdown} ]; then cliParams=$cliParams"Shutdown = '${shutdown}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.X_Inango_MMXSettings. sectionId=restarts_1 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh">
+<!--=======================================================-->
+    <COMMAND name="board_settings mmx_settings" help="MMX Settings"
+        view="mmx-prplmesh-board_settings-mmx_settings">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="board_settings mmx_settings show" help="Show information" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.X_Inango_MMXSettings. sectionId=restarts_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="board_settings mmx_settings config" help="Configure parameters of the object" >
+          <PARAM name="saveconfig" help="Set true to save the current configuration of the device" ptype="STRING" prefix="saveconfig"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="restoreconfig" help="Set true to restore the saved configuration" ptype="STRING" prefix="restoreconfig"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="refreshdata" help="Set true to refresh all run-time data of the device." ptype="STRING" prefix="refreshdata"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="reboot" help="Set true to start system reboot." ptype="STRING" prefix="reboot"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="factoryreset" help="Set true to start factory reset" ptype="STRING" prefix="factoryreset"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="shutdown" help="Set true to shutdown the device" ptype="STRING" prefix="shutdown"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${saveconfig} ]; then cliParams=$cliParams"SaveConfig = '${saveconfig}',";fi
+            if [ ${restoreconfig} ]; then cliParams=$cliParams"RestoreConfig = '${restoreconfig}',";fi
+            if [ ${refreshdata} ]; then cliParams=$cliParams"RefreshData = '${refreshdata}',";fi
+            if [ ${reboot} ]; then cliParams=$cliParams"Reboot = '${reboot}',";fi
+            if [ ${factoryreset} ]; then cliParams=$cliParams"FactoryReset = '${factoryreset}',";fi
+            if [ ${shutdown} ]; then cliParams=$cliParams"Shutdown = '${shutdown}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.X_Inango_MMXSettings. sectionId=restarts_1 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx">
+<!--=======================================================-->
+    <COMMAND name="prplmesh board_settings"
+        help="System reboot/reset/save configs"
+        view="mmx-prplmesh-board_settings">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh board_settings mmx_settings" help="MMX Settings"
+        view="mmx-prplmesh-board_settings-mmx_settings">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh board_settings mmx_settings show" help="Show information" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.X_Inango_MMXSettings. sectionId=restarts_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh board_settings mmx_settings config" help="Configure parameters of the object" >
+          <PARAM name="saveconfig" help="Set true to save the current configuration of the device" ptype="STRING" prefix="saveconfig"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="restoreconfig" help="Set true to restore the saved configuration" ptype="STRING" prefix="restoreconfig"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="refreshdata" help="Set true to refresh all run-time data of the device." ptype="STRING" prefix="refreshdata"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="reboot" help="Set true to start system reboot." ptype="STRING" prefix="reboot"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="factoryreset" help="Set true to start factory reset" ptype="STRING" prefix="factoryreset"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="shutdown" help="Set true to shutdown the device" ptype="STRING" prefix="shutdown"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${saveconfig} ]; then cliParams=$cliParams"SaveConfig = '${saveconfig}',";fi
+            if [ ${restoreconfig} ]; then cliParams=$cliParams"RestoreConfig = '${restoreconfig}',";fi
+            if [ ${refreshdata} ]; then cliParams=$cliParams"RefreshData = '${refreshdata}',";fi
+            if [ ${reboot} ]; then cliParams=$cliParams"Reboot = '${reboot}',";fi
+            if [ ${factoryreset} ]; then cliParams=$cliParams"FactoryReset = '${factoryreset}',";fi
+            if [ ${shutdown} ]; then cliParams=$cliParams"Shutdown = '${shutdown}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.X_Inango_MMXSettings. sectionId=restarts_1 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="root-view">
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh board_settings"
+        help="System reboot/reset/save configs"
+        view="mmx-prplmesh-board_settings">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh board_settings mmx_settings" help="MMX Settings"
+        view="mmx-prplmesh-board_settings-mmx_settings">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh board_settings mmx_settings show" help="Show information" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.X_Inango_MMXSettings. sectionId=restarts_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh board_settings mmx_settings config" help="Configure parameters of the object" >
+          <PARAM name="saveconfig" help="Set true to save the current configuration of the device" ptype="STRING" prefix="saveconfig"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="restoreconfig" help="Set true to restore the saved configuration" ptype="STRING" prefix="restoreconfig"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="refreshdata" help="Set true to refresh all run-time data of the device." ptype="STRING" prefix="refreshdata"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="reboot" help="Set true to start system reboot." ptype="STRING" prefix="reboot"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="factoryreset" help="Set true to start factory reset" ptype="STRING" prefix="factoryreset"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+          <PARAM name="shutdown" help="Set true to shutdown the device" ptype="STRING" prefix="shutdown"/>
+          <PARAM name="" help=" " ptype="STRING" prefix=""/>
+        <ACTION>
+            cliParams=""
+            if [ ${saveconfig} ]; then cliParams=$cliParams"SaveConfig = '${saveconfig}',";fi
+            if [ ${restoreconfig} ]; then cliParams=$cliParams"RestoreConfig = '${restoreconfig}',";fi
+            if [ ${refreshdata} ]; then cliParams=$cliParams"RefreshData = '${refreshdata}',";fi
+            if [ ${reboot} ]; then cliParams=$cliParams"Reboot = '${reboot}',";fi
+            if [ ${factoryreset} ]; then cliParams=$cliParams"FactoryReset = '${factoryreset}',";fi
+            if [ ${shutdown} ]; then cliParams=$cliParams"Shutdown = '${shutdown}',";fi
+            cliParams=$(echo $cliParams | sed 's/,$//')
+            if [ -z "$cliParams" ]; then
+                cliParams = "null"
+                echo "No parameter is specified for set operation"
+            else
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.X_Inango_MMXSettings. sectionId=restarts_1 type=set cliParamsStr="$cliParams"
+            fi
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+</CLISH_MODULE>

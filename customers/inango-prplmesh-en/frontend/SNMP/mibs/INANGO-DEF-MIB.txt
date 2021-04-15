@@ -1,0 +1,24 @@
+INANGO-DEF-MIB DEFINITIONS ::= BEGIN
+IMPORTS
+    MODULE-IDENTITY,
+    enterprises FROM SNMPv2-SMI;          -- RFC 2578
+    inango MODULE-IDENTITY
+    LAST-UPDATED "201910250000Z" -- Oct 25, 2019
+    ORGANIZATION "Inango Systems Ltd"
+    CONTACT-INFO
+        "E-mail: support@inango-systems.com"
+    DESCRIPTION
+        "This MIB module defines the namespaces for the
+        Inango Systems enterprise OID registry.
+        Copyright 2010-2019 Inango Systems Ltd.
+        All rights reserved."
+    REVISION "201910250000Z" -- Oct 25, 2019
+    DESCRIPTION
+        "Initial revision of the file"
+    ::= { enterprises 51069 }
+
+inangoConformance   OBJECT IDENTIFIER ::= { inango 1024 }
+inangoCompliances   OBJECT IDENTIFIER ::= { inango 1025 }
+inangoWifiZ  OBJECT IDENTIFIER ::= { inango 5 }
+inangoOnosDpu  OBJECT IDENTIFIER ::= { inango 6 }
+END
