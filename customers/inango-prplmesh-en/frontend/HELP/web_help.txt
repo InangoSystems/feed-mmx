@@ -1,9 +1,13 @@
 **** WEB Page: "prplMesh" **** (parent page: prplMesh ) ****
-     Child Pages (total number 2):
+     Child Pages (total number 3):
         Agents
         Access Points
-     Sections (total number 1):
-       Sect prplmesh_1: Device.Controller.Network.  Num of WEB params: 5
+        Board settings
+     Sections (total number 2):
+       Sect prplmesh_1: Device.Controller.  Num of WEB params: 1
+          EmptyParameter: 
+
+       Sect prplmesh_2: Device.Controller.Network.  Num of WEB params: 5
           ID: A unique identifier for this particular device within the Wi-Fi network
           NumberOfDevices: The interval between the collection of consecutive measurements of the most frequently updated Data Element from this device (milliseconds).
           ControllerID: The number of radios in this AP.
@@ -25,18 +29,18 @@
      Child Pages (total number 0):
      Sections (total number 2):
        Sect prpl_ap_1: Device.Controller.Network.AccessPoint.{i}.  Num of WEB params: 6
-          SSID: Access Point MAC
+          SSID: Access Point name
           MultiApMode: Mutli-AP mode for Access Point
           Band2_4G: Enable 2.4G band
           Band5GL: Enable 5G Lower band
-          Band5GH: Enable 5G higher band
+          Band5GH: Enable 5G Higher band
           Band6G: Enable 6G band
 
        Sect prpl_ap_2: Device.Controller.Network.AccessPoint.{i}.Security.  Num of WEB params: 4
           ModeEnabled: Security mode (WPA2-Personal or WPA3-Personal)
           PreSharedKey: PreSharedKey
-          KeyPassphrase: Passphrase
-          SAEPassphrase: SAEPassphrase
+          KeyPassphrase: The passphrase for connecting to the Access Point
+          SAEPassphrase: The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2.
 
 **** WEB Page: "Interfaces" **** (parent page: Agents ) ****
      Child Pages (total number 0):
@@ -77,7 +81,7 @@
         Backhaul STA
         Scan Result
      Sections (total number 1):
-       Sect prpl_radios_1: Device.Controller.Network.Device.{i}.Radio.{i}.  Num of WEB params: 11
+       Sect prpl_radios_1: Device.Controller.Network.Device.{i}.Radio.{i}.  Num of WEB params: 9
           ID: Unique ID for this radio
           Enabled: Indicates whether this radio is enabled.
           Noise: An indicator of the average radio noise plus interference power measured for the primary operating channel.
@@ -87,8 +91,6 @@
           ReceiveOther: The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving valid IEEE 802.11 PPDUs that are not associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveOther value is calculated only for the primary channel.
           NumberOfCurrOpClass: The number of current operating classes.
           NumberOfBSS: The number of BSS.
-          NumberOfUnassocSTA: The number of unassociated STA.
-          NumberOfOpClassScan: The number of current operating classes scan.
 
 **** WEB Page: "BSS" **** (parent page: Radios ) ****
      Child Pages (total number 1):
@@ -122,16 +124,44 @@
           TxPower: Nominal transmit power EIRP that this radio is currently using for the current channel in the operating class; represented as 2's complement signed integer in units of decibels relative to 1 mW (dBm).
 
 **** WEB Page: "Capabilities" **** (parent page: Radios ) ****
-     Child Pages (total number 0):
+     Child Pages (total number 2):
+        Operating Classes
+        Non Operable Classes
      Sections (total number 3):
        Sect prpl_capabilities_1: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.  Num of WEB params: 1
           NumberOfOperatingClasses: The number of current operating classes.
 
-       Sect prpl_capabilities_2: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.  Num of WEB params: 2
+       Sect prpl_capabilities_2: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.  Num of WEB params: 5
+          tx_spatial_streams: Number of supported TX spatial streams
+          rx_spatial_streams: Number of supported RX spatial streams
+          HT_40_Mhz: HT support for 40MHz
+          GI_20_MHz: GI support for 20MHz
+          GI_40_MHz: GI support for 40MHz
+
+       Sect prpl_capabilities_3: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.  Num of WEB params: 10
+          VHT_Tx_MCS: Set of VHT MCSs that can be transmitted
+          VHT_Rx_MCS: Set of VHT MCSs that can be received
+          tx_spatial_streams: Number of supported TX spatial streams
+          rx_spatial_streams: Number of supported RX spatial streams
+          GI_80_MHz: GI support for 80MHz
+          GI_160_MHz: GI support for 160 MHz and 80+80 MHz.
+          VHT_80_80_MHz: VHT support for 80+80 MHz
+          VHT_160_MHz: VHT support for 160 MHz
+          SU_beamformer: SU beamformer capable
+          MU_beamformer: MU beamformer capable
+
+**** WEB Page: "Operating Classes" **** (parent page: Capabilities ) ****
+     Child Pages (total number 0):
+     Sections (total number 1):
+       Sect prpl_op_classes_1: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.  Num of WEB params: 3
           Class: Operating class
           MaxTxPower: Maximum transmit power EIRP that this radio is capable of transmitting in the current regulatory domain for the operating class; represented as 2's complement signed integer in units of decibels relative to 1 mW (dBm).
+          NumberOfNonOperChan: The number of current operating classes scan.
 
-       Sect prpl_capabilities_3: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.NonOperable.  Num of WEB params: 1
+**** WEB Page: "Non Operable Classes" **** (parent page: Capabilities ) ****
+     Child Pages (total number 0):
+     Sections (total number 1):
+       Sect prpl_non_op_classes_1: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.  Num of WEB params: 1
           NonOpChannelNumber: The number of non-operable channels
 
 **** WEB Page: "Backhaul STA" **** (parent page: Radios ) ****
@@ -141,24 +171,36 @@
           MACAddress: The MAC address of the logical STA sharing the radio for Wi-Fi backhaul.
 
 **** WEB Page: "Scan Result" **** (parent page: Radios ) ****
-     Child Pages (total number 0):
-     Sections (total number 4):
+     Child Pages (total number 1):
+        Operating Class Scan
+     Sections (total number 1):
        Sect prpl_scan_result_1: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.  Num of WEB params: 2
           NumberOfOpClassScans: 
           TimeStamp: The timestamp of the last scan of the channel.
 
-       Sect prpl_scan_result_2: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.  Num of WEB params: 2
+**** WEB Page: "Operating Class Scan" **** (parent page: Scan Result ) ****
+     Child Pages (total number 2):
+        Channel Scan
+        Neighbors
+     Sections (total number 1):
+       Sect prpl_op_class_scan_1: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.  Num of WEB params: 2
           NumberOfChannelScans: 
           OperatingClass: 
 
-       Sect prpl_scan_result_3: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.  Num of WEB params: 5
+**** WEB Page: "Channel Scan" **** (parent page: Operating Class Scan ) ****
+     Child Pages (total number 0):
+     Sections (total number 1):
+       Sect prpl_channel_scan_1: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.  Num of WEB params: 5
           Channel: The channel number of the channel scanned by the radio given the operating class.
           TimeStamp: The timestamp of the last scan of the channel.
           Utilization: The current channel utilization measured by the radio on the scanned 20 MHz channel
           Noise: An indicator of the average radio noise plus interference power measured on the channel during a channel scan.
-          NumberOfNeighborBSS: 
+          NumberOfNeighbors: 
 
-       Sect prpl_scan_result_4: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.  Num of WEB params: 6
+**** WEB Page: "Neighbors" **** (parent page: Operating Class Scan ) ****
+     Child Pages (total number 0):
+     Sections (total number 1):
+       Sect prpl_neighbors_1: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.  Num of WEB params: 6
           BSSID: The BSSID indicated by the neighboring BSS.
           SSID: The SSID indicated by the neighboring BSS.
           SignalStrength: An indicator of radio signal strength (RSSI) of the Beacon or Probe Response frames of the neighboring BSS as received by the radio measured in dBm.
@@ -191,4 +233,15 @@
           IPV6Address: IPV6 address assigned to the client.
           Hostname: Hostname assigned to the client.
           NumberOfMeasureReports: The number of STAs currently associated to this BSS.
+
+**** WEB Page: "Board settings" **** (parent page: prplMesh ) ****
+     Child Pages (total number 0):
+     Sections (total number 1):
+       Sect restarts_1: Device.X_Inango_MMXSettings.  Num of WEB params: 6
+          Save Configuration: Save existing system configuration.All current configuration data will be saved in order to survive device reboots.
+          Restore Configuration: Restore the previously saved configuration data. All settings applied after the last save operation will be removed. The operation followed by the device reboot.
+          Refresh Data: Update MMX data with the latest dynamically created management object instances.
+          Device Reboot: When set to true allow the device to reboot
+          Factory Reset: When set to true resets the device to its factory default state followed by the device reboot. Should be used with caution.
+          Device Shutdown: Shutdown the device. As a result of shutdown the power is turned off and the device WILL NOT return to in-service automatically. Must be used with caution.
 

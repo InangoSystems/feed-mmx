@@ -16,7 +16,7 @@ prpl_ap_sections_info = {
     },
     {
     ['param_name']="SSID", ['rnd_header']="SSID",
-    ['help']="Access Point MAC",
+    ['help']="Access Point name",
     ['units']=nil,
     ['writable']=true,
     ['rnd_type']="text",
@@ -63,7 +63,7 @@ prpl_ap_sections_info = {
     },
     {
     ['param_name']="Band5GH", ['rnd_header']="Band5GH",
-    ['help']="Enable 5G higher band",
+    ['help']="Enable 5G Higher band",
     ['units']=nil,
     ['writable']=true,
     ['rnd_type']="checkbox",
@@ -122,7 +122,7 @@ prpl_ap_sections_info = {
     },
     {
     ['param_name']="KeyPassphrase", ['rnd_header']="KeyPassphrase",
-    ['help']="Passphrase",
+    ['help']="The passphrase for connecting to the Access Point",
     ['units']=nil,
     ['writable']=true,
     ['rnd_type']="text",
@@ -132,7 +132,7 @@ prpl_ap_sections_info = {
     },
     {
     ['param_name']="SAEPassphrase", ['rnd_header']="SAEPassphrase",
-    ['help']="SAEPassphrase",
+    ['help']="The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2.",
     ['units']=nil,
     ['writable']=true,
     ['rnd_type']="text",

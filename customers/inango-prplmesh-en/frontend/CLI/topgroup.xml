@@ -21,6 +21,38 @@
     </COMMAND>
 <!--=======================================================-->
 
+    <COMMAND name="info" help="Count of the devices"
+        view="mmx-info">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="info show" help="Show information" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device. sectionId=topgroup_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-info" prompt="mmx/info&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="show" help="Show information" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device. sectionId=topgroup_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
 </VIEW>
 
 <VIEW name="root-view">

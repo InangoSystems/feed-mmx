@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns ="http://clish.sourceforge.net/XMLSchema"
+          xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation = "http://clish.sourceforge.net/XMLSchema
+                        http://clish.sourceforge.net/XMLSchema/clish.xsd">
+
+
+<VIEW name="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors" prompt="mmx/prplmesh/agents/radios/scan_result/op_class_scan/neighbors&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-agents-radios-scan_result-op_class_scan">
+    </COMMAND>
+<!--=======================================================-->
+
+    <COMMAND name="neighbss" help="This object describes a neighbor BSS detected by channel scan."
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors-neighbss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="neighbss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_neighbors_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="neighbss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors-neighbss" prompt="mmx/prplmesh/agents/radios/scan_result/op_class_scan/neighbors/neighbss&gt; ">
+<!--=======================================================-->
+    <COMMAND name="quit"  help="Quit this CLI session">
+       <ACTION builtin="clish_close"/>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="top" help="Go back to the main CLI level"
+        view="mmx">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="up"  help="Go back to the previous CLI menu level"
+             view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_neighbors_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents-radios-scan_result-op_class_scan">
+<!--=======================================================-->
+    <COMMAND name="neighbors neighbss" help="This object describes a neighbor BSS detected by channel scan."
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors-neighbss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="neighbors neighbss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_neighbors_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="neighbors neighbss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents-radios-scan_result">
+<!--=======================================================-->
+    <COMMAND name="op_class_scan neighbors"
+        help="Neighbors"
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="op_class_scan neighbors neighbss" help="This object describes a neighbor BSS detected by channel scan."
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors-neighbss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="op_class_scan neighbors neighbss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_neighbors_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="op_class_scan neighbors neighbss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents-radios">
+<!--=======================================================-->
+    <COMMAND name="scan_result op_class_scan neighbors"
+        help="Neighbors"
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="scan_result op_class_scan neighbors neighbss" help="This object describes a neighbor BSS detected by channel scan."
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors-neighbss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="scan_result op_class_scan neighbors neighbss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_neighbors_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="scan_result op_class_scan neighbors neighbss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh-agents">
+<!--=======================================================-->
+    <COMMAND name="radios scan_result op_class_scan neighbors"
+        help="Neighbors"
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="radios scan_result op_class_scan neighbors neighbss" help="This object describes a neighbor BSS detected by channel scan."
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors-neighbss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="radios scan_result op_class_scan neighbors neighbss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_neighbors_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="radios scan_result op_class_scan neighbors neighbss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx-prplmesh">
+<!--=======================================================-->
+    <COMMAND name="agents radios scan_result op_class_scan neighbors"
+        help="Neighbors"
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents radios scan_result op_class_scan neighbors neighbss" help="This object describes a neighbor BSS detected by channel scan."
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors-neighbss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents radios scan_result op_class_scan neighbors neighbss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_neighbors_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="agents radios scan_result op_class_scan neighbors neighbss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="mmx">
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents radios scan_result op_class_scan neighbors"
+        help="Neighbors"
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents radios scan_result op_class_scan neighbors neighbss" help="This object describes a neighbor BSS detected by channel scan."
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors-neighbss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents radios scan_result op_class_scan neighbors neighbss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_neighbors_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="prplmesh agents radios scan_result op_class_scan neighbors neighbss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+<VIEW name="root-view">
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents radios scan_result op_class_scan neighbors"
+        help="Neighbors"
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents radios scan_result op_class_scan neighbors neighbss" help="This object describes a neighbor BSS detected by channel scan."
+        view="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors-neighbss">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents radios scan_result op_class_scan neighbors neighbss show" help="Show information" >
+        <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. sectionId=prpl_neighbors_1 type=get
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="mmx prplmesh agents radios scan_result op_class_scan neighbors neighbss update" help="Update management objects information of the appropriated component" >
+        <ACTION>
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*.ChannelScan.*.NeighborBSS.*. type=update
+        </ACTION>
+    </COMMAND>
+<!--=======================================================-->
+</VIEW>
+
+</CLISH_MODULE>

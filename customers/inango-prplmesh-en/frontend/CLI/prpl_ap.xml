@@ -43,26 +43,26 @@
 <!--=======================================================-->
     <COMMAND name="ap config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
-          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="ssid" help="Access Point name" ptype="STRING" prefix="ssid"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="multiapmode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="multiapmode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="band24g" help="Enable 2.4G band" ptype="STRING" prefix="band24g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="band5gl" help="Enable 5G Lower band" ptype="STRING" prefix="band5gl"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="band5gh" help="Enable 5G Higher band" ptype="STRING" prefix="band5gh"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="band6g" help="Enable 6G band" ptype="STRING" prefix="band6g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
-            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
-            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
-            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
-            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
-            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            if [ ${ssid} ]; then cliParams=$cliParams"SSID = '${ssid}',";fi
+            if [ ${multiapmode} ]; then cliParams=$cliParams"MultiApMode = '${multiapmode}',";fi
+            if [ ${band24g} ]; then cliParams=$cliParams"Band2_4G = '${band24g}',";fi
+            if [ ${band5gl} ]; then cliParams=$cliParams"Band5GL = '${band5gl}',";fi
+            if [ ${band5gh} ]; then cliParams=$cliParams"Band5GH = '${band5gh}',";fi
+            if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 cliParams = "null"
@@ -74,26 +74,26 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="ap add" help="Add a new instance of the object" >
-          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="ssid" help="Access Point name" ptype="STRING" prefix="ssid"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="multiapmode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="multiapmode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="band24g" help="Enable 2.4G band" ptype="STRING" prefix="band24g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="band5gl" help="Enable 5G Lower band" ptype="STRING" prefix="band5gl"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="band5gh" help="Enable 5G Higher band" ptype="STRING" prefix="band5gh"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="band6g" help="Enable 6G band" ptype="STRING" prefix="band6g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
-            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
-            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
-            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
-            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
-            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            if [ ${ssid} ]; then cliParams=$cliParams"SSID = '${ssid}',";fi
+            if [ ${multiapmode} ]; then cliParams=$cliParams"MultiApMode = '${multiapmode}',";fi
+            if [ ${band24g} ]; then cliParams=$cliParams"Band2_4G = '${band24g}',";fi
+            if [ ${band5gl} ]; then cliParams=$cliParams"Band5GL = '${band5gl}',";fi
+            if [ ${band5gh} ]; then cliParams=$cliParams"Band5GH = '${band5gh}',";fi
+            if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
@@ -125,20 +125,20 @@
 <!--=======================================================-->
     <COMMAND name="security config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
-          <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
+          <PARAM name="modeenabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="modeenabled"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
+          <PARAM name="psk" help="PreSharedKey" ptype="STRING" prefix="psk"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="keypassphrase" help="The passphrase for connecting to the Access Point" ptype="STRING" prefix="keypassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="saepassphrase" help="The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2." ptype="STRING" prefix="saepassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${ModeEnabled} ]; then cliParams=$cliParams"ModeEnabled = '${ModeEnabled}',";fi
-            if [ ${PreSharedKey} ]; then cliParams=$cliParams"PreSharedKey = '${PreSharedKey}',";fi
-            if [ ${KeyPassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${KeyPassphrase}',";fi
-            if [ ${SAEPassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${SAEPassphrase}',";fi
+            if [ ${modeenabled} ]; then cliParams=$cliParams"ModeEnabled = '${modeenabled}',";fi
+            if [ ${psk} ]; then cliParams=$cliParams"PreSharedKey = '${psk}',";fi
+            if [ ${keypassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${keypassphrase}',";fi
+            if [ ${saepassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${saepassphrase}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 cliParams = "null"
@@ -180,26 +180,26 @@
 <!--=======================================================-->
     <COMMAND name="config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
-          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="ssid" help="Access Point name" ptype="STRING" prefix="ssid"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="multiapmode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="multiapmode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="band24g" help="Enable 2.4G band" ptype="STRING" prefix="band24g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="band5gl" help="Enable 5G Lower band" ptype="STRING" prefix="band5gl"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="band5gh" help="Enable 5G Higher band" ptype="STRING" prefix="band5gh"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="band6g" help="Enable 6G band" ptype="STRING" prefix="band6g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
-            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
-            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
-            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
-            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
-            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            if [ ${ssid} ]; then cliParams=$cliParams"SSID = '${ssid}',";fi
+            if [ ${multiapmode} ]; then cliParams=$cliParams"MultiApMode = '${multiapmode}',";fi
+            if [ ${band24g} ]; then cliParams=$cliParams"Band2_4G = '${band24g}',";fi
+            if [ ${band5gl} ]; then cliParams=$cliParams"Band5GL = '${band5gl}',";fi
+            if [ ${band5gh} ]; then cliParams=$cliParams"Band5GH = '${band5gh}',";fi
+            if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 cliParams = "null"
@@ -211,26 +211,26 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="add" help="Add a new instance of the object" >
-          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="ssid" help="Access Point name" ptype="STRING" prefix="ssid"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="multiapmode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="multiapmode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="band24g" help="Enable 2.4G band" ptype="STRING" prefix="band24g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="band5gl" help="Enable 5G Lower band" ptype="STRING" prefix="band5gl"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="band5gh" help="Enable 5G Higher band" ptype="STRING" prefix="band5gh"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="band6g" help="Enable 6G band" ptype="STRING" prefix="band6g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
-            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
-            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
-            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
-            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
-            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            if [ ${ssid} ]; then cliParams=$cliParams"SSID = '${ssid}',";fi
+            if [ ${multiapmode} ]; then cliParams=$cliParams"MultiApMode = '${multiapmode}',";fi
+            if [ ${band24g} ]; then cliParams=$cliParams"Band2_4G = '${band24g}',";fi
+            if [ ${band5gl} ]; then cliParams=$cliParams"Band5GL = '${band5gl}',";fi
+            if [ ${band5gh} ]; then cliParams=$cliParams"Band5GH = '${band5gh}',";fi
+            if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
@@ -278,20 +278,20 @@
 <!--=======================================================-->
     <COMMAND name="config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
-          <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
+          <PARAM name="modeenabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="modeenabled"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
+          <PARAM name="psk" help="PreSharedKey" ptype="STRING" prefix="psk"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="keypassphrase" help="The passphrase for connecting to the Access Point" ptype="STRING" prefix="keypassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="saepassphrase" help="The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2." ptype="STRING" prefix="saepassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${ModeEnabled} ]; then cliParams=$cliParams"ModeEnabled = '${ModeEnabled}',";fi
-            if [ ${PreSharedKey} ]; then cliParams=$cliParams"PreSharedKey = '${PreSharedKey}',";fi
-            if [ ${KeyPassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${KeyPassphrase}',";fi
-            if [ ${SAEPassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${SAEPassphrase}',";fi
+            if [ ${modeenabled} ]; then cliParams=$cliParams"ModeEnabled = '${modeenabled}',";fi
+            if [ ${psk} ]; then cliParams=$cliParams"PreSharedKey = '${psk}',";fi
+            if [ ${keypassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${keypassphrase}',";fi
+            if [ ${saepassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${saepassphrase}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 cliParams = "null"
@@ -325,26 +325,26 @@
 <!--=======================================================-->
     <COMMAND name="accesspoints ap config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
-          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="ssid" help="Access Point name" ptype="STRING" prefix="ssid"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="multiapmode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="multiapmode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="band24g" help="Enable 2.4G band" ptype="STRING" prefix="band24g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="band5gl" help="Enable 5G Lower band" ptype="STRING" prefix="band5gl"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="band5gh" help="Enable 5G Higher band" ptype="STRING" prefix="band5gh"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="band6g" help="Enable 6G band" ptype="STRING" prefix="band6g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
-            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
-            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
-            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
-            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
-            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            if [ ${ssid} ]; then cliParams=$cliParams"SSID = '${ssid}',";fi
+            if [ ${multiapmode} ]; then cliParams=$cliParams"MultiApMode = '${multiapmode}',";fi
+            if [ ${band24g} ]; then cliParams=$cliParams"Band2_4G = '${band24g}',";fi
+            if [ ${band5gl} ]; then cliParams=$cliParams"Band5GL = '${band5gl}',";fi
+            if [ ${band5gh} ]; then cliParams=$cliParams"Band5GH = '${band5gh}',";fi
+            if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 cliParams = "null"
@@ -356,26 +356,26 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="accesspoints ap add" help="Add a new instance of the object" >
-          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="ssid" help="Access Point name" ptype="STRING" prefix="ssid"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="multiapmode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="multiapmode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="band24g" help="Enable 2.4G band" ptype="STRING" prefix="band24g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="band5gl" help="Enable 5G Lower band" ptype="STRING" prefix="band5gl"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="band5gh" help="Enable 5G Higher band" ptype="STRING" prefix="band5gh"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="band6g" help="Enable 6G band" ptype="STRING" prefix="band6g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
-            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
-            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
-            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
-            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
-            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            if [ ${ssid} ]; then cliParams=$cliParams"SSID = '${ssid}',";fi
+            if [ ${multiapmode} ]; then cliParams=$cliParams"MultiApMode = '${multiapmode}',";fi
+            if [ ${band24g} ]; then cliParams=$cliParams"Band2_4G = '${band24g}',";fi
+            if [ ${band5gl} ]; then cliParams=$cliParams"Band5GL = '${band5gl}',";fi
+            if [ ${band5gh} ]; then cliParams=$cliParams"Band5GH = '${band5gh}',";fi
+            if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
@@ -411,20 +411,20 @@
 <!--=======================================================-->
     <COMMAND name="accesspoints security config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
-          <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
+          <PARAM name="modeenabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="modeenabled"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
+          <PARAM name="psk" help="PreSharedKey" ptype="STRING" prefix="psk"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="keypassphrase" help="The passphrase for connecting to the Access Point" ptype="STRING" prefix="keypassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="saepassphrase" help="The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2." ptype="STRING" prefix="saepassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${ModeEnabled} ]; then cliParams=$cliParams"ModeEnabled = '${ModeEnabled}',";fi
-            if [ ${PreSharedKey} ]; then cliParams=$cliParams"PreSharedKey = '${PreSharedKey}',";fi
-            if [ ${KeyPassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${KeyPassphrase}',";fi
-            if [ ${SAEPassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${SAEPassphrase}',";fi
+            if [ ${modeenabled} ]; then cliParams=$cliParams"ModeEnabled = '${modeenabled}',";fi
+            if [ ${psk} ]; then cliParams=$cliParams"PreSharedKey = '${psk}',";fi
+            if [ ${keypassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${keypassphrase}',";fi
+            if [ ${saepassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${saepassphrase}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 cliParams = "null"
@@ -463,26 +463,26 @@
 <!--=======================================================-->
     <COMMAND name="prplmesh accesspoints ap config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
-          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="ssid" help="Access Point name" ptype="STRING" prefix="ssid"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="multiapmode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="multiapmode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="band24g" help="Enable 2.4G band" ptype="STRING" prefix="band24g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="band5gl" help="Enable 5G Lower band" ptype="STRING" prefix="band5gl"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="band5gh" help="Enable 5G Higher band" ptype="STRING" prefix="band5gh"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="band6g" help="Enable 6G band" ptype="STRING" prefix="band6g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
-            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
-            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
-            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
-            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
-            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            if [ ${ssid} ]; then cliParams=$cliParams"SSID = '${ssid}',";fi
+            if [ ${multiapmode} ]; then cliParams=$cliParams"MultiApMode = '${multiapmode}',";fi
+            if [ ${band24g} ]; then cliParams=$cliParams"Band2_4G = '${band24g}',";fi
+            if [ ${band5gl} ]; then cliParams=$cliParams"Band5GL = '${band5gl}',";fi
+            if [ ${band5gh} ]; then cliParams=$cliParams"Band5GH = '${band5gh}',";fi
+            if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 cliParams = "null"
@@ -494,26 +494,26 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="prplmesh accesspoints ap add" help="Add a new instance of the object" >
-          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="ssid" help="Access Point name" ptype="STRING" prefix="ssid"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="multiapmode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="multiapmode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="band24g" help="Enable 2.4G band" ptype="STRING" prefix="band24g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="band5gl" help="Enable 5G Lower band" ptype="STRING" prefix="band5gl"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="band5gh" help="Enable 5G Higher band" ptype="STRING" prefix="band5gh"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="band6g" help="Enable 6G band" ptype="STRING" prefix="band6g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
-            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
-            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
-            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
-            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
-            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            if [ ${ssid} ]; then cliParams=$cliParams"SSID = '${ssid}',";fi
+            if [ ${multiapmode} ]; then cliParams=$cliParams"MultiApMode = '${multiapmode}',";fi
+            if [ ${band24g} ]; then cliParams=$cliParams"Band2_4G = '${band24g}',";fi
+            if [ ${band5gl} ]; then cliParams=$cliParams"Band5GL = '${band5gl}',";fi
+            if [ ${band5gh} ]; then cliParams=$cliParams"Band5GH = '${band5gh}',";fi
+            if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
@@ -549,20 +549,20 @@
 <!--=======================================================-->
     <COMMAND name="prplmesh accesspoints security config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
-          <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
+          <PARAM name="modeenabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="modeenabled"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
+          <PARAM name="psk" help="PreSharedKey" ptype="STRING" prefix="psk"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="keypassphrase" help="The passphrase for connecting to the Access Point" ptype="STRING" prefix="keypassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="saepassphrase" help="The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2." ptype="STRING" prefix="saepassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${ModeEnabled} ]; then cliParams=$cliParams"ModeEnabled = '${ModeEnabled}',";fi
-            if [ ${PreSharedKey} ]; then cliParams=$cliParams"PreSharedKey = '${PreSharedKey}',";fi
-            if [ ${KeyPassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${KeyPassphrase}',";fi
-            if [ ${SAEPassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${SAEPassphrase}',";fi
+            if [ ${modeenabled} ]; then cliParams=$cliParams"ModeEnabled = '${modeenabled}',";fi
+            if [ ${psk} ]; then cliParams=$cliParams"PreSharedKey = '${psk}',";fi
+            if [ ${keypassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${keypassphrase}',";fi
+            if [ ${saepassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${saepassphrase}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 cliParams = "null"
@@ -601,26 +601,26 @@
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh accesspoints ap config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
-          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="ssid" help="Access Point name" ptype="STRING" prefix="ssid"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="multiapmode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="multiapmode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="band24g" help="Enable 2.4G band" ptype="STRING" prefix="band24g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="band5gl" help="Enable 5G Lower band" ptype="STRING" prefix="band5gl"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="band5gh" help="Enable 5G Higher band" ptype="STRING" prefix="band5gh"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="band6g" help="Enable 6G band" ptype="STRING" prefix="band6g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
-            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
-            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
-            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
-            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
-            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            if [ ${ssid} ]; then cliParams=$cliParams"SSID = '${ssid}',";fi
+            if [ ${multiapmode} ]; then cliParams=$cliParams"MultiApMode = '${multiapmode}',";fi
+            if [ ${band24g} ]; then cliParams=$cliParams"Band2_4G = '${band24g}',";fi
+            if [ ${band5gl} ]; then cliParams=$cliParams"Band5GL = '${band5gl}',";fi
+            if [ ${band5gh} ]; then cliParams=$cliParams"Band5GH = '${band5gh}',";fi
+            if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 cliParams = "null"
@@ -632,26 +632,26 @@
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh accesspoints ap add" help="Add a new instance of the object" >
-          <PARAM name="SSID" help="Access Point MAC" ptype="STRING" prefix="SSID"/>
+          <PARAM name="ssid" help="Access Point name" ptype="STRING" prefix="ssid"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="MultiApMode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="MultiApMode"/>
+          <PARAM name="multiapmode" help="Mutli-AP mode for Access Point" ptype="STRING" prefix="multiapmode"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band2_4G" help="Enable 2.4G band" ptype="STRING" prefix="Band2_4G"/>
+          <PARAM name="band24g" help="Enable 2.4G band" ptype="STRING" prefix="band24g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GL" help="Enable 5G Lower band" ptype="STRING" prefix="Band5GL"/>
+          <PARAM name="band5gl" help="Enable 5G Lower band" ptype="STRING" prefix="band5gl"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band5GH" help="Enable 5G higher band" ptype="STRING" prefix="Band5GH"/>
+          <PARAM name="band5gh" help="Enable 5G Higher band" ptype="STRING" prefix="band5gh"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="Band6G" help="Enable 6G band" ptype="STRING" prefix="Band6G"/>
+          <PARAM name="band6g" help="Enable 6G band" ptype="STRING" prefix="band6g"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${SSID} ]; then cliParams=$cliParams"SSID = '${SSID}',";fi
-            if [ ${MultiApMode} ]; then cliParams=$cliParams"MultiApMode = '${MultiApMode}',";fi
-            if [ ${Band2_4G} ]; then cliParams=$cliParams"Band2_4G = '${Band2_4G}',";fi
-            if [ ${Band5GL} ]; then cliParams=$cliParams"Band5GL = '${Band5GL}',";fi
-            if [ ${Band5GH} ]; then cliParams=$cliParams"Band5GH = '${Band5GH}',";fi
-            if [ ${Band6G} ]; then cliParams=$cliParams"Band6G = '${Band6G}',";fi
+            if [ ${ssid} ]; then cliParams=$cliParams"SSID = '${ssid}',";fi
+            if [ ${multiapmode} ]; then cliParams=$cliParams"MultiApMode = '${multiapmode}',";fi
+            if [ ${band24g} ]; then cliParams=$cliParams"Band2_4G = '${band24g}',";fi
+            if [ ${band5gl} ]; then cliParams=$cliParams"Band5GL = '${band5gl}',";fi
+            if [ ${band5gh} ]; then cliParams=$cliParams"Band5GH = '${band5gh}',";fi
+            if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
@@ -687,20 +687,20 @@
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh accesspoints security config" help="Configure parameters of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
-          <PARAM name="ModeEnabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="ModeEnabled"/>
+          <PARAM name="modeenabled" help="Security mode (WPA2-Personal or WPA3-Personal)" ptype="STRING" prefix="modeenabled"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="PreSharedKey" help="PreSharedKey" ptype="STRING" prefix="PreSharedKey"/>
+          <PARAM name="psk" help="PreSharedKey" ptype="STRING" prefix="psk"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="KeyPassphrase" help="Passphrase" ptype="STRING" prefix="KeyPassphrase"/>
+          <PARAM name="keypassphrase" help="The passphrase for connecting to the Access Point" ptype="STRING" prefix="keypassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
-          <PARAM name="SAEPassphrase" help="SAEPassphrase" ptype="STRING" prefix="SAEPassphrase"/>
+          <PARAM name="saepassphrase" help="The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2." ptype="STRING" prefix="saepassphrase"/>
           <PARAM name="" help=" " ptype="STRING" prefix=""/>
         <ACTION>
             cliParams=""
-            if [ ${ModeEnabled} ]; then cliParams=$cliParams"ModeEnabled = '${ModeEnabled}',";fi
-            if [ ${PreSharedKey} ]; then cliParams=$cliParams"PreSharedKey = '${PreSharedKey}',";fi
-            if [ ${KeyPassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${KeyPassphrase}',";fi
-            if [ ${SAEPassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${SAEPassphrase}',";fi
+            if [ ${modeenabled} ]; then cliParams=$cliParams"ModeEnabled = '${modeenabled}',";fi
+            if [ ${psk} ]; then cliParams=$cliParams"PreSharedKey = '${psk}',";fi
+            if [ ${keypassphrase} ]; then cliParams=$cliParams"KeyPassphrase = '${keypassphrase}',";fi
+            if [ ${saepassphrase} ]; then cliParams=$cliParams"SAEPassphrase = '${saepassphrase}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
                 cliParams = "null"

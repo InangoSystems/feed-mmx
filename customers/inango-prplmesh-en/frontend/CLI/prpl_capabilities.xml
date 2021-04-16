@@ -19,61 +19,71 @@
              view="mmx-prplmesh-agents-radios">
     </COMMAND>
 <!--=======================================================-->
+    <COMMAND name="op_classes"
+             help = "Operating Classes"
+             view="mmx-prplmesh-agents-radios-capabilities-op_classes">
+    </COMMAND>
+<!--=======================================================-->
+    <COMMAND name="non_op_classes"
+             help = "Non Operable Classes"
+             view="mmx-prplmesh-agents-radios-capabilities-non_op_classes">
+    </COMMAND>
+<!--=======================================================-->
 
-    <COMMAND name="cap" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
-        view="mmx-prplmesh-agents-radios-capabilities-cap">
+    <COMMAND name="capabilities" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
+        view="mmx-prplmesh-agents-radios-capabilities-capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="capopclasses" help="Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio."
-        view="mmx-prplmesh-agents-radios-capabilities-capopclasses">
+    <COMMAND name="ht_capabilities" help="Describes the HT capabilities of the radio as defined by the HT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-ht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="notoper" help="List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.)."
-        view="mmx-prplmesh-agents-radios-capabilities-notoper">
+    <COMMAND name="vht_capabilities" help="Describes the VHT capabilities of the radio as defined by the VHT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-vht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="cap show" help="Show information" >
+    <COMMAND name="capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities. sectionId=prpl_capabilities_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="cap update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="capopclasses show" help="Show information" >
+    <COMMAND name="ht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_capabilities_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.HTCapabilities. sectionId=prpl_capabilities_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="capopclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="ht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.HTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="notoper show" help="Show information" >
+    <COMMAND name="vht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_capabilities_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.VHTCapabilities. sectionId=prpl_capabilities_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="notoper update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="vht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.VHTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
 </VIEW>
 
-<VIEW name="mmx-prplmesh-agents-radios-capabilities-cap" prompt="mmx/prplmesh/agents/radios/capabilities/cap&gt; ">
+<VIEW name="mmx-prplmesh-agents-radios-capabilities-capabilities" prompt="mmx/prplmesh/agents/radios/capabilities/capabilities&gt; ">
 <!--=======================================================-->
     <COMMAND name="quit"  help="Quit this CLI session">
        <ACTION builtin="clish_close"/>
@@ -102,7 +112,7 @@
 <!--=======================================================-->
 </VIEW>
 
-<VIEW name="mmx-prplmesh-agents-radios-capabilities-capopclasses" prompt="mmx/prplmesh/agents/radios/capabilities/capopclasses&gt; ">
+<VIEW name="mmx-prplmesh-agents-radios-capabilities-ht_capabilities" prompt="mmx/prplmesh/agents/radios/capabilities/ht_capabilities&gt; ">
 <!--=======================================================-->
     <COMMAND name="quit"  help="Quit this CLI session">
        <ACTION builtin="clish_close"/>
@@ -119,19 +129,19 @@
     <COMMAND name="show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_capabilities_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.HTCapabilities. sectionId=prpl_capabilities_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.HTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
 </VIEW>
 
-<VIEW name="mmx-prplmesh-agents-radios-capabilities-notoper" prompt="mmx/prplmesh/agents/radios/capabilities/notoper&gt; ">
+<VIEW name="mmx-prplmesh-agents-radios-capabilities-vht_capabilities" prompt="mmx/prplmesh/agents/radios/capabilities/vht_capabilities&gt; ">
 <!--=======================================================-->
     <COMMAND name="quit"  help="Quit this CLI session">
        <ACTION builtin="clish_close"/>
@@ -148,13 +158,13 @@
     <COMMAND name="show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_capabilities_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.VHTCapabilities. sectionId=prpl_capabilities_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.VHTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -162,54 +172,54 @@
 
 <VIEW name="mmx-prplmesh-agents-radios">
 <!--=======================================================-->
-    <COMMAND name="capabilities cap" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
-        view="mmx-prplmesh-agents-radios-capabilities-cap">
+    <COMMAND name="capabilities capabilities" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
+        view="mmx-prplmesh-agents-radios-capabilities-capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="capabilities cap show" help="Show information" >
+    <COMMAND name="capabilities capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities. sectionId=prpl_capabilities_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="capabilities cap update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="capabilities capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="capabilities capopclasses" help="Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio."
-        view="mmx-prplmesh-agents-radios-capabilities-capopclasses">
+    <COMMAND name="capabilities ht_capabilities" help="Describes the HT capabilities of the radio as defined by the HT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-ht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="capabilities capopclasses show" help="Show information" >
+    <COMMAND name="capabilities ht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_capabilities_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.HTCapabilities. sectionId=prpl_capabilities_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="capabilities capopclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="capabilities ht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.HTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="capabilities notoper" help="List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.)."
-        view="mmx-prplmesh-agents-radios-capabilities-notoper">
+    <COMMAND name="capabilities vht_capabilities" help="Describes the VHT capabilities of the radio as defined by the VHT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-vht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="capabilities notoper show" help="Show information" >
+    <COMMAND name="capabilities vht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_capabilities_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.VHTCapabilities. sectionId=prpl_capabilities_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="capabilities notoper update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="capabilities vht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.VHTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -222,54 +232,54 @@
         view="mmx-prplmesh-agents-radios-capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios capabilities cap" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
-        view="mmx-prplmesh-agents-radios-capabilities-cap">
+    <COMMAND name="radios capabilities capabilities" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
+        view="mmx-prplmesh-agents-radios-capabilities-capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios capabilities cap show" help="Show information" >
+    <COMMAND name="radios capabilities capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities. sectionId=prpl_capabilities_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios capabilities cap update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="radios capabilities capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios capabilities capopclasses" help="Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio."
-        view="mmx-prplmesh-agents-radios-capabilities-capopclasses">
+    <COMMAND name="radios capabilities ht_capabilities" help="Describes the HT capabilities of the radio as defined by the HT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-ht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios capabilities capopclasses show" help="Show information" >
+    <COMMAND name="radios capabilities ht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_capabilities_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.HTCapabilities. sectionId=prpl_capabilities_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios capabilities capopclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="radios capabilities ht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.HTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios capabilities notoper" help="List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.)."
-        view="mmx-prplmesh-agents-radios-capabilities-notoper">
+    <COMMAND name="radios capabilities vht_capabilities" help="Describes the VHT capabilities of the radio as defined by the VHT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-vht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios capabilities notoper show" help="Show information" >
+    <COMMAND name="radios capabilities vht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_capabilities_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.VHTCapabilities. sectionId=prpl_capabilities_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="radios capabilities notoper update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="radios capabilities vht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.VHTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -282,54 +292,54 @@
         view="mmx-prplmesh-agents-radios-capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios capabilities cap" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
-        view="mmx-prplmesh-agents-radios-capabilities-cap">
+    <COMMAND name="agents radios capabilities capabilities" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
+        view="mmx-prplmesh-agents-radios-capabilities-capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios capabilities cap show" help="Show information" >
+    <COMMAND name="agents radios capabilities capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities. sectionId=prpl_capabilities_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios capabilities cap update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="agents radios capabilities capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios capabilities capopclasses" help="Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio."
-        view="mmx-prplmesh-agents-radios-capabilities-capopclasses">
+    <COMMAND name="agents radios capabilities ht_capabilities" help="Describes the HT capabilities of the radio as defined by the HT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-ht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios capabilities capopclasses show" help="Show information" >
+    <COMMAND name="agents radios capabilities ht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_capabilities_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.HTCapabilities. sectionId=prpl_capabilities_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios capabilities capopclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="agents radios capabilities ht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.HTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios capabilities notoper" help="List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.)."
-        view="mmx-prplmesh-agents-radios-capabilities-notoper">
+    <COMMAND name="agents radios capabilities vht_capabilities" help="Describes the VHT capabilities of the radio as defined by the VHT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-vht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios capabilities notoper show" help="Show information" >
+    <COMMAND name="agents radios capabilities vht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_capabilities_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.VHTCapabilities. sectionId=prpl_capabilities_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="agents radios capabilities notoper update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="agents radios capabilities vht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.VHTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -342,54 +352,54 @@
         view="mmx-prplmesh-agents-radios-capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios capabilities cap" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
-        view="mmx-prplmesh-agents-radios-capabilities-cap">
+    <COMMAND name="prplmesh agents radios capabilities capabilities" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
+        view="mmx-prplmesh-agents-radios-capabilities-capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios capabilities cap show" help="Show information" >
+    <COMMAND name="prplmesh agents radios capabilities capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities. sectionId=prpl_capabilities_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios capabilities cap update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="prplmesh agents radios capabilities capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios capabilities capopclasses" help="Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio."
-        view="mmx-prplmesh-agents-radios-capabilities-capopclasses">
+    <COMMAND name="prplmesh agents radios capabilities ht_capabilities" help="Describes the HT capabilities of the radio as defined by the HT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-ht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios capabilities capopclasses show" help="Show information" >
+    <COMMAND name="prplmesh agents radios capabilities ht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_capabilities_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.HTCapabilities. sectionId=prpl_capabilities_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios capabilities capopclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="prplmesh agents radios capabilities ht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.HTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios capabilities notoper" help="List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.)."
-        view="mmx-prplmesh-agents-radios-capabilities-notoper">
+    <COMMAND name="prplmesh agents radios capabilities vht_capabilities" help="Describes the VHT capabilities of the radio as defined by the VHT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-vht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios capabilities notoper show" help="Show information" >
+    <COMMAND name="prplmesh agents radios capabilities vht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_capabilities_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.VHTCapabilities. sectionId=prpl_capabilities_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="prplmesh agents radios capabilities notoper update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="prplmesh agents radios capabilities vht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.VHTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -402,54 +412,54 @@
         view="mmx-prplmesh-agents-radios-capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios capabilities cap" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
-        view="mmx-prplmesh-agents-radios-capabilities-cap">
+    <COMMAND name="mmx prplmesh agents radios capabilities capabilities" help="This object describes the capabilities of the radio which may be different from the current operational configuration."
+        view="mmx-prplmesh-agents-radios-capabilities-capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios capabilities cap show" help="Show information" >
+    <COMMAND name="mmx prplmesh agents radios capabilities capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities. sectionId=prpl_capabilities_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios capabilities cap update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="mmx prplmesh agents radios capabilities capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios capabilities capopclasses" help="Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio."
-        view="mmx-prplmesh-agents-radios-capabilities-capopclasses">
+    <COMMAND name="mmx prplmesh agents radios capabilities ht_capabilities" help="Describes the HT capabilities of the radio as defined by the HT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-ht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios capabilities capopclasses show" help="Show information" >
+    <COMMAND name="mmx prplmesh agents radios capabilities ht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*. sectionId=prpl_capabilities_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.HTCapabilities. sectionId=prpl_capabilities_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios capabilities capopclasses update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="mmx prplmesh agents radios capabilities ht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.HTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios capabilities notoper" help="List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.)."
-        view="mmx-prplmesh-agents-radios-capabilities-notoper">
+    <COMMAND name="mmx prplmesh agents radios capabilities vht_capabilities" help="Describes the VHT capabilities of the radio as defined by the VHT Capabilities TLV"
+        view="mmx-prplmesh-agents-radios-capabilities-vht_capabilities">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios capabilities notoper show" help="Show information" >
+    <COMMAND name="mmx prplmesh agents radios capabilities vht_capabilities show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.OperatingClass.*.NonOperable. sectionId=prpl_capabilities_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.Capabilities.VHTCapabilities. sectionId=prpl_capabilities_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh agents radios capabilities notoper update" help="Update management objects information of the appropriated component" >
+    <COMMAND name="mmx prplmesh agents radios capabilities vht_capabilities update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.OperatingClass.*.NonOperable. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.Capabilities.VHTCapabilities. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->

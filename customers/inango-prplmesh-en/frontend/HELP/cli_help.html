@@ -50,18 +50,32 @@ div.cmd { font-family: monospace; font-size: 14px; font-weight: bold; padding-to
 <span class="group">curr_op_class</span> <span class="help">Current Operating Classes</span>
 <ul>
 <li>
-<span class="group">opclasses</span> <a href="#mmx-prplmesh-agents-radios-curr_op_class-opclasses">more</a> <span class="help">This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel.</span></li>
+<span class="group">curr_op_class</span> <a href="#mmx-prplmesh-agents-radios-curr_op_class-curr_op_class">more</a> <span class="help">This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel.</span></li>
 </ul>
 </li>
 <li>
 <span class="group">capabilities</span> <span class="help">Capabilities</span>
 <ul>
 <li>
-<span class="group">cap</span> <a href="#mmx-prplmesh-agents-radios-capabilities-cap">more</a> <span class="help">This object describes the capabilities of the radio which may be different from the current operational configuration.</span></li>
+<span class="group">op_classes</span> <span class="help">Operating Classes</span>
+<ul>
 <li>
-<span class="group">capopclasses</span> <a href="#mmx-prplmesh-agents-radios-capabilities-capopclasses">more</a> <span class="help">Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio.</span></li>
+<span class="group">op_classes</span> <a href="#mmx-prplmesh-agents-radios-capabilities-op_classes-op_classes">more</a> <span class="help">Describes the list of all operating classes supported by the radio.</span></li>
+</ul>
+</li>
 <li>
-<span class="group">notoper</span> <a href="#mmx-prplmesh-agents-radios-capabilities-notoper">more</a> <span class="help">List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.).</span></li>
+<span class="group">non_op_classes</span> <span class="help">Non Operable Classes</span>
+<ul>
+<li>
+<span class="group">non_op_classes</span> <a href="#mmx-prplmesh-agents-radios-capabilities-non_op_classes-non_op_classes">more</a> <span class="help">List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.).</span></li>
+</ul>
+</li>
+<li>
+<span class="group">capabilities</span> <a href="#mmx-prplmesh-agents-radios-capabilities-capabilities">more</a> <span class="help">This object describes the capabilities of the radio which may be different from the current operational configuration.</span></li>
+<li>
+<span class="group">ht_capabilities</span> <a href="#mmx-prplmesh-agents-radios-capabilities-ht_capabilities">more</a> <span class="help">Describes the HT capabilities of the radio as defined by the HT Capabilities TLV</span></li>
+<li>
+<span class="group">vht_capabilities</span> <a href="#mmx-prplmesh-agents-radios-capabilities-vht_capabilities">more</a> <span class="help">Describes the VHT capabilities of the radio as defined by the VHT Capabilities TLV</span></li>
 </ul>
 </li>
 <li>
@@ -75,13 +89,28 @@ div.cmd { font-family: monospace; font-size: 14px; font-weight: bold; padding-to
 <span class="group">scan_result</span> <span class="help">Scan Result</span>
 <ul>
 <li>
+<span class="group">op_class_scan</span> <span class="help">Operating Class Scan</span>
+<ul>
+<li>
+<span class="group">channel_scan</span> <span class="help">Channel Scan</span>
+<ul>
+<li>
+<span class="group">chanscan</span> <a href="#mmx-prplmesh-agents-radios-scan_result-op_class_scan-channel_scan-chanscan">more</a> <span class="help">Radio Scab Result</span></li>
+</ul>
+</li>
+<li>
+<span class="group">neighbors</span> <span class="help">Neighbors</span>
+<ul>
+<li>
+<span class="group">neighbss</span> <a href="#mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors-neighbss">more</a> <span class="help">This object describes a neighbor BSS detected by channel scan.</span></li>
+</ul>
+</li>
+<li>
+<span class="group">scanresopclassscan</span> <a href="#mmx-prplmesh-agents-radios-scan_result-op_class_scan-scanresopclassscan">more</a> <span class="help">Radio Scab Result</span></li>
+</ul>
+</li>
+<li>
 <span class="group">scanres</span> <a href="#mmx-prplmesh-agents-radios-scan_result-scanres">more</a> <span class="help">The results of the latest scan for neighboring BSS by the radio.</span></li>
-<li>
-<span class="group">scanresopclassscan</span> <a href="#mmx-prplmesh-agents-radios-scan_result-scanresopclassscan">more</a> <span class="help">Radio Scab Result</span></li>
-<li>
-<span class="group">chanscan</span> <a href="#mmx-prplmesh-agents-radios-scan_result-chanscan">more</a> <span class="help">Radio Scab Result</span></li>
-<li>
-<span class="group">neighbss</span> <a href="#mmx-prplmesh-agents-radios-scan_result-neighbss">more</a> <span class="help">This object describes a neighbor BSS detected by channel scan.</span></li>
 </ul>
 </li>
 <li>
@@ -102,10 +131,35 @@ div.cmd { font-family: monospace; font-size: 14px; font-weight: bold; padding-to
 </ul>
 </li>
 <li>
+<span class="group">board_settings</span> <span class="help">System reboot/reset/save configs</span>
+<ul>
+<li>
+<span class="group">mmx_settings</span> <a href="#mmx-prplmesh-board_settings-mmx_settings">more</a> <span class="help">MMX Settings</span></li>
+</ul>
+</li>
+<li>
+<span class="group">controller</span> <a href="#mmx-prplmesh-controller">more</a> <span class="help">Empty object</span></li>
+<li>
 <span class="group">network</span> <a href="#mmx-prplmesh-network">more</a> <span class="help">EasyMesh Network</span></li>
 </ul>
 </li>
+<li>
+<span class="group">info</span> <a href="#mmx-info">more</a> <span class="help">Count of the devices</span></li>
 </ul>
+<div id="-mmx-info" class="header">Section <b> mmx info</b></div>
+Count of the devices
+<div class="cmd"> mmx info show</div>
+<span class="help">Show information</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>RootDataModelVersion</td><td>Root data model version, e.g. 2.4. For a vendor-defined root data model, this is the standard Broadband Forum model on which the vendor-defined model is based. Possible patterns:  2\.\d+ 0</table>
+<div id="mmx-prplmesh-controller" class="header">Section <b>mmx prplmesh controller</b></div>
+Empty object
+<div class="cmd">mmx prplmesh controller show</div>
+<span class="help">Show information</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>EmptyParameter</td><td></table>
 <div id="mmx-prplmesh-network" class="header">Section <b>mmx prplmesh network</b></div>
 EasyMesh Network
 <div class="cmd">mmx prplmesh network show</div>
@@ -126,17 +180,35 @@ Mesh Access Point decribes general configuration
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>AccessPointIndex</td><td>Instance index</td></tr><tr><td>SSID</td><td>Access Point MAC<tr><td>MultiApMode</td><td>Mutli-AP mode for Access Point<tr><td>Band2_4G</td><td>Enable 2.4G band<tr><td>Band5GL</td><td>Enable 5G Lower band<tr><td>Band5GH</td><td>Enable 5G higher band<tr><td>Band6G</td><td>Enable 6G band</table>
-<div class="cmd">mmx prplmesh accesspoints ap config AccessPointIndex <i>VALUE</i> [SSID <i>VALUE</i>] [MultiApMode <i>VALUE</i>] [Band2_4G <i>VALUE</i>] [Band5GL <i>VALUE</i>] [Band5GH <i>VALUE</i>] [Band6G <i>VALUE</i>]</div>
+<tr><td>AccessPointIndex</td><td>Instance index</td></tr><tr><td>ssid</td><td>Access Point name<br>TR-69 description: Access Point name</td></tr>
+<tr><td>multiapmode</td><td>Mutli-AP mode for Access Point<br>TR-69 description: Mutli-AP mode for Access Point</td></tr>
+<tr><td>band24g</td><td>Enable 2.4G band<br>TR-69 description: Enable 2.4G band</td></tr>
+<tr><td>band5gl</td><td>Enable 5G Lower band<br>TR-69 description: Enable 5G Lower band</td></tr>
+<tr><td>band5gh</td><td>Enable 5G Higher band<br>TR-69 description: Enable 5G Higher band</td></tr>
+<tr><td>band6g</td><td>Enable 6G band<br>TR-69 description: Enable 6G band</td></tr>
+</table>
+<div class="cmd">mmx prplmesh accesspoints ap config AccessPointIndex <i>VALUE</i> [ssid <i>VALUE</i>] [multiapmode <i>VALUE</i>] [band24g <i>VALUE</i>] [band5gl <i>VALUE</i>] [band5gh <i>VALUE</i>] [band6g <i>VALUE</i>]</div>
 <span class="help">Configure parameters of the object</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>AccessPointIndex</td><td>Index parameter: number, range ([n-m]) or wildcard(*)</td></tr><tr><td>SSID</td><td>Access Point MAC<tr><td>MultiApMode</td><td>Mutli-AP mode for Access Point<tr><td>Band2_4G</td><td>Enable 2.4G band<tr><td>Band5GL</td><td>Enable 5G Lower band<tr><td>Band5GH</td><td>Enable 5G higher band<tr><td>Band6G</td><td>Enable 6G band</table>
-<div class="cmd">mmx prplmesh accesspoints ap add  [SSID <i>VALUE</i>] [MultiApMode <i>VALUE</i>] [Band2_4G <i>VALUE</i>] [Band5GL <i>VALUE</i>] [Band5GH <i>VALUE</i>] [Band6G <i>VALUE</i>]</div>
+<tr><td>AccessPointIndex</td><td>Index parameter: number, range ([n-m]) or wildcard(*)</td></tr><tr><td>ssid</td><td>Access Point name<br>TR-69 description: Access Point name</td></tr>
+<tr><td>multiapmode</td><td>Mutli-AP mode for Access Point<br>TR-69 description: Mutli-AP mode for Access Point</td></tr>
+<tr><td>band24g</td><td>Enable 2.4G band<br>TR-69 description: Enable 2.4G band</td></tr>
+<tr><td>band5gl</td><td>Enable 5G Lower band<br>TR-69 description: Enable 5G Lower band</td></tr>
+<tr><td>band5gh</td><td>Enable 5G Higher band<br>TR-69 description: Enable 5G Higher band</td></tr>
+<tr><td>band6g</td><td>Enable 6G band<br>TR-69 description: Enable 6G band</td></tr>
+</table>
+<div class="cmd">mmx prplmesh accesspoints ap add  [ssid <i>VALUE</i>] [multiapmode <i>VALUE</i>] [band24g <i>VALUE</i>] [band5gl <i>VALUE</i>] [band5gh <i>VALUE</i>] [band6g <i>VALUE</i>]</div>
 <span class="help">Add a new instance of the object</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>SSID</td><td>Access Point MAC<tr><td>MultiApMode</td><td>Mutli-AP mode for Access Point<tr><td>Band2_4G</td><td>Enable 2.4G band<tr><td>Band5GL</td><td>Enable 5G Lower band<tr><td>Band5GH</td><td>Enable 5G higher band<tr><td>Band6G</td><td>Enable 6G band</table>
+<tr><td>ssid</td><td>Access Point name<br>TR-69 description: Access Point name</td></tr>
+<tr><td>multiapmode</td><td>Mutli-AP mode for Access Point<br>TR-69 description: Mutli-AP mode for Access Point</td></tr>
+<tr><td>band24g</td><td>Enable 2.4G band<br>TR-69 description: Enable 2.4G band</td></tr>
+<tr><td>band5gl</td><td>Enable 5G Lower band<br>TR-69 description: Enable 5G Lower band</td></tr>
+<tr><td>band5gh</td><td>Enable 5G Higher band<br>TR-69 description: Enable 5G Higher band</td></tr>
+<tr><td>band6g</td><td>Enable 6G band<br>TR-69 description: Enable 6G band</td></tr>
+</table>
 <div class="cmd">mmx prplmesh accesspoints ap del AccessPointIndex <i>VALUE</i></div>
 <span class="help">Delete an instance of the object</span>
 <table border=1 cellpadding=0 cellspacing=0>
@@ -148,12 +220,20 @@ Mesh Access Point Security describes security parameters
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>AccessPointIndex</td><td>Instance index</td></tr><tr><td>ModeEnabled</td><td>Security mode (WPA2-Personal or WPA3-Personal)<tr><td>PreSharedKey</td><td>PreSharedKey<tr><td>KeyPassphrase</td><td>Passphrase<tr><td>SAEPassphrase</td><td>SAEPassphrase</table>
-<div class="cmd">mmx prplmesh accesspoints security config AccessPointIndex <i>VALUE</i> [ModeEnabled <i>VALUE</i>] [PreSharedKey <i>VALUE</i>] [KeyPassphrase <i>VALUE</i>] [SAEPassphrase <i>VALUE</i>]</div>
+<tr><td>AccessPointIndex</td><td>Instance index</td></tr><tr><td>modeenabled</td><td>Security mode (WPA2-Personal or WPA3-Personal)<br>TR-69 description: Security mode (WPA2-Personal or WPA3-Personal)</td></tr>
+<tr><td>psk</td><td>PreSharedKey<br>TR-69 description: PreSharedKey</td></tr>
+<tr><td>keypassphrase</td><td>The passphrase for connecting to the Access Point<br>TR-69 description: The passphrase for connecting to the Access Point</td></tr>
+<tr><td>saepassphrase</td><td>The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2.<br>TR-69 description: The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2.</td></tr>
+</table>
+<div class="cmd">mmx prplmesh accesspoints security config AccessPointIndex <i>VALUE</i> [modeenabled <i>VALUE</i>] [psk <i>VALUE</i>] [keypassphrase <i>VALUE</i>] [saepassphrase <i>VALUE</i>]</div>
 <span class="help">Configure parameters of the object</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>AccessPointIndex</td><td>Index parameter: number, range ([n-m]) or wildcard(*)</td></tr><tr><td>ModeEnabled</td><td>Security mode (WPA2-Personal or WPA3-Personal)<tr><td>PreSharedKey</td><td>PreSharedKey<tr><td>KeyPassphrase</td><td>Passphrase<tr><td>SAEPassphrase</td><td>SAEPassphrase</table>
+<tr><td>AccessPointIndex</td><td>Index parameter: number, range ([n-m]) or wildcard(*)</td></tr><tr><td>modeenabled</td><td>Security mode (WPA2-Personal or WPA3-Personal)<br>TR-69 description: Security mode (WPA2-Personal or WPA3-Personal)</td></tr>
+<tr><td>psk</td><td>PreSharedKey<br>TR-69 description: PreSharedKey</td></tr>
+<tr><td>keypassphrase</td><td>The passphrase for connecting to the Access Point<br>TR-69 description: The passphrase for connecting to the Access Point</td></tr>
+<tr><td>saepassphrase</td><td>The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2.<br>TR-69 description: The SAE Passphrase (Simultaneous Authentication of Equals) is a new authentication algorithm for WPA3 that replaces the Pre-Shared Key used in WPA2.</td></tr>
+</table>
 <div id="mmx-prplmesh-agents-interfaces-interface" class="header">Section <b>mmx prplmesh agents interfaces interface</b></div>
 The list of interfaces which exist on this device. Represents Interface Statistic and Neighbors.
 <div class="cmd">mmx prplmesh agents interfaces interface show</div>
@@ -181,7 +261,7 @@ This object describes a single physical radio within a specific AP
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>ID</td><td>Unique ID for this radio<tr><td>Enabled</td><td>Indicates whether this radio is enabled.<tr><td>Noise</td><td>An indicator of the average radio noise plus interference power measured for the primary operating channel.<tr><td>Utilization</td><td>The current total channel utilization on the current primary channel of the radio<tr><td>Transmit</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on individually or group addressed transmissions by the AP. When more than one channel is in use by BSS operating on the radio, then the Transmit value is calculated only for the primary channel.<tr><td>ReceiveSelf</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving individually or group addressed transmissions from any STA associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveSelf value is calculated only for the primary channel.<tr><td>ReceiveOther</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving valid IEEE 802.11 PPDUs that are not associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveOther value is calculated only for the primary channel.<tr><td>NumberOfCurrOpClass</td><td>The number of current operating classes.<tr><td>NumberOfBSS</td><td>The number of BSS.<tr><td>NumberOfUnassocSTA</td><td>The number of unassociated STA.<tr><td>NumberOfOpClassScan</td><td>The number of current operating classes scan.</table>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>ID</td><td>Unique ID for this radio<tr><td>Enabled</td><td>Indicates whether this radio is enabled.<tr><td>Noise</td><td>An indicator of the average radio noise plus interference power measured for the primary operating channel.<tr><td>Utilization</td><td>The current total channel utilization on the current primary channel of the radio<tr><td>Transmit</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on individually or group addressed transmissions by the AP. When more than one channel is in use by BSS operating on the radio, then the Transmit value is calculated only for the primary channel.<tr><td>ReceiveSelf</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving individually or group addressed transmissions from any STA associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveSelf value is calculated only for the primary channel.<tr><td>ReceiveOther</td><td>The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving valid IEEE 802.11 PPDUs that are not associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveOther value is calculated only for the primary channel.<tr><td>NumberOfCurrOpClass</td><td>The number of current operating classes.<tr><td>NumberOfBSS</td><td>The number of BSS.</table>
 <div id="mmx-prplmesh-agents-radios-bss-bss" class="header">Section <b>mmx prplmesh agents radios bss bss</b></div>
 This object describes a single logical BSS operating on this radio
 <div class="cmd">mmx prplmesh agents radios bss bss show</div>
@@ -189,34 +269,48 @@ This object describes a single logical BSS operating on this radio
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
 <tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>BSSIndex</td><td>Instance index</td></tr><tr><td>BSSID</td><td>The MAC address of the logical BSS (BSSID).<tr><td>SSID</td><td>The SSID in use for this BSS.<tr><td>Enabled</td><td>Whether the BSSID is currently enabled and beacon frames being sent.<tr><td>LastChange</td><td>Time in seconds since the last change to the .Enabled value.<tr><td>TimeStamp</td><td>The time this group was collected.<tr><td>UnicastBytesSent</td><td>BSS wide statistics for total unicast bytes transmitted.<tr><td>UnicastBytesReceived</td><td>BSS wide statistics for total unicast bytes received.<tr><td>MulticastBytesSent</td><td>BSS wide statistics for total multicast bytes transmitted.<tr><td>MulticastBytesReceived</td><td>BSS wide statistics for total multicast bytes received.<tr><td>BroadcastBytesSent</td><td>BSS wide statistics for total broadcast bytes transmitted.<tr><td>BroadcastBytesReceived</td><td>BSS wide statistics for total broadcast bytes received.<tr><td>EstServiceParametersBE</td><td>Estimated Service Parameters Information field for AC=BE<tr><td>EstServiceParametersBK</td><td>Estimated Service Parameters Information field for AC=BK<tr><td>EstServiceParametersVI</td><td>Estimated Service Parameters Information field for AC=VI<tr><td>EstServiceParametersVO</td><td>Estimated Service Parameters Information field for AC=VO<tr><td>NumberOfSTA</td><td>The number of STAs currently associated to this BSS.</table>
-<div id="mmx-prplmesh-agents-radios-curr_op_class-opclasses" class="header">Section <b>mmx prplmesh agents radios curr_op_class opclasses</b></div>
+<div id="mmx-prplmesh-agents-radios-curr_op_class-curr_op_class" class="header">Section <b>mmx prplmesh agents radios curr_op_class curr_op_class</b></div>
 This object describes one of the current operating classes in use by the radio. One operating class is indicated for each current operating bandwidth (e.g., 80, 40 and 20 MHz operating classes for a radio operating a BSS with supported bandwidth of 80 MHz). The channel indicated for the 20 MHz operating class is equal to the current primary channel.
-<div class="cmd">mmx prplmesh agents radios curr_op_class opclasses show</div>
+<div class="cmd">mmx prplmesh agents radios curr_op_class curr_op_class show</div>
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
 <tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>CurrentOperatingClassesIndex</td><td>Instance index</td></tr><tr><td>TimeStamp</td><td>The time this group was collected.<tr><td>Class</td><td>Operating class<tr><td>Channel</td><td>The channel number in the operating class in the previous field that this radio is currently operating on.<tr><td>TxPower</td><td>Nominal transmit power EIRP that this radio is currently using for the current channel in the operating class; represented as 2's complement signed integer in units of decibels relative to 1 mW (dBm).</table>
-<div id="mmx-prplmesh-agents-radios-capabilities-cap" class="header">Section <b>mmx prplmesh agents radios capabilities cap</b></div>
+<div id="mmx-prplmesh-agents-radios-capabilities-capabilities" class="header">Section <b>mmx prplmesh agents radios capabilities capabilities</b></div>
 This object describes the capabilities of the radio which may be different from the current operational configuration.
-<div class="cmd">mmx prplmesh agents radios capabilities cap show</div>
+<div class="cmd">mmx prplmesh agents radios capabilities capabilities show</div>
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
 <tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>NumberOfOperatingClasses</td><td>The number of current operating classes.</table>
-<div id="mmx-prplmesh-agents-radios-capabilities-capopclasses" class="header">Section <b>mmx prplmesh agents radios capabilities capopclasses</b></div>
-Describes the list of all operating classes (selected from Table E-4 of [1]) supported by the radio.
-<div class="cmd">mmx prplmesh agents radios capabilities capopclasses show</div>
+<div id="mmx-prplmesh-agents-radios-capabilities-ht_capabilities" class="header">Section <b>mmx prplmesh agents radios capabilities ht_capabilities</b></div>
+Describes the HT capabilities of the radio as defined by the HT Capabilities TLV
+<div class="cmd">mmx prplmesh agents radios capabilities ht_capabilities show</div>
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>OperatingClassIndex</td><td>Instance index</td></tr><tr><td>Class</td><td>Operating class<tr><td>MaxTxPower</td><td>Maximum transmit power EIRP that this radio is capable of transmitting in the current regulatory domain for the operating class; represented as 2's complement signed integer in units of decibels relative to 1 mW (dBm).</table>
-<div id="mmx-prplmesh-agents-radios-capabilities-notoper" class="header">Section <b>mmx prplmesh agents radios capabilities notoper</b></div>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>tx_spatial_streams</td><td>Number of supported TX spatial streams<tr><td>rx_spatial_streams</td><td>Number of supported RX spatial streams<tr><td>HT_40_Mhz</td><td>HT support for 40MHz<tr><td>GI_20_MHz</td><td>GI support for 20MHz<tr><td>GI_40_MHz</td><td>GI support for 40MHz</table>
+<div id="mmx-prplmesh-agents-radios-capabilities-vht_capabilities" class="header">Section <b>mmx prplmesh agents radios capabilities vht_capabilities</b></div>
+Describes the VHT capabilities of the radio as defined by the VHT Capabilities TLV
+<div class="cmd">mmx prplmesh agents radios capabilities vht_capabilities show</div>
+<span class="help">Show information</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>VHT_Tx_MCS</td><td>Set of VHT MCSs that can be transmitted<tr><td>VHT_Rx_MCS</td><td>Set of VHT MCSs that can be received<tr><td>tx_spatial_streams</td><td>Number of supported TX spatial streams<tr><td>rx_spatial_streams</td><td>Number of supported RX spatial streams<tr><td>GI_80_MHz</td><td>GI support for 80MHz<tr><td>GI_160_MHz</td><td>GI support for 160 MHz and 80+80 MHz.<tr><td>VHT_80_80_MHz</td><td>VHT support for 80+80 MHz<tr><td>VHT_160_MHz</td><td>VHT support for 160 MHz<tr><td>SU_beamformer</td><td>SU beamformer capable<tr><td>MU_beamformer</td><td>MU beamformer capable</table>
+<div id="mmx-prplmesh-agents-radios-capabilities-op_classes-op_classes" class="header">Section <b>mmx prplmesh agents radios capabilities op_classes op_classes</b></div>
+Describes the list of all operating classes supported by the radio.
+<div class="cmd">mmx prplmesh agents radios capabilities op_classes op_classes show</div>
+<span class="help">Show information</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>OperatingClassesIndex</td><td>Instance index</td></tr><tr><td>Class</td><td>Operating class<tr><td>MaxTxPower</td><td>Maximum transmit power EIRP that this radio is capable of transmitting in the current regulatory domain for the operating class; represented as 2's complement signed integer in units of decibels relative to 1 mW (dBm).<tr><td>NumberOfNonOperChan</td><td>The number of current operating classes scan.</table>
+<div id="mmx-prplmesh-agents-radios-capabilities-non_op_classes-non_op_classes" class="header">Section <b>mmx prplmesh agents radios capabilities non_op_classes non_op_classes</b></div>
 List of channel numbers which are statically non-operable in the operating class (i.e. the radio is never able to operate on these channels - Other channels from this operating class which are not listed here are supported by the radio.).
-<div class="cmd">mmx prplmesh agents radios capabilities notoper show</div>
+<div class="cmd">mmx prplmesh agents radios capabilities non_op_classes non_op_classes show</div>
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>OperatingClassIndex</td><td>Instance index</td></tr><tr><td>NonOpChannelNumber</td><td>The number of non-operable channels</table>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>OperatingClassesIndex</td><td>Instance index</td></tr><tr><td>NonOperableIndex</td><td>Instance index</td></tr><tr><td>NonOpChannelNumber</td><td>The number of non-operable channels</table>
 <div id="mmx-prplmesh-agents-radios-backhaul_sta-bhsta" class="header">Section <b>mmx prplmesh agents radios backhaul_sta bhsta</b></div>
 This object describes a Wi-Fi backhaul link used in a Multi-AP Agent.
 <div class="cmd">mmx prplmesh agents radios backhaul_sta bhsta show</div>
@@ -231,23 +325,23 @@ The results of the latest scan for neighboring BSS by the radio.
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
 <tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>NumberOfOpClassScans</td><td><tr><td>TimeStamp</td><td>The timestamp of the last scan of the channel.</table>
-<div id="mmx-prplmesh-agents-radios-scan_result-scanresopclassscan" class="header">Section <b>mmx prplmesh agents radios scan_result scanresopclassscan</b></div>
+<div id="mmx-prplmesh-agents-radios-scan_result-op_class_scan-scanresopclassscan" class="header">Section <b>mmx prplmesh agents radios scan_result op_class_scan scanresopclassscan</b></div>
 Radio Scab Result
-<div class="cmd">mmx prplmesh agents radios scan_result scanresopclassscan show</div>
+<div class="cmd">mmx prplmesh agents radios scan_result op_class_scan scanresopclassscan show</div>
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
 <tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>OpClassScanIndex</td><td>Instance index</td></tr><tr><td>NumberOfChannelScans</td><td><tr><td>OperatingClass</td><td></table>
-<div id="mmx-prplmesh-agents-radios-scan_result-chanscan" class="header">Section <b>mmx prplmesh agents radios scan_result chanscan</b></div>
+<div id="mmx-prplmesh-agents-radios-scan_result-op_class_scan-channel_scan-chanscan" class="header">Section <b>mmx prplmesh agents radios scan_result op_class_scan channel_scan chanscan</b></div>
 Radio Scab Result
-<div class="cmd">mmx prplmesh agents radios scan_result chanscan show</div>
+<div class="cmd">mmx prplmesh agents radios scan_result op_class_scan channel_scan chanscan show</div>
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
-<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>OpClassScanIndex</td><td>Instance index</td></tr><tr><td>ChannelScanIndex</td><td>Instance index</td></tr><tr><td>Channel</td><td>The channel number of the channel scanned by the radio given the operating class.<tr><td>TimeStamp</td><td>The timestamp of the last scan of the channel.<tr><td>Utilization</td><td>The current channel utilization measured by the radio on the scanned 20 MHz channel<tr><td>Noise</td><td>An indicator of the average radio noise plus interference power measured on the channel during a channel scan.<tr><td>NumberOfNeighborBSS</td><td></table>
-<div id="mmx-prplmesh-agents-radios-scan_result-neighbss" class="header">Section <b>mmx prplmesh agents radios scan_result neighbss</b></div>
+<tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>OpClassScanIndex</td><td>Instance index</td></tr><tr><td>ChannelScanIndex</td><td>Instance index</td></tr><tr><td>Channel</td><td>The channel number of the channel scanned by the radio given the operating class.<tr><td>TimeStamp</td><td>The timestamp of the last scan of the channel.<tr><td>Utilization</td><td>The current channel utilization measured by the radio on the scanned 20 MHz channel<tr><td>Noise</td><td>An indicator of the average radio noise plus interference power measured on the channel during a channel scan.<tr><td>NumberOfNeighbors</td><td></table>
+<div id="mmx-prplmesh-agents-radios-scan_result-op_class_scan-neighbors-neighbss" class="header">Section <b>mmx prplmesh agents radios scan_result op_class_scan neighbors neighbss</b></div>
 This object describes a neighbor BSS detected by channel scan.
-<div class="cmd">mmx prplmesh agents radios scan_result neighbss show</div>
+<div class="cmd">mmx prplmesh agents radios scan_result op_class_scan neighbors neighbss show</div>
 <span class="help">Show information</span>
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
@@ -259,5 +353,29 @@ This object describes a single STA.
 <table border=1 cellpadding=0 cellspacing=0>
 <tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
 <tr><td>DeviceIndex</td><td>Instance index</td></tr><tr><td>RadioIndex</td><td>Instance index</td></tr><tr><td>BSSIndex</td><td>Instance index</td></tr><tr><td>STAIndex</td><td>Instance index</td></tr><tr><td>MACAddress</td><td>The MAC address of an associated STA.<tr><td>TimeStamp</td><td>The time this group was collected.<tr><td>LastDataDownlinkRate</td><td>The data transmit rate in Kbps that was most recently used for transmission of data PPDUs from the access point to the associated STA.<tr><td>LastDataUplinkRate</td><td>The data transmit rate in Kbps that was most recently used for transmission of data PPDUs from the associated STA to the AP.<tr><td>UtilizationReceive</td><td>The amount of time the radio has spent on the channel receiving data from this STA in milliseconds.<tr><td>UtilizationTransmit</td><td>The amount of time the radio has spent on the channel transmitting data to this STA in milliseconds.<tr><td>EstMACDataRateDownlink</td><td>Estimate of the MAC layer throughput in Mbps achievable in the downlink if 100% of channel airtime and BSS operating bandwidth were to be available<tr><td>EstMACDataRateUplink</td><td>Estimate of the MAC layer throughput in Mbps achievable in the uplink if 100% of channel airtime and BSS operating bandwidth were to be available<tr><td>SignalStrength</td><td>An indicator of radio signal strength of the uplink from the associated STA to the access point - measured in dBm. RCPI threshold<tr><td>LastConnectTime</td><td>The time in seconds since the STA was associated.<tr><td>BytesSent</td><td>The total number of bytes transmitted to the associated STA.<tr><td>BytesReceived</td><td>The total number of bytes received from the associated STA.<tr><td>PacketsSent</td><td>The total number of packets transmitted to the associated STA.<tr><td>PacketsReceived</td><td>The total number of packets received from the associated STA.<tr><td>ErrorsSent</td><td>The total number of outbound packets that could not be transmitted to the associated STA because of errors. These might be due to the number of retransmissions exceeding the retry limit or from other causes.<tr><td>ErrorsReceived</td><td>The total number of inbound packets from the associated STA that contained errors preventing them from being delivered to a higher-layer protocol.<tr><td>RetransCount</td><td>The total number of transmitted packets to the associated STA which were retransmissions. Two retransmissions of the same packet results in this counter incrementing by two.<tr><td>IPV4Address</td><td>IPV4 address assigned to the client.<tr><td>IPV6Address</td><td>IPV6 address assigned to the client.<tr><td>Hostname</td><td>Hostname assigned to the client.<tr><td>NumberOfMeasureReports</td><td>The number of STAs currently associated to this BSS.</table>
+<div id="mmx-prplmesh-board_settings-mmx_settings" class="header">Section <b>mmx prplmesh board_settings mmx_settings</b></div>
+MMX Settings
+<div class="cmd">mmx prplmesh board_settings mmx_settings show</div>
+<span class="help">Show information</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>saveconfig</td><td>Set true to save the current configuration of the device<br>TR-69 description: Save existing system configuration.All current configuration data will be saved in order to survive device reboots.</td></tr>
+<tr><td>restoreconfig</td><td>Set true to restore the saved configuration<br>TR-69 description: Restore the previously saved configuration data. All settings applied after the last save operation will be removed. The operation followed by the device reboot.</td></tr>
+<tr><td>refreshdata</td><td>Set true to refresh all run-time data of the device.<br>TR-69 description: Update MMX data with the latest dynamically created management object instances.</td></tr>
+<tr><td>reboot</td><td>Set true to start system reboot.<br>TR-69 description: When set to true allow the device to reboot</td></tr>
+<tr><td>factoryreset</td><td>Set true to start factory reset<br>TR-69 description: When set to true resets the device to its factory default state followed by the device reboot. Should be used with caution.</td></tr>
+<tr><td>shutdown</td><td>Set true to shutdown the device<br>TR-69 description: Shutdown the device. As a result of shutdown the power is turned off and the device WILL NOT return to in-service automatically. Must be used with caution.</td></tr>
+</table>
+<div class="cmd">mmx prplmesh board_settings mmx_settings config  [saveconfig <i>VALUE</i>] [restoreconfig <i>VALUE</i>] [refreshdata <i>VALUE</i>] [reboot <i>VALUE</i>] [factoryreset <i>VALUE</i>] [shutdown <i>VALUE</i>]</div>
+<span class="help">Configure parameters of the object</span>
+<table border=1 cellpadding=0 cellspacing=0>
+<tr><td><b>Parameter</b></td><td><b>Description</b></td></tr>
+<tr><td>saveconfig</td><td>Set true to save the current configuration of the device<br>TR-69 description: Save existing system configuration.All current configuration data will be saved in order to survive device reboots.</td></tr>
+<tr><td>restoreconfig</td><td>Set true to restore the saved configuration<br>TR-69 description: Restore the previously saved configuration data. All settings applied after the last save operation will be removed. The operation followed by the device reboot.</td></tr>
+<tr><td>refreshdata</td><td>Set true to refresh all run-time data of the device.<br>TR-69 description: Update MMX data with the latest dynamically created management object instances.</td></tr>
+<tr><td>reboot</td><td>Set true to start system reboot.<br>TR-69 description: When set to true allow the device to reboot</td></tr>
+<tr><td>factoryreset</td><td>Set true to start factory reset<br>TR-69 description: When set to true resets the device to its factory default state followed by the device reboot. Should be used with caution.</td></tr>
+<tr><td>shutdown</td><td>Set true to shutdown the device<br>TR-69 description: Shutdown the device. As a result of shutdown the power is turned off and the device WILL NOT return to in-service automatically. Must be used with caution.</td></tr>
+</table>
 </body>
 </html>

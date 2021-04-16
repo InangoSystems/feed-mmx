@@ -2,9 +2,28 @@
 
 --  Section list of group prplmesh
 prplmesh_sections_info = { 
+{['sectionHeader']=" ",
+ ['mmgModObjName']="Device.Controller.",
+ ['sectionId']="prplmesh_1",
+ ['lookType']="vector",
+ ['sectionButtons']={{}},
+ ['paramList']={
+    {
+    ['param_name']="EmptyParameter", ['rnd_header']="EmptyParameter",
+    ['help']="",
+    ['units']=nil,
+    ['writable']=false,
+    ['rnd_type']="text",
+    ['data_properties']={
+        ['data_type']="string",
+    }
+    },
+}-- End of param list of section " "
+}, -- End of of section " "
+
 {['sectionHeader']="EasyMesh Network",
  ['mmgModObjName']="Device.Controller.Network.",
- ['sectionId']="prplmesh_1",
+ ['sectionId']="prplmesh_2",
  ['lookType']="vector",
  ['sectionButtons']={{"Refresh"},{"Update"}},
  ['paramList']={
