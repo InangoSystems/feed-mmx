@@ -34,19 +34,6 @@ CREATE TABLE Device_X_Inango_MMXSettings_ValuesTbl
 
 
 -- ***********************************************************
--- Information table for object Device.Controller.
--- ***********************************************************
-DROP TABLE IF EXISTS Device_Controller_ValuesTbl; 
-CREATE TABLE Device_Controller_ValuesTbl
-(
-    [EmptyParameter]    TEXT,
-    [ObjInstSelfRef]    TEXT,
-    [CfgOwner]    INTEGER DEFAULT 0,
-    [CreateOwner]   INTEGER DEFAULT 0
-);
-
-
--- ***********************************************************
 -- Information table for object Device.Controller.Network.
 -- ***********************************************************
 DROP TABLE IF EXISTS Device_Controller_Network_ValuesTbl; 

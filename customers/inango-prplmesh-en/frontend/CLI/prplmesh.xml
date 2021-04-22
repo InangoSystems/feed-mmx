@@ -35,51 +35,19 @@
     </COMMAND>
 <!--=======================================================-->
 
-    <COMMAND name="controller" help="Empty object"
-        view="mmx-prplmesh-controller">
-    </COMMAND>
-<!--=======================================================-->
     <COMMAND name="network" help="EasyMesh Network"
         view="mmx-prplmesh-network">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="controller show" help="Show information" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller. sectionId=prplmesh_1 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
     <COMMAND name="network show" help="Show information" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. sectionId=prplmesh_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. sectionId=prplmesh_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="network update" help="Update management objects information of the appropriated component" >
         <ACTION>
             /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. type=update
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
-</VIEW>
-
-<VIEW name="mmx-prplmesh-controller" prompt="mmx/prplmesh/controller&gt; ">
-<!--=======================================================-->
-    <COMMAND name="quit"  help="Quit this CLI session">
-       <ACTION builtin="clish_close"/>
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="top" help="Go back to the main CLI level"
-        view="mmx">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="up"  help="Go back to the previous CLI menu level"
-             view="mmx-prplmesh">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="show" help="Show information" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller. sectionId=prplmesh_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -101,7 +69,7 @@
 <!--=======================================================-->
     <COMMAND name="show" help="Show information" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. sectionId=prplmesh_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. sectionId=prplmesh_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -115,23 +83,13 @@
 
 <VIEW name="mmx">
 <!--=======================================================-->
-    <COMMAND name="prplmesh controller" help="Empty object"
-        view="mmx-prplmesh-controller">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="prplmesh controller show" help="Show information" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller. sectionId=prplmesh_1 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
     <COMMAND name="prplmesh network" help="EasyMesh Network"
         view="mmx-prplmesh-network">
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="prplmesh network show" help="Show information" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. sectionId=prplmesh_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. sectionId=prplmesh_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -150,23 +108,13 @@
         view="mmx-prplmesh">
     </COMMAND>
 <!--=======================================================-->
-    <COMMAND name="mmx prplmesh controller" help="Empty object"
-        view="mmx-prplmesh-controller">
-    </COMMAND>
-<!--=======================================================-->
-    <COMMAND name="mmx prplmesh controller show" help="Show information" >
-        <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller. sectionId=prplmesh_1 type=get
-        </ACTION>
-    </COMMAND>
-<!--=======================================================-->
     <COMMAND name="mmx prplmesh network" help="EasyMesh Network"
         view="mmx-prplmesh-network">
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh network show" help="Show information" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. sectionId=prplmesh_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network. sectionId=prplmesh_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->

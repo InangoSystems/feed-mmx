@@ -3,11 +3,8 @@
         Agents
         Access Points
         Board settings
-     Sections (total number 2):
-       Sect prplmesh_1: Device.Controller.  Num of WEB params: 1
-          EmptyParameter: 
-
-       Sect prplmesh_2: Device.Controller.Network.  Num of WEB params: 5
+     Sections (total number 1):
+       Sect prplmesh_1: Device.Controller.Network.  Num of WEB params: 5
           ID: A unique identifier for this particular device within the Wi-Fi network
           NumberOfDevices: The interval between the collection of consecutive measurements of the most frequently updated Data Element from this device (milliseconds).
           ControllerID: The number of radios in this AP.
