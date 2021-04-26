@@ -1,10 +1,10 @@
-<fieldset class="cbi-section-node mmx-vector-table" id="<%=sectionIndex%>::<%=section["mmgModObjName"]%>">
+<fieldset class="mmx-cbi-section-node mmx-vector-table" id="<%=sectionIndex%>::<%=section["mmgModObjName"]%>">
 	<% for _, param in pairs(section["paramList"]) do %>
-	<div class="cbi-value mmx-vector-row">
-		<label class="cbi-value-title mmx-vector-title">
+	<div class="mmx-cbi-value mmx-vector-row">
+		<label class="mmx-cbi-value-title mmx-vector-title">
 			<%=param["rnd_header"]%>
 		</label>
-		<div class="cbi-value-field mmx-vector-value">
+		<div class="mmx-cbi-value-field mmx-vector-value">
 			<% if engine:getIndirectParamPath(param) then
                 local indirectParamPath, indirectParamName = engine:getIndirectParamPath(param)
                 local indirectData = engine:filterIndirectData(param, data["indirectData"], indirectParamPath..indirectParamName)
