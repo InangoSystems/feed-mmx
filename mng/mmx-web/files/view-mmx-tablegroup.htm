@@ -102,10 +102,10 @@ for rowIdx, row in ipairs(data) do
     </div>
 <% end %>
 </div>
-<table class="mmx-cbi-section-table mmx-tablegroup-table" id="<%=sectionIndex%>::<%=row["path"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>">
+<table class="cbi-section-table mmx-tablegroup-table" id="<%=sectionIndex%>::<%=row["path"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>">
     <% for _, param in pairs(section["paramList"]) do
            if param["isKey"] == nil then %>
-    <tr class="mmx-cbi-section-table-row">
+    <tr class="cbi-section-table-row">
         <td class="mmx-cbi-section-table-cell mmx-tablegroup-param">
             <%=param["rnd_header"]%>
             <% if param["units"] ~= nil then %> (<%=param["units"]%>)<% end %>
