@@ -367,8 +367,6 @@ input.mmx-cbi-button-save {
 
 input.mmx-cbi-input-apply,
 input.mmx-cbi-button-apply {
-	background: url('../resources/cbi/apply.gif') no-repeat scroll 1px center;
-	color: white;
 	background-color: white;
 	padding-left: 17px;
 	padding-right: 1px;
@@ -514,17 +512,17 @@ div.mmx-cbi-section-remove {
 	float: right;
 }
 
-.mmx-cbi-section-node {
+.cbi-section-node {
 	clear: both;
 	border: none
 	padding-bottom: 0;
 }
 
-.mmx-cbi-section-node div.mmx-cbi-section-table-row {
+.cbi-section-node div.cbi-section-table-row {
 	margin: 0.25em;
 }
 
-table.mmx-cbi-section-table {
+table.cbi-section-table {
 	width: 100%;
 	font-size: 12px;
 	border-collapse: collapse;
@@ -534,8 +532,8 @@ tr.mmx-cbi-section-table-titles th {
 	vertical-align: top;
 }
 
-table.mmx-cbi-section-table th,
-table.mmx-cbi-section-table td {
+table.cbi-section-table th,
+table.cbi-section-table td {
 	text-align: left;
 	padding: 6px;
 }
@@ -802,15 +800,15 @@ li.mmx-tab a:hover {
 	margin-top: 20px;
 }
 
-.mmx-section table.mmx-cbi-section-table {
+.mmx-section table.cbi-section-table {
 	table-layout: fixed;
 }
 
-.mmx-tablegroup-table tr.mmx-cbi-section-table-row {
+.mmx-tablegroup-table tr.cbi-section-table-row {
 	border-top: 1px solid #dadada;
 }
 
-.mmx-tablegroup-table tr.mmx-cbi-section-table-row:first-child {
+.mmx-tablegroup-table tr.cbi-section-table-row:first-child {
 	border-top: 2px solid #dadada;
 }
 
@@ -818,26 +816,26 @@ li.mmx-tab a:hover {
 	border-bottom: 2px solid #dadada;
 }
 
-.mmx-matrix-table tr.mmx-cbi-section-table-row {
+.mmx-matrix-table tr.cbi-section-table-row {
 	border-bottom: 1px solid #dadada;
 }
 
-.mmx-matrix-table tr.mmx-cbi-section-table-row:first-child {
+.mmx-matrix-table tr.cbi-section-table-row:first-child {
 	border-bottom: 2px solid #dadada;
 }
 
-.mmx-matrix-table tr.mmx-cbi-section-table-row.even {
+.mmx-matrix-table tr.cbi-section-table-row.even {
 }
 
-.mmx-matrix-table tr.mmx-cbi-section-table-row.odd {
+.mmx-matrix-table tr.cbi-section-table-row.odd {
 	background-color: #f9f9f9;
 }
 
-tr.mmx-cbi-section-table-row.mmx-action-delete {
+tr.cbi-section-table-row.mmx-action-delete {
 	background-color: rgb(236,187,187) !important;
 }
 
-tr.mmx-cbi-section-table-row.mmx-action-update {
+tr.cbi-section-table-row.mmx-action-update {
 	background-color: #fcf8e3 !important;
 }
 
@@ -849,7 +847,7 @@ tr.mmx-cbi-section-add-row {
 	background-color: #fcf8e3 !important;
 }
 
-tr.mmx-cbi-section-table-row.mmx-action-create {
+tr.cbi-section-table-row.mmx-action-create {
 	background-color: #dff0d8 !important;
 }
 
