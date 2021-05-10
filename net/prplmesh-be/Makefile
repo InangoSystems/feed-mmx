@@ -76,7 +76,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/InangoSystems/prplmesh-be.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_VERSION:=46b34beff9e3763cd41edf0a1a3cec5e9ac42269
+PKG_SOURCE_VERSION:=087479dc8eafd0751a17d9a261375e4b789bd5c8
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.xz
 
 PKG_BUILD_PARALLEL:=1
@@ -86,6 +86,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/$(PKG_NAME)
 	SECTION:=backend
 	CATEGORY:=Inango
+	DEPENDS:=+ing-ntf
 	TITLE:=Ambiorix backend
 	MAINTAINER:=Inango Systems LTD. <support@inango.com>
 	URL:=http://www.inango.com
@@ -171,6 +172,28 @@ endef
 
 define Package/$(PKG_NAME)/install
 	$(CP) -a "$(PKG_INSTALL_DIR)/." "$(1)/"
+
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/prplmesh_model_updater.init $(1)/etc/init.d/prplmesh_model_updater
+endef
+
+define Package/$(PKG_NAME)/preinst
+#!/bin/sh
+# check if we are on real system
+if [ -z "$${IPKG_INSTROOT}" ]; then
+	if [ -e /etc/init.d/prplmesh_model_updater ]; then
+		/etc/init.d/prplmesh_model_updater stop 2>/dev/null
+	fi
+	exit 0 ;
+fi
+endef
+
+define Package/$(PKG_NAME)/postinst
+#!/bin/sh
+# check if we are on real system
+if [ -z "$${IPKG_INSTROOT}" ]; then
+	/etc/init.d/prplmesh_model_updater enable
+fi
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
