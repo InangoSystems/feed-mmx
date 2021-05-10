@@ -1,0 +1,19 @@
+#!/bin/sh /etc/rc.common
+
+START=98
+STOP=15
+
+NTF_LOG="/var/log/mmx/notifier.log"
+
+start() {
+    /usr/sbin/ingnotifier &> $NTF_LOG &
+}
+
+stop() {
+    killall -KILL ingnotifier
+}
+
+restart() {
+    killall -KILL ingnotifier
+    /usr/sbin/ingnotifier &> $NTF_LOG &
+}
