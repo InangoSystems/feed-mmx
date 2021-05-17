@@ -131,7 +131,7 @@ require("luci.http").prepare_content("text/html")
 		</script>
 	<![endif]-->
 </head>
-<body onload="window.setup_hover && setup_hover()">
+<body class="mmx-login-body" onload="window.setup_hover && setup_hover()">
 
 <%- if luci.sys.user.getuser("root") and not luci.sys.user.getpasswd("root") then -%>
 	<div class="warning">
@@ -147,9 +147,9 @@ require("luci.http").prepare_content("text/html")
 			&nbsp;
 		</div>
 	</div>
-<div class="menubar">                                                                                                                                                      
-    <div class="menu-wrapper">                                                                                                                                             
-        <div id="mainmenu" class="mainmenu">                                                                                                                               
+<div class="mmx-menubar">
+    <div class="mmx-menu-wrapper">
+        <div id="mmx-mainmenu" class="mmx-mainmenu">
 <%-                                                                                                                                                                        
 local function submenu(prefix, node)                                                                                                                                       
         if not node.nodes or node.hidden then                                                                                                                              
@@ -207,7 +207,7 @@ end
 %>                                                                                                                                                                         
         </div>                                                                                                                                                                        
                                                                                                                                                                                       
-        <br class="clear" />                                                                                                                                                          
+        <br class="mmx-clear" />
     </div>                                                                                                                                                                            
 </div>
     </div>
@@ -234,7 +234,7 @@ end
 %>
 </div>
 
-<div class="login-content" id="maincontent">
+<div class="mmx-login-content" id="maincontent">
 <% if category ~= "freifunk" and category ~= "splash" then %>
 	<noscript>
 		<div class="warning">

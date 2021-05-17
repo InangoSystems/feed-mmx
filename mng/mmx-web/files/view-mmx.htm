@@ -126,7 +126,7 @@ local sections = currentGroup["sections"]
 if sections then
     for sectIdx, section in pairs(sections) do
 %>
-<div class="cbi-map">
+<div class="mmx-cbi-map">
     <% local sectionPermissions = engine:getSectionPermissions(section, userPermission, currentGroup["userWritePerm"]) %>
     <fieldset class="cbi-section mmx-section" style="margin-top: 1em; margin-bottom: 1em; padding: 2em 1em" id="table-<%=sectIdx%>::<%=section["mmgModObjName"]%>">
         <% if section['lookType'] ~= 'tablegroup' and sectionPermissions['collapse'] then %>
@@ -158,17 +158,17 @@ if sections then
         <%=engine:renderHelper(section, sectIdx, sectionData, currentGroup, userPermission)%>
     <div class="mmx-section-actions" id="but-<%=sectIdx%>::<%=section["mmgModObjName"]%>">
         <% if sectionPermissions["update"] then %>
-            <input class="cbi-button cbi-button-refresh mmx-section-update" id="update-<%=section["mmgModObjName"]%>" type="submit" title="Update the management object information" value="Update">
+            <input class="mmx-cbi-button mmx-cbi-button-refresh mmx-section-update" id="update-<%=section["mmgModObjName"]%>" type="submit" title="Update the management object information" value="Update">
         <% end %>
         <% if sectionPermissions["refresh"] then %>
-            <input class="cbi-button cbi-button-refresh mmx-section-refresh" id="refresh-<%=section["mmgModObjName"]%>" type="submit" title="Refresh status data of parameters" value="Refresh">
+            <input class="mmx-cbi-button mmx-cbi-button-refresh mmx-section-refresh" id="refresh-<%=section["mmgModObjName"]%>" type="submit" title="Refresh status data of parameters" value="Refresh">
         <% end %>
         <% if section['lookType'] ~= 'tablegroup' then %>
             <% if sectionPermissions["apply"] then %>
-                <input class="cbi-button cbi-button-apply mmx-section-apply" id="apply-<%=sectIdx%>::<%=section["mmgModObjName"]%>" type="submit" title="Apply all currently changed settings to the device" value="Apply">
+                <input class="mmx-cbi-button mmx-cbi-button-apply mmx-section-apply" id="apply-<%=sectIdx%>::<%=section["mmgModObjName"]%>" type="submit" title="Apply all currently changed settings to the device" value="Apply">
             <% end %>
             <% if sectionPermissions["save"] then %>
-                <input class="cbi-button cbi-button-save mmx-section-save" id="save-<%=sectIdx%>::<%=section["mmgModObjName"]%>" type="submit" value="Apply&amp;Save">
+                <input class="mmx-cbi-button mmx-cbi-button-save mmx-section-save" id="save-<%=sectIdx%>::<%=section["mmgModObjName"]%>" type="submit" value="Apply&amp;Save">
             <% end %>
         <% end %>
     </div>
@@ -178,18 +178,18 @@ if sections then
     end
 end
 %>
-<div class="cbi-page-actions">
+<div class="mmx-cbi-page-actions">
     <% if engine:isGroupPermit("update", currentGroup, userPermission) then %>
-        <input class="cbi-button cbi-button-refresh mmx-group-update" id="update-all-sections" type="submit" value="Update">
+        <input class="mmx-cbi-button mmx-cbi-button-refresh mmx-group-update" id="update-all-sections" type="submit" value="Update">
     <% end %>
     <% if engine:isGroupPermit("refresh", currentGroup, userPermission) then %>
-        <input class="cbi-button cbi-button-refresh mmx-group-refresh" id="refresh-all-sections" type="submit" value="Refresh">
+        <input class="mmx-cbi-button mmx-cbi-button-refresh mmx-group-refresh" id="refresh-all-sections" type="submit" value="Refresh">
     <% end %>
     <% if engine:isGroupPermit("apply", currentGroup, userPermission) then %>
-        <input class="cbi-button cbi-button-apply mmx-group-apply" id="apply-all-sections" type="submit" value="Apply">
+        <input class="mmx-cbi-button mmx-cbi-button-apply mmx-group-apply" id="apply-all-sections" type="submit" value="Apply">
     <% end %>
     <% if engine:isGroupPermit("save", currentGroup, userPermission) then %>
-        <input class="cbi-button cbi-button-save mmx-group-save" id="save-all-sections" type="submit" value="Apply&amp;Save">
+        <input class="mmx-cbi-button mmx-cbi-button-save mmx-group-save" id="save-all-sections" type="submit" value="Apply&amp;Save">
     <% end %>
 </div>
 

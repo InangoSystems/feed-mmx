@@ -11,7 +11,7 @@ body { background-color: #010101; }
 #header { display: none; }
 .menubar { display: none; }
 #maincontent { background-color: transparent; position: relative; width: 100%; }
-.auth-footer { position: relative; bottom: 0; width: 100%; padding: 10px 20px 0px; margin: 0px auto; clear: both; text-align: center; }
+.auth-footer { position: relative; bottom: 0; padding: 10px 20px 0px; margin: 0px auto; clear: both; text-align: center; }
 </style>
 
 <form method="post" action="<%=pcdata(luci.http.getenv("REQUEST_URI"))%>">
@@ -26,10 +26,10 @@ body { background-color: #010101; }
                 </div>
                 <div class="mmx-login-form">
 			<div class="mmx-login-field">
-					<input class="cbi-input-user" type="text" name="luci_username" value="<%=duser%>" placeholder="Username" />
+					<input class="mmx-cbi-input-user" type="text" name="luci_username" value="<%=duser%>" placeholder="Username" />
 			</div>
 			<div class="mmx-login-field">
-					<input class="cbi-input-password" type="password" name="luci_password" placeholder="Password" />
+					<input class="mmx-cbi-input-password" type="password" name="luci_password" placeholder="Password" />
 			</div>
                         <div class="mmx-login-button">
                             <input class="cbi-button cbi-button-apply" type="submit" value="<%:Login%>" />
@@ -71,14 +71,14 @@ if https_port and fs.access(https_key) then
 
 <% end %>
 
-		<br class="clear" />
+		<br class="mmx-clear" />
 	</div>
 </div></div>
 </div>
 
 
 <div class="auth-footer separator black whitetext bold">
-	<div class="footer-license">
+	<div class="mmx-footer-license">
                 <img src="/luci-static/inango-prplmesh-en/inango_logo.svg"></img>
                 <p>Powered by Inango MMX &copy</p>
 	</div>

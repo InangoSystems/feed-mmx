@@ -96,8 +96,8 @@ for rowIdx, row in ipairs(data) do
 <% end %>
 <% if sectionPermissions['edit'] then %>
     <div class="mmx-tablegroup-buttons" id="but-<%=sectionIndex%>::<%=row["path"]%>">
-    <input class="cbi-button cbi-button-apply mmx-tablegroup-apply" style="display: none;" id="apply-<%=sectionIndex%>::<%=section["mmgModObjName"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>" type="submit" value="Apply">
-    <button class="cbi-button cbi-button-apply mmx-tablegroup-edit" id="edit-<%=sectionIndex%>::<%=section["mmgModObjName"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>"><i class="fas fa-pencil-alt"></i></button>
+    <input class="mmx-cbi-button mmx-cbi-button-apply mmx-tablegroup-apply" style="display: none;" id="apply-<%=sectionIndex%>::<%=section["mmgModObjName"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>" type="submit" value="Apply">
+    <button class="mmx-cbi-button mmx-cbi-button-apply mmx-tablegroup-edit" id="edit-<%=sectionIndex%>::<%=section["mmgModObjName"]%>" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>"><i class="fas fa-pencil-alt"></i></button>
     <a href="javascript:void(0)" class="mmx-tablegroup-revert" style="display: none;" data-mmx-instance="<%=sectionIndex%>::<%=row["path"]%>"><i class="fas fa-times-circle"></i></a>
     </div>
 <% end %>
@@ -106,7 +106,7 @@ for rowIdx, row in ipairs(data) do
     <% for _, param in pairs(section["paramList"]) do
            if param["isKey"] == nil then %>
     <tr class="cbi-section-table-row">
-        <td class="cbi-section-table-cell mmx-tablegroup-param">
+        <td class="mmx-cbi-section-table-cell mmx-tablegroup-param">
             <%=param["rnd_header"]%>
             <% if param["units"] ~= nil then %> (<%=param["units"]%>)<% end %>
         </td>
@@ -127,7 +127,7 @@ for rowIdx, row in ipairs(data) do
                 <%=engine:renderField(row["path"], param, row["data"][param["param_name"]], true)%>
             </div>
         </td>
-        <td class="cbi-section-table-cell mmx-tablegroup-description">
+        <td class="mmx-cbi-section-table-cell mmx-tablegroup-description">
             <%=param["help"]%>
         </td>
     </tr>

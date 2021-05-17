@@ -20,11 +20,12 @@ elseif (param["rnd_type"] and param["rnd_type"] == "checkbox") then
 <%
 elseif (param["rnd_type"] and param["rnd_type"] == "button") then
 %>
+<i class="fa fa-play-circle" style="padding: 3px 4px; position: absolute; color: green;"></i>
 <input
     type="submit"
     name="<%=param['param_name']%>"
     <% 
-        local buttonStyle = "mmx-btn cbi-button-apply"
+        local buttonStyle = "mmx-btn mmx-cbi-button-apply"
         if (param["data_properties"] and param["data_properties"]["styles"]) then
             for i, style in ipairs(param["data_properties"]["styles"] or {}) do
                 buttonStyle = buttonStyle .. " " .. style
