@@ -108,26 +108,6 @@ prpl_radios_sections_info = {
         ['data_type']="integer",
     }
     },
-    {
-    ['param_name']="NumberOfUnassocSTA", ['rnd_header']="NumberOfUnassocSTA",
-    ['help']="The number of unassociated STA.",
-    ['units']=nil,
-    ['writable']=false,
-    ['rnd_type']="text",
-    ['data_properties']={
-        ['data_type']="integer",
-    }
-    },
-    {
-    ['param_name']="NumberOfOpClassScan", ['rnd_header']="NumberOfOpClassScan",
-    ['help']="The number of current operating classes scan.",
-    ['units']=nil,
-    ['writable']=false,
-    ['rnd_type']="text",
-    ['data_properties']={
-        ['data_type']="integer",
-    }
-    },
 }-- End of param list of section "Radio"
 }, -- End of of section "Radio"
 

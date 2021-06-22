@@ -10,8 +10,8 @@ CREATE TABLE MMX_ServiceInfo
     Descr    TEXT,
     PRIMARY KEY(Name)
 );
-INSERT INTO  MMX_ServiceInfo values('BuildDate', "03/11/2021 5:07:51 AM" ,'Date when this db was generated');
-INSERT INTO  MMX_ServiceInfo values('DBVersion', "03.02",'DB version');
+INSERT INTO  MMX_ServiceInfo values('BuildDate', "04/08/2021 12:47:53 PM" ,'Date when this db was generated');
+INSERT INTO  MMX_ServiceInfo values('DBVersion', "03.03",'DB version');
 INSERT INTO  MMX_ServiceInfo values('DBSubVersion', "000",'DB Sub version'); 
 INSERT INTO  MMX_ServiceInfo values ('ResetLastUpdated','0','Flag to reset all last updated time in DB');
 INSERT INTO  MMX_ServiceInfo values('DBValueChangeCnt','0','Change counter. Increased after any set operation. 0 in default DB');
@@ -905,7 +905,7 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$; Device.Controller.Network.Device.{i}.DeviceIndex, RadioIndex", 
     NULL, NULL, 
     "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = RadioIndex", 
-    "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.", NULL );
+    "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities., Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.", NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_InfoTbl; 
 CREATE TABLE Device_Controller_Network_Device_Radio_InfoTbl
@@ -1008,20 +1008,6 @@ INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "NumberOfCu
     NULL);
 
 INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "NumberOfBSS", 
-    "current", 0, 4, 31, 31, "unsignedInt", NULL, 
-    NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
-    NULL, NULL, NULL, 
-    NULL, NULL, NULL, NULL, 
-    NULL);
-
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "NumberOfUnassocSTA", 
-    "current", 0, 4, 31, 31, "unsignedInt", NULL, 
-    NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
-    NULL, NULL, NULL, 
-    NULL, NULL, NULL, NULL, 
-    NULL);
-
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "NumberOfOpClassScan", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -1173,7 +1159,7 @@ INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Ra
     "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    NULL, NULL );
+    "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities., Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.", NULL );
 
 DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_InfoTbl; 
 CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_InfoTbl
@@ -1248,20 +1234,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_InfoTbl VALUES 
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.
+-- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.", "current", 0, 0, 4, 31, 31, 61, 11, NULL, 
-    "Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.NumberOfOperatingClasses", NULL, "OperatingClassIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.", "current", 0, 0, 4, 31, 31, 60, 11, NULL, 
+    "Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.OperatingClass.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, OperatingClassIndex", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.HTCapabilities; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = OperatingClassIndex", 
-    "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.NonOperable.", NULL );
+    NULL, NULL, 
+    NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl
+DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl; 
+CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -1290,56 +1276,324 @@ CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl VALUES ('OperatingClassIndex', 
-    'current', 0, 0, 23, 32, 'unsignedInt', 1, 
-    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
-    NULL, NULL, NULL, 
-    'db', NULL, NULL, NULL, 
-    'Index of the table');
-
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl VALUES ( "Class", 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "tx_spatial_streams", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl VALUES ( "MaxTxPower", 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "rx_spatial_streams", 
+    "current", 0, 4, 31, 31, "unsignedInt", NULL, 
+    NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "HT_40_Mhz", 
+    "current", 0, 4, 31, 31, "boolean", NULL, 
+    NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "GI_20_MHz", 
+    "current", 0, 4, 31, 31, "boolean", NULL, 
+    NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "GI_40_MHz", 
+    "current", 0, 4, 31, 31, "boolean", NULL, 
+    NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('ObjInstSelfRef', 
+    'current', 0, 0, 32, 0, 'string', NULL, 
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Internal service parameter');
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('CfgOwner', 
+    'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
+    NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Internal service parameter');
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('CreateOwner', 
+    'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
+    NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Internal service parameter');
+
+-- **************************************************************
+-- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.
+-- **************************************************************
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.", "current", 0, 0, 4, 31, 31, 60, 12, NULL, 
+    "Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
+    NULL, NULL, 
+    NULL, NULL, 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.VHTCapabilities; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex", 
+    NULL, NULL, 
+    NULL, NULL, 
+    NULL, NULL );
+
+DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl; 
+CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl
+( 
+    ParamName            TEXT UNIQUE NOT NULL,  
+    ParamDbStatus        TEXT DEFAULT 'current',  
+    Writable             INT,  --BOOLEAN:  1 - True, 0 - False
+    UserAccessPerm       INT, -- Guest(0), Viewer(1), Config(2), Admin(4)
+    ReadFrontEnds        INT, -- access bitmap: 1-WEB, 2-CLI, 4-NETCONF, 8-TR069, 16-SNMP, 0 or NULL - free access
+    WriteFrontEnds       INT, -- access bitmap: 1-WEB, 2-CLI, 4-NETCONF, 8-TR069, 16-SNMP, 0 or NULL - free access
+    ParamType            TEXT,  
+    IsIndex              INT,  --BOOLEAN: 1 - True (param is object's index), 0 - False 
+    ValueIsList          INT,  --BOOLEAN: 1 - True, 0 - False 
+    ParentObject         TEXT,  
+    MinValue             TEXT,  
+    MaxValue             TEXT,  
+    DefValue             TEXT,  
+    MinLength            INT,  
+    MaxLength            INT,  
+    Hidden               INT,  --BOOLEAN:  1 - True, 0 - False 
+    NotSaveInDb          INT,  --BOOLEAN:  1 - True, 0 - False 
+    ActiveNotify         TEXT,  
+    Units                TEXT,  
+    EnumValues           TEXT,  
+    StyleOfGet           TEXT CHECK (StyleOfGet IN ('script','uci', 'ubus', 'backend', 'db', NULL)),  
+    GetMethod            TEXT,  
+    StyleOfSet           TEXT CHECK (StyleOfGet IN ('script','uci', 'ubus', 'backend', 'db', NULL)),  
+    SetMethod            TEXT,  
+    ParamDescr           TEXT 
+);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('DeviceIndex', 
+    'current', 0, 0, 23, 32, 'unsignedInt', 1, 
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Index of the table');
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('RadioIndex', 
+    'current', 0, 0, 23, 32, 'unsignedInt', 1, 
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Index of the table');
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_Tx_MCS", 
+    "current", 0, 4, 31, 31, "unsignedInt", NULL, 
+    NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_Rx_MCS", 
+    "current", 0, 4, 31, 31, "unsignedInt", NULL, 
+    NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "tx_spatial_streams", 
+    "current", 0, 4, 31, 31, "unsignedInt", NULL, 
+    NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "rx_spatial_streams", 
+    "current", 0, 4, 31, 31, "unsignedInt", NULL, 
+    NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "GI_80_MHz", 
+    "current", 0, 4, 31, 31, "boolean", NULL, 
+    NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "GI_160_MHz", 
+    "current", 0, 4, 31, 31, "boolean", NULL, 
+    NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_80_80_MHz", 
+    "current", 0, 4, 31, 31, "boolean", NULL, 
+    NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_160_MHz", 
+    "current", 0, 4, 31, 31, "boolean", NULL, 
+    NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "SU_beamformer", 
+    "current", 0, 4, 31, 31, "boolean", NULL, 
+    NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "MU_beamformer", 
+    "current", 0, 4, 31, 31, "boolean", NULL, 
+    NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('ObjInstSelfRef', 
+    'current', 0, 0, 32, 0, 'string', NULL, 
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Internal service parameter');
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('CfgOwner', 
+    'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
+    NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Internal service parameter');
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('CreateOwner', 
+    'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
+    NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Internal service parameter');
+
+-- **************************************************************
+-- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.
+-- **************************************************************
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.", "current", 0, 0, 4, 31, 31, 61, 13, NULL, 
+    "Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.NumberOfOperatingClasses", NULL, "OperatingClassesIndex", 
+    NULL, NULL, 
+    NULL, NULL, 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.OperatingClasses.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, OperatingClassesIndex", 
+    NULL, NULL, 
+    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = OperatingClassesIndex", 
+    NULL, NULL );
+
+DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl; 
+CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl
+( 
+    ParamName            TEXT UNIQUE NOT NULL,  
+    ParamDbStatus        TEXT DEFAULT 'current',  
+    Writable             INT,  --BOOLEAN:  1 - True, 0 - False
+    UserAccessPerm       INT, -- Guest(0), Viewer(1), Config(2), Admin(4)
+    ReadFrontEnds        INT, -- access bitmap: 1-WEB, 2-CLI, 4-NETCONF, 8-TR069, 16-SNMP, 0 or NULL - free access
+    WriteFrontEnds       INT, -- access bitmap: 1-WEB, 2-CLI, 4-NETCONF, 8-TR069, 16-SNMP, 0 or NULL - free access
+    ParamType            TEXT,  
+    IsIndex              INT,  --BOOLEAN: 1 - True (param is object's index), 0 - False 
+    ValueIsList          INT,  --BOOLEAN: 1 - True, 0 - False 
+    ParentObject         TEXT,  
+    MinValue             TEXT,  
+    MaxValue             TEXT,  
+    DefValue             TEXT,  
+    MinLength            INT,  
+    MaxLength            INT,  
+    Hidden               INT,  --BOOLEAN:  1 - True, 0 - False 
+    NotSaveInDb          INT,  --BOOLEAN:  1 - True, 0 - False 
+    ActiveNotify         TEXT,  
+    Units                TEXT,  
+    EnumValues           TEXT,  
+    StyleOfGet           TEXT CHECK (StyleOfGet IN ('script','uci', 'ubus', 'backend', 'db', NULL)),  
+    GetMethod            TEXT,  
+    StyleOfSet           TEXT CHECK (StyleOfGet IN ('script','uci', 'ubus', 'backend', 'db', NULL)),  
+    SetMethod            TEXT,  
+    ParamDescr           TEXT 
+);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('DeviceIndex', 
+    'current', 0, 0, 23, 32, 'unsignedInt', 1, 
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Index of the table');
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('RadioIndex', 
+    'current', 0, 0, 23, 32, 'unsignedInt', 1, 
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Index of the table');
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('OperatingClassesIndex', 
+    'current', 0, 0, 23, 32, 'unsignedInt', 1, 
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Index of the table');
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ( "Class", 
+    "current", 0, 4, 31, 31, "unsignedInt", NULL, 
+    NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ( "MaxTxPower", 
     "current", 0, 4, 31, 31, "integer", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ( "NumberOfNonOperChan", 
+    "current", 0, 4, 31, 31, "unsignedInt", NULL, 
+    NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    NULL, NULL, NULL, NULL, 
+    NULL);
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -1347,20 +1601,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.NonOperable.
+-- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.NonOperable.", "current", 0, 0, 4, 31, 31, 62, 12, NULL, 
-    "Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.", "current", 0, 0, 4, 31, 31, 62, 14, NULL, 
+    "Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NumberOfNonOperChan", NULL, "NonOperableIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.OperatingClass.$$.NonOperable; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClass.{i}.OperatingClassIndex", 
+    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.OperatingClasses.$$.NonOperable.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.OperatingClassesIndex, NonOperableIndex", 
     NULL, NULL, 
-    NULL, NULL, 
+    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.OperatingClassesIndex, idx4 = NonOperableIndex", 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_InfoTbl
+DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl; 
+CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -1389,49 +1643,56 @@ CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_InfoTbl VALUES ('OperatingClassIndex', 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('OperatingClassesIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_InfoTbl VALUES ( "NonOpChannelNumber", 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('NonOperableIndex', 
+    'current', 0, 0, 23, 32, 'unsignedInt', 1, 
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+    NULL, NULL, NULL, 
+    'db', NULL, NULL, NULL, 
+    'Index of the table');
+
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ( "NonOpChannelNumber", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_NonOperable_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -1441,7 +1702,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClass_
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.", "current", 0, 0, 4, 31, 31, 63, 13, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.", "current", 0, 0, 4, 31, 31, 63, 15, NULL, 
     "Device_Controller_Network_Device_Radio_BSS_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_BSS_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.NumberOfBSS", NULL, "BSSIndex", 
     NULL, NULL, 
@@ -1638,7 +1899,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ('CreateO
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.", "current", 0, 0, 4, 31, 31, 64, 14, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.", "current", 0, 0, 4, 31, 31, 64, 16, NULL, 
     "Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_BSS_STA_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.NumberOfSTA", NULL, "STAIndex", 
     NULL, NULL, 
@@ -1877,7 +2138,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('Cre
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA.", "current", 0, 0, 4, 31, 31, 66, 15, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA.", "current", 0, 0, 4, 31, 31, 66, 17, NULL, 
     "Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_BackhaulSTA_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
@@ -1962,7 +2223,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES (
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.", "current", 0, 0, 4, 31, 31, 68, 16, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.", "current", 0, 0, 4, 31, 31, 68, 18, NULL, 
     "Device_Controller_Network_Device_Radio_ScanResult_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
@@ -2054,7 +2315,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_InfoTbl VALUES ('
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.", "current", 0, 0, 4, 31, 31, 69, 17, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.", "current", 0, 0, 4, 31, 31, 69, 19, NULL, 
     "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.NumberOfOpClassScans", NULL, "OpClassScanIndex", 
     NULL, NULL, 
@@ -2153,7 +2414,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoT
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.", "current", 0, 0, 4, 31, 31, 70, 18, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.", "current", 0, 0, 4, 31, 31, 70, 20, NULL, 
     "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_ValuesTbl", 
     "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.NumberOfChannelScans", NULL, "ChannelScanIndex", 
     NULL, NULL, 
@@ -2249,7 +2510,7 @@ INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_Chann
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "NumberOfNeighborBSS", 
+INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "NumberOfNeighbors", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -2280,9 +2541,9 @@ INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_Chann
 -- **************************************************************
 -- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.", "current", 0, 0, 4, 31, 31, 71, 19, NULL, 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.", "current", 0, 0, 4, 31, 31, 71, 21, NULL, 
     "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NumberOfNeighborBSS", NULL, "NeighborBSSIndex", 
+    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NumberOfNeighbors", NULL, "NeighborBSSIndex", 
     NULL, NULL, 
     NULL, NULL, 
     "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.ScanResult.OpClassScan.$$.ChannelScan.$$.NeighborBSS.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.ChannelScanIndex, NeighborBSSIndex", 
