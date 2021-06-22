@@ -72,7 +72,7 @@ PKG_NAME:=ing-ntf
 PKG_VERSION:=2.0.1
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=ssh://git@github.com/InangoSystems/ing-ntf.git
+PKG_SOURCE_URL:=https://github.com/InangoSystems/ing-ntf.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=bc9065f8f0ede53649ac3d3d998734e328a5ba73
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.xz
