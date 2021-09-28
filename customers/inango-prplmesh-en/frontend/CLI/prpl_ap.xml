@@ -31,13 +31,13 @@
     <COMMAND name="ap show" help="Show information" >
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="ap update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -68,7 +68,7 @@
                 cliParams = "null"
                 echo "No parameter is specified for set operation"
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -96,9 +96,9 @@
             if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint. sectionId=prpl_ap_1 type=add
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -106,20 +106,20 @@
     <COMMAND name="ap del" help="Delete an instance of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. type=del
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="security show" help="Show information" >
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="security update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.*.Security. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -144,7 +144,7 @@
                 cliParams = "null"
                 echo "No parameter is specified for set operation"
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -168,13 +168,13 @@
     <COMMAND name="show" help="Show information" >
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -205,7 +205,7 @@
                 cliParams = "null"
                 echo "No parameter is specified for set operation"
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -233,9 +233,9 @@
             if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint. sectionId=prpl_ap_1 type=add
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -243,7 +243,7 @@
     <COMMAND name="del" help="Delete an instance of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. type=del
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -266,13 +266,13 @@
     <COMMAND name="show" help="Show information" >
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.*.Security. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -297,7 +297,7 @@
                 cliParams = "null"
                 echo "No parameter is specified for set operation"
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -313,13 +313,13 @@
     <COMMAND name="accesspoints ap show" help="Show information" >
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="accesspoints ap update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -350,7 +350,7 @@
                 cliParams = "null"
                 echo "No parameter is specified for set operation"
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -378,9 +378,9 @@
             if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint. sectionId=prpl_ap_1 type=add
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -388,7 +388,7 @@
     <COMMAND name="accesspoints ap del" help="Delete an instance of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. type=del
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -399,13 +399,13 @@
     <COMMAND name="accesspoints security show" help="Show information" >
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="accesspoints security update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.*.Security. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -430,7 +430,7 @@
                 cliParams = "null"
                 echo "No parameter is specified for set operation"
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -451,13 +451,13 @@
     <COMMAND name="prplmesh accesspoints ap show" help="Show information" >
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="prplmesh accesspoints ap update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -488,7 +488,7 @@
                 cliParams = "null"
                 echo "No parameter is specified for set operation"
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -516,9 +516,9 @@
             if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint. sectionId=prpl_ap_1 type=add
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -526,7 +526,7 @@
     <COMMAND name="prplmesh accesspoints ap del" help="Delete an instance of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. type=del
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -537,13 +537,13 @@
     <COMMAND name="prplmesh accesspoints security show" help="Show information" >
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="prplmesh accesspoints security update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.*.Security. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -568,7 +568,7 @@
                 cliParams = "null"
                 echo "No parameter is specified for set operation"
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -589,13 +589,13 @@
     <COMMAND name="mmx prplmesh accesspoints ap show" help="Show information" >
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh accesspoints ap update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -626,7 +626,7 @@
                 cliParams = "null"
                 echo "No parameter is specified for set operation"
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. sectionId=prpl_ap_1 type=set cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -654,9 +654,9 @@
             if [ ${band6g} ]; then cliParams=$cliParams"Band6G = '${band6g}',";fi
             cliParams=$(echo $cliParams | sed 's/,$//')
             if [ -z "$cliParams" ]; then
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint. sectionId=prpl_ap_1 type=add
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint. sectionId=prpl_ap_1 type=add cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>
@@ -664,7 +664,7 @@
     <COMMAND name="mmx prplmesh accesspoints ap del" help="Delete an instance of the object" >
           <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*)" ptype="STRING"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}. type=del
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}. type=del
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -675,13 +675,13 @@
     <COMMAND name="mmx prplmesh accesspoints security show" help="Show information" >
         <PARAM name="AccessPointIndex" help="AccessPointIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="AccessPointIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh accesspoints security update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.*.Security. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.*.Security. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -706,7 +706,7 @@
                 cliParams = "null"
                 echo "No parameter is specified for set operation"
             else
-                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
+                /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.AccessPoint.${AccessPointIndex}.Security. sectionId=prpl_ap_2 type=set cliParamsStr="$cliParams"
             fi
         </ACTION>
     </COMMAND>

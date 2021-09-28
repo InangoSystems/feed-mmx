@@ -3,7 +3,7 @@
 --  Section list of group prpl_interfaces
 prpl_interfaces_sections_info = { 
 {['sectionHeader']="Interfaces",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Interface.{i}.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.",
  ['sectionId']="prpl_interfaces_1",
  ['lookType']="matrix",
  ['sectionButtons']={{"Refresh"},{"Update"}},
@@ -74,7 +74,7 @@ prpl_interfaces_sections_info = {
 }, -- End of of section "Interfaces"
 
 {['sectionHeader']="Interface Stats",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Interface.{i}.Stats.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.Stats.",
  ['sectionId']="prpl_interfaces_2",
  ['lookType']="tablegroup",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Collapse"}},
@@ -235,7 +235,7 @@ prpl_interfaces_sections_info = {
 }, -- End of of section "Interface Stats"
 
 {['sectionHeader']="Interface Neighbors",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Interface.{i}.Neighbor.{i}.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.Neighbor.{i}.",
  ['sectionId']="prpl_interfaces_3",
  ['lookType']="tablegroup",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Collapse"}},

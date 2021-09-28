@@ -3,7 +3,7 @@
 --  Section list of group prpl_agents
 prpl_agents_sections_info = { 
 {['sectionHeader']="EasyMesh Agents",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.",
  ['sectionId']="prpl_agents_1",
  ['lookType']="matrix",
  ['sectionButtons']={{"Refresh"},{"Update"}},

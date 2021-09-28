@@ -3,7 +3,7 @@
 --  Section list of group prpl_ap
 prpl_ap_sections_info = { 
 {['sectionHeader']="Access Point",
- ['mmgModObjName']="Device.Controller.Network.AccessPoint.{i}.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.AccessPoint.{i}.",
  ['sectionId']="prpl_ap_1",
  ['lookType']="matrix",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Edit"},{"Apply"},{"Add"},{"Delete"}},
@@ -81,7 +81,7 @@ prpl_ap_sections_info = {
 }, -- End of of section "Access Point"
 
 {['sectionHeader']="Access Point Security",
- ['mmgModObjName']="Device.Controller.Network.AccessPoint.{i}.Security.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.AccessPoint.{i}.Security.",
  ['sectionId']="prpl_ap_2",
  ['lookType']="matrix",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Edit"},{"Apply"}},

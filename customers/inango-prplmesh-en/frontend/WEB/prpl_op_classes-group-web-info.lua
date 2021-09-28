@@ -3,7 +3,7 @@
 --  Section list of group prpl_op_classes
 prpl_op_classes_sections_info = { 
 {['sectionHeader']="Operating Classes",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.",
  ['sectionId']="prpl_op_classes_1",
  ['lookType']="matrix",
  ['sectionButtons']={{"Refresh"},{"Update"}},

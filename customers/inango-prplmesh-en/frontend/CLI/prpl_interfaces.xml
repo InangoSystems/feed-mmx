@@ -35,39 +35,39 @@
     <COMMAND name="interface show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="interface update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="stats show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="stats update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Stats. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="neighbor show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="neighbor update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Neighbor.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -90,13 +90,13 @@
     <COMMAND name="show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -119,13 +119,13 @@
     <COMMAND name="show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Stats. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -148,13 +148,13 @@
     <COMMAND name="show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Neighbor.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -169,13 +169,13 @@
     <COMMAND name="interfaces interface show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="interfaces interface update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -186,13 +186,13 @@
     <COMMAND name="interfaces stats show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="interfaces stats update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Stats. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -203,13 +203,13 @@
     <COMMAND name="interfaces neighbor show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="interfaces neighbor update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Neighbor.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -229,13 +229,13 @@
     <COMMAND name="agents interfaces interface show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="agents interfaces interface update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -246,13 +246,13 @@
     <COMMAND name="agents interfaces stats show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="agents interfaces stats update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Stats. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -263,13 +263,13 @@
     <COMMAND name="agents interfaces neighbor show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="agents interfaces neighbor update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Neighbor.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -289,13 +289,13 @@
     <COMMAND name="prplmesh agents interfaces interface show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="prplmesh agents interfaces interface update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -306,13 +306,13 @@
     <COMMAND name="prplmesh agents interfaces stats show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="prplmesh agents interfaces stats update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Stats. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -323,13 +323,13 @@
     <COMMAND name="prplmesh agents interfaces neighbor show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="prplmesh agents interfaces neighbor update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Neighbor.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -349,13 +349,13 @@
     <COMMAND name="mmx prplmesh agents interfaces interface show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*. sectionId=prpl_interfaces_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh agents interfaces interface update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -366,13 +366,13 @@
     <COMMAND name="mmx prplmesh agents interfaces stats show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Stats. sectionId=prpl_interfaces_2 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh agents interfaces stats update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Stats. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Stats. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -383,13 +383,13 @@
     <COMMAND name="mmx prplmesh agents interfaces neighbor show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Interface.*.Neighbor.*. sectionId=prpl_interfaces_3 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh agents interfaces neighbor update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Interface.*.Neighbor.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Interface.*.Neighbor.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->

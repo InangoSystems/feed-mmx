@@ -37,13 +37,13 @@
     <COMMAND name="scanresopclassscan show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="scanresopclassscan update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -66,13 +66,13 @@
     <COMMAND name="show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -87,13 +87,13 @@
     <COMMAND name="op_class_scan scanresopclassscan show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="op_class_scan scanresopclassscan update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -113,13 +113,13 @@
     <COMMAND name="scan_result op_class_scan scanresopclassscan show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="scan_result op_class_scan scanresopclassscan update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -139,13 +139,13 @@
     <COMMAND name="radios scan_result op_class_scan scanresopclassscan show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="radios scan_result op_class_scan scanresopclassscan update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -165,13 +165,13 @@
     <COMMAND name="agents radios scan_result op_class_scan scanresopclassscan show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="agents radios scan_result op_class_scan scanresopclassscan update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -191,13 +191,13 @@
     <COMMAND name="prplmesh agents radios scan_result op_class_scan scanresopclassscan show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="prplmesh agents radios scan_result op_class_scan scanresopclassscan update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -217,13 +217,13 @@
     <COMMAND name="mmx prplmesh agents radios scan_result op_class_scan scanresopclassscan show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.ScanResult.OpClassScan.*. sectionId=prpl_op_class_scan_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh agents radios scan_result op_class_scan scanresopclassscan update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.ScanResult.OpClassScan.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->

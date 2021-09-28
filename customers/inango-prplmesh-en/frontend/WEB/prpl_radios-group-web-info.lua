@@ -3,7 +3,7 @@
 --  Section list of group prpl_radios
 prpl_radios_sections_info = { 
 {['sectionHeader']="Radio",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.",
  ['sectionId']="prpl_radios_1",
  ['lookType']="tablegroup",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Collapse"}},

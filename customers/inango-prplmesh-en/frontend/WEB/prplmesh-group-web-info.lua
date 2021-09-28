@@ -3,7 +3,7 @@
 --  Section list of group prplmesh
 prplmesh_sections_info = { 
 {['sectionHeader']="EasyMesh Network",
- ['mmgModObjName']="Device.Controller.Network.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.",
  ['sectionId']="prplmesh_1",
  ['lookType']="vector",
  ['sectionButtons']={{"Refresh"},{"Update"}},

@@ -3,7 +3,7 @@
 --  Section list of group prpl_neighbors
 prpl_neighbors_sections_info = { 
 {['sectionHeader']="Neighbors",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.",
  ['sectionId']="prpl_neighbors_1",
  ['lookType']="tablegroup",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Collapse"}},

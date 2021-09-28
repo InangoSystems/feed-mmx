@@ -3,7 +3,7 @@
 --  Section list of group prpl_non_op_classes
 prpl_non_op_classes_sections_info = { 
 {['sectionHeader']="NonOperable",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.",
  ['sectionId']="prpl_non_op_classes_1",
  ['lookType']="matrix",
  ['sectionButtons']={{"Refresh"},{"Update"}},

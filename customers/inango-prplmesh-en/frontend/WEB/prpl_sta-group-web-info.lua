@@ -3,7 +3,7 @@
 --  Section list of group prpl_sta
 prpl_sta_sections_info = { 
 {['sectionHeader']="STA",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.",
  ['sectionId']="prpl_sta_1",
  ['lookType']="tablegroup",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Collapse"}},

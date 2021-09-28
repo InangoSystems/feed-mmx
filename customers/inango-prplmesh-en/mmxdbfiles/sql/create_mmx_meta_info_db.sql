@@ -10,7 +10,7 @@ CREATE TABLE MMX_ServiceInfo
     Descr    TEXT,
     PRIMARY KEY(Name)
 );
-INSERT INTO  MMX_ServiceInfo values('BuildDate', "04/22/2021 1:22:49 AM" ,'Date when this db was generated');
+INSERT INTO  MMX_ServiceInfo values('BuildDate', "09/28/2021 3:30:53 PM" ,'Date when this db was generated');
 INSERT INTO  MMX_ServiceInfo values('DBVersion', "03.03",'DB version');
 INSERT INTO  MMX_ServiceInfo values('DBSubVersion', "000",'DB Sub version'); 
 INSERT INTO  MMX_ServiceInfo values ('ResetLastUpdated','0','Flag to reset all last updated time in DB');
@@ -297,20 +297,20 @@ INSERT  INTO Device_X_Inango_MMXSettings_InfoTbl VALUES ('CreateOwner',
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.
+-- Meta-information of object Device.WiFi.DataElements.Network.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.", "current", 0, 0, 4, 31, 31, 51, 3, NULL, 
-    "Device_Controller_Network_InfoTbl", "mmx_main_db", "Device_Controller_Network_ValuesTbl", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.", "current", 0, 0, 4, 31, 31, 51, 3, NULL, 
+    "Device_WiFi_DataElements_Network_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_ValuesTbl", 
     "prplmesh_be", NULL, 1, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network; ", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.; ", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_InfoTbl; 
-CREATE TABLE Device_Controller_Network_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -339,56 +339,56 @@ CREATE TABLE Device_Controller_Network_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_InfoTbl VALUES ( "ID", 
+INSERT  INTO Device_WiFi_DataElements_Network_InfoTbl VALUES ( "ID", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_InfoTbl VALUES ( "NumberOfDevices", 
+INSERT  INTO Device_WiFi_DataElements_Network_InfoTbl VALUES ( "NumberOfDevices", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_InfoTbl VALUES ( "ControllerID", 
+INSERT  INTO Device_WiFi_DataElements_Network_InfoTbl VALUES ( "ControllerID", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_InfoTbl VALUES ( "TimeStamp", 
+INSERT  INTO Device_WiFi_DataElements_Network_InfoTbl VALUES ( "TimeStamp", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_InfoTbl VALUES ( "NumberOfAccessPoints", 
+INSERT  INTO Device_WiFi_DataElements_Network_InfoTbl VALUES ( "NumberOfAccessPoints", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -396,20 +396,20 @@ INSERT  INTO Device_Controller_Network_InfoTbl VALUES ('CreateOwner',
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.AccessPoint.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.AccessPoint.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{i}.", "current", 1, 1, 4, 31, 31, 51, 4, NULL, 
-    "Device_Controller_Network_AccessPoint_InfoTbl", "mmx_main_db", "Device_Controller_Network_AccessPoint_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.NumberOfAccessPoints", NULL, "AccessPointIndex", 
-    "script", "prplmesh_add.lua Controller.Network.AccessPoint; ; idx = AccessPointIndex", 
-    "script", "prplmesh_del.lua Controller.Network.AccessPoint.$$; AccessPointIndex", 
-    "script", "prplmesh_get.lua Controller.Network.AccessPoint.$$; AccessPointIndex", 
-    "script", "prplmesh_set.lua Controller.Network.AccessPoint.$$; AccessPointIndex", 
-    "script", "prplmesh_getall.lua Controller.Network.AccessPoint.{i}; idx = AccessPointIndex", 
-    "Device.Controller.Network.AccessPoint.{i}.Security.", NULL );
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.AccessPoint.{i}.", "current", 1, 1, 4, 31, 31, 51, 4, NULL, 
+    "Device_WiFi_DataElements_Network_AccessPoint_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_AccessPoint_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.NumberOfAccessPoints", NULL, "AccessPointIndex", 
+    "script", "prplmesh_add.lua Device.WiFi.DataElements.Network.AccessPoint; ; idx = AccessPointIndex", 
+    "script", "prplmesh_del.lua Device.WiFi.DataElements.Network.AccessPoint.$$; AccessPointIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.AccessPoint.$$; AccessPointIndex", 
+    "script", "prplmesh_set.lua Device.WiFi.DataElements.Network.AccessPoint.$$; AccessPointIndex", 
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.AccessPoint.{i}; idx = AccessPointIndex", 
+    "Device.WiFi.DataElements.Network.AccessPoint.{i}.Security.", NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_AccessPoint_InfoTbl; 
-CREATE TABLE Device_Controller_Network_AccessPoint_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_AccessPoint_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_AccessPoint_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -438,70 +438,70 @@ CREATE TABLE Device_Controller_Network_AccessPoint_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ('AccessPointIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_InfoTbl VALUES ('AccessPointIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "SSID", 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_InfoTbl VALUES ( "SSID", 
     "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "prplMesh", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "MultiApMode", 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_InfoTbl VALUES ( "MultiApMode", 
     "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "Fronthaul", NULL, NULL, NULL, NULL, 
     NULL, NULL, "Fronthaul, Backhaul, Fronthaul+Backhaul", 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "Band2_4G", 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_InfoTbl VALUES ( "Band2_4G", 
     "current", 1, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "Band5GL", 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_InfoTbl VALUES ( "Band5GL", 
     "current", 1, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "Band5GH", 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_InfoTbl VALUES ( "Band5GH", 
     "current", 1, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ( "Band6G", 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_InfoTbl VALUES ( "Band6G", 
     "current", 1, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -509,20 +509,20 @@ INSERT  INTO Device_Controller_Network_AccessPoint_InfoTbl VALUES ('CreateOwner'
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.AccessPoint.{i}.Security.
+-- Meta-information of object Device.WiFi.DataElements.Network.AccessPoint.{i}.Security.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.AccessPoint.{i}.Security.", "current", 0, 1, 4, 31, 31, 52, 5, NULL, 
-    "Device_Controller_Network_AccessPoint_Security_InfoTbl", "mmx_main_db", "Device_Controller_Network_AccessPoint_Security_ValuesTbl", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.AccessPoint.{i}.Security.", "current", 0, 1, 4, 31, 31, 52, 5, NULL, 
+    "Device_WiFi_DataElements_Network_AccessPoint_Security_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_AccessPoint_Security_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.AccessPoint.$$.Security; Device.Controller.Network.AccessPoint.{i}.AccessPointIndex", 
-    "script", "prplmesh_set.lua Controller.Network.AccessPoint.$$.Security; Device.Controller.Network.AccessPoint.{i}.AccessPointIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.AccessPoint.$$.Security; Device.WiFi.DataElements.Network.AccessPoint.{i}.AccessPointIndex", 
+    "script", "prplmesh_set.lua Device.WiFi.DataElements.Network.AccessPoint.$$.Security; Device.WiFi.DataElements.Network.AccessPoint.{i}.AccessPointIndex", 
     NULL, NULL, 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_AccessPoint_Security_InfoTbl; 
-CREATE TABLE Device_Controller_Network_AccessPoint_Security_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_AccessPoint_Security_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_AccessPoint_Security_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -551,56 +551,56 @@ CREATE TABLE Device_Controller_Network_AccessPoint_Security_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ('AccessPointIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_Security_InfoTbl VALUES ('AccessPointIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ( "ModeEnabled", 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_Security_InfoTbl VALUES ( "ModeEnabled", 
     "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "None", NULL, NULL, NULL, NULL, 
     NULL, NULL, "WPA2-Personal, WPA3-Personal, None", 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ( "PreSharedKey", 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_Security_InfoTbl VALUES ( "PreSharedKey", 
     "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ( "KeyPassphrase", 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_Security_InfoTbl VALUES ( "KeyPassphrase", 
     "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ( "SAEPassphrase", 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_Security_InfoTbl VALUES ( "SAEPassphrase", 
     "current", 1, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_Security_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_Security_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_AccessPoint_Security_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -608,20 +608,20 @@ INSERT  INTO Device_Controller_Network_AccessPoint_Security_InfoTbl VALUES ('Cre
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.", "current", 0, 0, 4, 31, 31, 53, 6, NULL, 
-    "Device_Controller_Network_Device_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.NumberOfDevices", NULL, "DeviceIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.", "current", 0, 0, 4, 31, 31, 53, 6, NULL, 
+    "Device_WiFi_DataElements_Network_Device_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.NumberOfDevices", NULL, "DeviceIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$; DeviceIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$; DeviceIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}; idx = DeviceIndex", 
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}; idx = DeviceIndex", 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -650,56 +650,56 @@ CREATE TABLE Device_Controller_Network_Device_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_InfoTbl VALUES ( "ID", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_InfoTbl VALUES ( "ID", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "00:00:00:00:00:00", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_InfoTbl VALUES ( "CollectionInterval", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_InfoTbl VALUES ( "CollectionInterval", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_InfoTbl VALUES ( "NumberOfRadios", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_InfoTbl VALUES ( "NumberOfRadios", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_InfoTbl VALUES ( "NumberOfInterfaces", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_InfoTbl VALUES ( "NumberOfInterfaces", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -707,20 +707,20 @@ INSERT  INTO Device_Controller_Network_Device_InfoTbl VALUES ('CreateOwner',
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Interface.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Interface.{i}.", "current", 0, 0, 4, 31, 31, 54, 7, NULL, 
-    "Device_Controller_Network_Device_Interface_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Interface_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.NumberOfInterfaces", NULL, "InterfaceIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.", "current", 0, 0, 4, 31, 31, 54, 7, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Interface_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Interface_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.Device.{i}.NumberOfInterfaces", NULL, "InterfaceIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Interface.$$; Device.Controller.Network.Device.{i}.DeviceIndex, InterfaceIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Interface.$$; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, InterfaceIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Interface.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = InterfaceIndex", 
-    "Device.Controller.Network.Device.{i}.Interface.{i}.Stats.", NULL );
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}; idx1 = Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, idx2 = InterfaceIndex", 
+    "Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.Stats.", NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Interface_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Interface_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Interface_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Interface_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -749,70 +749,70 @@ CREATE TABLE Device_Controller_Network_Device_Interface_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Interface_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_InfoTbl VALUES ('InterfaceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_InfoTbl VALUES ('InterfaceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_InfoTbl VALUES ( "NumberOfNeighbors", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_InfoTbl VALUES ( "NumberOfNeighbors", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_InfoTbl VALUES ( "Status", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_InfoTbl VALUES ( "Status", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "Down", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_InfoTbl VALUES ( "MACAddress", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_InfoTbl VALUES ( "MACAddress", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "00:00:00:00:00:00", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_InfoTbl VALUES ( "Name", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_InfoTbl VALUES ( "Name", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "NoName", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_InfoTbl VALUES ( "MediaType", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_InfoTbl VALUES ( "MediaType", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -820,20 +820,20 @@ INSERT  INTO Device_Controller_Network_Device_Interface_InfoTbl VALUES ('CreateO
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Interface.{i}.Stats.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.Stats.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Interface.{i}.Stats.", "current", 0, 0, 4, 31, 31, 55, 8, NULL, 
-    "Device_Controller_Network_Device_Interface_Stats_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Interface_Stats_ValuesTbl", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.Stats.", "current", 0, 0, 4, 31, 31, 55, 8, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Interface_Stats_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Interface.$$.Stats; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Interface.{i}.InterfaceIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Interface.$$.Stats; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.InterfaceIndex", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Interface_Stats_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Interface_Stats_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -862,133 +862,133 @@ CREATE TABLE Device_Controller_Network_Device_Interface_Stats_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ('InterfaceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ('InterfaceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "BytesSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "BytesSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "BytesReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "BytesReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "PacketsSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "PacketsSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "PacketsReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "PacketsReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "ErrorsSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "ErrorsSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "ErrorsReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "ErrorsReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "UnicastPacketsSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "UnicastPacketsSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "UnicastPacketsReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "UnicastPacketsReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "DiscardPacketsSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "DiscardPacketsSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "DiscardPacketsReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "DiscardPacketsReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "MulticastPacketsSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "MulticastPacketsSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "MulticastPacketsReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "MulticastPacketsReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "BroadcastPacketsSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "BroadcastPacketsSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ( "BroadcastPacketsReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ( "BroadcastPacketsReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Stats_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -996,20 +996,20 @@ INSERT  INTO Device_Controller_Network_Device_Interface_Stats_InfoTbl VALUES ('C
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Interface.{i}.Neighbor.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.Neighbor.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Interface.{i}.Neighbor.{i}.", "current", 0, 0, 4, 31, 31, 56, 9, NULL, 
-    "Device_Controller_Network_Device_Interface_Neighbor_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Interface_Neighbor_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Interface.{i}.NumberOfNeighbors", NULL, "NeighborIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.Neighbor.{i}.", "current", 0, 0, 4, 31, 31, 56, 9, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Interface_Neighbor_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.NumberOfNeighbors", NULL, "NeighborIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Interface.$$.Neighbor.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Interface.{i}.InterfaceIndex, NeighborIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Interface.$$.Neighbor.$$; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.InterfaceIndex, NeighborIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Interface.{i}.Neighbor.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = InterfaceIndex, idx3 = NeighborIndex", 
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.Neighbor.{i}; idx1 = Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, idx2 = InterfaceIndex, idx3 = NeighborIndex", 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Interface_Neighbor_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Interface_Neighbor_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -1038,63 +1038,63 @@ CREATE TABLE Device_Controller_Network_Device_Interface_Neighbor_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Neighbor_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Neighbor_InfoTbl VALUES ('InterfaceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl VALUES ('InterfaceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Neighbor_InfoTbl VALUES ('NeighborIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl VALUES ('NeighborIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Neighbor_InfoTbl VALUES ( "ID", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl VALUES ( "ID", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "00:00:00:00:00:00", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Neighbor_InfoTbl VALUES ( "IsIEEE1905", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl VALUES ( "IsIEEE1905", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Neighbor_InfoTbl VALUES ( "NumberOfNeighbors", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl VALUES ( "NumberOfNeighbors", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Neighbor_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Neighbor_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Interface_Neighbor_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Interface_Neighbor_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -1102,20 +1102,20 @@ INSERT  INTO Device_Controller_Network_Device_Interface_Neighbor_InfoTbl VALUES 
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.", "current", 0, 0, 4, 31, 31, 58, 10, NULL, 
-    "Device_Controller_Network_Device_Radio_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.NumberOfRadios", NULL, "RadioIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.", "current", 0, 0, 4, 31, 31, 58, 10, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.Device.{i}.NumberOfRadios", NULL, "RadioIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$; Device.Controller.Network.Device.{i}.DeviceIndex, RadioIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, RadioIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = RadioIndex", 
-    "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities., Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities., Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities., Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA., Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.", NULL );
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}; idx1 = Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, idx2 = RadioIndex", 
+    "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities., Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities., Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities., Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BackhaulSTA., Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.", NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -1144,98 +1144,98 @@ CREATE TABLE Device_Controller_Network_Device_Radio_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "ID", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ( "ID", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "00:00:00:00:00:00", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "Enabled", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ( "Enabled", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "Noise", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ( "Noise", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "Utilization", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ( "Utilization", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "Transmit", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ( "Transmit", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "ReceiveSelf", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ( "ReceiveSelf", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "ReceiveOther", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ( "ReceiveOther", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "NumberOfCurrOpClass", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ( "NumberOfCurrOpClass", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ( "NumberOfBSS", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ( "NumberOfBSS", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -1243,20 +1243,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_InfoTbl VALUES ('CreateOwner
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.", "current", 0, 0, 4, 31, 31, 59, 11, NULL, 
-    "Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_CurrentOperatingClasses_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.NumberOfCurrOpClass", NULL, "CurrentOperatingClassesIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.", "current", 0, 0, 4, 31, 31, 59, 11, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.NumberOfCurrOpClass", NULL, "CurrentOperatingClassesIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.CurrentOperatingClasses.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, CurrentOperatingClassesIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$.CurrentOperatingClasses.$$; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, CurrentOperatingClassesIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = CurrentOperatingClassesIndex", 
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}; idx1 = Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, idx2 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = CurrentOperatingClassesIndex", 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -1285,70 +1285,70 @@ CREATE TABLE Device_Controller_Network_Device_Radio_CurrentOperatingClasses_Info
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('CurrentOperatingClassesIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('CurrentOperatingClassesIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ( "TimeStamp", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ( "TimeStamp", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "2020-08-31T11:22:39Z", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ( "Class", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ( "Class", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ( "Channel", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ( "Channel", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ( "TxPower", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ( "TxPower", 
     "current", 0, 4, 31, 31, "integer", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -1356,20 +1356,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_CurrentOperatingClasses_Info
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.", "current", 0, 0, 4, 31, 31, 60, 12, NULL, 
-    "Device_Controller_Network_Device_Radio_Capabilities_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_ValuesTbl", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.", "current", 0, 0, 4, 31, 31, 60, 12, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_Capabilities_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_Capabilities_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$.Capabilities; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_Capabilities_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_Capabilities_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -1398,42 +1398,42 @@ CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_InfoTbl VALUES ( "NumberOfOperatingClasses", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_InfoTbl VALUES ( "NumberOfOperatingClasses", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -1441,20 +1441,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_InfoTbl VALUES 
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.", "current", 0, 0, 4, 31, 31, 60, 13, NULL, 
-    "Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_ValuesTbl", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.", "current", 0, 0, 4, 31, 31, 60, 13, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.HTCapabilities; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$.Capabilities.HTCapabilities; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -1483,70 +1483,70 @@ CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "tx_spatial_streams", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "tx_spatial_streams", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "rx_spatial_streams", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "rx_spatial_streams", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "HT_40_Mhz", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "HT_40_Mhz", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "GI_20_MHz", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "GI_20_MHz", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "GI_40_MHz", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ( "GI_40_MHz", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_HTCapabilities_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -1554,20 +1554,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_HTCapabilities_
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.", "current", 0, 0, 4, 31, 31, 60, 14, NULL, 
-    "Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_ValuesTbl", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.", "current", 0, 0, 4, 31, 31, 60, 14, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.VHTCapabilities; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$.Capabilities.VHTCapabilities; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -1596,105 +1596,105 @@ CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_Tx_MCS", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_Tx_MCS", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_Rx_MCS", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_Rx_MCS", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "tx_spatial_streams", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "tx_spatial_streams", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "rx_spatial_streams", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "rx_spatial_streams", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "GI_80_MHz", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "GI_80_MHz", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "GI_160_MHz", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "GI_160_MHz", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_80_80_MHz", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_80_80_MHz", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_160_MHz", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "VHT_160_MHz", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "SU_beamformer", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "SU_beamformer", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "MU_beamformer", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ( "MU_beamformer", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -1702,20 +1702,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_VHTCapabilities
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.", "current", 0, 0, 4, 31, 31, 61, 15, NULL, 
-    "Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.NumberOfOperatingClasses", NULL, "OperatingClassesIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.", "current", 0, 0, 4, 31, 31, 61, 15, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.NumberOfOperatingClasses", NULL, "OperatingClassesIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.OperatingClasses.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, OperatingClassesIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$.Capabilities.OperatingClasses.$$; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, OperatingClassesIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = OperatingClassesIndex", 
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}; idx1 = Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, idx2 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = OperatingClassesIndex", 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -1744,63 +1744,63 @@ CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClasse
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('OperatingClassesIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('OperatingClassesIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ( "Class", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ( "Class", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ( "MaxTxPower", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ( "MaxTxPower", 
     "current", 0, 4, 31, 31, "integer", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ( "NumberOfNonOperChan", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ( "NumberOfNonOperChan", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -1808,20 +1808,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasse
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.", "current", 0, 0, 4, 31, 31, 62, 16, NULL, 
-    "Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NumberOfNonOperChan", NULL, "NonOperableIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.", "current", 0, 0, 4, 31, 31, 62, 16, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NumberOfNonOperChan", NULL, "NonOperableIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.Capabilities.OperatingClasses.$$.NonOperable.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.OperatingClassesIndex, NonOperableIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$.Capabilities.OperatingClasses.$$.NonOperable.$$; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.OperatingClassesIndex, NonOperableIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.OperatingClassesIndex, idx4 = NonOperableIndex", 
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}; idx1 = Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, idx2 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.OperatingClassesIndex, idx4 = NonOperableIndex", 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -1850,56 +1850,56 @@ CREATE TABLE Device_Controller_Network_Device_Radio_Capabilities_OperatingClasse
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('OperatingClassesIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('OperatingClassesIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('NonOperableIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('NonOperableIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ( "NonOpChannelNumber", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ( "NonOpChannelNumber", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_Capabilities_OperatingClasses_NonOperable_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -1907,20 +1907,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_Capabilities_OperatingClasse
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.", "current", 0, 0, 4, 31, 31, 63, 17, NULL, 
-    "Device_Controller_Network_Device_Radio_BSS_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_BSS_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.NumberOfBSS", NULL, "BSSIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.", "current", 0, 0, 4, 31, 31, 63, 17, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.NumberOfBSS", NULL, "BSSIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.BSS.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, BSSIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$.BSS.$$; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, BSSIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.BSS.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = BSSIndex", 
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}; idx1 = Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, idx2 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = BSSIndex", 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_BSS_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_BSS_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -1949,154 +1949,154 @@ CREATE TABLE Device_Controller_Network_Device_Radio_BSS_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ('BSSIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ('BSSIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "BSSID", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "BSSID", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "00:00:00:00:00:00", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "SSID", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "SSID", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "Enabled", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "Enabled", 
     "current", 0, 4, 31, 31, "boolean", NULL, 
     NULL, NULL, NULL, NULL, "false", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "LastChange", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "LastChange", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "TimeStamp", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "TimeStamp", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "2020-08-31T11:22:39Z", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "UnicastBytesSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "UnicastBytesSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "UnicastBytesReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "UnicastBytesReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "MulticastBytesSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "MulticastBytesSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "MulticastBytesReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "MulticastBytesReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "BroadcastBytesSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "BroadcastBytesSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "BroadcastBytesReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "BroadcastBytesReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "EstServiceParametersBE", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "EstServiceParametersBE", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "EstServiceParametersBK", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "EstServiceParametersBK", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "EstServiceParametersVI", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "EstServiceParametersVI", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "EstServiceParametersVO", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "EstServiceParametersVO", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ( "NumberOfSTA", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ( "NumberOfSTA", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -2104,20 +2104,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_BSS_InfoTbl VALUES ('CreateO
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.", "current", 0, 0, 4, 31, 31, 64, 18, NULL, 
-    "Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_BSS_STA_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.NumberOfSTA", NULL, "STAIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.", "current", 0, 0, 4, 31, 31, 64, 18, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.NumberOfSTA", NULL, "STAIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.BSS.$$.STA.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.BSSIndex, STAIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements..Device.$$.Radio.$$.BSS.$$.STA.$$; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.BSSIndex, STAIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.BSSIndex, idx4 = STAIndex", 
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}; idx1 = Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, idx2 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.BSSIndex, idx4 = STAIndex", 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -2146,196 +2146,196 @@ CREATE TABLE Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('BSSIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('BSSIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('STAIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('STAIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "MACAddress", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "MACAddress", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "00:00:00:00:00:00", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "TimeStamp", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "TimeStamp", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "2020-08-31T11:22:39Z", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "LastDataDownlinkRate", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "LastDataDownlinkRate", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "LastDataUplinkRate", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "LastDataUplinkRate", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "UtilizationReceive", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "UtilizationReceive", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "UtilizationTransmit", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "UtilizationTransmit", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "EstMACDataRateDownlink", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "EstMACDataRateDownlink", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "EstMACDataRateUplink", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "EstMACDataRateUplink", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "SignalStrength", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "SignalStrength", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "LastConnectTime", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "LastConnectTime", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "BytesSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "BytesSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "BytesReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "BytesReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "PacketsSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "PacketsSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "PacketsReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "PacketsReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "ErrorsSent", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "ErrorsSent", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "ErrorsReceived", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "ErrorsReceived", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "RetransCount", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "RetransCount", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "IPV4Address", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "IPV4Address", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "IPV6Address", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "IPV6Address", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "Hostname", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "Hostname", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "NumberOfMeasureReports", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ( "NumberOfMeasureReports", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -2343,20 +2343,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_BSS_STA_InfoTbl VALUES ('Cre
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BackhaulSTA.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA.", "current", 0, 0, 4, 31, 31, 66, 19, NULL, 
-    "Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_BackhaulSTA_ValuesTbl", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BackhaulSTA.", "current", 0, 0, 4, 31, 31, 66, 19, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.BackhaulSTA; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Device.$$.Radio.$$.BackhaulSTA; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -2385,42 +2385,42 @@ CREATE TABLE Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ( "MACAddress", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ( "MACAddress", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "00:00:00:00:00:00", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -2428,20 +2428,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_BackhaulSTA_InfoTbl VALUES (
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.", "current", 0, 0, 4, 31, 31, 68, 20, NULL, 
-    "Device_Controller_Network_Device_Radio_ScanResult_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_ValuesTbl", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.", "current", 0, 0, 4, 31, 31, 68, 20, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_ScanResult_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_ScanResult_ValuesTbl", 
     "prplmesh_be", NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.ScanResult; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$.ScanResult; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex", 
     NULL, NULL, 
     NULL, NULL, 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_ScanResult_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_ScanResult_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_ScanResult_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_ScanResult_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -2470,49 +2470,49 @@ CREATE TABLE Device_Controller_Network_Device_Radio_ScanResult_InfoTbl
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_InfoTbl VALUES ( "NumberOfOpClassScans", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_InfoTbl VALUES ( "NumberOfOpClassScans", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_InfoTbl VALUES ( "TimeStamp", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_InfoTbl VALUES ( "TimeStamp", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -2520,20 +2520,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_InfoTbl VALUES ('
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.", "current", 0, 0, 4, 31, 31, 69, 21, NULL, 
-    "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.NumberOfOpClassScans", NULL, "OpClassScanIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.", "current", 0, 0, 4, 31, 31, 69, 21, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.NumberOfOpClassScans", NULL, "OpClassScanIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.ScanResult.OpClassScan.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, OpClassScanIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$.ScanResult.OpClassScan.$$; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, OpClassScanIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = OpClassScanIndex", 
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}; idx1 = Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, idx2 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = OpClassScanIndex", 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -2562,56 +2562,56 @@ CREATE TABLE Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoT
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('OpClassScanIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('OpClassScanIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ( "NumberOfChannelScans", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ( "NumberOfChannelScans", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ( "OperatingClass", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ( "OperatingClass", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -2619,20 +2619,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_InfoT
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.", "current", 0, 0, 4, 31, 31, 70, 22, NULL, 
-    "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.NumberOfChannelScans", NULL, "ChannelScanIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.", "current", 0, 0, 4, 31, 31, 70, 22, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.NumberOfChannelScans", NULL, "ChannelScanIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.ScanResult.OpClassScan.$$.ChannelScan.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, ChannelScanIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$.ScanResult.OpClassScan.$$.ChannelScan.$$; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, ChannelScanIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, idx4 = ChannelScanIndex", 
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.; idx1 = Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, idx2 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, idx4 = ChannelScanIndex", 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -2661,84 +2661,84 @@ CREATE TABLE Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_Chann
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('OpClassScanIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('OpClassScanIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('ChannelScanIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('ChannelScanIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "Channel", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "Channel", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "TimeStamp", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "TimeStamp", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "Utilization", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "Utilization", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "Noise", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "Noise", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "NumberOfNeighbors", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ( "NumberOfNeighbors", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
@@ -2746,20 +2746,20 @@ INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_Chann
     'Internal service parameter');
 
 -- **************************************************************
--- Meta-information of object Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.
+-- Meta-information of object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.
 -- **************************************************************
-INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.", "current", 0, 0, 4, 31, 31, 71, 23, NULL, 
-    "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl", "mmx_main_db", "Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl", 
-    "prplmesh_be", NULL, NULL, "Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NumberOfNeighbors", NULL, "NeighborBSSIndex", 
+INSERT INTO MMX_Objects_InfoTbl VALUES( "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.", "current", 0, 0, 4, 31, 31, 71, 23, NULL, 
+    "Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl", "mmx_main_db", "Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_ValuesTbl", 
+    "prplmesh_be", NULL, NULL, "Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NumberOfNeighbors", NULL, "NeighborBSSIndex", 
     NULL, NULL, 
     NULL, NULL, 
-    "script", "prplmesh_get.lua Controller.Network.Device.$$.Radio.$$.ScanResult.OpClassScan.$$.ChannelScan.$$.NeighborBSS.$$; Device.Controller.Network.Device.{i}.DeviceIndex, Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.ChannelScanIndex, NeighborBSSIndex", 
+    "script", "prplmesh_get.lua Device.WiFi.DataElements.Network.Device.$$.Radio.$$.ScanResult.OpClassScan.$$.ChannelScan.$$.NeighborBSS.$$; Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.ChannelScanIndex, NeighborBSSIndex", 
     NULL, NULL, 
-    "script", "prplmesh_getall.lua Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.; idx1 = Device.Controller.Network.Device.{i}.DeviceIndex, idx2 = Device.Controller.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, idx4 = Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.ChannelScanIndex, idx5 = NeighborBSSIndex", 
+    "script", "prplmesh_getall.lua Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.; idx1 = Device.WiFi.DataElements.Network.Device.{i}.DeviceIndex, idx2 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.RadioIndex, idx3 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.OpClassScanIndex, idx4 = Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.ChannelScanIndex, idx5 = NeighborBSSIndex", 
     NULL, NULL );
 
-DROP TABLE IF EXISTS Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl; 
-CREATE TABLE Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl
 ( 
     ParamName            TEXT UNIQUE NOT NULL,  
     ParamDbStatus        TEXT DEFAULT 'current',  
@@ -2788,98 +2788,98 @@ CREATE TABLE Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_Chann
     ParamDescr           TEXT 
 );
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('DeviceIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('DeviceIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('RadioIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('RadioIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('OpClassScanIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('OpClassScanIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('ChannelScanIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('ChannelScanIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('NeighborBSSIndex', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('NeighborBSSIndex', 
     'current', 0, 0, 23, 32, 'unsignedInt', 1, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Index of the table');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "BSSID", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "BSSID", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "SSID", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "SSID", 
     "current", 0, 4, 31, 31, "string", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "SignalStrength", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "SignalStrength", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "ChannelBandwidth", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "ChannelBandwidth", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "ChannelUtilization", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "ChannelUtilization", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "StationCount", 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ( "StationCount", 
     "current", 0, 4, 31, 31, "unsignedInt", NULL, 
     NULL, NULL, NULL, NULL, "0", NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     NULL, NULL, NULL, NULL, 
     NULL);
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('ObjInstSelfRef', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('ObjInstSelfRef', 
     'current', 0, 0, 32, 0, 'string', NULL, 
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('CfgOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('CfgOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 
     'db', NULL, NULL, NULL, 
     'Internal service parameter');
 
-INSERT  INTO Device_Controller_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('CreateOwner', 
+INSERT  INTO Device_WiFi_DataElements_Network_Device_Radio_ScanResult_OpClassScan_ChannelScan_NeighborBSS_InfoTbl VALUES ('CreateOwner', 
     'current', 0, 0, 32, 0, 'unsignedInt', NULL, 
     NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 
     NULL, NULL, NULL, 

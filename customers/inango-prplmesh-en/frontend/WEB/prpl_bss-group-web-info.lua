@@ -3,7 +3,7 @@
 --  Section list of group prpl_bss
 prpl_bss_sections_info = { 
 {['sectionHeader']="BSS",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.",
  ['sectionId']="prpl_bss_1",
  ['lookType']="tablegroup",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Collapse"}},

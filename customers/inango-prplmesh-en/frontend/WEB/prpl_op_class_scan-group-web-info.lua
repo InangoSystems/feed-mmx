@@ -3,7 +3,7 @@
 --  Section list of group prpl_op_class_scan
 prpl_op_class_scan_sections_info = { 
 {['sectionHeader']="Operating Class Scan",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.",
  ['sectionId']="prpl_op_class_scan_1",
  ['lookType']="matrix",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Collapse"}},

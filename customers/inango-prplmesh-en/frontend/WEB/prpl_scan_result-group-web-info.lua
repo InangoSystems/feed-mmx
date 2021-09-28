@@ -3,7 +3,7 @@
 --  Section list of group prpl_scan_result
 prpl_scan_result_sections_info = { 
 {['sectionHeader']="ScanResults",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.",
  ['sectionId']="prpl_scan_result_1",
  ['lookType']="matrix",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Collapse"}},

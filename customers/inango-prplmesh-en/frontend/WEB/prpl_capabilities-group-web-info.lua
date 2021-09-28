@@ -3,7 +3,7 @@
 --  Section list of group prpl_capabilities
 prpl_capabilities_sections_info = { 
 {['sectionHeader']="Capabilities",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.",
  ['sectionId']="prpl_capabilities_1",
  ['lookType']="matrix",
  ['sectionButtons']={{"Refresh"},{"Update"}},
@@ -34,7 +34,7 @@ prpl_capabilities_sections_info = {
 }, -- End of of section "Capabilities"
 
 {['sectionHeader']="HT Capabilities",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.",
  ['sectionId']="prpl_capabilities_2",
  ['lookType']="matrix",
  ['sectionButtons']={{"Refresh"},{"Update"}},
@@ -99,7 +99,7 @@ prpl_capabilities_sections_info = {
 }, -- End of of section "HT Capabilities"
 
 {['sectionHeader']="VHT Capabilities",
- ['mmgModObjName']="Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.",
  ['sectionId']="prpl_capabilities_3",
  ['lookType']="tablegroup",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Collapse"}},

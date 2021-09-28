@@ -27,13 +27,13 @@
     <COMMAND name="curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -56,13 +56,13 @@
     <COMMAND name="show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -77,13 +77,13 @@
     <COMMAND name="curr_op_class curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="curr_op_class curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -103,13 +103,13 @@
     <COMMAND name="radios curr_op_class curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="radios curr_op_class curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -129,13 +129,13 @@
     <COMMAND name="agents radios curr_op_class curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="agents radios curr_op_class curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -155,13 +155,13 @@
     <COMMAND name="prplmesh agents radios curr_op_class curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="prplmesh agents radios curr_op_class curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
@@ -181,13 +181,13 @@
     <COMMAND name="mmx prplmesh agents radios curr_op_class curr_op_class show" help="Show information" >
         <PARAM name="DeviceIndex" help="DeviceIndex parameter: number, range ([n-m]) or wildcard(*) - by default" ptype="STRING" prefix="DeviceIndex" default="*"/>
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.${DeviceIndex}.Radio.*.CurrentOperatingClasses.*. sectionId=prpl_curr_op_class_1 type=get
         </ACTION>
     </COMMAND>
 <!--=======================================================-->
     <COMMAND name="mmx prplmesh agents radios curr_op_class curr_op_class update" help="Update management objects information of the appropriated component" >
         <ACTION>
-            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.Controller.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
+            /usr/lib/lua/mmx/mmx_cli_utils.lua mmObjInstance=Device.WiFi.DataElements.Network.Device.*.Radio.*.CurrentOperatingClasses.*. type=update
         </ACTION>
     </COMMAND>
 <!--=======================================================-->

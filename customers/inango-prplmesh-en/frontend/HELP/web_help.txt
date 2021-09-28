@@ -4,7 +4,7 @@
         Access Points
         Board settings
      Sections (total number 1):
-       Sect prplmesh_1: Device.Controller.Network.  Num of WEB params: 5
+       Sect prplmesh_1: Device.WiFi.DataElements.Network.  Num of WEB params: 5
           ID: A unique identifier for this particular device within the Wi-Fi network
           NumberOfDevices: The interval between the collection of consecutive measurements of the most frequently updated Data Element from this device (milliseconds).
           ControllerID: The number of radios in this AP.
@@ -16,7 +16,7 @@
         Interfaces
         Radios
      Sections (total number 1):
-       Sect prpl_agents_1: Device.Controller.Network.Device.{i}.  Num of WEB params: 4
+       Sect prpl_agents_1: Device.WiFi.DataElements.Network.Device.{i}.  Num of WEB params: 4
           ID: A unique identifier for this particular device within the Wi-Fi network
           CollectionInterval: The interval between the collection of consecutive measurements of the most frequently updated Data Element from this device (milliseconds).
           NumberOfRadios: The number of radios in this AP.
@@ -25,7 +25,7 @@
 **** WEB Page: "Access Points" **** (parent page: prplMesh ) ****
      Child Pages (total number 0):
      Sections (total number 2):
-       Sect prpl_ap_1: Device.Controller.Network.AccessPoint.{i}.  Num of WEB params: 6
+       Sect prpl_ap_1: Device.WiFi.DataElements.Network.AccessPoint.{i}.  Num of WEB params: 6
           SSID: Access Point name
           MultiApMode: Mutli-AP mode for Access Point
           Band2_4G: Enable 2.4G band
@@ -33,7 +33,7 @@
           Band5GH: Enable 5G Higher band
           Band6G: Enable 6G band
 
-       Sect prpl_ap_2: Device.Controller.Network.AccessPoint.{i}.Security.  Num of WEB params: 4
+       Sect prpl_ap_2: Device.WiFi.DataElements.Network.AccessPoint.{i}.Security.  Num of WEB params: 4
           ModeEnabled: Security mode (WPA2-Personal or WPA3-Personal)
           PreSharedKey: PreSharedKey
           KeyPassphrase: The passphrase for connecting to the Access Point
@@ -42,14 +42,14 @@
 **** WEB Page: "Interfaces" **** (parent page: Agents ) ****
      Child Pages (total number 0):
      Sections (total number 3):
-       Sect prpl_interfaces_1: Device.Controller.Network.Device.{i}.Interface.{i}.  Num of WEB params: 5
+       Sect prpl_interfaces_1: Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.  Num of WEB params: 5
           NumberOfNeighbors: The number of interfaces on this device.
           Status: Interface status.
           MACAddress: Interface MAC address.
           Name: Intrerface name.
           MediaType: Interface Media Type.
 
-       Sect prpl_interfaces_2: Device.Controller.Network.Device.{i}.Interface.{i}.Stats.  Num of WEB params: 14
+       Sect prpl_interfaces_2: Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.Stats.  Num of WEB params: 14
           BytesSent: Amount of sent bytes in the current interface.
           BytesReceived: Amount of received bytes in the current interface.
           PacketsSent: Amount of sent packets in the current interface.
@@ -65,7 +65,7 @@
           BroadcastPacketsSent: Amount of broadcast packets sent in the current interface.
           BroadcastPacketsReceived: Amount of broadcast packets received in the current interface.
 
-       Sect prpl_interfaces_3: Device.Controller.Network.Device.{i}.Interface.{i}.Neighbor.{i}.  Num of WEB params: 3
+       Sect prpl_interfaces_3: Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.Neighbor.{i}.  Num of WEB params: 3
           ID: Neighbor device AL-MAC address.
           IsIEEE1905: Flag is used to differentiate neighbors as 1905 device, or not .
           NumberOfNeighbors: The number of neighbors which connected to interface on other device.
@@ -78,7 +78,7 @@
         Backhaul STA
         Scan Result
      Sections (total number 1):
-       Sect prpl_radios_1: Device.Controller.Network.Device.{i}.Radio.{i}.  Num of WEB params: 9
+       Sect prpl_radios_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.  Num of WEB params: 9
           ID: Unique ID for this radio
           Enabled: Indicates whether this radio is enabled.
           Noise: An indicator of the average radio noise plus interference power measured for the primary operating channel.
@@ -93,7 +93,7 @@
      Child Pages (total number 1):
         STA
      Sections (total number 1):
-       Sect prpl_bss_1: Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.  Num of WEB params: 16
+       Sect prpl_bss_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.  Num of WEB params: 16
           BSSID: The MAC address of the logical BSS (BSSID).
           SSID: The SSID in use for this BSS.
           Enabled: Whether the BSSID is currently enabled and beacon frames being sent.
@@ -114,7 +114,7 @@
 **** WEB Page: "Current Operating Classes" **** (parent page: Radios ) ****
      Child Pages (total number 0):
      Sections (total number 1):
-       Sect prpl_curr_op_class_1: Device.Controller.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.  Num of WEB params: 4
+       Sect prpl_curr_op_class_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.CurrentOperatingClasses.{i}.  Num of WEB params: 4
           TimeStamp: The time this group was collected.
           Class: Operating class
           Channel: The channel number in the operating class in the previous field that this radio is currently operating on.
@@ -125,17 +125,17 @@
         Operating Classes
         Non Operable Classes
      Sections (total number 3):
-       Sect prpl_capabilities_1: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.  Num of WEB params: 1
+       Sect prpl_capabilities_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.  Num of WEB params: 1
           NumberOfOperatingClasses: The number of current operating classes.
 
-       Sect prpl_capabilities_2: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.  Num of WEB params: 5
+       Sect prpl_capabilities_2: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.HTCapabilities.  Num of WEB params: 5
           tx_spatial_streams: Number of supported TX spatial streams
           rx_spatial_streams: Number of supported RX spatial streams
           HT_40_Mhz: HT support for 40MHz
           GI_20_MHz: GI support for 20MHz
           GI_40_MHz: GI support for 40MHz
 
-       Sect prpl_capabilities_3: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.  Num of WEB params: 10
+       Sect prpl_capabilities_3: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.VHTCapabilities.  Num of WEB params: 10
           VHT_Tx_MCS: Set of VHT MCSs that can be transmitted
           VHT_Rx_MCS: Set of VHT MCSs that can be received
           tx_spatial_streams: Number of supported TX spatial streams
@@ -150,7 +150,7 @@
 **** WEB Page: "Operating Classes" **** (parent page: Capabilities ) ****
      Child Pages (total number 0):
      Sections (total number 1):
-       Sect prpl_op_classes_1: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.  Num of WEB params: 3
+       Sect prpl_op_classes_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.  Num of WEB params: 3
           Class: Operating class
           MaxTxPower: Maximum transmit power EIRP that this radio is capable of transmitting in the current regulatory domain for the operating class; represented as 2's complement signed integer in units of decibels relative to 1 mW (dBm).
           NumberOfNonOperChan: The number of current operating classes scan.
@@ -158,20 +158,20 @@
 **** WEB Page: "Non Operable Classes" **** (parent page: Capabilities ) ****
      Child Pages (total number 0):
      Sections (total number 1):
-       Sect prpl_non_op_classes_1: Device.Controller.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.  Num of WEB params: 1
+       Sect prpl_non_op_classes_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.Capabilities.OperatingClasses.{i}.NonOperable.{i}.  Num of WEB params: 1
           NonOpChannelNumber: The number of non-operable channels
 
 **** WEB Page: "Backhaul STA" **** (parent page: Radios ) ****
      Child Pages (total number 0):
      Sections (total number 1):
-       Sect prpl_backhaul_sta_1: Device.Controller.Network.Device.{i}.Radio.{i}.BackhaulSTA.  Num of WEB params: 1
+       Sect prpl_backhaul_sta_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BackhaulSTA.  Num of WEB params: 1
           MACAddress: The MAC address of the logical STA sharing the radio for Wi-Fi backhaul.
 
 **** WEB Page: "Scan Result" **** (parent page: Radios ) ****
      Child Pages (total number 1):
         Operating Class Scan
      Sections (total number 1):
-       Sect prpl_scan_result_1: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.  Num of WEB params: 2
+       Sect prpl_scan_result_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.  Num of WEB params: 2
           NumberOfOpClassScans: 
           TimeStamp: The timestamp of the last scan of the channel.
 
@@ -180,14 +180,14 @@
         Channel Scan
         Neighbors
      Sections (total number 1):
-       Sect prpl_op_class_scan_1: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.  Num of WEB params: 2
+       Sect prpl_op_class_scan_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.  Num of WEB params: 2
           NumberOfChannelScans: 
           OperatingClass: 
 
 **** WEB Page: "Channel Scan" **** (parent page: Operating Class Scan ) ****
      Child Pages (total number 0):
      Sections (total number 1):
-       Sect prpl_channel_scan_1: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.  Num of WEB params: 5
+       Sect prpl_channel_scan_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.  Num of WEB params: 5
           Channel: The channel number of the channel scanned by the radio given the operating class.
           TimeStamp: The timestamp of the last scan of the channel.
           Utilization: The current channel utilization measured by the radio on the scanned 20 MHz channel
@@ -197,7 +197,7 @@
 **** WEB Page: "Neighbors" **** (parent page: Operating Class Scan ) ****
      Child Pages (total number 0):
      Sections (total number 1):
-       Sect prpl_neighbors_1: Device.Controller.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.  Num of WEB params: 6
+       Sect prpl_neighbors_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.ScanResult.OpClassScan.{i}.ChannelScan.{i}.NeighborBSS.{i}.  Num of WEB params: 6
           BSSID: The BSSID indicated by the neighboring BSS.
           SSID: The SSID indicated by the neighboring BSS.
           SignalStrength: An indicator of radio signal strength (RSSI) of the Beacon or Probe Response frames of the neighboring BSS as received by the radio measured in dBm.
@@ -208,7 +208,7 @@
 **** WEB Page: "STA" **** (parent page: BSS ) ****
      Child Pages (total number 0):
      Sections (total number 1):
-       Sect prpl_sta_1: Device.Controller.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.  Num of WEB params: 21
+       Sect prpl_sta_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BSS.{i}.STA.{i}.  Num of WEB params: 21
           MACAddress: The MAC address of an associated STA.
           TimeStamp: The time this group was collected.
           LastDataDownlinkRate: The data transmit rate in Kbps that was most recently used for transmission of data PPDUs from the access point to the associated STA.
