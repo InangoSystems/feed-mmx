@@ -175,7 +175,7 @@ prpl_bss_sections_info = {
     }
     },
     {
-    ['param_name']="NumberOfSTA", ['rnd_header']="NumberOfSTA",
+    ['param_name']="STANumberOfEntries", ['rnd_header']="STANumberOfEntries",
     ['help']="The number of STAs currently associated to this BSS.",
     ['units']=nil,
     ['writable']=false,

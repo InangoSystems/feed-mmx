@@ -6,7 +6,7 @@
      Sections (total number 1):
        Sect prplmesh_1: Device.WiFi.DataElements.Network.  Num of WEB params: 5
           ID: A unique identifier for this particular device within the Wi-Fi network
-          NumberOfDevices: The interval between the collection of consecutive measurements of the most frequently updated Data Element from this device (milliseconds).
+          DeviceNumberOfEntries: The interval between the collection of consecutive measurements of the most frequently updated Data Element from this device (milliseconds).
           ControllerID: The number of radios in this AP.
           TimeStamp: The time this group was collected.
           NumberOfAccessPoints: Number of WiFi Access Points
@@ -19,7 +19,7 @@
        Sect prpl_agents_1: Device.WiFi.DataElements.Network.Device.{i}.  Num of WEB params: 4
           ID: A unique identifier for this particular device within the Wi-Fi network
           CollectionInterval: The interval between the collection of consecutive measurements of the most frequently updated Data Element from this device (milliseconds).
-          NumberOfRadios: The number of radios in this AP.
+          RadioNumberOfEntries: The number of radios in this AP.
           NumberOfInterfaces: The number of interfaces on this device.
 
 **** WEB Page: "Access Points" **** (parent page: prplMesh ) ****
@@ -68,7 +68,7 @@
        Sect prpl_interfaces_3: Device.WiFi.DataElements.Network.Device.{i}.Interface.{i}.Neighbor.{i}.  Num of WEB params: 3
           ID: Neighbor device AL-MAC address.
           IsIEEE1905: Flag is used to differentiate neighbors as 1905 device, or not .
-          NumberOfNeighbors: The number of neighbors which connected to interface on other device.
+          NeighborNumberOfEntries: The number of neighbors which connected to interface on other device.
 
 **** WEB Page: "Radios" **** (parent page: Agents ) ****
      Child Pages (total number 5):
@@ -86,8 +86,8 @@
           Transmit: The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on individually or group addressed transmissions by the AP. When more than one channel is in use by BSS operating on the radio, then the Transmit value is calculated only for the primary channel.
           ReceiveSelf: The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving individually or group addressed transmissions from any STA associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveSelf value is calculated only for the primary channel.
           ReceiveOther: The percentage of time (linearly scaled with 255 representing 100%) the radio has spent on receiving valid IEEE 802.11 PPDUs that are not associated with any BSS operating on this radio. When more than one channel is in use by BSS operating on the radio, then the ReceiveOther value is calculated only for the primary channel.
-          NumberOfCurrOpClass: The number of current operating classes.
-          NumberOfBSS: The number of BSS.
+          CurrentOperatingClassesNumberOfEntries: The number of current operating classes.
+          BSSNumberOfEntries: The number of BSS.
 
 **** WEB Page: "BSS" **** (parent page: Radios ) ****
      Child Pages (total number 1):
@@ -109,7 +109,7 @@
           EstServiceParametersBK: Estimated Service Parameters Information field for AC=BK
           EstServiceParametersVI: Estimated Service Parameters Information field for AC=VI
           EstServiceParametersVO: Estimated Service Parameters Information field for AC=VO
-          NumberOfSTA: The number of STAs currently associated to this BSS.
+          STANumberOfEntries: The number of STAs currently associated to this BSS.
 
 **** WEB Page: "Current Operating Classes" **** (parent page: Radios ) ****
      Child Pages (total number 0):
@@ -164,7 +164,7 @@
 **** WEB Page: "Backhaul STA" **** (parent page: Radios ) ****
      Child Pages (total number 0):
      Sections (total number 1):
-       Sect prpl_backhaul_sta_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BackhaulSTA.  Num of WEB params: 1
+       Sect prpl_backhaul_sta_1: Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BackhaulSta.  Num of WEB params: 1
           MACAddress: The MAC address of the logical STA sharing the radio for Wi-Fi backhaul.
 
 **** WEB Page: "Scan Result" **** (parent page: Radios ) ****

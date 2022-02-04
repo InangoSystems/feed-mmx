@@ -89,7 +89,7 @@ prpl_radios_sections_info = {
     }
     },
     {
-    ['param_name']="NumberOfCurrOpClass", ['rnd_header']="NumberOfCurrOpClass",
+    ['param_name']="CurrentOperatingClassesNumberOfEntries", ['rnd_header']="CurrentOperatingClassesNumberOfEntries",
     ['help']="The number of current operating classes.",
     ['units']=nil,
     ['writable']=false,
@@ -99,7 +99,7 @@ prpl_radios_sections_info = {
     }
     },
     {
-    ['param_name']="NumberOfBSS", ['rnd_header']="NumberOfBSS",
+    ['param_name']="BSSNumberOfEntries", ['rnd_header']="BSSNumberOfEntries",
     ['help']="The number of BSS.",
     ['units']=nil,
     ['writable']=false,

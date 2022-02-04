@@ -19,7 +19,7 @@ prplmesh_sections_info = {
     }
     },
     {
-    ['param_name']="NumberOfDevices", ['rnd_header']="NumberOfDevices",
+    ['param_name']="DeviceNumberOfEntries", ['rnd_header']="DeviceNumberOfEntries",
     ['help']="The interval between the collection of consecutive measurements of the most frequently updated Data Element from this device (milliseconds).",
     ['units']=nil,
     ['writable']=false,

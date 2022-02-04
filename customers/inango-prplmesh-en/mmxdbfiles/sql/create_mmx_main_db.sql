@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_ValuesTbl;
 CREATE TABLE Device_WiFi_DataElements_Network_ValuesTbl
 (
     [ID]    TEXT,
-    [NumberOfDevices]    INTEGER DEFAULT 0,
+    [DeviceNumberOfEntries]    INTEGER DEFAULT 0,
     [ControllerID]    TEXT,
     [TimeStamp]    TEXT,
     [NumberOfAccessPoints]    INTEGER DEFAULT 0,
@@ -97,7 +97,7 @@ CREATE TABLE Device_WiFi_DataElements_Network_Device_ValuesTbl
     [DeviceIndex]     INTEGER,
     [ID]    TEXT DEFAULT "00:00:00:00:00:00",
     [CollectionInterval]    INTEGER DEFAULT 0,
-    [NumberOfRadios]    INTEGER DEFAULT 0,
+    [RadioNumberOfEntries]    INTEGER DEFAULT 0,
     [NumberOfInterfaces]    INTEGER DEFAULT 0,
     [ObjInstSelfRef]    TEXT,
     [CfgOwner]    INTEGER DEFAULT 0,
@@ -166,7 +166,7 @@ CREATE TABLE Device_WiFi_DataElements_Network_Device_Interface_Neighbor_ValuesTb
     [NeighborIndex]     INTEGER,
     [ID]    TEXT DEFAULT "00:00:00:00:00:00",
     [IsIEEE1905]    INTEGER DEFAULT 0,
-    [NumberOfNeighbors]    INTEGER DEFAULT 0,
+    [NeighborNumberOfEntries]    INTEGER DEFAULT 0,
     [ObjInstSelfRef]    TEXT,
     [CfgOwner]    INTEGER DEFAULT 0,
     [CreateOwner]   INTEGER DEFAULT 0,
@@ -189,8 +189,8 @@ CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl
     [Transmit]    INTEGER DEFAULT 0,
     [ReceiveSelf]    INTEGER DEFAULT 0,
     [ReceiveOther]    INTEGER DEFAULT 0,
-    [NumberOfCurrOpClass]    INTEGER DEFAULT 0,
-    [NumberOfBSS]    INTEGER DEFAULT 0,
+    [CurrentOperatingClassesNumberOfEntries]    INTEGER DEFAULT 0,
+    [BSSNumberOfEntries]    INTEGER DEFAULT 0,
     [ObjInstSelfRef]    TEXT,
     [CfgOwner]    INTEGER DEFAULT 0,
     [CreateOwner]   INTEGER DEFAULT 0,
@@ -340,7 +340,7 @@ CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl
     [EstServiceParametersBK]    INTEGER DEFAULT 0,
     [EstServiceParametersVI]    INTEGER DEFAULT 0,
     [EstServiceParametersVO]    INTEGER DEFAULT 0,
-    [NumberOfSTA]    INTEGER DEFAULT 0,
+    [STANumberOfEntries]    INTEGER DEFAULT 0,
     [ObjInstSelfRef]    TEXT,
     [CfgOwner]    INTEGER DEFAULT 0,
     [CreateOwner]   INTEGER DEFAULT 0,
@@ -387,10 +387,10 @@ CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_ValuesTbl
 
 
 -- ***********************************************************
--- Information table for object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BackhaulSTA.
+-- Information table for object Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BackhaulSta.
 -- ***********************************************************
-DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_ValuesTbl; 
-CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_ValuesTbl
+DROP TABLE IF EXISTS Device_WiFi_DataElements_Network_Device_Radio_BackhaulSta_ValuesTbl; 
+CREATE TABLE Device_WiFi_DataElements_Network_Device_Radio_BackhaulSta_ValuesTbl
 (
     [DeviceIndex]     INTEGER,
     [RadioIndex]     INTEGER,
@@ -531,7 +531,7 @@ BEGIN
        VALUES (NEW.[DeviceIndex], NEW.[RadioIndex]) ;
    INSERT INTO [Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_ValuesTbl] ([DeviceIndex], [RadioIndex]) 
        VALUES (NEW.[DeviceIndex], NEW.[RadioIndex]) ;
-   INSERT INTO [Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_ValuesTbl] ([DeviceIndex], [RadioIndex]) 
+   INSERT INTO [Device_WiFi_DataElements_Network_Device_Radio_BackhaulSta_ValuesTbl] ([DeviceIndex], [RadioIndex]) 
        VALUES (NEW.[DeviceIndex], NEW.[RadioIndex]) ;
    INSERT INTO [Device_WiFi_DataElements_Network_Device_Radio_ScanResult_ValuesTbl] ([DeviceIndex], [RadioIndex]) 
        VALUES (NEW.[DeviceIndex], NEW.[RadioIndex]) ;
@@ -546,7 +546,7 @@ BEGIN
        WHERE  [DeviceIndex] = OLD.[DeviceIndex]  AND  [RadioIndex] = OLD.[RadioIndex] ;
    DELETE FROM [Device_WiFi_DataElements_Network_Device_Radio_Capabilities_VHTCapabilities_ValuesTbl] 
        WHERE  [DeviceIndex] = OLD.[DeviceIndex]  AND  [RadioIndex] = OLD.[RadioIndex] ;
-   DELETE FROM [Device_WiFi_DataElements_Network_Device_Radio_BackhaulSTA_ValuesTbl] 
+   DELETE FROM [Device_WiFi_DataElements_Network_Device_Radio_BackhaulSta_ValuesTbl] 
        WHERE  [DeviceIndex] = OLD.[DeviceIndex]  AND  [RadioIndex] = OLD.[RadioIndex] ;
    DELETE FROM [Device_WiFi_DataElements_Network_Device_Radio_ScanResult_ValuesTbl] 
        WHERE  [DeviceIndex] = OLD.[DeviceIndex]  AND  [RadioIndex] = OLD.[RadioIndex] ;
@@ -580,7 +580,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_WiFi_DataElements_Network_Device_ValuesTbl
 CREATE TRIGGER [tr_cnt_Device_WiFi_DataElements_Network_Device_ValuesTbl_insert] AFTER INSERT ON [Device_WiFi_DataElements_Network_Device_ValuesTbl]
 BEGIN 
     UPDATE Device_WiFi_DataElements_Network_ValuesTbl
-    SET NumberOfDevices = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_ValuesTbl WHERE 1 )
+    SET DeviceNumberOfEntries = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_ValuesTbl WHERE 1 )
      WHERE 1;
 END;
 
@@ -588,7 +588,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_WiFi_DataElements_Network_Device_ValuesTbl
 CREATE TRIGGER [tr_cnt_Device_WiFi_DataElements_Network_Device_ValuesTbl_delete] AFTER DELETE ON [Device_WiFi_DataElements_Network_Device_ValuesTbl]
 BEGIN 
     UPDATE Device_WiFi_DataElements_Network_ValuesTbl
-    SET NumberOfDevices = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_ValuesTbl WHERE 1 )
+    SET DeviceNumberOfEntries = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_ValuesTbl WHERE 1 )
      WHERE 1;
 END;
 
@@ -640,7 +640,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_Val
 CREATE TRIGGER [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl_insert] AFTER INSERT ON [Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl]
 BEGIN 
     UPDATE Device_WiFi_DataElements_Network_Device_ValuesTbl
-    SET NumberOfRadios = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] )
+    SET RadioNumberOfEntries = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] )
      WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex];
 END;
 
@@ -648,7 +648,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_Val
 CREATE TRIGGER [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl_delete] AFTER DELETE ON [Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl]
 BEGIN 
     UPDATE Device_WiFi_DataElements_Network_Device_ValuesTbl
-    SET NumberOfRadios = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] )
+    SET RadioNumberOfEntries = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] )
      WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex];
 END;
 
@@ -660,7 +660,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_Cur
 CREATE TRIGGER [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_ValuesTbl_insert] AFTER INSERT ON [Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_ValuesTbl]
 BEGIN 
     UPDATE Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl
-    SET NumberOfCurrOpClass = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] )
+    SET CurrentOperatingClassesNumberOfEntries = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] )
      WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex];
 END;
 
@@ -668,7 +668,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_Cur
 CREATE TRIGGER [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_ValuesTbl_delete] AFTER DELETE ON [Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_ValuesTbl]
 BEGIN 
     UPDATE Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl
-    SET NumberOfCurrOpClass = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] )
+    SET CurrentOperatingClassesNumberOfEntries = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_CurrentOperatingClasses_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] )
      WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex];
 END;
 
@@ -720,7 +720,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_BSS
 CREATE TRIGGER [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl_insert] AFTER INSERT ON [Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl]
 BEGIN 
     UPDATE Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl
-    SET NumberOfBSS = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] )
+    SET BSSNumberOfEntries = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] )
      WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex];
 END;
 
@@ -728,7 +728,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_BSS
 CREATE TRIGGER [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl_delete] AFTER DELETE ON [Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl]
 BEGIN 
     UPDATE Device_WiFi_DataElements_Network_Device_Radio_ValuesTbl
-    SET NumberOfBSS = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] )
+    SET BSSNumberOfEntries = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] )
      WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex];
 END;
 
@@ -740,7 +740,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_BSS
 CREATE TRIGGER [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_ValuesTbl_insert] AFTER INSERT ON [Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_ValuesTbl]
 BEGIN 
     UPDATE Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl
-    SET NumberOfSTA = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] AND [BSSIndex] = NEW.[BSSIndex] )
+    SET STANumberOfEntries = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_ValuesTbl WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] AND [BSSIndex] = NEW.[BSSIndex] )
      WHERE 1 AND [DeviceIndex] = NEW.[DeviceIndex] AND [RadioIndex] = NEW.[RadioIndex] AND [BSSIndex] = NEW.[BSSIndex];
 END;
 
@@ -748,7 +748,7 @@ DROP TRIGGER IF EXISTS [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_BSS
 CREATE TRIGGER [tr_cnt_Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_ValuesTbl_delete] AFTER DELETE ON [Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_ValuesTbl]
 BEGIN 
     UPDATE Device_WiFi_DataElements_Network_Device_Radio_BSS_ValuesTbl
-    SET NumberOfSTA = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] AND [BSSIndex] = OLD.[BSSIndex] )
+    SET STANumberOfEntries = ( SELECT COUNT(RowId) FROM Device_WiFi_DataElements_Network_Device_Radio_BSS_STA_ValuesTbl WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] AND [BSSIndex] = OLD.[BSSIndex] )
      WHERE 1 AND [DeviceIndex] = OLD.[DeviceIndex] AND [RadioIndex] = OLD.[RadioIndex] AND [BSSIndex] = OLD.[BSSIndex];
 END;
 

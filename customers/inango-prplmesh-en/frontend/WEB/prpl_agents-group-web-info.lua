@@ -35,7 +35,7 @@ prpl_agents_sections_info = {
     }
     },
     {
-    ['param_name']="NumberOfRadios", ['rnd_header']="NumberOfRadios",
+    ['param_name']="RadioNumberOfEntries", ['rnd_header']="RadioNumberOfEntries",
     ['help']="The number of radios in this AP.",
     ['units']=nil,
     ['writable']=false,
