@@ -3,7 +3,7 @@
 --  Section list of group prpl_backhaul_sta
 prpl_backhaul_sta_sections_info = { 
 {['sectionHeader']="Backhaul STA",
- ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BackhaulSTA.",
+ ['mmgModObjName']="Device.WiFi.DataElements.Network.Device.{i}.Radio.{i}.BackhaulSta.",
  ['sectionId']="prpl_backhaul_sta_1",
  ['lookType']="tablegroup",
  ['sectionButtons']={{"Refresh"},{"Update"},{"Collapse"}},

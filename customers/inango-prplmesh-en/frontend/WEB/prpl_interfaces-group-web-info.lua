@@ -21,7 +21,7 @@ prpl_interfaces_sections_info = {
     ['writable'] = false, 
     },
     {
-    ['param_name']="NumberOfNeighbors", ['rnd_header']="NumberOfNeighbors",
+    ['param_name']="NeighborNumberOfEntries", ['rnd_header']="NeighborNumberOfEntries",
     ['help']="The number of interfaces on this device.",
     ['units']=nil,
     ['writable']=false,
@@ -277,7 +277,7 @@ prpl_interfaces_sections_info = {
     ['data_properties']=nil
     },
     {
-    ['param_name']="NumberOfNeighbors", ['rnd_header']="NumberOfNeighbors",
+    ['param_name']="NeighborNumberOfEntries", ['rnd_header']="NeighborNumberOfEntries",
     ['help']="The number of neighbors which connected to interface on other device.",
     ['units']=nil,
     ['writable']=false,
