@@ -233,7 +233,7 @@ prpl_sta_sections_info = {
     }
     },
     {
-    ['param_name']="NumberOfMeasureReports", ['rnd_header']="NumberOfMeasureReports",
+    ['param_name']="MeasurementReportNumberOfEntries", ['rnd_header']="MeasurementReportNumberOfEntries",
     ['help']="The number of STAs currently associated to this BSS.",
     ['units']=nil,
     ['writable']=false,
